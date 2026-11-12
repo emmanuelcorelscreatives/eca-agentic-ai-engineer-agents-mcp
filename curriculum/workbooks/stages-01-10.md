@@ -12,9 +12,9 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** All eight projects appear; distinguish runnable reference exercises from live integration evidence.
 
 ### s01-l02: Build Your First Autonomous AI Workflow with n8n
-- **Practical:** Import `frameworks/n8n/order-workflow.json` into n8n and configure a model credential; execute one permitted order and one invalid order.
-- **Deliverable:** Redacted workflow export and actual execution screenshots showing trigger, model, tool, decision and output.
-- **Accept when:** Both branches run in n8n; secrets are absent; a Python-only fixture does not satisfy this live/UI exercise.
+- **Practical:** Import `examples/s01/first-workflow.n8n.json` into n8n, follow `examples/s01/README.md` to configure the model credential, and use the supplied synthetic FAQ enquiries. Record one answerable enquiry and one enquiry requiring review as separate manual executions; each execution admits one model request with retries disabled.
+- **Deliverable:** Redacted workflow export and actual execution screenshots showing the manual trigger, model response, validation, allowlisted FAQ tool, decision and draft or review output.
+- **Accept when:** Both branches run in n8n, the FAQ answer cites the configured fixture, the review branch produces no external delivery, and secrets are absent. The separate arithmetic starter `frameworks/n8n/order-workflow.json` is a foundational deterministic example and does not satisfy this model-enabled practical. Existing authoring tests and an imported canvas are not model-execution proof.
 
 ### s01-l03: Course Roadmap—Six Modules, Thirty Stages and Eight Projects
 - **Practical:** Map all 30 stages into the six curriculum modules and annotate the eight project milestones.
