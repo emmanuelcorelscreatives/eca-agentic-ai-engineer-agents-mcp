@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "source": "Original PDF project titles and stage positions; use-case/control details are Academy teaching design",
+  "projects": [
+    {
+      "id": "p01",
+      "number": 1,
+      "title": "Professional Digital Twin Agent",
+      "stage": 5,
+      "directory": "projects/01-digital-twin",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "Career information approved by the fictional portfolio owner",
+      "inputs": [
+        "Approved résumé and portfolio extracts",
+        "Visitor question"
+      ],
+      "output": "Grounded answers and contact-request drafts",
+      "humanApproval": "Approve contact delivery and any newly added claims",
+      "requiredEvidence": [
+        "Source-to-answer citations",
+        "Unknown-answer test",
+        "Contact draft without delivery"
+      ],
+      "limitation": "Never invent qualifications or private contact details",
+      "primaryTechnologies": [
+        "Python",
+        "model API",
+        "retrieval",
+        "web interface"
+      ]
+    },
+    {
+      "id": "p02",
+      "number": 2,
+      "title": "AI Sales Development Team",
+      "stage": 8,
+      "directory": "projects/02-sales-team",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A fictional Academy outreach coordinator",
+      "inputs": [
+        "Synthetic organization profile",
+        "Permitted research sources"
+      ],
+      "output": "Researched outreach drafts awaiting approval",
+      "humanApproval": "Human approves every external delivery",
+      "requiredEvidence": [
+        "Research sources",
+        "Drafts",
+        "Approval boundary test"
+      ],
+      "limitation": "No unsolicited real outreach in the course practical",
+      "primaryTechnologies": [
+        "OpenAI Agents SDK",
+        "tools",
+        "handoffs"
+      ]
+    },
+    {
+      "id": "p03",
+      "number": 3,
+      "title": "Deep Research Intelligence Team",
+      "stage": 9,
+      "directory": "projects/03-deep-research",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A researcher comparing a bounded topic",
+      "inputs": [
+        "Research question",
+        "Allowlisted documents"
+      ],
+      "output": "A sourced report distinguishing findings and uncertainty",
+      "humanApproval": "Review source quality and report before publication",
+      "requiredEvidence": [
+        "Source register",
+        "Contradiction handling",
+        "Report with citations"
+      ],
+      "limitation": "A fluent report is not evidence that its claims are correct",
+      "primaryTechnologies": [
+        "OpenAI Agents SDK",
+        "research tools",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "p04",
+      "number": 4,
+      "title": "Market Intelligence and Stock Screening Crew",
+      "stage": 13,
+      "directory": "projects/04-market-intelligence",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A student applying transparent screening rules",
+      "inputs": [
+        "Dated synthetic market data",
+        "Explicit screening criteria"
+      ],
+      "output": "An educational screening report",
+      "humanApproval": "Review data date, assumptions and limitations",
+      "requiredEvidence": [
+        "Criteria implementation",
+        "Deterministic screening tests",
+        "Dated report"
+      ],
+      "limitation": "Educational examples; no investment advice or promised returns",
+      "primaryTechnologies": [
+        "CrewAI",
+        "typed tools",
+        "data validation"
+      ]
+    },
+    {
+      "id": "p05",
+      "number": 5,
+      "title": "Sandboxed AI Engineering Team",
+      "stage": 15,
+      "directory": "projects/05-sandboxed-engineering",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A developer implementing a small specification",
+      "inputs": [
+        "Bounded specification",
+        "Starter source repository"
+      ],
+      "output": "Source changes and actual isolated test results",
+      "humanApproval": "Approve changes before merging or deployment",
+      "requiredEvidence": [
+        "Container configuration",
+        "Actual test logs",
+        "Code diff"
+      ],
+      "limitation": "A sandbox is one control, not permission to run arbitrary host actions",
+      "primaryTechnologies": [
+        "CrewAI",
+        "Docker",
+        "automated tests"
+      ]
+    },
+    {
+      "id": "p06",
+      "number": 6,
+      "title": "Browser Task Sidekick",
+      "stage": 20,
+      "directory": "projects/06-browser-sidekick",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "An operator performing a bounded browser task",
+      "inputs": [
+        "Task instruction",
+        "Allowlisted local practice site"
+      ],
+      "output": "A resumable task record and approval-held sensitive actions",
+      "humanApproval": "Approve submission, purchase, deletion and other sensitive actions",
+      "requiredEvidence": [
+        "State transitions",
+        "Resume test",
+        "Observed browser trace"
+      ],
+      "limitation": "Use course-owned pages; do not automate private accounts",
+      "primaryTechnologies": [
+        "LangChain",
+        "LangGraph",
+        "browser automation"
+      ]
+    },
+    {
+      "id": "p07",
+      "number": 7,
+      "title": "Agent Application Factory",
+      "stage": 25,
+      "directory": "projects/07-agent-factory",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A developer producing an app from a typed request",
+      "inputs": [
+        "Typed application specification",
+        "Approved templates"
+      ],
+      "output": "Generated application source with actual tests",
+      "humanApproval": "Review generated code and deployment configuration",
+      "requiredEvidence": [
+        "Validated specification",
+        "Generated source",
+        "Real tests and limitations"
+      ],
+      "limitation": "Generated source is not automatically production-ready",
+      "primaryTechnologies": [
+        "multiple agent frameworks",
+        "typed specifications",
+        "tests"
+      ]
+    },
+    {
+      "id": "p08",
+      "number": 8,
+      "title": "MCP-Powered AI Trading Floor",
+      "stage": 29,
+      "directory": "projects/08-mcp-trading-floor",
+      "status": "planned portfolio; inspect project evidence before claiming completion",
+      "intendedUser": "A student studying service-connected research and simulation",
+      "inputs": [
+        "Dated course market fixtures",
+        "MCP tools",
+        "Paper order instructions"
+      ],
+      "output": "Research and paper-trading records",
+      "humanApproval": "Approve simulated orders; live broker execution is outside this course practical",
+      "requiredEvidence": [
+        "MCP contract tests",
+        "Research provenance",
+        "Paper ledger and risk-limit tests"
+      ],
+      "limitation": "Paper trading only; no live orders, financial promises or fabricated executions",
+      "primaryTechnologies": [
+        "MCP",
+        "agent orchestration",
+        "paper ledger"
+      ]
+    }
+  ]
+}

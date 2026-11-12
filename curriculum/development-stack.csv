@@ -1,0 +1,10 @@
+component,role,course_example,stages,first_workflow_status,control_note
+model,Classify bounded untrusted text,Configured chat-completions model,1;2;4,used,Model output must pass schema and confidence checks
+tool,Read allowlisted data,FAQ lookup Code node,1;3;4,used,No arbitrary URL or file access
+orchestrator,Order tool and decision steps,n8n workflow,1;3,used,Model cannot alter workflow graph
+runtime,Execute nodes,n8n process,1;2,used,Record actual installed version
+memory,Persist application state,LangGraph checkpoint,17;18;20,not used,n8n execution history is not agent memory
+MCP,Expose typed tools/resources,Course MCP server,26;27;28;29,not used,Protocol does not guarantee safe tool execution
+interface,Present input and output,Manual n8n editor run,1;5;20,used,Draft output is not external delivery
+evaluation,Compare behavior to requirements,Contract and actual-run checks,1;10;30,used separately,Offline fixtures are not genuine model observations
+deployment,Operate a configured application,Controlled local n8n instance,2;10;30,local only,No public webhook activated

@@ -1,0 +1,6 @@
+# Legacy v1 FastMCP adapter deliberately pinned below the MCP v2 API migration.
+mcp>=1.20,<2
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pydantic>=2.9,<3
+gradio>=5,<7

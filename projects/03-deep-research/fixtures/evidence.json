@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "notice": "Invented evidence for teaching conflict handling. Values are not real research findings.",
+  "evidence": [
+    {
+      "source_id": "cedar-001",
+      "title": "Cedar Library reporting pilot memo",
+      "location": "fixtures/pilot-memo.txt",
+      "published": "2026-01-10",
+      "claim": "weekly reporting time after pilot",
+      "value": "45 minutes",
+      "excerpt": "The fictional pilot coordinator records 45 minutes for the weekly report."
+    },
+    {
+      "source_id": "cedar-002",
+      "title": "Cedar Library reporting observer note",
+      "location": "fixtures/observer-note.txt",
+      "published": "2026-01-11",
+      "claim": "weekly reporting time after pilot",
+      "value": "70 minutes",
+      "excerpt": "The fictional observer records 70 minutes including validation; scope differs from the pilot memo."
+    },
+    {
+      "source_id": "cedar-003",
+      "title": "Cedar Library reporting limitations",
+      "location": "fixtures/limitations.txt",
+      "published": "2026-01-12",
+      "claim": "pilot sample size",
+      "value": "three weekly reports",
+      "excerpt": "Only three weekly reports were observed; no controlled causal claim is established."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fictional": true,
+  "units": "arbitrary synthetic currency units, not real financial filings",
+  "records": {
+    "cedar": {"prior_revenue":1000,"current_revenue":1180,"operating_profit":236,"debt":250,"assets":1000},
+    "maple": {"prior_revenue":1000,"current_revenue":1080,"operating_profit":172.8,"debt":650,"assets":1000},
+    "pine": {"prior_revenue":1000,"current_revenue":1250,"operating_profit":null,"debt":400,"assets":1000}
+  },
+  "formulas": {
+    "revenue-year-comparison":"(current_revenue - prior_revenue) / prior_revenue",
+    "operating-profit":"operating_profit / current_revenue; null when operating profit missing",
+    "balance-sheet":"debt / assets"
+  }
+}

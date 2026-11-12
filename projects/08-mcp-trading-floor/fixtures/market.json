@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "as_of": "2026-01-15T16:00:00Z",
+  "companies": {
+    "ACA": {"name": "Academy Components", "price": "125.25", "sector": "Synthetic industrials", "evidence_id": "fixture-aca-001", "research": "Fictional component maker; simulated revenue grew 8 percent. This fixture makes no claim about a real company."},
+    "LAB": {"name": "Learning Analytics Bureau", "price": "42.10", "sector": "Synthetic software", "evidence_id": "fixture-lab-001", "research": "Fictional analytics supplier; simulated operating margin is 12 percent."},
+    "EDU": {"name": "Education Devices United", "price": "73.50", "sector": "Synthetic hardware", "evidence_id": "fixture-edu-001", "research": "Fictional device maker; simulated inventory rose 4 percent."}
+  }
+}

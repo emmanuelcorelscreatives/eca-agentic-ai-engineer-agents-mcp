@@ -1,0 +1,17 @@
+{
+  "synthetic": true,
+  "entries": [
+    {
+      "id": "faq-course-access",
+      "topic": "course_access",
+      "question": "Where are the course exercises?",
+      "answer": "Exercises are in the public Academy course repository. Use the lesson ID to find its lab and read the matching setup instructions."
+    },
+    {
+      "id": "faq-feedback",
+      "topic": "feedback",
+      "question": "How should I submit a practice question?",
+      "answer": "Prepare a minimal synthetic example, the lesson ID, the command you ran and the observed error. Remove credentials and personal information before sharing."
+    }
+  ]
+}

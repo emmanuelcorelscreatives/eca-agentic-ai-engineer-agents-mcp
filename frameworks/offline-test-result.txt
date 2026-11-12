@@ -1,0 +1,15 @@
+test_all_python_examples_parse_and_import_without_vendor_sdk (test_framework_recipes.FrameworkRecipesTests.test_all_python_examples_parse_and_import_without_vendor_sdk) ... ok
+test_catalog_is_resolved_and_primary_sources_are_https (test_framework_recipes.FrameworkRecipesTests.test_catalog_is_resolved_and_primary_sources_are_https) ... ok
+test_exact_decimal_totals (test_framework_recipes.FrameworkRecipesTests.test_exact_decimal_totals) ... ok
+test_explicit_config_preserved (test_framework_recipes.FrameworkRecipesTests.test_explicit_config_preserved) ... ok
+test_graph_calculation_is_exact_without_sdk (test_framework_recipes.FrameworkRecipesTests.test_graph_calculation_is_exact_without_sdk) ... ok
+test_live_opt_in_required_even_with_credentials (test_framework_recipes.FrameworkRecipesTests.test_live_opt_in_required_even_with_credentials) ... ok
+test_missing_config_refused_after_opt_in (test_framework_recipes.FrameworkRecipesTests.test_missing_config_refused_after_opt_in) ... ok
+test_n8n_inactive_manual_workflow_has_no_external_action (test_framework_recipes.FrameworkRecipesTests.test_n8n_inactive_manual_workflow_has_no_external_action) ... ok
+test_ollama_nonstreaming_fixture_and_invalid_model (test_framework_recipes.FrameworkRecipesTests.test_ollama_nonstreaming_fixture_and_invalid_model) ... ok
+test_rejects_invalid_financial_inputs (test_framework_recipes.FrameworkRecipesTests.test_rejects_invalid_financial_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.094s
+
+OK

@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "notice": "Fictional company/person. Reserved .invalid email cannot be delivered.",
+  "prospect": {
+    "name": "Jordan Lee",
+    "company": "Cedar Library Cooperative",
+    "role": "Operations coordinator",
+    "verified_need": "weekly circulation summaries from three branch CSV files",
+    "source_id": "synthetic-brief-cedar-001",
+    "email": "jordan@cedar-library.invalid"
+  }
+}

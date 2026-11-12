@@ -1,0 +1,8 @@
+import React, {useState} from 'react';
+import {createRoot} from 'react-dom/client';
+function App(){
+ const [token,setToken]=useState(''),[symbol,setSymbol]=useState('ACA'),[quantity,setQuantity]=useState(5),[result,setResult]=useState(null),[error,setError]=useState('');
+ async function request(path,body){setError('');try{const response=await fetch('/api'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-Academy-Token':token},...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok)throw Error(JSON.stringify(data));setResult(data);}catch(e){setError(e.message);}}
+ return <main style={{fontFamily:'system-ui',maxWidth:900,margin:'2rem auto',padding:20}}><h1>Academy synthetic trading floor</h1><p>Fictional companies and paper orders only. Human approval is recorded separately in the local CLI.</p><label>Local course token <input type="password" autoComplete="off" value={token} onChange={e=>setToken(e.target.value)}/></label><p><label>Company <select value={symbol} onChange={e=>setSymbol(e.target.value)}>{['ACA','LAB','EDU'].map(s=><option key={s}>{s}</option>)}</select></label> <label>Shares <input type="number" min="1" step="1" value={quantity} onChange={e=>setQuantity(Number(e.target.value))}/></label></p><button onClick={()=>request('/proposals',{symbol,quantity,side:'BUY'})}>Research and propose</button> <button onClick={()=>request('/state')}>Read portfolio and trace</button>{error&&<p role="alert">{error}</p>}<pre style={{whiteSpace:'pre-wrap'}}>{JSON.stringify(result,null,2)}</pre></main>;
+}
+createRoot(document.getElementById('root')).render(<App/>);

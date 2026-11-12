@@ -1,0 +1,212 @@
+[
+  {
+    "stage": 1,
+    "title": "Welcome to Agentic AI Engineering",
+    "outcome": "Students understand the learning path, development stack, project portfolio and commercial relevance of Agentic AI engineering.",
+    "project": 1,
+    "lessonCount": 6
+  },
+  {
+    "stage": 2,
+    "title": "Development Environment and First Model Calls",
+    "outcome": "Students create a secure development environment and make reliable model API calls from Python.",
+    "project": 1,
+    "lessonCount": 9
+  },
+  {
+    "stage": 3,
+    "title": "Agents, Workflows and Agentic Design Patterns",
+    "outcome": "Students can identify the correct architecture for an AI task and apply the major Agentic AI design patterns.",
+    "project": 1,
+    "lessonCount": 10
+  },
+  {
+    "stage": 4,
+    "title": "Models, Providers and Tool Calling",
+    "outcome": "Students can select and connect models, define reliable tools and build a functioning tool-calling loop.",
+    "project": 1,
+    "lessonCount": 10
+  },
+  {
+    "stage": 5,
+    "title": "Project 1: Professional Digital Twin Agent",
+    "outcome": "Students build and deploy a professional agent that answers questions from approved career information and handles contact requests.",
+    "project": 1,
+    "lessonCount": 13
+  },
+  {
+    "stage": 6,
+    "title": "OpenAI Agents SDK Fundamentals",
+    "outcome": "Students build, trace and persist tool-using agents with OpenAI Agents SDK.",
+    "project": 2,
+    "lessonCount": 10
+  },
+  {
+    "stage": 7,
+    "title": "Multi-Agent Orchestration",
+    "outcome": "Students can select and implement the appropriate orchestration pattern for a multi-agent application.",
+    "project": 2,
+    "lessonCount": 10
+  },
+  {
+    "stage": 8,
+    "title": "Project 2: AI Sales Development Team",
+    "outcome": "Students build a coordinated sales team that researches prospects, creates outreach and requires approval before external delivery.",
+    "project": 2,
+    "lessonCount": 14
+  },
+  {
+    "stage": 9,
+    "title": "Project 3: Deep Research Intelligence Team",
+    "outcome": "Students build a multi-agent research system that plans investigations, collects evidence and produces comprehensive reports.",
+    "project": 3,
+    "lessonCount": 13
+  },
+  {
+    "stage": 10,
+    "title": "Research Application, Evaluation and Deployment",
+    "outcome": "Students convert the research prototype into a modular, evaluated and deployable application.",
+    "project": 3,
+    "lessonCount": 11
+  },
+  {
+    "stage": 11,
+    "title": "CrewAI Fundamentals",
+    "outcome": "Students understand CrewAI\u2019s core abstractions and can create and run a role-based agent crew.",
+    "project": 4,
+    "lessonCount": 10
+  },
+  {
+    "stage": 12,
+    "title": "Tools, Context and Structured Crew Workflows",
+    "outcome": "Students can design dependable CrewAI systems with tools, shared context, structured results and controlled execution.",
+    "project": 4,
+    "lessonCount": 10
+  },
+  {
+    "stage": 13,
+    "title": "Project 4: Market Intelligence and Stock Screening Crew",
+    "outcome": "Students build a CrewAI application that researches companies, applies screening criteria and produces a structured intelligence report.",
+    "project": 4,
+    "lessonCount": 14
+  },
+  {
+    "stage": 14,
+    "title": "Coding Agents and Docker Sandboxes",
+    "outcome": "Students create a controlled environment in which coding agents can read files, run commands and test software.",
+    "project": 5,
+    "lessonCount": 12
+  },
+  {
+    "stage": 15,
+    "title": "Project 5: Sandboxed AI Engineering Team",
+    "outcome": "Students deploy a four-agent engineering team that plans, builds, tests and documents a working application.",
+    "project": 5,
+    "lessonCount": 15
+  },
+  {
+    "stage": 16,
+    "title": "LangChain Agent Development",
+    "outcome": "Students can build tool-using agents with LangChain models, middleware, structured outputs and memory.",
+    "project": 6,
+    "lessonCount": 10
+  },
+  {
+    "stage": 17,
+    "title": "LangGraph Fundamentals",
+    "outcome": "Students can model agent behavior as an explicit graph with state, loops, conditional routes and recovery paths.",
+    "project": 6,
+    "lessonCount": 11
+  },
+  {
+    "stage": 18,
+    "title": "Persistent and Resumable Agents",
+    "outcome": "Students build agents that preserve state, pause for decisions, recover from failures and replay earlier execution points.",
+    "project": 6,
+    "lessonCount": 12
+  },
+  {
+    "stage": 19,
+    "title": "Browser Automation and Deep Agents",
+    "outcome": "Students build browser-enabled and long-running agents that plan tasks, use skills and delegate work to subagents.",
+    "project": 6,
+    "lessonCount": 13
+  },
+  {
+    "stage": 20,
+    "title": "Project 6: Browser Task Sidekick",
+    "outcome": "Students build a persistent browser coworker that researches, executes bounded tasks and pauses before sensitive actions.",
+    "project": 6,
+    "lessonCount": 15
+  },
+  {
+    "stage": 21,
+    "title": "Google ADK and Agent-to-Agent Communication",
+    "outcome": "Students build a Google ADK agent and understand how independent agents can advertise capabilities and communicate.",
+    "project": 7,
+    "lessonCount": 10
+  },
+  {
+    "stage": 22,
+    "title": "AWS Strands and Pydantic AI",
+    "outcome": "Students build agents with two alternative Python frameworks and compare their architecture, typing and provider integrations.",
+    "project": 7,
+    "lessonCount": 11
+  },
+  {
+    "stage": 23,
+    "title": "AutoGen and Microsoft Agent Framework",
+    "outcome": "Students understand Microsoft\u2019s agent ecosystem and can create typed agents, tools and coordinated workflows.",
+    "project": 7,
+    "lessonCount": 11
+  },
+  {
+    "stage": 24,
+    "title": "Agno and Mastra",
+    "outcome": "Students build lightweight Python and TypeScript agents and compare their development workflows.",
+    "project": 7,
+    "lessonCount": 12
+  },
+  {
+    "stage": 25,
+    "title": "Project 7: Agent Application Factory",
+    "outcome": "Students build a factory that converts a structured specification into a generated, tested and documented agent project.",
+    "project": 7,
+    "lessonCount": 16
+  },
+  {
+    "stage": 26,
+    "title": "MCP Foundations",
+    "outcome": "Students understand MCP architecture, capabilities, transports and its role within an agent application.",
+    "project": 8,
+    "lessonCount": 10
+  },
+  {
+    "stage": 27,
+    "title": "Connecting Agents to MCP Servers",
+    "outcome": "Students connect agents to existing MCP servers while applying tracing, error handling, permissions and approval controls.",
+    "project": 8,
+    "lessonCount": 13
+  },
+  {
+    "stage": 28,
+    "title": "Building Custom MCP Servers",
+    "outcome": "Students design, implement, test and connect reusable MCP servers for memory, search, RAG and market data.",
+    "project": 8,
+    "lessonCount": 16
+  },
+  {
+    "stage": 29,
+    "title": "Project 8: MCP-Powered AI Trading Floor",
+    "outcome": "Students build a multi-agent market research and paper-trading system connected through curated MCP services.",
+    "project": 8,
+    "lessonCount": 16
+  },
+  {
+    "stage": 30,
+    "title": "Evaluation, Deployment and Course Completion",
+    "outcome": "Students evaluate, package, deploy and present the completed MCP capstone as a portfolio-ready Agentic AI application.",
+    "project": 8,
+    "lessonCount": 19
+  }
+]

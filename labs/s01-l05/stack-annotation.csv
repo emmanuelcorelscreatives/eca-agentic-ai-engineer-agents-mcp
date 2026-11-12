@@ -1,0 +1,7 @@
+component,role,in_first_workflow,persistent_state,interface_or_implementation,evidence
+model,,,,,
+FAQ lookup,,,,,
+n8n,,,,,
+MCP,,,,,
+LangGraph checkpoint,,,,,
+human approval,,,,,

@@ -1,0 +1,38 @@
+{
+  "synthetic": true,
+  "scenarios": [
+    {
+      "id": "brief-research",
+      "organization": "Academy Practice Cooperative (fictional)",
+      "request": "Compare three publicly documented learning tools in a report with source links.",
+      "closestProject": "p03",
+      "constraints": [
+        "No private account access",
+        "Separate dated facts from opinions",
+        "A human reviews publication"
+      ]
+    },
+    {
+      "id": "brief-support",
+      "organization": "Academy Practice Cooperative (fictional)",
+      "request": "Answer course-navigation questions from approved FAQ text and route account questions to a person.",
+      "closestProject": "p01",
+      "constraints": [
+        "No credentials or account actions",
+        "Draft-only output",
+        "Unknown answers go to human review"
+      ]
+    },
+    {
+      "id": "brief-browser",
+      "organization": "Academy Practice Cooperative (fictional)",
+      "request": "Fill a draft on the local course practice site and pause before submitting.",
+      "closestProject": "p06",
+      "constraints": [
+        "Only allowlisted local site",
+        "No real purchases or messages",
+        "Human approval before submission"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+component,role,in_first_workflow,persistent_state,interface_or_implementation,evidence
+model,classification,yes,no,configured external implementation,model HTTP node
+FAQ lookup,allowlisted data tool,yes,no,local implementation,FAQ Code node
+n8n,orchestrator and runtime,yes,execution history only,implementation,workflow graph
+MCP,tool/resource protocol,no,not applicable,interface,absent from export
+LangGraph checkpoint,state persistence,no,yes in later project,implementation,Stages17-20
+human approval,application control,draft is held,no,application policy,no outbound delivery node

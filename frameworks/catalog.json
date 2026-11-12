@@ -1,0 +1,150 @@
+{
+  "checked_date": "2026-11-12",
+  "curriculum": "Agentic AI Engineer: The Complete AI Agents & MCP Course",
+  "scope": "Introductory optional framework recipes; not complete implementations of every feature in these stages. See the course projects and lesson workbooks for the full practical sequence.",
+  "verification": "Python parsing/import isolation, local tool execution and actual JavaScript fixture evaluation. No SDK install, external model execution, ADK dashboard, n8n UI or Mastra TypeScript compilation has been performed.",
+  "recipes": [
+    {
+      "framework": "OpenAI Agents SDK",
+      "stages": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "path": "openai_agents.py",
+      "requirements_key": "openai-agents",
+      "official_url": "https://developers.openai.com/api/docs/guides/agents",
+      "notes": "Agent, Runner, function tools and specialist handoff. API-backed execution not run."
+    },
+    {
+      "framework": "CrewAI",
+      "stages": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "path": "crewai_crew.py",
+      "requirements_key": "crewai",
+      "official_url": "https://docs.crewai.com/en/concepts/crews",
+      "notes": "Sequential tasks, two agents and explicit context. Educational synthetic arithmetic, not live market analysis."
+    },
+    {
+      "framework": "LangChain",
+      "stages": [
+        16,
+        18
+      ],
+      "path": "langchain_agent.py",
+      "requirements_key": "langchain",
+      "official_url": "https://docs.langchain.com/oss/python/langchain/quickstart",
+      "notes": "Modern create_agent, not retired initialize_agent patterns."
+    },
+    {
+      "framework": "LangGraph",
+      "stages": [
+        17,
+        18,
+        19,
+        20
+      ],
+      "path": "langgraph_state.py",
+      "requirements_key": "langgraph",
+      "official_url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "notes": "Model-free graph, in-memory checkpoint, interrupt and fixture rejection. Persistence ends when the process exits."
+    },
+    {
+      "framework": "Google ADK",
+      "stages": [
+        21
+      ],
+      "path": "google_adk_agent.py",
+      "requirements_key": "google-adk",
+      "official_url": "https://adk.dev/get-started/python/",
+      "notes": "Factory for the root_agent CLI convention. ADK 2.x docs were checked; use isolated environments."
+    },
+    {
+      "framework": "AWS Strands",
+      "stages": [
+        22
+      ],
+      "path": "strands_bedrock.py",
+      "requirements_key": "strands",
+      "official_url": "https://strandsagents.com/latest/documentation/docs/user-guide/quickstart/",
+      "notes": "Explicit Bedrock model and region. Local tool does not send orders. Requires actual AWS model access."
+    },
+    {
+      "framework": "Pydantic AI",
+      "stages": [
+        22
+      ],
+      "path": "pydantic_typed.py",
+      "requirements_key": "pydantic-ai",
+      "official_url": "https://pydantic.dev/docs/ai/core-concepts/dependencies/",
+      "notes": "Typed dataclass dependencies and validated structured model output. Provider output is not pre-recorded here."
+    },
+    {
+      "framework": "AutoGen AgentChat",
+      "stages": [
+        23
+      ],
+      "path": "autogen_agentchat.py",
+      "requirements_key": "autogen",
+      "official_url": "https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/quickstart.html",
+      "notes": "AgentChat-era imports, distinct from older AutoGen 0.2. This does not assert all APIs migrate mechanically."
+    },
+    {
+      "framework": "Microsoft Agent Framework",
+      "stages": [
+        23
+      ],
+      "path": "microsoft_agent.py",
+      "requirements_key": "microsoft",
+      "official_url": "https://learn.microsoft.com/en-us/agent-framework/get-started/your-first-agent",
+      "notes": "FoundryChatClient plus explicit Azure CLI credential. Deployment name and project endpoint are user configuration."
+    },
+    {
+      "framework": "Agno",
+      "stages": [
+        24
+      ],
+      "path": "agno_agent.py",
+      "requirements_key": "agno",
+      "official_url": "https://docs.agno.com/agents/building-agents",
+      "notes": "Explicit OpenAI model and local function tool. SDK and provider package installed separately in the isolated environment."
+    },
+    {
+      "framework": "Mastra",
+      "stages": [
+        24
+      ],
+      "path": "mastra/order-agent.ts",
+      "requirements_key": null,
+      "official_url": "https://mastra.ai/docs/agents/overview",
+      "notes": "Typed createTool, integer cents and provider/model routing. Exact package pins are in its private package.json."
+    },
+    {
+      "framework": "n8n",
+      "stages": [
+        1
+      ],
+      "path": "n8n/order-workflow.json",
+      "requirements_key": null,
+      "official_url": "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.code/",
+      "notes": "Importable manual-trigger/Code workflow. This foundation is deterministic; add an actual AI Agent node for the model-driven lesson."
+    },
+    {
+      "framework": "Ollama",
+      "stages": [
+        4
+      ],
+      "path": "ollama_chat.py",
+      "requirements_key": null,
+      "official_url": "https://docs.ollama.com/api/chat",
+      "notes": "Fixed localhost endpoint, installed model tag, nonstreaming response. Requires a separately started local Ollama server."
+    }
+  ]
+}
