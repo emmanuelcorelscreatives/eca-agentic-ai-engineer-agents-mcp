@@ -1,0 +1,16 @@
+# Stage 01 guided n8n practical
+
+This export contains real n8n node definitions and a model HTTP request. It is not an execution recording. Import/runtime compatibility and genuine model-enabled observations remain pending until independently captured for the installed version. The deterministic foundation in `frameworks/n8n/order-workflow.json` is a separate simpler exercise; it is not an autonomous-model demonstration.
+
+1. Start an isolated local n8n instance following the framework setup. Record the installed version. Import `first-workflow.n8n.json` into its editor; leave it inactive. There are no webhooks or delivery integrations.
+2. Configure `COURSE_MODEL_BASE_URL` to an approved OpenAI-compatible **base ending in /v1**, and `COURSE_MODEL_NAME` to an available model. See `.env.example`. For deployments blocking environment expressions, enter the two non-secret values directly in the HTTP node. Never put a key in the export or screenshot.
+3. In **Classify with configured model**, choose a private Header Auth credential with header `Authorization` and value `Bearer <your key>`. No credential value or credential ID is embedded in the supplied export. Inspect the single POST destination before running it; account usage may cost money.
+4. Inspect the selectedId in **Synthetic enquiry**. It selects exactly one synthetic item. One manual execution makes **one** model request; automatic retry is disabled. Preserve an uncertain timeout as unresolved and investigate before repeating it.
+5. Run manually only after the configured endpoint and budget have been approved. Record exact workflow SHA, n8n version, execution ID, raw model text, lookup result, branch and final draft in `labs/s01-l02/workflow-run-record.md`. A second fixture needs a separately authorized execution. Do not claim a review branch was observed from its expected policy alone.
+6. An answer classification must name one allowlisted FAQ and confidence >=0.8. The tool reads only the embedded synthetic FAQ. Unknown fields, routes or FAQ arguments throw; low confidence and human_review produce a local review draft. No output node sends a message. Malformed-output behavior can be tested offline with explicitly simulated responses rather than billing an unnecessary model request.
+
+The JSON fixtures under `tests/stage01/fixtures` are **simulated contract inputs**, not responses received from a provider. The node-level offline harness tests JavaScript behavior and graph structure; it cannot prove import compatibility, a live HTTP request, model intelligence, installed n8n behavior or a successful external integration. Those require the actual retained run and an independent practical review. Initial run status: NOT EXECUTED.
+
+The synthetic data files are the reference fixtures. Their content is embedded in the input/tool nodes so the export imports without file-system mounts. Any change must update both copies and rerun the contract checks.
+
+Official node documentation: [HTTP Request](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/) and [If](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.if/). Their documented capabilities are not proof that this exact export has run.
