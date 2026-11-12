@@ -64,8 +64,8 @@
         },
         {
           "path": "tests/stage01/test_workflow_contract.py",
-          "sha256": "f527bf47a8617b3667d2a9b6446456dd3214a4c0cd6f907806bee4d133256a4c",
-          "sizeBytes": 5433
+          "sha256": "cc3391ded1e4215552ef4e7a66b8e2d6e967242866dd76bc30725ed141f2742c",
+          "sizeBytes": 5670
         },
         {
           "path": "data/synthetic/workflow-faq.json",
