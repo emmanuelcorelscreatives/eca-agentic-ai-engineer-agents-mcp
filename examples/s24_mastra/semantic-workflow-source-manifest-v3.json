@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 3,
+  "status": "AUTHOR_ONLY_CURRENT_DELTA_NOT_EXECUTED",
+  "scope": "Stage24 lessons08/10 actual typed tool workflow + grounded Agent.generate boundary",
+  "files": [
+    {
+      "path": "examples/s24_mastra/triage.ts",
+      "sha256": "b328a6b80461fea6e995d7b01e35362a452fad1bbd0bfd20e899db0293e6072a"
+    },
+    {
+      "path": "examples/s24_mastra/semantic-boundary.test.ts",
+      "sha256": "5dc3b4a7a7bc31b3918fde73accba5a201c01ec8f7a90c4cf6e7379fda09d284"
+    },
+    {
+      "path": "examples/s24_mastra/sdk-response-boundary.test.ts",
+      "sha256": "4d9f80bd0da1645418bd29ae6f77a1efd6333bdf415ab8ed125d3dbd43b5d555"
+    },
+    {
+      "path": "examples/s24_mastra/package.json",
+      "sha256": "b924dc999d5acf792cf225de4f0997ea3223f127d1dcb518bf38bb915c3b2101"
+    },
+    {
+      "path": "labs/s24-l08.md",
+      "sha256": "615876945982737f5ad11bad7e8f8ab36f707e6539cffc7426ca2b1d68f9f4c7"
+    },
+    {
+      "path": "labs/s24-l10.md",
+      "sha256": "279651344c2541a05d3a5d63cda6665f4bd3ae44e178f2e1758a3bf99b81e33f"
+    },
+    {
+      "path": "solutions/s24-l08.md",
+      "sha256": "876e74594740700cd1cba0b568c4637c2655429a846ddbe661114d1b3339aa39"
+    },
+    {
+      "path": "solutions/s24-l10.md",
+      "sha256": "462e19564c3a75b1f0349b3513b91dc2997958004e2c49f667cf3395f1fbfe90"
+    }
+  ],
+  "originalProofsPreserved": "V3 material mapping and source snapshots immutable; earlier local/UI cases do not certify this modified source",
+  "independentReview": "material-semantic-delta-review-v1/stage-24.json",
+  "centralCommands": [
+    {
+      "cwd": "examples/s24_mastra",
+      "command": "npm run check"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "command": "tsx --test semantic-boundary.test.ts sdk-response-boundary.test.ts",
+      "requires": "admitted isolated SDK runtime, private network; genuine Agent SDK + scripted test model only"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "command": "npm test",
+      "requires": "absolute COURSE_MCP_PYTHON pinned environment"
+    }
+  ],
+  "providerCallsByAuthor": 0,
+  "testsExecutedByAuthor": false,
+  "remainingGaps": [
+    "actual authorized provider two-turn same-resource/thread memory trace and validated result",
+    "genuine Studio current workflow success/error step and tool traces",
+    "independent semantic review of current source + actual central execution before material readiness"
+  ],
+  "fixtureSha256": "3e2f8e8bb583e9855112adda091f3189009928967dd22787c607d1769ef4d645",
+  "scriptedModelApi": "@mastra/core/test-utils/llm-mock createMockModel({version:v2, objectGenerationMode:json, mockText, spyGenerate, spyStream}); installed source/types read only",
+  "sdkNegativeCases": "Actual Agent.generate scripted SDK wrong citation, wrong ticket and malformed output rejection; actual unknown-ticket workflow failure; no real provider inference claimed",
+  "supersedesAuthorSourceManifest": {
+    "path": "examples/s24_mastra/semantic-workflow-source-manifest-v2.json",
+    "sha256": "1fd63c51024e56510f9f8a599fd77555e75e67e9276e14da2860636d0ac3a380",
+    "immutable": true
+  },
+  "deltaV3": "Exact original requested ticket equality shared by genuine tool gather and workflow lookup; one additional actual wrong-but-valid ticket response negative case; optional current success/failure workflow result JSON from the same executed cases, no duplicate workflow runs",
+  "traceContract": "Central owner creates fresh absolute COURSE_QA_TRACE_DIR. Tests write exclusive 0600 success/failure JSON containing actual runId/results/steps/Error fields; absent variable means no trace output; existing file or relative directory fails."
+}

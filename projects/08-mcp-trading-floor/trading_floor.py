@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 import sqlite3
 import time
+import uuid
+from datetime import datetime, timezone
 
 FIXTURES = Path(__file__).parent / 'fixtures' / 'market.json'
 
@@ -35,7 +37,8 @@ class Proposal:
 
 
 class TradingFloor:
-    def __init__(self, database: str = ':memory:', fixtures: Path = FIXTURES):
+    def __init__(self, database: str = ':memory:', fixtures: Path = FIXTURES, *, clock=time.time):
+        self.clock = clock
         self.market = json.loads(Path(fixtures).read_text())
         self.db = sqlite3.connect(database, isolation_level=None)
         self.db.row_factory = sqlite3.Row
@@ -47,7 +50,16 @@ class TradingFloor:
         CREATE TABLE IF NOT EXISTS orders(request_id TEXT PRIMARY KEY, digest TEXT NOT NULL, result TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS memory(id INTEGER PRIMARY KEY, kind TEXT NOT NULL, payload TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS traces(id INTEGER PRIMARY KEY, event TEXT NOT NULL, payload TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS account_meta(id INTEGER PRIMARY KEY CHECK(id=1), account_id TEXT NOT NULL, revision INTEGER NOT NULL);
+        CREATE TABLE IF NOT EXISTS proposals(digest TEXT PRIMARY KEY, payload TEXT NOT NULL, status TEXT NOT NULL, created_at REAL NOT NULL);
         ''')
+        self.db.execute('INSERT OR IGNORE INTO account_meta VALUES (1,?,0)', (uuid.uuid4().hex,))
+        columns = {row['name'] for row in self.db.execute('PRAGMA table_info(approvals)')}
+        for name, sql_type in [('account_id','TEXT'), ('revision','INTEGER'), ('expires_at','REAL')]:
+            if name not in columns:
+                try: self.db.execute(f'ALTER TABLE approvals ADD COLUMN {name} {sql_type}')
+                except sqlite3.OperationalError as exc:
+                    if 'duplicate column name' not in str(exc): raise
 
     def close(self):
         self.db.close()
@@ -69,6 +81,8 @@ class TradingFloor:
         proposal = Proposal(symbol, side, quantity, research['price'], research['evidence_id'])
         self._validate(proposal)
         self.trace('proposal', {'digest': proposal.digest(), **asdict(proposal)})
+        self.db.execute('INSERT OR IGNORE INTO proposals VALUES (?,?,?,?)',
+                        (proposal.digest(), json.dumps(asdict(proposal)), 'PROPOSED', self.clock()))
         return proposal
 
     def _validate(self, proposal: Proposal):
@@ -85,14 +99,22 @@ class TradingFloor:
         cash = Decimal(self.db.execute('SELECT cash FROM account WHERE id=1').fetchone()['cash'])
         positions = {r['symbol']: r['quantity'] for r in self.db.execute('SELECT * FROM positions')}
         value = cash + sum((Decimal(self.market['companies'][s]['price']) * q for s, q in positions.items()), Decimal(0))
-        return {'cash': str(cash), 'positions': positions, 'equity': str(value), 'synthetic': True}
+        meta = self.db.execute('SELECT * FROM account_meta WHERE id=1').fetchone()
+        return {'cash': str(cash), 'positions': positions, 'equity': str(value), 'synthetic': True,
+                'account_id': meta['account_id'], 'revision': meta['revision'],
+                'valuation_as_of': self.market['as_of'], 'quote_mode': 'fixed historical synthetic snapshot'}
 
-    def risk(self, proposal: Proposal) -> dict:
+    def risk(self, proposal: Proposal, *, reference_time: datetime | None = None, max_quote_age_seconds: int = 300) -> dict:
         self._validate(proposal)
         state = self.state()
         cost = amount(proposal.price) * proposal.quantity
         existing = state['positions'].get(proposal.symbol, 0)
         reasons = []
+        if reference_time is not None:
+            if reference_time.tzinfo is None: raise ValueError('reference time must include timezone')
+            quote_time = datetime.fromisoformat(self.market['as_of'].replace('Z', '+00:00'))
+            age = (reference_time - quote_time).total_seconds()
+            if age < 0 or age > max_quote_age_seconds: reasons.append('stale_or_future_quote')
         if proposal.side == 'BUY':
             if cost > Decimal(state['cash']): reasons.append('insufficient_cash')
             if cost > Decimal('2000.00'): reasons.append('order_limit')
@@ -100,15 +122,23 @@ class TradingFloor:
                 reasons.append('position_limit')
         elif proposal.quantity > existing:
             reasons.append('short_sales_disabled')
-        return {'allowed': not reasons, 'reasons': reasons, 'notional': str(cost), 'digest': proposal.digest()}
+        return {'allowed': not reasons, 'reasons': reasons, 'notional': str(cost), 'digest': proposal.digest(),
+                'account_id': state['account_id'], 'account_revision': state['revision'],
+                'quote_as_of': self.market['as_of'], 'quote_mode': 'freshness checked' if reference_time else 'historical fixture replay'}
 
-    def approve(self, proposal: Proposal, reviewer: str) -> dict:
+    def approve(self, proposal: Proposal, reviewer: str, *, ttl_seconds: int = 900) -> dict:
         """Human entry point: transport must authenticate a reviewer before calling."""
         if not reviewer.strip(): raise ValueError('reviewer is required')
+        if type(ttl_seconds) is not int or ttl_seconds <= 0: raise ValueError('positive approval lifetime required')
         decision = self.risk(proposal)
         if not decision['allowed']: raise ValueError('risk rejected: ' + ','.join(decision['reasons']))
-        self.db.execute('INSERT OR IGNORE INTO approvals(digest,reviewer) VALUES (?,?)', (proposal.digest(), reviewer))
-        self.trace('human_approval', {'digest': proposal.digest(), 'reviewer': reviewer})
+        self.db.execute('''INSERT INTO approvals(digest,reviewer,used,account_id,revision,expires_at)
+          VALUES (?,?,0,?,?,?) ON CONFLICT(digest) DO UPDATE SET reviewer=excluded.reviewer,
+          used=0,account_id=excluded.account_id,revision=excluded.revision,expires_at=excluded.expires_at''',
+          (proposal.digest(), reviewer, decision['account_id'], decision['account_revision'], self.clock()+ttl_seconds))
+        self.db.execute('UPDATE proposals SET status=? WHERE digest=?', ('APPROVED', proposal.digest()))
+        self.trace('human_approval', {'digest': proposal.digest(), 'reviewer': reviewer,
+                                    'account_id': decision['account_id'], 'revision': decision['account_revision']})
         return decision
 
     def execute(self, proposal: Proposal, request_id: str) -> dict:
@@ -125,13 +155,20 @@ class TradingFloor:
             approval = self.db.execute('SELECT * FROM approvals WHERE digest=?', (proposal.digest(),)).fetchone()
             if not approval or approval['used']: raise ValueError('unused human approval required')
             state = self.state()
+            if approval['account_id'] != state['account_id'] or approval['revision'] != state['revision']:
+                raise ValueError('account changed since approval; review again')
+            if approval['expires_at'] is None or approval['expires_at'] <= self.clock():
+                raise ValueError('approval expired; review again')
             sign = 1 if proposal.side == 'BUY' else -1
             quantity = state['positions'].get(proposal.symbol, 0) + sign * proposal.quantity
             cash = Decimal(state['cash']) - sign * Decimal(proposal.price) * proposal.quantity
             self.db.execute('UPDATE account SET cash=? WHERE id=1', (str(cash),))
             self.db.execute('INSERT INTO positions VALUES (?,?) ON CONFLICT(symbol) DO UPDATE SET quantity=excluded.quantity', (proposal.symbol, quantity))
             self.db.execute('UPDATE approvals SET used=1 WHERE digest=?', (proposal.digest(),))
-            result = {'request_id': request_id, 'digest': proposal.digest(), 'status': 'PAPER_FILLED', 'cash': str(cash)}
+            self.db.execute('UPDATE account_meta SET revision=revision+1 WHERE id=1')
+            self.db.execute('UPDATE proposals SET status=? WHERE digest=?', ('PAPER_FILLED', proposal.digest()))
+            result = {'request_id': request_id, 'digest': proposal.digest(), 'status': 'PAPER_FILLED', 'cash': str(cash),
+                      'account_id': state['account_id'], 'revision': state['revision']+1, 'executed_at': self.clock()}
             self.db.execute('INSERT INTO orders VALUES (?,?,?)', (request_id, proposal.digest(), json.dumps(result)))
             self.trace('paper_execution', result)
             self.db.execute('COMMIT')
@@ -142,6 +179,22 @@ class TradingFloor:
 
     def history(self) -> list[dict]:
         return [dict(row) for row in self.db.execute('SELECT * FROM traces ORDER BY id')]
+
+    def transactions(self) -> list[dict]:
+        return [json.loads(row['result']) for row in self.db.execute('SELECT result FROM orders ORDER BY rowid')]
+
+    def proposal_history(self) -> list[dict]:
+        return [{**dict(row), 'proposal': json.loads(row['payload'])}
+                for row in self.db.execute('SELECT * FROM proposals ORDER BY created_at')]
+
+    def reject(self, proposal: Proposal, reviewer: str, reason: str) -> dict:
+        self._validate(proposal)
+        if not reviewer.strip() or not reason.strip(): raise ValueError('reviewer and rejection reason required')
+        self.db.execute('DELETE FROM approvals WHERE digest=?', (proposal.digest(),))
+        self.db.execute('UPDATE proposals SET status=? WHERE digest=?', ('REJECTED', proposal.digest()))
+        result = {'digest': proposal.digest(), 'reviewer': reviewer, 'reason': reason, 'status': 'REJECTED'}
+        self.trace('human_rejection', result)
+        return result
 
 
 def demo(database: str = ':memory:') -> dict:

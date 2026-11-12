@@ -1,0 +1,9 @@
+[project]
+name = "eca-sandboxed-engineering-team"
+version = "0.1.0"
+description = "Bounded four-role engineering workflow with an explicit external model broker"
+requires-python = ">=3.12,<3.13"
+dependencies = ["crewai==1.15.40"]
+
+[tool.uv]
+package = false

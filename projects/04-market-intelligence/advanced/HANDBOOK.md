@@ -12,6 +12,11 @@ python3 projects/04-market-intelligence/advanced/research_lab.py --output-dir /t
 python3 -m unittest discover -s tests -p 'test_market_advanced.py' -v
 ```
 
+The semantic extension adds `advanced/full_report.py --output-dir NEW_DIRECTORY`
+for one report containing the financial ranking **and** all business/product/competition
+profiles and dated sector signals. The new commands and semantic tests are authored
+pending central QA; the earlier eight-test receipt does not certify these new bytes.
+
 `research_lab.py` executes actual fixture validation and writes JSON, Markdown and the
 full evidence registry. A new output directory is required; historical results are not
 overwritten. No provider or network operation occurs. For optional live framework
@@ -50,14 +55,28 @@ null is unknown and zero would claim a measured margin. Use the missingness test
 
 The real adapter's `fictional_company_research` tool supplies complete approved records.
 `review_numeric_claims` resolves every non-null metric to a company-specific ledger item.
+`research_sources.json` additionally supplies company business models, named products,
+competitive positioning and explicit limitations. `FixtureResearchAdapter.company`
+returns typed `CompanyResearch` with dated `SourceDocument` citations: Cedar's CSV
+reporting product versus fictional Rook's connectors; Maple's repairable warehouse
+scanner versus fictional North's initial prices; Pine's small advisory engagements
+versus fictional Elm's broad programmes. These are authored scenario facts, not real
+company observations. Each product and competitor claim is carried with its source
+extract; a source belonging to another company fails validation.
 **Exercise:** change Cedar's growth to .9. **Solution:** ledger reconciliation rejects it;
 no LLM confidence or unsupported citation rescues the number. An actual SDK/provider
 run is separately required before narrating an observed live research result.
 
 ## 4. Market analysis agent
 
-`sector_context` returns an explicit unknown live signal. The live market analyst receives
-company research as task context and may describe fixture sector coverage only.
+`FixtureResearchAdapter.market` supplies dated fictional conditions and numerical
+signals with source extracts: software planned-evaluation share 24/40 and cost-index
+change 100→108; hardware orders 100→95 and component lead time 4→6 weeks; services
+inquiries 80→92. The adapter checks every supplied ratio/change and source attribution.
+The actual market analyst has the `dated_market_conditions` tool and company task
+context, so it can compare demand, costs and supply pressures within this synthetic
+scenario. Sampling and causality uncertainties remain explicit. `sector_context` is
+only the older no-live-evidence helper; it does not replace the new scenario data.
 **Exercise:** infer a hardware industry boom from Maple alone. **Solution:** retain an
 uncertainty; one fictional company is not market evidence.
 
@@ -78,8 +97,13 @@ the fixture are unsupported and must be removed or held for real source review.
 
 ## 7. Replaceable data adapters
 
-`market.ResearchSource` is the protocol; `FixtureSource` is the offline implementation.
-Malformed JSON, duplicate symbols and missing fictional labels fail explicitly. A live
+`market.ResearchSource`/`FixtureSource` cover numeric company records. The additional
+`ResearchAdapter` protocol has typed company and market methods, implemented by
+`FixtureResearchAdapter`. Each returns exactly one of `success(value)`,
+`absent(reason)` or `error(reason)`. An absent sector is not zero growth; an unavailable
+source is not a successful empty research result. Malformed source dates, duplicate
+IDs, company/sector citation swaps and unreconciled signal arithmetic become error
+results. A replacement adapter must preserve those contracts. A live
 adapter must additionally bind source permission, timestamp, rate limit and unavailable
 response semantics. **Exercise:** rename a fixture adapter “live”. **Solution:** a name
 changes no provenance; preserve fictional status until real authorized data exists.

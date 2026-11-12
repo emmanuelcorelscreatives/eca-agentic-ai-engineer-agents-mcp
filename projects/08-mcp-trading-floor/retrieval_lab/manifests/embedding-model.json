@@ -1,0 +1,5 @@
+{
+  "default": {"identity": "academy-token-hash-sha256-v1", "dimensions": 64, "distance": "Cosine", "description": "Deterministic token-hash teaching encoder; not a pretrained semantic model"},
+  "optionalSemanticAdapter": {"class": "retrieval_lab.rag.SentenceTransformerEncoder", "modelIdExample": "sentence-transformers/all-MiniLM-L6-v2", "revision": "Operator must resolve and record an actual immutable40hex upstream commit before construction", "dimensions": 384, "status": "SOURCE_ONLY optional dependency and real model execution remain parent QA requirements"},
+  "relevanceEvaluation": {"queries": [{"text": "human approval", "expectedDocument": "academy-lab-policy"}, {"text": "chunk provenance", "expectedDocument": "academy-mcp-guide"}], "instruction": "Record actual returned IDs and scores, calculate hit@k against this human-authored expectation. Do not invent scores or claim a semantic benchmark from token hashing."}
+}

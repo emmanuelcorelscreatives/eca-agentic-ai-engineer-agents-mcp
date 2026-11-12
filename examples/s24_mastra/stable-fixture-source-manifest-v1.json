@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHOR_ONLY_NOT_EXECUTED",
+  "scope": "Stage24 stable fixture location after genuine Mastra bundling ENOENT",
+  "originalTriageSha256": "3a7046aa52f7cec21ac14038147fcf3dd6c6c0488e5b07bf702addfc8cd3bf0c",
+  "fixture": {
+    "path": "data/s24_articles.json",
+    "sha256": "3e2f8e8bb583e9855112adda091f3189009928967dd22787c607d1769ef4d645",
+    "changed": false
+  },
+  "files": [
+    {
+      "path": "examples/s24_mastra/triage.ts",
+      "sha256": "64c14bb3b0ecddbaa25145027c14935d7b7f09392d633f2c98a3e2109955b339"
+    },
+    {
+      "path": "examples/s24_mastra/studio-runbook.md",
+      "sha256": "8418ecf4018ad1fe06280cf9a667509ead6582b42f5c600ccece311c8c653688"
+    }
+  ],
+  "cwdContract": "npm commands from examples/s24_mastra; otherwise absolute COURSE_REPOSITORY_ROOT points to original repository dataset",
+  "centralQaRequired": [
+    "npm run check",
+    "npm test",
+    "actual mastra dev startup/capture/listener cleanup"
+  ],
+  "providerCalls": 0,
+  "runtimeTestsExecuted": false,
+  "preserveFailureLog": "semantic-project7-central-qa-v1/ui/mastra-startup.log"
+}

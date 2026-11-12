@@ -1,9 +1,16 @@
-# Reference solution: s09-l11
+# s09-l11: Manage Parallel Research Tasks
 
-A reference solution limits active tasks, retains task/query/source attribution and cancels cleanly without discarding completed evidence.
+Independent ready tasks share bounded admission; dependent tasks wait, source order remains stable and failed branches are not silently dropped.
 
-Implementation: projects/03-deep-research/research_lab/search.py.
+Current implementation, relative to `projects/03-deep-research/`:
 
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
+- research_lab/pipeline_v2.py:run_research
+- tests/test_stage09_semantic_repairs.py
 
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+
+Still required:
+
+- lesson-specific actual capture and independent review
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

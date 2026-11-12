@@ -4,13 +4,22 @@ This workbook defines student tasks and acceptance evidence for the exact curric
 
 Use the dependency manifests in `frameworks/requirements/` and each project’s optional requirements. Real model/provider, ADK dashboard, A2A, MCP inspector, Playwright browser, Qdrant, Docker and hosted deployment exercises require those actual runtimes and authorized access. Record a concrete blocker when unavailable. Deterministic fixtures and unit tests are useful foundations but do not substitute for a required real framework/MCP/model execution.
 
-Project 7’s `projects/07-agent-factory/factory.py` initially generates a deterministic stdlib tool application. Stage 25 explicitly builds the additional model-driven factory agents and framework adapters. Project 8’s `projects/08-mcp-trading-floor/trading_floor.py` is a synthetic paper-trading engine; `mcp_server.py`, `api.py`, `gradio_app.py`, `approve_order.py` and `frontend/` are concrete integration starting points. Required search, memory, RAG, Qdrant, multi-agent and complete UI extensions must be implemented and verified separately. No exercise authorizes real brokerage execution.
+Project 7’s `projects/07-agent-factory/factory.py` remains the deterministic stdlib foundation. Its current `model_pipeline.py`, `model_schemas.py` and `MODEL-PIPELINE-AUTHORING.md` supply the additional typed generative pipeline: inspect these implementations before extending them. Labelled offline backend tests do not establish actual model-generated output, authenticated Docker acceptance or a launched generated agent. Project 8 now includes `agent_harness.py`, `capstone_agents.py`, `sdk_role_provider.py`, `mcp_lab/`, `retrieval_lab/`, `evaluation_lab/`, a revision/expiry-aware paper ledger, and separate operator/reviewer UI/API paths. Use the current implementations rather than recreating them as if absent. Actual local protocol, service and owned-UI observations remain scoped; real configured-model behavior, external search/semantic embedding, Inspector, Docker and hosted deployment evidence are separate requirements. No exercise authorizes real brokerage execution.
+
+
+## Evidence boundary for the current source
+
+Independent central observations on 2026-11-12 exercise native ADK persistence/MCP, A2A exchange, Pydantic role toolsets/MCP dispatch, Microsoft typed components with a scripted client, Agno MCP, Mastra workflows/MCP/LibSQL Memory and an owned Studio page. Project 8 observations exercise actual local MCP transports, service/Qdrant boundaries, application cases and owned React/Gradio interfaces. These are scoped observations, not blanket approval of these 134 lessons. A scripted model client or OfflineBackend is expressly not evidence of real provider reasoning. ADK dashboard startup still includes a first-run modal; Studio startup does not prove complete provider/run-history behavior.
+
+Before narrating a result as observed, obtain the exact current-source evidence for that exercise. Required configured-model decisions and generative factory outputs, authenticated Docker execution, real search/semantic-embedding behavior, Inspector interactions, hosted deployment and final lesson-specific captures remain separate where not actually observed. Keep every original curriculum topic; recording an unresolved prerequisite does not remove it from the course.
 
 ## Stage 21: Google ADK and Agent-to-Agent Communication
 
+**Current source starting points:** [`examples/s21_adk.py`](../../examples/s21_adk.py), [`examples/s21_inventory.py`](../../examples/s21_inventory.py), [`examples/s21_state.py`](../../examples/s21_state.py), [`examples/s21_mcp_inventory.py`](../../examples/s21_mcp_inventory.py), [`examples/s21_a2a_server.py`](../../examples/s21_a2a_server.py), [`examples/s21_a2a_client.py`](../../examples/s21_a2a_client.py), [`examples/s21_adk_dashboard/README.md`](../../examples/s21_adk_dashboard/README.md).
+
 ### s21-l01 — Introduction to Google Agent Development Kit
 
-- **Task:** Map Agent, Runner, SessionService and tool responsibilities in frameworks/google_adk_agent.py before running it.
+- **Task:** Map Agent, Runner, SessionService and tool responsibilities in examples/s21_adk.py and examples/s21_inventory.py; compare the introductory frameworks/google_adk_agent.py adapter.
 - **Deliverable:** adk-component-map.md with the installed ADK version and a request sequence diagram.
 - **Accept when:** Each diagram node maps to a real imported class; identify the model credential and runtime dependencies separately.
 
@@ -22,9 +31,9 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s21-l03 — Add Tools to an ADK Agent
 
-- **Task:** Add a read-only course-project lookup tool with typed stage and project arguments.
-- **Deliverable:** lookup_tool.py and valid/invalid input examples.
-- **Accept when:** ADK discovers the declared schema, actually calls the tool and rejects an out-of-range stage without a side effect.
+- **Task:** Inspect the supplied typed stock/delivery tools in examples/s21_inventory.py; add a bounded read-only lookup over data/s21_catalog.json without changing the inventory domain.
+- **Deliverable:** lookup_tool.py and valid/invalid SKU input examples.
+- **Accept when:** ADK discovers the declared schema, actually calls the tool and rejects an unknown SKU without a side effect.
 
 ### s21-l04 — Understand the ADK Agent Loop
 
@@ -34,19 +43,19 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s21-l05 — Work with Sessions and Agent State
 
-- **Task:** Create two ADK sessions and persist a selected project preference only in one.
+- **Task:** Use examples/s21_state.py to create shopping-a and shopping-b with actual DatabaseSessionService SQLite persistence; save the SKU and delivery preference only in shopping-a.
 - **Deliverable:** session-isolation.py and a restart transcript.
-- **Accept when:** The chosen session retains its preference after restart; the second session never receives that state.
+- **Accept when:** The chosen session retains its preference after restart; the second session never receives it. Provider-free state_delta storage evidence is distinct from actual model-selected preference-tool usage.
 
 ### s21-l06 — Connect MCP Tools to Google ADK
 
-- **Task:** Attach the educational market MCP server to an ADK agent using the supported MCP toolset.
-- **Deliverable:** adk-mcp-agent.py and discovery/call transcript.
-- **Accept when:** The real stdio server exposes research_company and returns synthetic evidence; no approve or execute capability is available to the model.
+- **Task:** Use examples/s21_mcp_inventory.py to attach its real inventory MCP server through the supported ADK MCP toolset; inspect the native binding and discovery before a model-selected call.
+- **Deliverable:** adk-mcp-agent.py and the inventory tool discovery/call transcript.
+- **Accept when:** The real stdio server exposes the selected stock/delivery reads and returns the synthetic catalog result; native discovery/read evidence does not itself prove a model chose the tool.
 
 ### s21-l07 — Use the ADK Development Dashboard
 
-- **Task:** Open the installed ADK development dashboard and inspect the tool-using request.
+- **Task:** Follow examples/s21_adk_dashboard/README.md to open the actual ADK app, dismiss any first-run telemetry modal and inspect a real tool-using request.
 - **Deliverable:** dashboard-observations.md plus screenshots of only the Academy test session.
 - **Accept when:** The UI shows the actual run, tool arguments and result; record the launch command and installed version.
 
@@ -58,17 +67,19 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s21-l09 — Agent Cards, Capabilities and Skills
 
-- **Task:** Publish a version-compatible A2A Agent Card for a synthetic-company research skill.
+- **Task:** Inspect examples/s21_a2a_server.py and publish its version-compatible Agent Card for the actual Academy inventory/delivery skill.
 - **Deliverable:** agent-card.json plus a validator or discovery-client transcript.
 - **Accept when:** The endpoint, identity, input/output modes and declared skill match the running service; unsupported authentication claims are absent.
 
 ### s21-l10 — Build an Agent-to-Agent Demonstration
 
-- **Task:** Run a real A2A server and separate client that request research on ACA.
+- **Task:** Run examples/s21_a2a_server.py with examples/s21_a2a_client.py against an actual supported inventory/delivery request.
 - **Deliverable:** a2a-research-server.py, client.py and sanitized request/status/result log.
 - **Accept when:** The client discovers the card and receives a completed task or recorded real failure; an in-process Python function call alone is insufficient.
 
 ## Stage 22: AWS Strands and Pydantic AI
+
+**Current source starting points:** [`examples/s22_agents.py`](../../examples/s22_agents.py), [`examples/s22_policy.py`](../../examples/s22_policy.py), [`examples/s22_toolsets.py`](../../examples/s22_toolsets.py), [`examples/s22_policy_mcp.py`](../../examples/s22_policy_mcp.py), [`frameworks/strands_bedrock.py`](../../frameworks/strands_bedrock.py).
 
 ### s22-l01 — Introduction to AWS Strands Agents
 
@@ -102,15 +113,15 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s22-l06 — Build a Typed Pydantic AI Agent
 
-- **Task:** Run a Pydantic AI agent returning a typed project recommendation.
+- **Task:** Run examples/s22_agents.py with the native typed policy/ticket request and result boundary; compare frameworks/pydantic_typed.py as an introductory adapter.
 - **Deliverable:** typed-agent.py and validated response JSON.
 - **Accept when:** The real SDK/model run produces the declared result type; malformed fixture responses are separately rejected by validation.
 
 ### s22-l07 — Add Dependency Injection
 
-- **Task:** Inject a read-only course catalog repository through the framework's typed dependency mechanism.
-- **Deliverable:** catalog_dependency.py and two independent test catalogs.
-- **Accept when:** The same tool uses the injected catalog, not a global singleton; one test catalog cannot leak into the other run.
+- **Task:** Use examples/s22_policy.py to inject RequestContext and distinct read-only policy repositories through the framework's typed dependency mechanism.
+- **Deliverable:** policy_dependency.py and two independent policy repositories.
+- **Accept when:** The same tool uses the injected policy repository, not a global singleton; one request context cannot leak into the other run.
 
 ### s22-l08 — Create Structured Agent Outputs
 
@@ -120,15 +131,15 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s22-l09 — Add Tools and Toolsets
 
-- **Task:** Separate catalog lookup and synthetic-market research into named toolsets.
+- **Task:** Inspect examples/s22_toolsets.py and compare reader versus triager FunctionToolsets for policy lookup and an unsent escalation draft.
 - **Deliverable:** toolsets.py and a role-to-tool allowlist.
-- **Accept when:** Only the selected toolset is visible to each agent; a disallowed operation cannot be reached through another generic tool.
+- **Accept when:** Only the configured role's toolsets are visible; RequestContext.role must match that server-selected role, and guessed disallowed calls fail outside model instructions.
 
 ### s22-l10 — Connect Pydantic AI to MCP
 
-- **Task:** Consume the project's real MCP market server through Pydantic AI's supported MCP integration.
+- **Task:** Use examples/s22_policy_mcp.py to consume the policy MCP server through the actual filtered, prefixed Pydantic MCPToolset in a genuine Agent context.
 - **Deliverable:** pydantic-mcp.py and actual discovery/research transcript.
-- **Accept when:** The MCP session starts, discovers tools and returns synthetic ACA evidence in a validated output; no broker calls occur.
+- **Accept when:** The MCP session starts and the actual filtered/prefixed policy tool dispatches with typed dependencies; distinguish protocol-read evidence from a real model-produced final answer.
 
 ### s22-l11 — Compare Strands and Pydantic AI Architectures
 
@@ -137,6 +148,8 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 - **Accept when:** Compare actual typing, tools, provider setup and traces; identify untested features instead of inventing performance or quality scores.
 
 ## Stage 23: AutoGen and Microsoft Agent Framework
+
+**Current source starting points:** [`examples/s23_microsoft_native.py`](../../examples/s23_microsoft_native.py), [`examples/s23_framework_agents.py`](../../examples/s23_framework_agents.py), [`examples/s23_ecosystem.md`](../../examples/s23_ecosystem.md).
 
 ### s23-l01 — Introduction to AutoGen, Semantic Kernel and Microsoft Agent Framework
 
@@ -152,45 +165,45 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s23-l03 — Build a Typed Microsoft Agent
 
-- **Task:** Run frameworks/microsoft_agent.py and add a typed course-recommendation request/result boundary.
+- **Task:** Use examples/s23_microsoft_native.py for actual Microsoft Agent Framework typed Ticket/Decision data, SDK Agent, tools and sessions; keep the separate AutoGen example distinct.
 - **Deliverable:** typed-microsoft-agent.py and actual response record.
 - **Accept when:** A real installed SDK call completes with validated data; incompatible versions are documented rather than bypassed with a mock model.
 
 ### s23-l04 — Add Tools and Structured Outputs
 
-- **Task:** Add a read-only catalog tool and a structured research result to the Microsoft agent.
+- **Task:** Inspect the native Microsoft policy tools and strict Ticket/Decision schemas in examples/s23_microsoft_native.py, then exercise one valid and one invalid result.
 - **Deliverable:** tools_and_results.py plus invalid-result tests.
 - **Accept when:** Only schema-valid results reach the consumer; record the actual tool invocation and keep provider/model identifiers in the run evidence.
 
 ### s23-l05 — Add Conversation State and Persistence
 
-- **Task:** Persist one conversation, terminate the application and restore it in a new process.
+- **Task:** Use the native Microsoft session save/load helpers to persist one conversation across processes; separately document AutoGen save_state/load_state as a different format.
 - **Deliverable:** conversation_store.py and before/after sanitized transcript.
 - **Accept when:** The restored run uses prior context, while a separate session remains isolated; an in-memory list alone does not satisfy persistence.
 
 ### s23-l06 — Build Multi-Agent Workflows
 
-- **Task:** Build researcher-to-reviewer workflow with explicit typed handoff data.
+- **Task:** Inspect the supplied Microsoft WorkflowBuilder routing and typed Handoff, then run a researcher-to-reviewer workflow with explicit typed data.
 - **Deliverable:** research_review_workflow.py and one complete execution trace.
 - **Accept when:** Each specialist performs a real framework run and the reviewer receives the research evidence, not an invented transcript.
 
 ### s23-l07 — Add Routing and Delegation
 
-- **Task:** Route catalog questions to a catalog specialist and risk questions to a risk specialist.
+- **Task:** Use the native Microsoft workflow to route delivery and damaged-product tickets to their proper specialists; retain an explicit unknown/held route.
 - **Deliverable:** router.py with two route traces and one ambiguous-request case.
 - **Accept when:** The chosen destination and decision reason are recorded; ambiguity produces clarification rather than an arbitrary tool mutation.
 
 ### s23-l08 — Add Middleware and Telemetry
 
-- **Task:** Add middleware that redacts a dummy secret and telemetry for each model/tool step.
+- **Task:** Inspect native AgentMiddleware, ChatMiddleware and FunctionMiddleware in examples/s23_microsoft_native.py; verify policy/error handling and sanitized telemetry with a dummy secret.
 - **Deliverable:** middleware.py and a sanitized telemetry sample.
 - **Accept when:** The dummy secret is absent from every retained log and errors preserve correlation IDs without claiming a successful request.
 
 ### s23-l09 — Add Human Approval
 
-- **Task:** Require an explicit human confirmation before an educational state-changing tool.
+- **Task:** Use the native Microsoft ApprovalLedger to require explicit confirmation for an exact unsent synthetic escalation payload before its local outbox append.
 - **Deliverable:** approval_gate.py and declined/approved execution records.
-- **Accept when:** Declining results in zero mutation; approval is bound to the exact arguments and cannot authorize a changed request.
+- **Accept when:** Declining results in zero mutation; an approval bound to the exact payload permits only one local outbox append. This is not an email/network delivery result.
 
 ### s23-l10 — Understand AutoGen Migration Patterns
 
@@ -200,11 +213,13 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s23-l11 — Build Reusable Agent Components
 
-- **Task:** Extract catalog tools, output schemas and approval middleware into reusable components.
+- **Task:** Extract the actual policy tools, strict ticket/decision schemas and approval middleware into reusable components.
 - **Deliverable:** components/ package and two small consuming agents.
 - **Accept when:** Both agents import shared components without copied implementations; version/configuration differences remain explicit.
 
 ## Stage 24: Agno and Mastra
+
+**Current source starting points:** [`examples/s24_agno.py`](../../examples/s24_agno.py), [`examples/s24_mcp_articles.py`](../../examples/s24_mcp_articles.py), [`examples/s24_mastra/triage.ts`](../../examples/s24_mastra/triage.ts), [`examples/s24_mastra/mcp.ts`](../../examples/s24_mastra/mcp.ts), [`examples/s24_mastra/memory.ts`](../../examples/s24_mastra/memory.ts), [`examples/s24_mastra/studio-runbook.md`](../../examples/s24_mastra/studio-runbook.md).
 
 ### s24-l01 — Introduction to Agno
 
@@ -214,21 +229,21 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s24-l02 — Build a Lightweight Agno Agent
 
-- **Task:** Run frameworks/agno_agent.py against a configured model with a harmless catalog query.
-- **Deliverable:** agno-first-run.json with model and package version.
-- **Accept when:** The response comes from a real Agno/model execution; a dependency import alone is not an agent demonstration.
+- **Task:** Use examples/s24_triage.py build_agno(model) with an explicitly configured real model and a synthetic ticket from data/s24_articles.json; request evidence-grounded triage through lookup_ticket and search_articles.
+- **Deliverable:** agno-first-run.json containing the actual ticket ID, sanitized request/response, cited article IDs, unresolved fields and configured model/package versions.
+- **Accept when:** A real Agno/model execution returns the declared Triage fields (ticket_id, summary, article_ids, unresolved), citing actual retrieved articles without sending a message. Record real provider evidence separately; dependency construction, scripted responses and discovery alone do not satisfy this lesson.
 
 ### s24-l03 — Add Tools and Structured Outputs
 
-- **Task:** Add a synthetic-company tool and a validated response model to the Agno agent.
-- **Deliverable:** agno_tools.py with valid and invalid examples.
-- **Accept when:** A real tool call supplies evidence to a schema-valid result; invalid data is rejected rather than silently coerced into a claim.
+- **Task:** Inspect and exercise the actual typed lookup_ticket(ticket_id) and search_articles(product_id) tools plus the Triage output_schema in examples/s24_triage.py; add one bounded validation case without changing the ticket/article domain.
+- **Deliverable:** agno-ticket-tools.md and validation cases covering a known ticket, an unknown ticket, a product with no matching articles and malformed Triage output.
+- **Accept when:** The real model/tool run grounds article_ids in the returned ticket/product evidence and reports unresolved facts. Unknown tickets remain explicit errors, empty article matches are not invented, and malformed structured output is rejected; provider-free contract checks remain separately labelled.
 
 ### s24-l04 — Connect Agno to MCP
 
-- **Task:** Connect Agno to the actual educational market MCP server.
+- **Task:** Use examples/s24_mcp_articles.py to connect actual Agno MCPTools to the course article server and inspect configuration, discovery, read and cleanup.
 - **Deliverable:** agno_mcp.py and tool-discovery transcript.
-- **Accept when:** Research and portfolio reads work through MCP; the tool list excludes human approval and execution.
+- **Accept when:** Actual article reads work through MCP with the configured tool restrictions and cleanup; record model-selected usage separately from provider-free protocol checks.
 
 ### s24-l05 — Build an Agno Team
 
@@ -238,39 +253,39 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s24-l06 — Introduction to Mastra
 
-- **Task:** Inspect frameworks/mastra/order-agent.ts and map its tools, workflow and model configuration.
+- **Task:** Inspect examples/s24_mastra/triage.ts, mcp.ts and memory.ts for current native tools, workflow, MCPClient and LibSQL-backed Agent Memory; compare the introductory frameworks/mastra adapter.
 - **Deliverable:** mastra-component-map.md with the Node/package versions used.
 - **Accept when:** TypeScript schema validation and model orchestration are distinguished; document whether memory and observability are actually enabled.
 
 ### s24-l07 — Set Up a TypeScript Agent Project
 
-- **Task:** Install the supplied Mastra project in a clean workspace and configure secrets through environment variables.
+- **Task:** Use examples/s24_mastra/package.json and studio-runbook.md in a clean workspace; configure secrets through environment variables and preserve its exact fixture-server settings.
 - **Deliverable:** setup-log.md with install/typecheck/start commands and a redacted .env.example.
 - **Accept when:** The actual TypeScript build succeeds and the running process sees required variable names without printing their secret values.
 
 ### s24-l08 — Build Mastra Tools and Workflows
 
-- **Task:** Extend the Mastra example with a typed catalog lookup and review workflow.
-- **Deliverable:** catalog-workflow.ts and success/failure run evidence.
+- **Task:** Use the native Mastra triage workflow and typed policy/article tools; add a bounded review branch while preserving schema validation.
+- **Deliverable:** triage-workflow.ts and success/failure run evidence.
 - **Accept when:** The real workflow enforces the tool schema and stops or handles invalid tool output at a documented boundary.
 
 ### s24-l09 — Connect Mastra to MCP
 
-- **Task:** Attach the educational MCP market server to the Mastra agent.
+- **Task:** Inspect examples/s24_mastra/mcp.ts and connect the actual course article MCP server through Mastra MCPClient.
 - **Deliverable:** mcp-client.ts and actual discovery/research record.
 - **Accept when:** The TypeScript process communicates with the real MCP server; protocol errors are reported instead of replaced by local fixture calls.
 
 ### s24-l10 — Add Memory and Structured Results
 
-- **Task:** Persist a selected course-project preference and return a schema-checked recommendation.
+- **Task:** Use examples/s24_mastra/memory.ts to persist a thread-specific synthetic triage preference with real LibSQL Agent Memory; return a schema-checked triage result.
 - **Deliverable:** memory-workflow.ts and two-session restart checks.
-- **Accept when:** State survives restart only for its intended session, and malformed recommendations fail the configured output contract.
+- **Accept when:** State survives restart only for its intended thread/resource, and malformed results fail the output contract. Agent Memory persistence does not establish durable global Studio run history.
 
 ### s24-l11 — Inspect Agents with Mastra Studio
 
-- **Task:** Launch Mastra Studio and inspect a real workflow with a failed tool and a successful retry.
+- **Task:** Follow examples/s24_mastra/studio-runbook.md to launch the actual Studio app and inspect a real workflow with a failed tool and a separately observed successful attempt.
 - **Deliverable:** studio-observations.md plus Academy-only screenshots.
-- **Accept when:** Actual UI steps identify the tool, arguments, error and later result; do not fabricate a trace from a design diagram.
+- **Accept when:** Actual UI steps identify tool, arguments, error and later result. The observed local agents page with Academy triage and two tools proves startup, not provider interaction or complete run-history persistence.
 
 ### s24-l12 — Compare Python and TypeScript Agent Development
 
@@ -279,6 +294,8 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 - **Accept when:** Choose based on actual deployment constraints, typing, team skills and ecosystem; mark absent benchmarks and unsupported capabilities.
 
 ## Stage 25: Project 7: Agent Application Factory
+
+**Current source starting points:** [`projects/07-agent-factory/model_pipeline.py`](../../projects/07-agent-factory/model_pipeline.py), [`projects/07-agent-factory/model_schemas.py`](../../projects/07-agent-factory/model_schemas.py), [`projects/07-agent-factory/MODEL-PIPELINE-AUTHORING.md`](../../projects/07-agent-factory/MODEL-PIPELINE-AUTHORING.md), [`projects/07-agent-factory/adapters/frameworks.py`](../../projects/07-agent-factory/adapters/frameworks.py), [`projects/07-agent-factory/docker_validate.py`](../../projects/07-agent-factory/docker_validate.py).
 
 ### s25-l01 — Design the Agent Application Factory
 
@@ -294,49 +311,49 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s25-l03 — Build the Requirements Analysis Agent
 
-- **Task:** Implement a model-backed requirements analysis agent that consumes a validated AgentSpec.
-- **Deliverable:** requirements_agent.py and structured requirements for text_helper.
-- **Accept when:** A real model execution links each requirement to a specification field and an observable acceptance test; preserve its actual response.
+- **Task:** Inspect Pipeline.analyze and AutoGenBackend in model_pipeline.py, then create the supported catalog specification with advanced.example_spec() and validate it using TypedSpec.parse before an admitted real requirements-specialist call with an explicitly configured model client. The legacy examples/text_helper.json schema cannot be passed unchanged to Pipeline.analyze.
+- **Deliverable:** requirements_agent.py, the canonical catalog TypedSpec and its digest, actual retained requirements-specialist response, and a structured requirement-to-field/acceptance-test mapping.
+- **Accept when:** A real model response satisfies RequirementsProposal, binds spec_sha256 to the exact catalog TypedSpec and links every mandatory specification field to an observable acceptance test. Preserve genuine raw output and unresolved requirements; offline fixtures or parser success alone do not establish model execution.
 
 ### s25-l04 — Build the Architecture Planning Agent
 
-- **Task:** Implement an architecture planning agent that consumes approved requirements.
+- **Task:** Use Pipeline.design after exact external approval of the requirements; inspect its typed architecture schema and actual specialist response.
 - **Deliverable:** architecture_agent.py and a component/dependency plan.
 - **Accept when:** The real planner identifies entry points, data boundaries and framework prerequisites without contradicting the approved requirements.
 
 ### s25-l05 — Build the Agent Scaffolding Agent
 
-- **Task:** Build a scaffolding agent that proposes a bounded file manifest before any write.
+- **Task:** Inspect the scaffolder stage in Pipeline.generate and propose a bounded file manifest in a fresh evidence/output workspace before any application write.
 - **Deliverable:** scaffolding_agent.py and proposed/applied manifests.
 - **Accept when:** Generation cannot escape the new output directory, overwrite an existing project or silently add unapproved files.
 
 ### s25-l06 — Build the Tool Generation Agent
 
-- **Task:** Add a tool generation agent using the allowed word_count and uppercase contracts first.
-- **Deliverable:** tool_generation_agent.py, generated tools and contract tests.
-- **Accept when:** Generated code passes input/output tests and rejects unsupported shell/network tools; label any integration stub as unimplemented.
+- **Task:** Use the model pipeline's distinct tools specialist with the approved catalog TypedSpec, requirements, architecture and current artifact hashes. Generate the supported catalog_lookup and draft_notification tools using their exact input/output schemas from advanced.TOOL_SCHEMAS; do not substitute the legacy word_count/uppercase contracts.
+- **Deliverable:** tool_generation_agent.py, the actual model-generated catalog_lookup and draft_notification modules, typed schema/contract checks, and retained source/specification/architecture identity links.
+- **Accept when:** Actual generated tools satisfy the approved TypedSpec schemas, reject malformed and unauthorized arguments, and keep draft_notification unsent with delivered=false. The supported catalog_lookup returns fixture-grounded matches; unavailable external integrations fail explicitly rather than fabricating results. Retain the genuine specialist response separately from offline contract evidence; provider execution remains required before claiming an observed generation.
 
 ### s25-l07 — Build the Prompt and Instruction Generator
 
-- **Task:** Generate instructions from purpose, permitted tools, policies and escalation rules.
+- **Task:** Use the instructions specialist in model_pipeline.py to generate role, permitted tools, policy clauses and escalation instructions from the approved typed specification.
 - **Deliverable:** instruction_agent.py and generated instructions.md.
 - **Accept when:** The actual model output preserves every required policy, does not grant extra tools and contains no embedded credentials.
 
 ### s25-l08 — Build the Test Generation Agent
 
-- **Task:** Generate unit, integration and behavior tests from the approved acceptance requirements.
+- **Task:** Use the tests specialist to propose additional tests from approved requirements; supply the independent immutable acceptance/ suite before generation.
 - **Deliverable:** test_generation_agent.py and requirement-to-test mapping.
 - **Accept when:** Generated tests run against generated code; include a failing implementation mutant so passing tests are not merely tautological.
 
 ### s25-l09 — Build the Code Review Agent
 
-- **Task:** Run an independent code review agent over generated files and requirements.
+- **Task:** Use Pipeline.inspect to combine static diagnostics with typed reviewer findings over exact generated files and approved requirements; keep reviewer ownership independent of the generator.
 - **Deliverable:** review_agent.py and issue records with exact file/line references.
 - **Accept when:** The reviewer reports actual inspected code; at least one seeded defect is detected and no patch is accepted solely because the author approved it.
 
 ### s25-l10 — Add Framework Selection and Adapters
 
-- **Task:** Define adapter interfaces and implement an explicit real-agent framework adapter alongside the existing stdlib adapter.
+- **Task:** Inspect adapters/frameworks.py and FRAMEWORKS.md; select an explicit supported adapter and extend it only when its actual required framework behavior is missing.
 - **Deliverable:** adapters/ package and framework-selection decision tests.
 - **Accept when:** Unsupported frameworks fail explicitly; a selected LLM framework genuinely runs its SDK rather than falling back to the deterministic starter.
 
@@ -354,19 +371,19 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s25-l13 — Validate Generated Projects Inside Docker
 
-- **Task:** Build the generated application's Dockerfile and execute its tests in an isolated container.
+- **Task:** Use docker_validate.py and the model pipeline's trusted orchestrator Docker boundary to execute the exact generated artifact and independently supplied acceptance suite in a separately approved digest-pinned image.
 - **Deliverable:** docker-validation.json with image ID, commands and real exit codes.
-- **Accept when:** The actual container runs non-root with bounded resources and appropriate network policy; Python isolated mode alone is not a Docker result.
+- **Accept when:** The actual container runs non-root under the approved resource/network policy; verify authenticated central receipts, not merely their SHA. Docker execution remains pending where the daemon/image is unavailable; Python isolated mode is not a substitute.
 
 ### s25-l14 — Build an Automated Repair Loop
 
-- **Task:** Implement one bounded repair cycle from a saved genuine failing test.
+- **Task:** Use Pipeline.repair with actual retained Docker failure diagnostics, the exact allowed non-test file set and the configured at-most-two-patch limit.
 - **Deliverable:** repair_loop.py and before/after diff, test output and attempt counter.
-- **Accept when:** Only approved files change, the failing test passes afterward, unrelated tests stay green and the configured repair budget stops further attempts.
+- **Accept when:** Only approved non-test files change, the failing case passes and independent acceptance remains immutable. A reserved UNKNOWN model submission is reconciled, never automatically retried.
 
 ### s25-l15 — Launch the Generated Agent
 
-- **Task:** Start the validated generated agent and complete a user-to-model-to-tool interaction.
+- **Task:** Use run_factory with exact requirements/architecture approvals, independent authenticated acceptance, fresh workspace and final human release approval; then launch the validated generated agent.
 - **Deliverable:** launch-transcript.json and service startup instructions.
 - **Accept when:** The actual generated agent uses its selected framework and validated tools; a deterministic text dispatcher is labeled only the foundation.
 
@@ -377,6 +394,8 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 - **Accept when:** Every required stage has traceable real execution evidence or an explicit unresolved blocker; no claim that template tests prove model-agent completion.
 
 ## Stage 26: MCP Foundations
+
+**Current source starting points:** [`projects/08-mcp-trading-floor/architecture.md`](../../projects/08-mcp-trading-floor/architecture.md), [`projects/08-mcp-trading-floor/mcp_lab/server.py`](../../projects/08-mcp-trading-floor/mcp_lab/server.py), [`projects/08-mcp-trading-floor/mcp_lab/README.md`](../../projects/08-mcp-trading-floor/mcp_lab/README.md).
 
 ### s26-l01 — Welcome to Model Context Protocol
 
@@ -400,7 +419,7 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 - **Task:** Classify a company lookup, a market-fixture document and a research template as tool, resource and prompt.
 - **Deliverable:** capability-contracts.md with example names and schemas.
-- **Accept when:** The three classes have different invocation/discovery behavior; document that the starter currently supplies tools only.
+- **Accept when:** The three classes have distinct invocation/discovery behavior; use mcp_lab/server.py for actual tool, resource and prompt capabilities, rather than claiming all servers expose all three.
 
 ### s26-l05 — Capability Discovery and Negotiation
 
@@ -410,7 +429,7 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s26-l06 — Local vs Remote MCP Servers
 
-- **Task:** Run the stdio market server and design a separately hosted remote MCP version.
+- **Task:** Use mcp_lab/server.py to inspect real stdio and Streamable HTTP variants; then design a separately hosted remote deployment.
 - **Deliverable:** local-remote-comparison.md plus a verified local session and remote deployment checklist.
 - **Accept when:** Process lifetime, credentials, network exposure and authorization differences are explicit; remote connectivity remains unverified until tested.
 
@@ -440,6 +459,8 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ## Stage 27: Connecting Agents to MCP Servers
 
+**Current source starting points:** [`projects/08-mcp-trading-floor/agent_harness.py`](../../projects/08-mcp-trading-floor/agent_harness.py), [`projects/08-mcp-trading-floor/retrieval_lab/workflow.py`](../../projects/08-mcp-trading-floor/retrieval_lab/workflow.py), [`projects/08-mcp-trading-floor/retrieval_lab/solutions.py`](../../projects/08-mcp-trading-floor/retrieval_lab/solutions.py), [`projects/08-mcp-trading-floor/retrieval_lab/README.md`](../../projects/08-mcp-trading-floor/retrieval_lab/README.md).
+
 ### s27-l01 — Connect to a Filesystem MCP Server
 
 - **Task:** Connect a filesystem MCP server to a temporary directory containing course notes.
@@ -466,21 +487,21 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s27-l05 — Read MCP Resources
 
-- **Task:** Implement or use a resource-capable MCP server and read a stable course-document URI.
+- **Task:** Use mcp_lab/server.py to discover and read its actual stable handbook resource URI through the resources API.
 - **Deliverable:** resource-client.py and resource list/read results.
 - **Accept when:** Discovery advertises the resource and read returns the documented MIME type and content; a similarly named tool call is not substituted.
 
 ### s27-l06 — Work with MCP Prompts
 
-- **Task:** Implement or use a prompt-capable server exposing a parameterized research template.
+- **Task:** Use mcp_lab/server.py to discover and retrieve the supplied parameterized prompt through the prompts API.
 - **Deliverable:** prompt-client.py and list/get transcript.
 - **Accept when:** The real prompts API validates required arguments and returns reusable messages; local string formatting alone does not prove MCP prompt support.
 
 ### s27-l07 — Build a Web-Browsing MCP Agent
 
-- **Task:** Combine genuine fetch and browser MCP servers in a controlled research workflow.
+- **Task:** Use retrieval_lab/workflow.py and solutions.compare_products with the pinned genuine Fetch and Playwright servers on the exact Academy static/dynamic fixture pages.
 - **Deliverable:** browsing-agent.py and cited navigation/research record.
-- **Accept when:** The real agent selects appropriate servers, observes actual pages and avoids submitting forms or accessing personal account data.
+- **Accept when:** The real agent selects actual fetch/browser actions and cites exact observed source quotations; URL/tool facades reject file:, metadata hosts, unapproved URLs and mutation tools. A private network namespace alone does not confine browser filesystem reads.
 
 ### s27-l08 — Trace MCP Tool Calls
 
@@ -519,6 +540,8 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 - **Accept when:** No write happens before explicit human confirmation; approval binds exact arguments and cannot be reused for another operation.
 
 ## Stage 28: Building Custom MCP Servers
+
+**Current source starting points:** [`projects/08-mcp-trading-floor/mcp_lab/server.py`](../../projects/08-mcp-trading-floor/mcp_lab/server.py), [`projects/08-mcp-trading-floor/retrieval_lab/research_server.py`](../../projects/08-mcp-trading-floor/retrieval_lab/research_server.py), [`projects/08-mcp-trading-floor/retrieval_lab/rag.py`](../../projects/08-mcp-trading-floor/retrieval_lab/rag.py), [`projects/08-mcp-trading-floor/retrieval_lab/search.py`](../../projects/08-mcp-trading-floor/retrieval_lab/search.py), [`projects/08-mcp-trading-floor/retrieval_lab/progressive.py`](../../projects/08-mcp-trading-floor/retrieval_lab/progressive.py).
 
 ### s28-l01 — When to Build a Custom MCP Server
 
@@ -582,27 +605,27 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s28-l11 — Build a Long-Term Memory MCP Server
 
-- **Task:** Implement persistent memories with scoped ownership and search/update semantics.
+- **Task:** Inspect the existing namespaced persistent memory service and retrieval_lab resource controls; demonstrate storage, retrieval and update without inventing a second incompatible persistence layer.
 - **Deliverable:** memory_server.py, temporary SQLite fixture and restart/isolation tests.
 - **Accept when:** Memories survive process restart, one owner cannot access another's records and all mutation boundaries are tested.
 
 ### s28-l12 — Build a Web Search MCP Server
 
-- **Task:** Wrap a real search provider with normalized query/result schemas and rate/timeout handling.
+- **Task:** Configure retrieval_lab/search.py with an authorized SearxNG-compatible origin and invoke the revealed search_web capability, preserving normalized query/results and actual provider metadata.
 - **Deliverable:** search_server.py and sanitized actual provider response.
 - **Accept when:** Retain original URLs and retrieval time, distinguish provider failure from empty results and never label fixture search as live.
 
 ### s28-l13 — Connect an Agentic RAG Service
 
-- **Task:** Expose document ingestion and evidence-grounded retrieval through MCP.
+- **Task:** Use retrieval_lab/research_server.py, solutions.ingest_course_documents and solutions.answer_with_rag with a write-authorized preparation session and a separate read-only model session.
 - **Deliverable:** rag_server.py, small Academy corpus and retrieval/evidence tests.
-- **Accept when:** Real ingestion creates searchable records and returned passages carry document IDs; the answering agent cites retrieved rather than invented text.
+- **Accept when:** Real ingestion and retrieval return owner-bound chunk IDs, source URIs, offsets and hashes; final quotations must match actual observations. Empty evidence produces abstention, not invented citations.
 
 ### s28-l14 — Connect Vector Search with Qdrant
 
-- **Task:** Run Qdrant, insert embeddings for the Academy corpus and query through MCP.
+- **Task:** Use retrieval_lab/rag.py DocumentRAG.service with a real Qdrant service, then insert/query/delete Academy document chunks through the MCP research server.
 - **Deliverable:** qdrant_server.py with collection schema and real insert/search transcript.
-- **Accept when:** A real Qdrant service returns stored record IDs; record embedding model/dimension and do not substitute an in-memory list as Qdrant.
+- **Accept when:** A real Qdrant service returns stored IDs with verified persistence and owner isolation. Label the default 64-dimensional token-hash encoder honestly; a SentenceTransformerEncoder needs an immutable model revision and its own actual semantic-embedding evidence.
 
 ### s28-l15 — Build a Market Data MCP Service
 
@@ -612,11 +635,13 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s28-l16 — Apply Progressive Tool Discovery
 
-- **Task:** Implement staged tool discovery for research, memory and portfolio specialists.
+- **Task:** Inspect retrieval_lab/progressive.py and research_server.py; demonstrate hidden-then-revealed specialist capabilities with session-specific exposure and fresh authorization at dispatch.
 - **Deliverable:** progressive_discovery.py and before/after tool lists.
 - **Accept when:** Only task-relevant capabilities become visible after a documented selection step; permission enforcement persists even when a hidden name is guessed.
 
 ## Stage 29: Project 8: MCP-Powered AI Trading Floor
+
+**Current source starting points:** [`projects/08-mcp-trading-floor/trading_floor.py`](../../projects/08-mcp-trading-floor/trading_floor.py), [`projects/08-mcp-trading-floor/capstone_agents.py`](../../projects/08-mcp-trading-floor/capstone_agents.py), [`projects/08-mcp-trading-floor/sdk_role_provider.py`](../../projects/08-mcp-trading-floor/sdk_role_provider.py), [`projects/08-mcp-trading-floor/portfolio_mcp_server.py`](../../projects/08-mcp-trading-floor/portfolio_mcp_server.py), [`projects/08-mcp-trading-floor/gradio_app.py`](../../projects/08-mcp-trading-floor/gradio_app.py).
 
 ### s29-l01 — Design the MCP Trading Floor
 
@@ -632,13 +657,13 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s29-l03 — Define the Market Research Agent
 
-- **Task:** Implement a model-backed researcher that consumes company and source evidence through MCP.
+- **Task:** Use capstone_agents.py TradingAgents and sdk_role_provider.py SDKRoleProvider to run the actual researcher role against MCP-supplied evidence with an explicitly configured model client.
 - **Deliverable:** research_agent.py and a structured synthetic-company report.
 - **Accept when:** A real agent/MCP run produces evidence-linked claims and uncertainty; TradingFloor.research alone is only the deterministic data foundation.
 
 ### s29-l04 — Define the Trading Strategy Agent
 
-- **Task:** Implement a strategy agent that consumes a research report and proposes a paper order.
+- **Task:** Use the strategist role in TradingAgents with the typed research handoff and explicit configured-model provider; inspect proposal rationale, uncertainty and whole-share quantity.
 - **Deliverable:** strategy_agent.py and accepted/rejected structured proposals.
 - **Accept when:** A real model output explains quantity/side using evidence, while deterministic validation remains authoritative before further processing.
 
@@ -650,9 +675,9 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s29-l06 — Define the Portfolio and Paper-Execution Agent
 
-- **Task:** Implement a portfolio/execution specialist that delegates actual mutation only to the approved application path.
+- **Task:** Inspect TradingAgents execution boundaries, portfolio_mcp_server.py and the application-only reviewer/execute paths; run the specialist with exact account and proposal identities.
 - **Deliverable:** execution_agent.py and approval-to-paper-fill trace.
-- **Accept when:** No model tool grants itself approval; state changes follow exact proposal approval and request-id idempotency rules.
+- **Accept when:** No model role grants approval. A paper fill requires the exact proposal/account/revision-bound, unexpired approval and stable request ID; account changes invalidate stale approval.
 
 ### s29-l07 — Build the Market Data MCP Integration
 
@@ -662,13 +687,13 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s29-l08 — Build the Research MCP Integration
 
-- **Task:** Add an MCP research service exposing a controlled evidence corpus and optional real search provider.
+- **Task:** Use the existing services.py corpus/retrieval tools for synthetic research and retrieval_lab/search.py for an explicitly configured real search provider; preserve the distinction.
 - **Deliverable:** research_mcp.py and source attribution tests.
 - **Accept when:** The agent receives source IDs/URLs and retrieval metadata; unavailable live search is stated explicitly instead of synthesized.
 
 ### s29-l09 — Build the Memory MCP Integration
 
-- **Task:** Add scoped persistent analysis/decision memory and reconnect across application sessions.
+- **Task:** Use ToolServices namespaced persistent memory and MCP memory tools to reconnect across application sessions; record the actual database and trusted owner identity.
 - **Deliverable:** memory_integration.py and two-session isolation/restart transcript.
 - **Accept when:** Prior analysis is recoverable for the correct user, rejected proposals remain auditable and another session's data is inaccessible.
 
@@ -676,7 +701,7 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 - **Task:** Expose read-only portfolio/valuation and controlled paper-order operations through explicit service contracts.
 - **Deliverable:** portfolio_service.py and cash/positions/order tests.
-- **Accept when:** Approval and execution remain outside model-visible starter MCP tools; unauthorized or duplicate mutation fails or returns the exact prior result.
+- **Accept when:** Approval remains outside model authority; expose controlled paper execution only through its explicit service/allowlist boundary. Unauthorized or stale operations fail, and an exact duplicate execution returns its prior receipt.
 
 ### s29-l11 — Use the Researcher-as-a-Tool Pattern
 
@@ -686,7 +711,7 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s29-l12 — Pass Structured Information Between Agents
 
-- **Task:** Validate typed handoffs for research, strategy, risk and execution outcomes.
+- **Task:** Inspect capstone_agents.py Handoff and TradingAgents role-output validation; exercise typed research, strategy, risk and execution boundaries without bypassing account revision checks.
 - **Deliverable:** handoff_schemas.py with valid/invalid examples for each boundary.
 - **Accept when:** A malformed report or mismatched proposal digest stops the workflow before approval or execution.
 
@@ -698,23 +723,25 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s29-l14 — Execute Controlled Paper Trades
 
-- **Task:** Approve one exact proposal through approve_order.py and execute it with a stable request ID.
+- **Task:** Review the exact proposal through approve_order.py or the separate reviewer-token /reviews endpoint, then execute with the operator capability and a stable request ID.
 - **Deliverable:** paper-trade-receipt.json with before/after state and trace.
-- **Accept when:** The real paper fill occurs once; replay returns the same receipt and a changed order with the same key is rejected.
+- **Accept when:** The fill occurs once; exact replay returns its receipt and a changed order/key pairing fails. Verify approval expiry and account-revision invalidation before execution, not just at proposal creation.
 
 ### s29-l15 — Orchestrate the Complete Trading Floor
 
-- **Task:** Run the full model-driven research→strategy→deterministic-risk→human-approval→paper-execution workflow.
+- **Task:** Run TradingAgents with the genuine MCP registry and explicitly configured SDKRoleProvider through research→strategy→deterministic-risk→human-review→paper execution.
 - **Deliverable:** orchestrator.py and complete actual trace.
 - **Accept when:** Each required agent/MCP boundary is exercised, human approval is real and refusal/error paths do not mutate the account.
 
 ### s29-l16 — Build the Gradio Trading Dashboard
 
-- **Task:** Launch gradio_app.py, inspect available views and extend the UI to expose missing required capstone states.
+- **Task:** Launch the current gradio_app.py and exercise its actual research, proposal, distinct reviewer approval/rejection, execution, portfolio, trace and feedback paths.
 - **Deliverable:** gradio-observations.md and implemented dashboard changes.
-- **Accept when:** Actual browser output shows research, proposals, approval state, positions and agent activity; do not claim the starter already implements every view.
+- **Accept when:** Actual browser output shows the expected current states and preserves rejection/error messages. Genuine local UI behavior does not prove real model-agent contributions or hosted deployment.
 
 ## Stage 30: Evaluation, Deployment and Course Completion
+
+**Current source starting points:** [`projects/08-mcp-trading-floor/evaluation_lab/README.md`](../../projects/08-mcp-trading-floor/evaluation_lab/README.md), [`projects/08-mcp-trading-floor/evaluation_lab/WORKED-SOLUTIONS.md`](../../projects/08-mcp-trading-floor/evaluation_lab/WORKED-SOLUTIONS.md), [`projects/08-mcp-trading-floor/api.py`](../../projects/08-mcp-trading-floor/api.py), [`projects/08-mcp-trading-floor/frontend/src/main.jsx`](../../projects/08-mcp-trading-floor/frontend/src/main.jsx), [`projects/08-mcp-trading-floor/deployment/DEPLOY.md`](../../projects/08-mcp-trading-floor/deployment/DEPLOY.md).
 
 ### s30-l01 — Add Tracing and Observability to the Trading Floor
 
@@ -748,9 +775,9 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s30-l06 — Collect Human Feedback
 
-- **Task:** Add a feedback form bound to run/proposal IDs and record real reviewer comments.
+- **Task:** Use evaluation_lab/feedback.py BoundFeedbackStore and the existing UI/API form to bind feedback to the exact registered run/output SHA, then collect an actual reviewer comment.
 - **Deliverable:** feedback_schema.py and one actual reviewer submission.
-- **Accept when:** Feedback attribution and timestamps are preserved; generated sample feedback is labeled fixture and not claimed as human approval.
+- **Accept when:** Feedback attribution, timestamp and exact output binding are preserved; altered/unregistered output is rejected. Fixture reviewer comments are not represented as real human feedback or trading approval.
 
 ### s30-l07 — Test Tool and Agent Failure Scenarios
 
@@ -772,19 +799,19 @@ Project 7’s `projects/07-agent-factory/factory.py` initially generates a deter
 
 ### s30-l10 — Build the FastAPI Backend
 
-- **Task:** Launch api.py and exercise /state, /proposals and /execute with valid and invalid token/input cases.
+- **Task:** Launch api.py and exercise /health, /state, /research/{symbol}, /proposals, /reviews, /execute and feedback routes with the appropriate distinct operator/reviewer capabilities.
 - **Deliverable:** api-tests.py and actual HTTP status/body records.
-- **Accept when:** Unauthenticated mutations fail, input schemas validate and execution still requires separate exact human approval; document read-only /state exposure.
+- **Accept when:** Unauthenticated mutations fail, reviewer and operator tokens differ, strict schemas validate and exact approval/revision/expiry checks hold. Document read-only research/state exposure and localhost-only identity limitations.
 
 ### s30-l11 — Build the React Front End
 
-- **Task:** Install and run frontend/ against the real FastAPI service, then add missing capstone views.
+- **Task:** Install and run the current frontend/ against the real API; exercise research, proposals, reviewer approval/rejection, execution, portfolio/trace and bound feedback, including actual error responses.
 - **Deliverable:** frontend-observations.md and React changes for required workflow states.
-- **Accept when:** Actual browser requests display real API data and errors; the starter's proposal/state buttons are not claimed as a complete approval/execution UI.
+- **Accept when:** Actual browser requests display current API data and preserve a rejected execution/error rather than immediately overwriting it with a successful refresh; tokens remain masked and absent from captures.
 
 ### s30-l12 — Package the Application with Docker
 
-- **Task:** Build the provided Dockerfile, add required service wiring and test persistent paper state.
+- **Task:** Inspect deployment/compose.yaml and its backend/frontend Dockerfiles, nginx.conf and .env.example; build the actual stack and test persistent paper state.
 - **Deliverable:** compose.yaml and actual build/start/restart logs.
 - **Accept when:** Containers run with documented ports/secrets/volumes and state persists after restart; unavailable Docker access is reported, not replaced by import tests.
 

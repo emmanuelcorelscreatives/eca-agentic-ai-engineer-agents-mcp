@@ -1,9 +1,16 @@
-# Reference solution: s09-l10
+# s09-l10: Coordinate the Research Team Through Code
 
-A reference orchestration records phase status and artifact hashes, respects dependencies, budgets and cancellation, and resumes only known completed phases.
+COMPLETE results are hash-checked/reused; IN_FLIGHT/UNKNOWN stays held, and source/config/question changes reject reuse.
 
-Implementation: projects/03-deep-research/research_lab/runtime.py.
+Current implementation, relative to `projects/03-deep-research/`:
 
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
+- research_lab/pipeline_v2.py:Journal
+- research_lab/pipeline_v2.py:run_research
 
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+
+Still required:
+
+- lesson-specific actual capture and independent review
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

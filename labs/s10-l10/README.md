@@ -1,13 +1,14 @@
-# s10-l10: Deploy the Deep Research Application
+# s10-l10: Deploy and download a completed own-run report
 
-Configure secrets, dependencies and hosting settings for a working deployment.
+Use deployment/research-v3 and research_lab/deploy_v3.py. Parent central QA resolves
+actual transitive hash locks from exact direct-version inputs, then builds/starts the
+real non-root deployment with private persistent state and injected secrets.
 
-## Exercise
+In a fresh genuine browser session, complete one finite admitted research run and use
+“Prepare my completed report downloads” to obtain Markdown, HTML, JSON and SHA manifest.
+Inspect actual bytes/hashes. A second session must not use the first session's opaque
+run token; no arbitrary filesystem path is accepted. Verify incomplete/changed runs
+cannot export. Preserve real health/startup/report/download observations and limitations.
 
-Pin verified dependencies and document local container startup, health checks, bind address, secret injection and persistent run storage.
-Provide separate offline fixture and real-provider configurations; never include real credentials.
-Exercise: deploy to an authorized course-owned test target and capture actual health/startup/report behavior.
-
-Read projects/03-deep-research/docs/stages09-10-architecture.md.
-
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+No fabricated provider, browser, lock or deployment result satisfies this exercise.
+New v3 source/tests are authored; central execution and actual observations are pending.

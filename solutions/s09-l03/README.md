@@ -1,9 +1,16 @@
-# Reference solution: s09-l03
+# s09-l03: Build the Research Planning Agent
 
-A reference planner preserves the input question, gives stable task IDs, validates a DAG and leaves findings empty.
+The actual SDK planner copies the current question and generates task objectives; fixture callbacks in unit tests are not real planning observations.
 
-Implementation: projects/03-deep-research/research_lab/planning.py.
+Current implementation, relative to `projects/03-deep-research/`:
 
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
+- research_lab/sdk_v2.py
+- capstone_v2.py
 
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+
+Still required:
+
+- actual independently admitted planner outputs
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

@@ -1,5 +1,5 @@
 """Actual shared MCP source for both Agno and Mastra clients."""
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 from examples.s24_triage import lookup_ticket, search_articles
 server=FastMCP('Academy articles')
 server.tool()(lookup_ticket)

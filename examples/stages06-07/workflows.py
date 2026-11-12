@@ -212,6 +212,56 @@ async def orchestration_comparison(ctx: RequestContext) -> dict:
                             'provider_latency': None, 'tokens': None}}
 
 
+def escalation_fallback(ctx: RequestContext, role: str, reason: str) -> dict:
+    """An explicitly different recovery action, not a fabricated replacement fact.
+
+    A failed specialist produces a draft escalation rather than an invented stock
+    quantity, policy or delivery promise. Nothing is sent or externally queued.
+    """
+    if role not in {'research', 'policy'} or reason not in {
+            'TransientLookupError', 'TimeoutError', 'ValueError'}:
+        raise ValueError('unrecognized fallback attribution')
+    return {'request_id': ctx.request_id, 'failed_role': role,
+            'trigger': reason, 'action': 'draft_manual_review',
+            'source': 'application-failure-policy-v1',
+            'facts_recovered': False, 'sent': False,
+            'requires_human_review': True}
+
+
+async def specialists_with_fallback(ctx: RequestContext, *, operations=None) -> dict:
+    result = await specialists(ctx, operations=operations)
+    result['fallbacks'] = [escalation_fallback(ctx, row['role'], row['error'])
+                           for row in result['results'] if row['error']]
+    # Existing healthy facts and failed/unknown attribution are preserved unchanged.
+    return result
+
+
+async def connected_application_run(ctx: RequestContext) -> dict:
+    """One connected local lineage, clearly NOT an SDK/model execution.
+
+    The manager collects two specialist facts as tool results, transfers ownership
+    to shipping, and that owner synthesizes all three attributed facts. This teaches
+    the lineage contract separately from observing actual model routing.
+    """
+    trace = LocalTrace()
+    root = trace.emit('start', request_id=ctx.request_id)
+    facts = []
+    for role, operation in [('research', 'inventory'), ('policy', 'policy')]:
+        delegation = trace.emit('delegation', parent=root, role=role, operation=operation)
+        value = capability(role, operation, ctx)
+        trace.emit('tool', parent=delegation, role=role, operation=operation, status='ok')
+        facts.append(value)
+    transfer = trace.emit('handoff', parent=root, destination='shipping')
+    delivery = capability('shipping', 'shipping', ctx)
+    trace.emit('tool', parent=transfer, role='shipping', operation='shipping', status='ok')
+    facts.append(delivery)
+    trace.emit('synthesis', parent=transfer, role='shipping', status='complete')
+    trace.emit('terminal', parent=root, role='shipping', status='complete')
+    return {'mode': 'deterministic-application-lineage-not-sdk', 'owner': 'shipping',
+            'request_id': ctx.request_id, 'facts': facts,
+            'source_ids': [row['source'] for row in facts], 'trace': trace.events}
+
+
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()

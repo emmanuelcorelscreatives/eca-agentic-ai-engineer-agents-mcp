@@ -2,3 +2,4 @@ gradio>=5,<7
 pypdf>=5,<7
 openai-agents>=0.24,<1
 pydantic>=2,<3
+reportlab>=4,<5

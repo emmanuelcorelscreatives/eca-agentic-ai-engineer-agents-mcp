@@ -1,9 +1,11 @@
-# Reference solution: s10-l10
+# s10-l10 reference: owned-session export and real deployment proof
 
-Provide a runnable reference solution and explanation for the named exercise; do not mark it tested until actual execution evidence is retained.
+interface_v3 mounts a real export button and file output. RunExports binds server session,
+opaque run token, exact completed checkpoint and report SHA; it invokes exports_v2.export
+rather than introducing another renderer. Download preparation rechecks session, fixed
+paths, unchanged state and file hashes. Foreign/incomplete/tampered/symlinked exports fail.
 
-Implementation: projects/03-deep-research/docs/stages09-10-architecture.md.
-
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
-
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+The v3 Dockerfile starts deploy_v3. Its exact direct-version requirements input still
+needs central actual transitive hash-lock resolution and clean startup/health/persistence
+proof. A genuine fresh-session actual report/export remains required; offline constructor
+or callback tests alone cannot certify live model/Brave/browser/deployment completion.

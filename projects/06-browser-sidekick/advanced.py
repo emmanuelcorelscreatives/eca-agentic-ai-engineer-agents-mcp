@@ -78,15 +78,19 @@ class Plan:
             if step.sensitive != (step.action in SENSITIVE):
                 raise ValueError('incorrect sensitivity classification')
             target = urlparse(step.target)
-            if (target.scheme or target.netloc or not step.target.startswith('/')
+            if step.action == 'save':
+                if (Path(step.target).name != step.target or step.target in {'', '.', '..'}
+                        or Path(step.target).suffix not in {'.json', '.csv', '.md'}):
+                    raise ValueError('artifact must be one simple .json/.csv/.md workspace filename')
+            elif (target.scheme or target.netloc or not step.target.startswith('/')
                     or '..' in step.target or '%' in step.target or '\\' in step.target
                     or target.fragment or target.query):
                 raise ValueError('target must be an allowlisted relative sandbox route')
             # A bounded observed predicate, never a free-form claim of success.
             if not (step.criterion.startswith('contains:') and step.criterion[9:].strip()):
                 raise ValueError('criterion must specify a nonempty contains predicate')
-            if step.action not in {'navigate', 'extract', 'submit'}:
-                raise ValueError('this sandbox executor supports reads and draft submission only')
+            if step.action not in {'navigate', 'extract', 'submit', 'save'}:
+                raise ValueError('this sandbox supports reads, approved artifacts and draft submission only')
             if step.action == 'submit' and step.target != '/submit':
                 raise ValueError('submission route is fixed')
             if step.action == 'submit':
@@ -228,7 +232,7 @@ class SessionController:
         store.db.execute('INSERT INTO sidekick_event(task,event,detail,at) VALUES (?,?,?,?)',
                          (task, event, canonical(detail), time.time()))
 
-    def decide(self, token, task, number, revision, decision, replacement: Step | None = None, ttl=300):
+    def decide(self, token, task, number, revision, decision, replacement: Step | None = None, ttl=300, on_decision=None):
         if not 1 <= ttl <= 900: raise ValueError('approval TTL outside policy')
         with self._store() as store:
             store.db.execute('BEGIN IMMEDIATE')
@@ -256,6 +260,8 @@ class SessionController:
                 if approved:
                     store.db.execute('INSERT INTO sidekick_approval VALUES (?,?,?,?)', (task, number, approved, time.time()+ttl))
                 self._event(store, task, decision, {'number': number, 'revision': current.digest()})
+                if on_decision is not None:
+                    on_decision(store, current)
                 store.db.commit()
             except BaseException:
                 store.db.rollback(); raise

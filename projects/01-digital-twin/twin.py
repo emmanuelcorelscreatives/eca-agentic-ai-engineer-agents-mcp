@@ -12,6 +12,7 @@ class Section:
     title: str
     text: str
     approved: bool
+    provenance: dict | None = None
 
 
 def tokens(text):
@@ -74,7 +75,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("question", nargs="?", default="What Python experience does Amara have?")
     args = parser.parse_args()
-    sections = json.loads((Path(__file__).parent / "fixtures/profile.json").read_text())["sections"]
+    from config import profile_path
+    sections = json.loads(profile_path().read_text())["sections"]
     print(json.dumps(DigitalTwin(sections).answer(args.question), indent=2))
 
 if __name__ == "__main__":

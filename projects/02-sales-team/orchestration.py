@@ -46,3 +46,25 @@ def score_draft(draft, prospect_name, company, verified_phrase):
     text=draft['body']
     checks={'personalized_name':prospect_name in text,'company_relevance':company in text or verified_phrase in text,'grounded_need':verified_phrase in text,'concise':len(text.split())<=120,'no_guarantee':'guaranteed' not in text.lower()}
     return {'checks':checks,'score':sum(checks.values())/len(checks),'scope':'transparent baseline rubric; not comprehensive truth verification'}
+
+
+def build_context_handoff(model):
+    """Actual typed SDK handoffs invoke the application context validator."""
+    from agents import Agent, handoff
+    from pydantic import BaseModel
+    from agents_adapter import build_agents
+    from context_wire import make_handoff_callback
+    class HandoffIdentity(BaseModel):
+        model_config = {'extra': 'forbid'}
+        prospect_id: str
+        company_id: str
+        campaign_id: str
+        evidence_ids: list[str]
+        evidence_revision: str
+    specialists = build_agents(model)
+    targets = [handoff(agent, input_type=HandoffIdentity,
+                       on_handoff=make_handoff_callback(role))
+               for role, agent in specialists.items()]
+    return Agent(name='Context-preserving sales triage', model=model,
+                 instructions='Transfer to the requested specialist. Copy the exact supplied context identity into the handoff. Never approve or send.',
+                 handoffs=targets)

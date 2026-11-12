@@ -1,0 +1,9 @@
+# Exact direct versions observed by reading the already-admitted key3 runtime's
+# dist-info/METADATA. This is resolver INPUT, not a transitive hash lock or a new
+# environment execution proof. Parent central QA owns actual lock generation.
+openai-agents==0.24.0
+openai==3.49.0
+pydantic==2.14.3
+gradio==6.31.0
+fastapi==0.162.5
+uvicorn==0.54.0

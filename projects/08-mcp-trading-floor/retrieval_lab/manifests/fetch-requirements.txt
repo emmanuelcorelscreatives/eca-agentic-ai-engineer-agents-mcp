@@ -1,0 +1,4 @@
+# Install into a separate venv: old existing server conflicts with shared httpx0.28.
+mcp-server-fetch==2025.4.7
+mcp==1.26.0
+httpx==0.27.2

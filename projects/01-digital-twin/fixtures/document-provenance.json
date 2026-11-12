@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "authored_sources_pending_generation_and_independent_verification",
+  "synthetic": true,
+  "persona": "Amara Okoye — fictional Academy practice persona",
+  "generator": "projects/01-digital-twin/make_pdf_fixture.py",
+  "documents": [
+    {
+      "kind": "resume",
+      "source_path": "fixtures/resume-source.txt",
+      "source_sha256": null,
+      "planned_pdf_path": "fixtures/generated/synthetic-resume.pdf",
+      "pdf_sha256": null
+    },
+    {
+      "kind": "portfolio",
+      "source_path": "fixtures/portfolio-source.txt",
+      "source_sha256": null,
+      "planned_pdf_path": "fixtures/generated/synthetic-portfolio.pdf",
+      "pdf_sha256": null
+    }
+  ],
+  "retained_original_fixture": "fixtures/synthetic-resume.pdf",
+  "pending": [
+    "Central QA runs generator with reportlab and a real Unicode TTF font",
+    "Generated manifest records actual source, generator, font and PDF SHA-256 values",
+    "Central QA extracts both real PDFs with pypdf and checks source correspondence",
+    "Independent rendered-page inspection and human source approval"
+  ],
+  "notice": "No generated binaries or runtime success are asserted by this author-only manifest."
+}

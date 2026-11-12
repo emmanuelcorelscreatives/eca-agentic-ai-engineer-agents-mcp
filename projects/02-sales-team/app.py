@@ -1,40 +1,70 @@
-"""Optional local human approval UI; simulated delivery only."""
+"""Integrated private-local UI. Paid SDK and actual owned SMTP each require opt-in."""
+import argparse
 import json
+import os
 import tempfile
 from pathlib import Path
-from sales import Prospect,SalesTeam
+from sales import Prospect
+from application import SalesApplication
 
 
-def build_app():
+def build_app(*, allow_sdk=False, model=None, sink=None, database=None, export_directory=None):
     import gradio as gr
-    # Separate local temporary DB, never in a public course fixture directory.
-    database=str(Path(tempfile.mkdtemp(prefix='academy-sales-'))/'drafts.sqlite')
-    prospect=Prospect(**json.loads((Path(__file__).parent/'fixtures/prospect.json').read_text())['prospect'])
-    def create():
-        team=SalesTeam(database)
-        try:
-            ident=team.create_draft(prospect);row=team.draft(ident)
-            return ident,row['subject'],row['body'],'Draft: requires human review'
-        finally:team.db.close()
-    def action(ident,subject,body,choice):
-        team=SalesTeam(database)
-        try:
-            if choice=='edit':team.edit(ident,subject,body);return 'Edited; previous approval revoked'
-            if choice=='approve':
-                row=team.draft(ident)
-                if row['subject']!=subject or row['body']!=body:return 'Save edits before approving the displayed exact message'
-                team.approve(ident,'Local UI human');return 'Approved exact stored payload; no message sent'
-            if choice=='reject':
-                with team.db:team.db.execute("UPDATE drafts SET status='rejected',approved_hash=NULL,approver=NULL WHERE id=? AND status!='simulated_delivery'",(ident,))
-                return 'Rejected; no message sent'
-            return json.dumps(team.deliver(ident))
-        except (ValueError,KeyError,PermissionError) as error:return str(error)
-        finally:team.db.close()
+    private = Path(tempfile.mkdtemp(prefix='academy-sales-v2-'))
+    controller = SalesApplication(database or str(private/'drafts.sqlite'), allow_sdk=allow_sdk,
+        model=model, sink=sink, export_directory=export_directory or private/'exports')
+    prospect = Prospect(**json.loads((Path(__file__).parent/'fixtures/prospect.json').read_text())['prospect'])
+
+    def fields(result):
+        row = result.get('preview', {})
+        return (result.get('draft_id'), row.get('recipient', ''), row.get('subject', ''),
+                row.get('body', ''), row.get('revision'), row.get('payload_hash', ''), result)
+
+    async def create(mode):
+        return fields(await controller.create(prospect, mode))
+
+    def action(ident, recipient, subject, body, revision, shown_hash, choice):
+        if choice in {'approve', 'submit-owned-sink'}:
+            current = controller.action(ident, 'preview')
+            # Approval is of what the user sees, not merely hidden stale state.
+            if (recipient, subject, body, revision) != (current['recipient'], current['subject'], current['body'], current['revision']):
+                raise PermissionError('Save edits and refresh exact preview before approval')
+        result = controller.action(ident, choice, recipient=recipient, subject=subject, body=body,
+                                   expected_revision=revision, expected_hash=shown_hash)
+        row = controller.action(ident, 'preview')
+        return row['recipient'], row['subject'], row['body'], row['revision'], row['payload_hash'], result
+
     with gr.Blocks() as app:
-        gr.Markdown('# Sales practice approval queue\nFictional prospect. Delivery is simulated only.')
-        ident=gr.State(None);subject=gr.Textbox(label='Subject');body=gr.Textbox(label='Body',lines=8);status=gr.Textbox(label='Status',interactive=False)
-        gr.Button('Create draft').click(create,outputs=[ident,subject,body,status])
-        for label,choice in [('Save edits','edit'),('Approve exact draft','approve'),('Reject','reject'),('Simulate approved delivery','deliver')]:
-            gr.Button(label).click(lambda i,s,b,c=choice:action(i,s,b,c),inputs=[ident,subject,body],outputs=status)
+        gr.Markdown('# Academy sales team\nSynthetic data only. A local human must approve the exact recipient, subject, body and revision. SMTP submits only to an explicitly owned loopback sink. Manager/handoff observations do not silently become drafts. This local UI is not authenticated production deployment.')
+        ident = gr.State(None)
+        mode = gr.Dropdown(['deterministic', 'sdk-sequential', 'sdk-manager', 'sdk-handoff'], value='deterministic', label='Generation mode; SDK modes can incur charges when enabled')
+        recipient = gr.Textbox(label='Recipient')
+        subject = gr.Textbox(label='Subject')
+        body = gr.Textbox(label='Body; stored canonical LF text includes final newline', lines=8)
+        revision = gr.Number(label='Revision', interactive=False, precision=0)
+        shown_hash = gr.Textbox(label='Exact preview hash', interactive=False)
+        report = gr.JSON(label='Actual operational result; mechanical checks are not model quality approval')
+        gr.Button('Generate or observe selected workflow').click(create, inputs=mode, outputs=[ident, recipient, subject, body, revision, shown_hash, report])
+        for label, choice in [('Save edit; revoke approval', 'edit'), ('Approve exact preview', 'approve'),
+                              ('Reject', 'reject'), ('Refresh preview', 'preview'), ('Submit approved to owned SMTP sink', 'submit-owned-sink')]:
+            gr.Button(label).click(lambda i,r,s,b,v,h,c=choice: action(i,r,s,b,v,h,c),
+                inputs=[ident,recipient,subject,body,revision,shown_hash], outputs=[recipient,subject,body,revision,shown_hash,report])
+        artifact = gr.File(label='Download local operational/evaluation report')
+        gr.Button('Export current trace, evaluation and approval history').click(lambda i: controller.export(i, prospect), inputs=ident, outputs=artifact)
+    app.academy_controller = controller
     return app
-if __name__=='__main__':build_app().launch(server_name='127.0.0.1',share=False)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--allow-sdk', action='store_true')
+    parser.add_argument('--owned-sink-port', type=int)
+    parser.add_argument('--acknowledge-owned-sink', action='store_true')
+    args = parser.parse_args()
+    sink = None
+    if args.owned_sink_port:
+        from transport import OwnedSinkSMTP
+        sink = OwnedSinkSMTP(args.owned_sink_port, ownership_acknowledged=args.acknowledge_owned_sink)
+    if args.allow_sdk and (not os.environ.get('OPENAI_API_KEY') or not os.environ.get('ACADEMY_MODEL')):
+        parser.error('SDK mode requires OPENAI_API_KEY and explicit ACADEMY_MODEL')
+    build_app(allow_sdk=args.allow_sdk, model=os.environ.get('ACADEMY_MODEL'), sink=sink).launch(server_name='127.0.0.1', share=False)

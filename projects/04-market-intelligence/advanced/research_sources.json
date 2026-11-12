@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "fictional": true,
+  "scenario_date": "2026-01-01",
+  "documents": [
+    {"id":"cedar.business","subject":"CEDAR-DEMO","date":"2026-01-01","fictional":true,"extract":"Cedar Analytics sells subscription reporting software to fictional independent retailers."},
+    {"id":"cedar.product","subject":"CEDAR-DEMO","date":"2026-01-01","fictional":true,"extract":"Cedar Board combines a weekly sales dashboard with CSV imports; this fixture does not include live banking integrations."},
+    {"id":"cedar.competition","subject":"CEDAR-DEMO","date":"2026-01-01","fictional":true,"extract":"Fictional Rook Metrics competes on automated connectors, while Cedar emphasizes a simpler CSV workflow. No market-share measurement is supplied."},
+    {"id":"maple.business","subject":"MAPLE-DEMO","date":"2026-01-01","fictional":true,"extract":"Maple Devices supplies fictional small warehouses with scanning hardware and maintenance contracts."},
+    {"id":"maple.product","subject":"MAPLE-DEMO","date":"2026-01-01","fictional":true,"extract":"Maple Scan is a repairable barcode terminal with an optional annual maintenance plan; cloud analytics is not included."},
+    {"id":"maple.competition","subject":"MAPLE-DEMO","date":"2026-01-01","fictional":true,"extract":"Fictional North Devices offers lower initial hardware prices; Maple differentiates through repairability. Total ownership cost has not been independently measured."},
+    {"id":"pine.business","subject":"PINE-DEMO","date":"2026-01-01","fictional":true,"extract":"Pine Services provides fictional retailers with staff training and operational reporting consultancy."},
+    {"id":"pine.product","subject":"PINE-DEMO","date":"2026-01-01","fictional":true,"extract":"Pine Launch is a fixed-scope onboarding workshop followed by optional monthly advisory sessions."},
+    {"id":"pine.competition","subject":"PINE-DEMO","date":"2026-01-01","fictional":true,"extract":"Fictional Elm Consulting offers broad transformation programmes; Pine focuses on small implementation engagements. Neither provider has a verified satisfaction survey in the fixture."},
+    {"id":"software.demand","subject":"software","date":"2026-01-01","fictional":true,"extract":"In the synthetic software survey, 24 of 40 participating retailers plan a reporting-tool evaluation next quarter. This convenience sample is not representative of a real market."},
+    {"id":"software.cost","subject":"software","date":"2026-01-01","fictional":true,"extract":"The fictional software cost index increased from 100 to 108 over the scenario year; this suggests cost pressure within the teaching scenario only."},
+    {"id":"hardware.orders","subject":"hardware","date":"2026-01-01","fictional":true,"extract":"The fictional hardware orders index moved from 100 to 95 over the scenario year; one synthetic index cannot establish a real industry forecast."},
+    {"id":"hardware.components","subject":"hardware","date":"2026-01-01","fictional":true,"extract":"Fictional component lead time is 6 weeks, compared with 4 weeks in the prior scenario period; this is a supply-risk signal for the exercise."},
+    {"id":"services.demand","subject":"services","date":"2026-01-01","fictional":true,"extract":"The synthetic services inquiry count rose from 80 to 92 in the scenario quarter; inquiry growth is not a profitability observation."}
+  ],
+  "companies": [
+    {"symbol":"CEDAR-DEMO","business":"cedar.business","products":["cedar.product"],"competition":["cedar.competition"],"uncertainties":["No real market share or live customer interviews supplied."]},
+    {"symbol":"MAPLE-DEMO","business":"maple.business","products":["maple.product"],"competition":["maple.competition"],"uncertainties":["No independent lifecycle cost comparison supplied."]},
+    {"symbol":"PINE-DEMO","business":"pine.business","products":["pine.product"],"competition":["pine.competition"],"uncertainties":["Operating margin remains unknown in the financial fixture."]}
+  ],
+  "sectors": [
+    {"sector":"software","conditions":"Synthetic tool-evaluation demand coexists with rising operating costs.","signals":[{"id":"software-demand-share","metric":"planned_evaluation_share","value":0.6,"unit":"fraction","direction":"level","evidence":"software.demand","numerator":24,"denominator":40},{"id":"software-cost-change","metric":"cost_index_change","value":0.08,"unit":"fraction","direction":"increase","evidence":"software.cost","prior":100,"current":108}],"uncertainties":["Convenience survey; no representative population inference."]},
+    {"sector":"hardware","conditions":"Synthetic order softness and longer component delivery times create two distinct risks.","signals":[{"id":"hardware-order-change","metric":"orders_index_change","value":-0.05,"unit":"fraction","direction":"decrease","evidence":"hardware.orders","prior":100,"current":95},{"id":"hardware-component-lead-time","metric":"component_lead_time","value":6,"unit":"weeks","direction":"increase","evidence":"hardware.components","prior":4,"current":6}],"uncertainties":["No causal claim between the two scenario signals."]},
+    {"sector":"services","conditions":"Synthetic inquiry demand rises, while profitability evidence remains incomplete.","signals":[{"id":"services-inquiry-change","metric":"inquiry_count_change","value":0.15,"unit":"fraction","direction":"increase","evidence":"services.demand","prior":80,"current":92}],"uncertainties":["Inquiries do not guarantee conversion, revenue or margin."]}
+  ]
+}

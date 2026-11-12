@@ -23,7 +23,8 @@ def build(model: str, trace_path: Path):
     criteria=market.Criteria()
     crew,reference=adapter.build_crew(model,BASE/'companies.json',criteria)
     source_sha=digest({'companies':json.loads((BASE/'companies.json').read_text()),
-                       'ledger':json.loads((BASE/'synthetic-ledger.json').read_text())})
+                       'ledger':json.loads((BASE/'synthetic-ledger.json').read_text()),
+                       'qualitative_and_market_sources':json.loads((BASE/'advanced/research_sources.json').read_text())})
     memory=ResearchMemory();memory.put(source_sha,asdict(criteria),reference,reference)
 
     @tool('validated_research_memory')

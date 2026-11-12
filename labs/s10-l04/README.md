@@ -1,13 +1,16 @@
 # s10-l04: Display Plans, Sources and Agent Activity
 
-Present useful execution information without exposing private internal reasoning.
+Trace a report claim to displayed source metadata and seed a secret/private-reasoning field in a controlled test to check exclusion.
 
-## Exercise
+Current implementation, relative to `projects/03-deep-research/`:
 
-Display a concise task plan, source URLs and factual tool/agent status.
-Use an allowlisted public schema; exclude hidden reasoning, API keys, private prompts and raw provider payloads.
-Exercise: add a duration column to the agent-activity view using actual recorded timestamps.
+- research_lab/interface_v2.py:public_event
+- research_lab/interface_v2.py:build_ui
 
-Read projects/03-deep-research/research_lab/interface.py, projects/03-deep-research/research_lab/runtime.py.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
 
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+Still required:
+
+- genuine browser source/public-activity observations
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

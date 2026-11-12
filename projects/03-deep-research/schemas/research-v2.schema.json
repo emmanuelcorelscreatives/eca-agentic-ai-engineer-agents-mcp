@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://academy.example.invalid/research-v2.schema.json",
+  "title":"Academy Research Version 2 Boundary Definitions",
+  "$comment":"This is an Academy-owned schema identifier, not a deployed service. Python cross-reference validators additionally check DAGs, exact excerpts and citations.",
+  "$defs":{
+    "text":{"type":"string","minLength":1,"maxLength":10000},
+    "ids":{"type":"array","items":{"$ref":"#/$defs/text"},"uniqueItems":true},
+    "version":{"type":"integer","const":2},
+    "task":{"type":"object","additionalProperties":false,"required":["id","objective","dependencies","completion"],"properties":{"id":{"$ref":"#/$defs/text"},"objective":{"$ref":"#/$defs/text"},"dependencies":{"$ref":"#/$defs/ids"},"completion":{"$ref":"#/$defs/text"}}},
+    "plan":{"type":"object","additionalProperties":false,"required":["schema_version","question","scope","acceptance","tasks"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"question":{"type":"string","minLength":1,"maxLength":4000},"scope":{"$ref":"#/$defs/text"},"acceptance":{"type":"array","minItems":1,"maxItems":10,"items":{"$ref":"#/$defs/text"}},"tasks":{"type":"array","minItems":1,"maxItems":8,"items":{"$ref":"#/$defs/task"}}}},
+    "query":{"type":"object","additionalProperties":false,"required":["schema_version","id","task_id","intent","text"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"id":{"$ref":"#/$defs/text"},"task_id":{"$ref":"#/$defs/text"},"intent":{"enum":["support","counterevidence"]},"text":{"type":"string","minLength":1,"maxLength":4000}}},
+    "source":{"type":"object","additionalProperties":false,"required":["schema_version","id","query_id","task_id","provider","title","url","published","retrieved","text","scope","content_kind","link_status"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"id":{"$ref":"#/$defs/text"},"query_id":{"$ref":"#/$defs/text"},"task_id":{"$ref":"#/$defs/text"},"provider":{"$ref":"#/$defs/text"},"title":{"$ref":"#/$defs/text"},"url":{"type":"string","format":"uri","pattern":"^https?://"},"published":{"type":["string","null"]},"retrieved":{"type":["string","null"]},"text":{"$ref":"#/$defs/text"},"scope":{"$ref":"#/$defs/text"},"content_kind":{"enum":["synthetic_document","search_snippet","retrieved_document"]},"link_status":{"enum":["not_checked","observed_ok","observed_broken"]}}},
+    "evidence":{"type":"object","additionalProperties":false,"required":["schema_version","id","source_id","excerpt","start","end"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"id":{"$ref":"#/$defs/text"},"source_id":{"$ref":"#/$defs/text"},"excerpt":{"$ref":"#/$defs/text"},"start":{"type":"integer","minimum":0},"end":{"type":"integer","minimum":1}}},
+    "finding":{"type":"object","additionalProperties":false,"required":["claim","status","evidence_ids","measurement_scope"],"properties":{"claim":{"$ref":"#/$defs/text"},"status":{"enum":["supported","conflicting","insufficient","incomparable"]},"evidence_ids":{"$ref":"#/$defs/ids"},"measurement_scope":{"$ref":"#/$defs/text"}}},
+    "analysis":{"type":"object","additionalProperties":false,"required":["schema_version","findings","uncertainties"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"findings":{"type":"array","items":{"$ref":"#/$defs/finding"}},"uncertainties":{"type":"array","items":{"$ref":"#/$defs/text"}}}},
+    "section":{"type":"object","additionalProperties":false,"required":["kind","text","evidence_ids"],"properties":{"kind":{"enum":["question","method","findings","limitations","recommendation","references"]},"text":{"type":"string","minLength":1,"maxLength":2000000},"evidence_ids":{"$ref":"#/$defs/ids"}}},
+    "report":{"type":"object","additionalProperties":false,"required":["schema_version","title","sections"],"properties":{"schema_version":{"$ref":"#/$defs/version"},"title":{"$ref":"#/$defs/text"},"sections":{"type":"array","minItems":6,"maxItems":6,"items":{"$ref":"#/$defs/section"}}}}
+  },
+  "oneOf":[{"$ref":"#/$defs/plan"},{"$ref":"#/$defs/query"},{"$ref":"#/$defs/source"},{"$ref":"#/$defs/evidence"},{"$ref":"#/$defs/analysis"},{"$ref":"#/$defs/report"}]
+}

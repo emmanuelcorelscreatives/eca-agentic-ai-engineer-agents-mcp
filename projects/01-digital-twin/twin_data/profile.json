@@ -1,0 +1,24 @@
+{
+  "synthetic": true,
+  "notice": "Amara Okoye is a fictional Academy practice persona. No real private career data.",
+  "sections": [
+    {
+      "id": "profile-01",
+      "title": "Python experience",
+      "text": "Amara Okoye built Python ETL jobs and SQLite reporting tools for the fictional Cedar Library project.",
+      "approved": true
+    },
+    {
+      "id": "profile-02",
+      "title": "Public portfolio",
+      "text": "The Cedar Library portfolio demonstrates input validation, unit tests and documented data provenance.",
+      "approved": true
+    },
+    {
+      "id": "private-01",
+      "title": "Salary and personal contact details",
+      "text": "UNAPPROVED: invented salary or private contact data must never be used in answers.",
+      "approved": false
+    }
+  ]
+}

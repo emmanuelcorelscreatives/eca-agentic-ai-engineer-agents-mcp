@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "stage": 24,
+  "status": "AUTHOR_ONLY_NOT_EXECUTED",
+  "providerCalls": 0,
+  "sourcePdf": "agentic-ai-engineer-complete-course-curriculum-reformatted.pdf Stage 24 lessons 1\u201312",
+  "centralQaOnly": true,
+  "commands": [
+    {
+      "cwd": "repository root",
+      "environment": "admitted pinned Agno + MCP Python",
+      "command": "python -m unittest discover -s tests -p test_s24_mcp_semantics.py -v",
+      "provesIfObserved": "genuine Agent binding; MCP stdio discovery/read/error and cleanup; no model generation"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "environment": "isolated pinned Node SDK workspace; COURSE_MCP_PYTHON absolute MCP Python",
+      "command": "npm run check",
+      "provesIfObserved": "current TypeScript compilation only"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "environment": "same isolated workspace",
+      "command": "npm test",
+      "provesIfObserved": "existing deterministic workflow plus actual MCP and native file Memory tests; skipped MCP tests are incomplete"
+    }
+  ],
+  "providerAndCaptureGaps": [
+    "s24-l02 actual single-agent response",
+    "s24-l03 real tool-selected schema-valid Agent output",
+    "s24-l04 actual model-selected MCP call",
+    "s24-l05 genuine specialist contributions/team output",
+    "s24-l07 genuine configured Studio startup",
+    "s24-l09 actual Agent-selected MCP tool trace",
+    "s24-l10 real two-turn provider recall and structured result",
+    "s24-l11 actual Studio workflow/agent/error traces and screenshots",
+    "s24-l12 matched real provider task comparison without universal winner"
+  ],
+  "retainedPriorEvidence": "Prior SDK construction/typecheck/four workflow passes remain historical frozen-source evidence, not current modified-source approval.",
+  "changedFiles": [
+    {
+      "path": "examples/s24_agno.py",
+      "sha256": "a60f347173cceefea0d9499a07f57baa429df63ff1a4ba67344b82b10d5df85c"
+    },
+    {
+      "path": "examples/s24_triage.py",
+      "sha256": "0d0c982f95d010ac3ee2a1fb3184f760a8477278e43ce03948dcd837d375de47"
+    },
+    {
+      "path": "tests/test_s24_mcp_semantics.py",
+      "sha256": "89c635118a19302dab776b6a8ef8800df2b84d453c13e056dad864547f6f744e"
+    },
+    {
+      "path": "examples/s24_mastra/mcp.ts",
+      "sha256": "b869a368d70c45b57f3ca6a453dfaf4ac28ab50b61d82911a2baf640957a5127"
+    },
+    {
+      "path": "examples/s24_mastra/mcp.test.ts",
+      "sha256": "3eeccae473ff456be847c4d87f53366c660703b10e1ece45b894801724e70f0c"
+    },
+    {
+      "path": "examples/s24_mastra/memory.ts",
+      "sha256": "62d89e012acbe306ad7450e5fe7c4d1afb0e25a11f5529cdd9e37460df9201f5"
+    },
+    {
+      "path": "examples/s24_mastra/memory.test.ts",
+      "sha256": "8b96ad758488dbba87256f8ef663b6792ddca927980d88ffe28c1b01f394412c"
+    },
+    {
+      "path": "examples/s24_mastra/studio-runbook.md",
+      "sha256": "e187396a06ab4269eb05596f2c6df852ad2cd6b5d440e88bebd021035e8a1e08"
+    },
+    {
+      "path": "examples/s24_mastra/package.json",
+      "sha256": "1cb1e191ddcf9535b70ad4f7b3096a716bbe655ecd0e757bd049d2040decd189"
+    },
+    {
+      "path": "labs/s24-l04.md",
+      "sha256": "1267190e22c2c809c2d54a8d0f2b66225cc1f233fe11a132ab9acb73baf489ae"
+    },
+    {
+      "path": "labs/s24-l09.md",
+      "sha256": "49145165b19589cfd030481c04b880070b8d9ee0a51caff95ba47f29b913624e"
+    },
+    {
+      "path": "labs/s24-l10.md",
+      "sha256": "efdeb1614faa3f5a1b08fe237e9d0db25118100766890ba31a94902728fad6e0"
+    },
+    {
+      "path": "labs/s24-l11.md",
+      "sha256": "817ebddafba245d81be2de999803456412a02b55bf543b385b895c622fb8fe2f"
+    },
+    {
+      "path": "solutions/s24-l04.md",
+      "sha256": "ca278e88efa2d7ccfd93f631a825fc9ca20c2ed1c1e74e3173afdc1f6d45f2f6"
+    },
+    {
+      "path": "solutions/s24-l09.md",
+      "sha256": "aab71a0d6d24511e71f799f96ca6b3aa17a3f135ee5108a612ad7d650c3320f8"
+    },
+    {
+      "path": "solutions/s24-l10.md",
+      "sha256": "2789d99e14df29a41142dcfe722b5c64df02239c5e08ae90e5f2a53a30625958"
+    },
+    {
+      "path": "solutions/s24-l11.md",
+      "sha256": "de0bec6b63d376558aed85e23620c5dd5ee938b8b1a0d46e402fc21b6b656ab9"
+    }
+  ],
+  "sdkApiReadOnlySources": [
+    "agno/tools/mcp/mcp.py: MCPTools server_params/include_tools, context entry/build_tools/functions/session cleanup",
+    "@mastra/mcp/dist/client/configuration.d.ts: registerProcessHooks/listTools/disconnect",
+    "@mastra/mcp/dist/client/types.d.ts: cwd/env/inheritDefaultEnv",
+    "@mastra/memory/dist/index.d.ts: recall/getThreadById/saveMessages/settled",
+    "@mastra/core/dist/memory/memory.d.ts: createThread",
+    "@mastra/libsql/dist/storage/index.d.ts: init/close"
+  ]
+}

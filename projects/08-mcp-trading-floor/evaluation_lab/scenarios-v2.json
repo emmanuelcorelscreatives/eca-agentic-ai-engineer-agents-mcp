@@ -1,0 +1,15 @@
+{
+  "schema_version":2,
+  "synthetic":true,
+  "market_as_of":"2026-01-15T16:00:00Z",
+  "cases":[
+    {"id":"normal-aca","family":"normal","split":"development","symbol":"ACA","quantity":5,"side":"BUY","evidence_ids":["fixture-aca-001"],"as_of":"2026-01-15T16:00:00Z","fault":null,"expected_state":"AWAITING_HUMAN_APPROVAL"},
+    {"id":"normal-lab","family":"normal","split":"development","symbol":"LAB","quantity":10,"side":"BUY","evidence_ids":["fixture-lab-001"],"as_of":"2026-01-15T16:00:00Z","fault":null,"expected_state":"AWAITING_HUMAN_APPROVAL"},
+    {"id":"over-order-limit","family":"order-limit","split":"held-out","symbol":"ACA","quantity":30,"side":"BUY","evidence_ids":["fixture-aca-001"],"as_of":"2026-01-15T16:00:00Z","fault":null,"expected_state":"RISK_REJECTED"},
+    {"id":"stale-research","family":"stale-data","split":"held-out","symbol":"ACA","quantity":5,"side":"BUY","evidence_ids":["fixture-aca-001"],"as_of":"2026-01-14T16:00:00Z","fault":"stale","expected_state":"RESEARCH_REJECTED"},
+    {"id":"conflicting-price","family":"conflict","split":"held-out","symbol":"LAB","quantity":2,"side":"BUY","evidence_ids":["fixture-lab-001"],"as_of":"2026-01-15T16:00:00Z","fault":"conflicting-price","expected_state":"RESEARCH_REJECTED"},
+    {"id":"research-service-timeout","family":"transport","split":"development","symbol":"EDU","quantity":1,"side":"BUY","evidence_ids":["fixture-edu-001"],"as_of":"2026-01-15T16:00:00Z","fault":"timeout","expected_state":"INCOMPLETE"},
+    {"id":"missing-evidence","family":"malformed","split":"development","symbol":"EDU","quantity":1,"side":"BUY","evidence_ids":["fixture-edu-001"],"as_of":"2026-01-15T16:00:00Z","fault":"missing-evidence","expected_state":"RESEARCH_REJECTED"},
+    {"id":"agent-exception","family":"agent-error","split":"held-out","symbol":"ACA","quantity":1,"side":"BUY","evidence_ids":["fixture-aca-001"],"as_of":"2026-01-15T16:00:00Z","fault":"agent-error","expected_state":"INCOMPLETE"}
+  ]
+}

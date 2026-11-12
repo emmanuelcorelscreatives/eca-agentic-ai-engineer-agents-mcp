@@ -1,13 +1,13 @@
-# s10-l09: Add Retries and Failure Recovery
+# s10-l09: Selective known-failure recovery
 
-Recover from failed searches, malformed outputs, provider errors and interrupted research tasks.
+Use `research_lab/pipeline_v3.py` and `recovery_v3.py` in projects/03-deep-research.
+Inject one positively returned malformed search response or known HTTP response after
+another branch commits. A distinct reader binds one authorization to the old attempt,
+unchanged inputs, actual failure evidence and a new attempt ID. Resume the SAME journal.
 
-## Exercise
+Demonstrate the failed branch alone being attempted again, completed siblings reused,
+all original raw failures retained, and a three-total-attempt ceiling. Repeat with an
+UNKNOWN timeout: no authorization may replay it. Do not discard the run or reset history.
 
-Implement a retry classifier, bounded exponential backoff with jitter and explicit terminal failure states.
-Checkpoint completed research steps and use idempotency keys for external delivery.
-Exercise: resume after an injected search failure without repeating already committed work.
-
-Read projects/03-deep-research/research_lab/runtime.py.
-
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+New tests are authored in tests/test_stage10_recovery_export_v3.py; central QA owns
+execution. Prior23-test evidence does not certify this delta. See the v3 project doc.

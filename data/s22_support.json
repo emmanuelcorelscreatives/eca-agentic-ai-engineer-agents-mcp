@@ -5,13 +5,15 @@
       "id": "T-001",
       "product_id": "P-KEY",
       "summary": "Keyboard arrived with a missing key",
-      "category": "damaged"
+      "category": "damaged",
+      "sku": "ECA-KEY-01"
     },
     {
       "id": "T-002",
       "product_id": "P-MOUSE",
       "summary": "Mouse has not arrived",
-      "category": "delivery"
+      "category": "delivery",
+      "sku": "ECA-MOUSE-02"
     }
   ],
   "policies": [
@@ -19,13 +21,16 @@
       "id": "POL-KEY-1",
       "product_id": "P-KEY",
       "version": 1,
-      "rule": "Draft a replacement review for reported physical damage; no automatic purchase."
+      "rule": "Draft a replacement review for reported physical damage; no automatic purchase.",
+      "sku": "ECA-KEY-01"
     },
     {
       "id": "POL-MOUSE-2",
       "product_id": "P-MOUSE",
       "version": 2,
-      "rule": "Request tracking reference before escalating delivery."
+      "rule": "Request tracking reference before escalating delivery.",
+      "sku": "ECA-MOUSE-02"
     }
-  ]
+  ],
+  "scenario": "Academy synthetic shop support for the exact keyboard/mouse products in data/s21_catalog.json"
 }

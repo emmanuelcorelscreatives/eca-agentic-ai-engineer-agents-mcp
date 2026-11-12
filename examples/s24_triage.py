@@ -41,9 +41,7 @@ def build_team(model):
     return Team(name='Academy ticket team',model=OpenAIChat(id=model),members=[researcher,reviewer],
         instructions='Coordinate evidence lookup and independent review. Produce a draft, never send it.')
 
-async def build_mcp_agent(model):
-    from agno.tools.mcp import MCPTools
-    import sys
-    # Caller must enter the returned context before agent execution and exit afterwards.
-    tools=MCPTools(command=f'{sys.executable} -m examples.s24_mcp_articles')
-    return tools
+def build_mcp_agent(model, **kwargs):
+    """Return the genuine Agent context; use ``async with`` before execution."""
+    from examples.s24_agno import build_mcp_agent as context
+    return context(model, **kwargs)

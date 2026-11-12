@@ -8,7 +8,8 @@ def build_agent(model=None, *, mcp=False):
     model = model or os.environ.get('GOOGLE_MODEL', '').strip()
     if not model:
         raise ValueError('Set GOOGLE_MODEL; provider credentials must be configured separately')
-    tools = [lookup_stock, estimate_delivery]
+    from examples.s21_state import set_preference, get_preference
+    tools = [lookup_stock, estimate_delivery, set_preference, get_preference]
     toolset = None
     if mcp:
         from google.adk.tools.mcp_tool import McpToolset
@@ -18,10 +19,11 @@ def build_agent(model=None, *, mcp=False):
             server_params=StdioServerParameters(command=sys.executable,
                 args=['-m', 'examples.s21_mcp_inventory'])),
             tool_filter=['lookup_stock', 'estimate_delivery'])
-        tools = [toolset]
+        tools = [toolset, set_preference, get_preference]
     return Agent(name='academy_stock_support', model=model, tools=tools,
         instruction='Use inventory tools for stock and delivery. Never invent products or stock. '
-        'Preferences belong only to the current session. Report tool errors honestly.'), toolset
+        'Use set_preference to remember a selected SKU or delivery preference and get_preference '
+        'on follow-up turns. These values belong only to the current session. Report tool errors honestly.'), toolset
 
 async def run_turn(text, *, user_id, session_id, sessions, runner):
     """Caller owns the actual ADK session service, so state may span turns safely."""

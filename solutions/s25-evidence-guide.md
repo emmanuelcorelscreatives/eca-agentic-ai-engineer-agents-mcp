@@ -1,131 +1,137 @@
-# Stage 25 — reference evidence and integration checklist
+# Stage 25 evidence and reference guide
 
-Run commands from the repository root. Preserve real receipts, exact versions, failed attempts and observed limitations. Never replace a missing genuine integration result with expected fixture text.
+A typed Academy catalog-research/draft-notification agent specification. Generated requirements, architecture, tools, instructions, tests and reviews must feed the same approved dependency graph and produce a real runnable selected-framework project.
+
+No new runtime was executed by the documentation author. Every expected behavior below needs source-bound actual evidence from the sole centralized QA owner before an observed-result lesson is recorded. Historic baseline tests retain their narrow original scope.
 
 ## s25-l01: Design the Agent Application Factory
 
-Baseline entry point: `python3 examples/s25_factory_labs.py schema`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: TypedSpec, artifact_graph, review, repair_loop`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Separate model proposals, validated typed handoffs, explicit artifact approval, sandbox execution and final launch. Fixed trusted templates are a useful baseline, not proof of a model-driven generation factory. Keep original requirements and independent acceptance criteria immutable across repair.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l01.md) preserves the exercise and evidence boundary.
 
 ## s25-l02: Define the Typed Agent Specification
 
-Baseline entry point: `python3 examples/s25_factory_labs.py schema`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: TypedSpec, example_spec`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+The canonical spec must be strict, bounded and stable enough to hash. Environment variable names are configuration, never secret values. Unsupported tools/framework capabilities fail explicitly. Every downstream stage binds the same approved specification digest.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l02.md) preserves the exercise and evidence boundary.
 
 ## s25-l03: Build the Requirements Analysis Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py schema`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: requirements; autogen_adapter.py: proposal roles`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+The actual structured model result must feed downstream planning after validation/approval. A deterministic mapping can check expected invariants, but it is not the named requirements analysis agent. Reject invented supplied data, contradictory policies, missing spec requirements and unmeasurable acceptance prose.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l03.md) preserves the exercise and evidence boundary.
 
 ## s25-l04: Build the Architecture Planning Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py schema`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: architecture; autogen_adapter.py: architect role`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+The architecture must reference actual accepted requirement IDs and preserve tool/schema/policy constraints. The planner cannot fabricate supported framework features or self-authorize code execution. Invalid or stale handoffs block scaffolding.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l04.md) preserves the exercise and evidence boundary.
 
 ## s25-l05: Build the Agent Scaffolding Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: scaffold_approved, write_workspace`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+A model-produced file proposal needs strict path/size/count validation and review. Writes stay inside an owned fresh workspace. Trusted scaffolding is explicitly a baseline; it must not be narrated as observed autonomous source generation. Do not execute newly generated code before its authorized sandbox step.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l05.md) preserves the exercise and evidence boundary.
 
 ## s25-l06: Build the Tool Generation Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: validate_io; adapters/frameworks.py`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Declared schemas and limits survive generation exactly. A placeholder must say it is unavailable; it cannot fabricate external success. Review proposed tool code before sandbox execution. Arbitrary unsupported tools must be rejected rather than silently mapped to catalog_lookup or draft_notification.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l06.md) preserves the exercise and evidence boundary.
 
 ## s25-l07: Build the Prompt and Instruction Generator
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: instructions`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+A model prompt generator may propose prose but cannot change immutable application permissions, expand the allowed tools or remove human approval requirements. Preserve the source spec and acceptance IDs in the handoff; do not confuse a static instruction template with observed generated instructions.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l07.md) preserves the exercise and evidence boundary.
 
 ## s25-l08: Build the Test Generation Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py failure`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: test_trusted_template; generated test artifacts`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+The independent acceptance suite is not writable by the generator or repair loop. Generated tests must be reviewed for criterion coverage and actually executed only in the authorized sandbox. Fixed tests for two templates alone do not establish a general test-generation stage.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l08.md) preserves the exercise and evidence boundary.
 
 ## s25-l09: Build the Code Review Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py review`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: review; autogen_adapter.py: reviewer role`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Keep exact file references and concrete supported findings. Static clean output or a model approval is not a security certificate, runtime result or execution permission. The review stage must inspect the same proposed artifacts that would be written and tested.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l09.md) preserves the exercise and evidence boundary.
 
 ## s25-l10: Add Framework Selection and Adapters
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: select_adapter; adapters/frameworks.py`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Framework selection is replaceable but explicit. Unsupported requirements fail before generation. Top-level dependency pins do not prove a transitive lock or actual runtime compatibility; retain the selected generated adapter build/runtime evidence.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l10.md) preserves the exercise and evidence boundary.
 
 ## s25-l11: Generate Complete Agent Project Structures
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: artifact_graph, write_workspace; generated application directory`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+The integrated pipeline must consume actual validated generation-stage outputs. A collection of disconnected role transcripts or templates is not the complete factory. Reject stale requirements/architecture/artifact hashes and missing required files before validation.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l11.md) preserves the exercise and evidence boundary.
 
 ## s25-l12: Create README and Environment Templates
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: render_trusted; generated README/environment files`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Do not claim a .env.example file exists when generation emitted env.example, or vice versa. The current generated artifact inventory is authoritative. Templates contain names/placeholders only, never credentials. Update docs when artifacts change and retain the exact tested commands.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l12.md) preserves the exercise and evidence boundary.
 
 ## s25-l13: Validate Generated Projects Inside Docker
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `docker_validate.py`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+A Docker command plan, permission check or mocked subprocess is not Docker execution. Use the validator declared isolation/resource/network policy, owned cleanup and a verified image/build context. Retain image identity, generated artifact digests, actual exit code and logs. Report unavailable daemon/image honestly; do not relabel the lesson complete.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l13.md) preserves the exercise and evidence boundary.
 
 ## s25-l14: Build an Automated Repair Loop
 
-Baseline entry point: `python3 examples/s25_factory_labs.py failure`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py: repair_loop; docker_validate.py`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Preserve every failed candidate and real test result. Limit model/repair attempts and exact writable files. The model cannot delete failing tests or weaken original requirements. AST-only repair validation is not equivalent to a successful full test/container result.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l14.md) preserves the exercise and evidence boundary.
 
 ## s25-l15: Launch the Generated Agent
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `generated selected-framework application entrypoint`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Launch only the artifact digest that passed the required validation. A deterministic tool dispatcher is not proof of model intelligence; label fixture interaction honestly and retain genuine model/framework behavior when claiming it. Stop and clean up the owned runtime after demonstration.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l15.md) preserves the exercise and evidence boundary.
 
 ## s25-l16: Complete the Agent Application Factory
 
-Baseline entry point: `python3 examples/s25_factory_labs.py generate`. Its actual case output is recorded in the stage20–25 offline command proof, and tests exercise the real baseline implementation.
+Reference source: `projects/07-agent-factory` → `advanced.py; autogen_adapter.py; docker_validate.py`.
 
-For the full objective, inspect the specific implementation requirements in the exercise. A baseline success alone does not establish native framework delegation, semantic reasoning, real browser behavior, UI callbacks, arbitrary generated-code containment or model-backed behavior. Capture each required integration separately.
+Record actual model-generated stage artifacts and validated handoffs, not only disconnected proposals. Preserve original spec/acceptance lineage, artifact hashes, runtime evidence and unresolved limits. Review capabilities and architecture from the finished application, not a speculative diagram.
 
-Use `projects/07-agent-factory/factory.py` for the trusted fixed-template baseline; `autogen_adapter.py` produces genuine optional model-backed proposals without executing them. Inspect actual `validation-receipt.json` hashes and stderr. Additional native Agno/Mastra and Docker flows must be verified independently before claiming those capabilities.
+The detailed [reference answer](s25/s25-l16.md) preserves the exercise and evidence boundary.
+
+## Model-call evidence and replay boundary
+
+Each proposal reserves its once key and bounded call budget before submission, fsyncs raw responses before validation, and leaves failed/time-out/missing outcomes UNKNOWN. Recover the original receipt; do not automatically resubmit an unresolved request. Configure the actual model transport with retries disabled and retain real provider/model/version. Source identity is evidence of what was authored, not proof it ran.

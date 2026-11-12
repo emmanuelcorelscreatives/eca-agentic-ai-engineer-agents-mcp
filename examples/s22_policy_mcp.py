@@ -1,5 +1,5 @@
 """Read-only actual MCP server for shared policy fixtures."""
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 from examples.s22_policy import PolicyService
 server = FastMCP('Academy policies')
 @server.tool()

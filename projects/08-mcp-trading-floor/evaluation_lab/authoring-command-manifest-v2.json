@@ -1,0 +1,12 @@
+{
+  "status":"AUTHOR_ONLY_NOT_EXECUTED",
+  "soleExecutionOwner":"parent repository QA owner",
+  "commands":[
+    {"purpose":"Existing offline regressions","command":"python3 -m unittest discover -s tests -p test_project8_evaluation.py -v"},
+    {"purpose":"New async trace, scenario, feedback, checkpoint process interruption semantics","command":"python3 -m unittest discover -s tests -p test_project8_evaluation_semantics.py -v"},
+    {"purpose":"Compose source validation, no startup","command":"docker compose --env-file deployment/.env -f deployment/compose.yaml config --quiet","cwd":"projects/08-mcp-trading-floor"},
+    {"purpose":"Actual owned MCP fault-server exercise; use client timeout and recorded tool result","command":"PYTHONPATH=projects/08-mcp-trading-floor python3 -m evaluation_lab.fault_mcp --mode timeout","executionConstraint":"Only inside finite owned MCP client harness, terminate child afterward"},
+    {"purpose":"Actual provider judge","command":"Invoke quality.judge with explicit HTTPJudgeProvider, unique private artifacts, authorized endpoint/model/token and exact output; no automatic retry","executionConstraint":"Requires bounded provider approval and sole once-owner; source only here"}
+  ],
+  "notClaimed":["new tests passed","actual provider judge response","real MCP fault-server run","container build","hosted deployment","browser feedback XSS test"]
+}

@@ -1,13 +1,16 @@
 # s10-l03: Stream Research Progress to the User
 
-Display planning, searching, analysis and writing status while the research run executes.
+Observe actual planning/search/analysis/writing start/end spans; cancel an in-flight request and inspect the retained UNKNOWN.
 
-## Exercise
+Current implementation, relative to `projects/03-deep-research/`:
 
-Define run_id, sequence, phase and public_message for planning/searching/analysis/writing/completed/failed events.
-Implement a generator that streams events while orchestration runs and closes cleanly on completion/cancellation.
-Exercise: add a source-fetch progress event and handle browser disconnects.
+- research_lab/interface_v2.py:stream_research
+- research_lab/pipeline_v2.py
 
-Read projects/03-deep-research/research_lab/interface.py, projects/03-deep-research/research_lab/runtime.py.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
 
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+Still required:
+
+- genuine browser progress/cancel observations
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

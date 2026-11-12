@@ -1,0 +1,7 @@
+# Resolve to requirements.lock with all transitive hashes in the actual QA runtime.
+openai-agents
+openai
+pydantic
+gradio
+fastapi
+uvicorn

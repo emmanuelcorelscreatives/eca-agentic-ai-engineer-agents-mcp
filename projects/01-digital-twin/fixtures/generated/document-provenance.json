@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "generated_not_independently_verified",
+  "synthetic": true,
+  "persona": "Amara Okoye — fictional Academy practice persona",
+  "font": {
+    "filename": "DejaVuSans.ttf",
+    "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280"
+  },
+  "generator_sha256": "cbac6119a11009efaaf4a4b81d60a9c0bbf0f827b96d4db1ce7c4eff44f94a8c",
+  "documents": [
+    {
+      "kind": "resume",
+      "source_path": "fixtures/resume-source.txt",
+      "source_sha256": "4c0a84e99373467e8fc4e35ca454041aaea680857d9dd5e9b21dc97f27c47131",
+      "source_size_bytes": 778,
+      "pdf_path": "synthetic-resume.pdf",
+      "pdf_sha256": "50158dc52b680e54ea4c1db5909644268c022eabc955b5ee07cb86e4bbb27544",
+      "pdf_size_bytes": 23518
+    },
+    {
+      "kind": "portfolio",
+      "source_path": "fixtures/portfolio-source.txt",
+      "source_sha256": "c43f8021727325e6a3c1d9cf57b73a8c247f8c979016ca9a8b6a3aa7c9f3fdea",
+      "source_size_bytes": 1120,
+      "pdf_path": "synthetic-portfolio.pdf",
+      "pdf_sha256": "ad562d3c3264e97cd51fcde62cc0aca3e388696b5b1f0eff456f39e01b2fcd7f",
+      "pdf_size_bytes": 23683
+    }
+  ],
+  "pending": [
+    "actual pypdf extraction and source-text comparison",
+    "independent rendered-page inspection",
+    "human source approval"
+  ]
+}

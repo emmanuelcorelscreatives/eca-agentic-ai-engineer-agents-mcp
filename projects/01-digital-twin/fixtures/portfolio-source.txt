@@ -1,0 +1,26 @@
+SYNTHETIC PORTFOLIO — Academy practice material
+Amara Okoye — fictional professional persona
+
+Project: Cedar Library reporting tools
+Purpose: practise reliable transformations of fictional library-loan data.
+Stack: Python and SQLite.
+
+Demonstrated practices
+Input validation rejects incomplete or malformed loan records.
+Unit tests check expected transformations and invalid-input handling.
+Documented provenance explains that course records are synthetic.
+
+Walkthrough outline
+1. Inspect the supplied input and its documented limitations.
+2. Validate fields before storing records in SQLite.
+3. Run tests before using the reporting output.
+4. Describe only demonstrated behaviour; do not invent business results.
+
+Discussion prompt
+How would you document a café’s synthetic lending dataset?
+The café question is a Unicode extraction exercise, not a new career claim.
+
+Source boundaries
+No revenue, performance percentage, awards or live client outcome is claimed.
+This portfolio is a fictional teaching document, not evidence of real work.
+Newly extracted material requires human approval before retrieval use.

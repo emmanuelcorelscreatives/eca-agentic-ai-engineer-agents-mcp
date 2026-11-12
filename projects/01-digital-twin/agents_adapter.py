@@ -1,11 +1,12 @@
-"""Optional grounded SDK answer generation. No contact/write tools are exposed."""
+"""Actual grounded SDK adapter; an explicit caller authorizes any paid run."""
 import argparse
 import asyncio
 import json
 import os
-from pathlib import Path
+from config import profile_path
+from context import assemble_context,ContextBudget
+from prompts import SYSTEM_PROMPT,IDENTITY
 from twin import DigitalTwin
-from workflow import SYSTEM_INSTRUCTIONS
 
 
 def build_agent(model):
@@ -15,23 +16,25 @@ def build_agent(model):
         answer: str
         cited_section_ids: list[str]
         insufficient_evidence: bool
-    return Agent(name='Professional digital twin',model=model,instructions=SYSTEM_INSTRUCTIONS+' Respond from only the supplied approved evidence. Never imply that you performed external actions.',output_type=Answer)
+    return Agent(name='Professional digital twin',model=model,instructions=SYSTEM_PROMPT,output_type=Answer)
 
 
-async def answer(question,model):
+async def answer(question,model,history=(),tool_results=(),budget=None):
     from agents import Runner,RunConfig
-    twin=DigitalTwin(json.loads((Path(__file__).parent/'fixtures/profile.json').read_text())['sections'])
+    if question.strip().lower() in ("who are you?","who are you","are you amara?","are you amara"):
+        return {"answer":IDENTITY,"citations":[],"status":"identity_disclosure"}
+    core=DigitalTwin(json.loads(profile_path().read_text())['sections'])
     try:
-        evidence=twin.retrieve(question)
-        if not evidence:
-            return twin.answer(question)
-        payload={'question':question,'approved_evidence':[{'id':s.id,'text':s.text} for s in evidence]}
-        result=(await Runner.run(build_agent(model),json.dumps(payload),max_turns=2,run_config=RunConfig(tracing_disabled=True))).final_output
-        allowed={s.id for s in evidence}
+        evidence=core.retrieve(question)
+        if not evidence:return core.answer(question)
+        allocation=assemble_context(question,evidence,history,tool_results,budget or ContextBudget())
+        context=allocation['context']
+        result=(await Runner.run(build_agent(model),json.dumps(context,ensure_ascii=False),max_turns=2,run_config=RunConfig(tracing_disabled=True,trace_include_sensitive_data=False))).final_output
+        allowed={s['section_id'] for s in context['evidence']}
         if not set(result.cited_section_ids).issubset(allowed):raise ValueError('invented evidence citation')
         if not result.insufficient_evidence and not result.cited_section_ids:raise ValueError('supported answer requires citations')
-        return {'model_answer':result.model_dump(),'approved_evidence':payload['approved_evidence'],'scope':'Generated wording requires factual evaluation; citation validation alone does not prove every claim.'}
-    finally:twin.db.close()
+        return {'model_answer':result.model_dump(),'approved_evidence':context['evidence'],'allocation':allocation['allocation'],'scope':'Actual generated wording still requires independent factual/tone evaluation; citation validation alone does not prove claims.'}
+    finally:core.db.close()
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('question');parser.add_argument('--live',action='store_true');args=parser.parse_args()

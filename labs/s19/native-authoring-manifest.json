@@ -1,0 +1,37 @@
+{
+  "scope": "Stage 19 semantic repair author-only handoff",
+  "author": "/root/agentic_engineer_repository/projects_6_7/semantic_deep19",
+  "implementation": {
+    "path": "examples/s19/native_harness.py",
+    "sha256": "e14ee37ce3894736df04c3515cb353b1389964f03fb69c2f1ec93ed7f906aec1"
+  },
+  "authoredTests": {
+    "path": "tests/test_s19_native_harness.py",
+    "sha256": "6d2819dbd8aac609e888135219f440abf8e3cf09ac18e5d933eba3cadd7f8d40"
+  },
+  "commands": [
+    "python -m unittest discover -s tests -p test_s19_native_harness.py -v",
+    "RUN_S19_NATIVE_SDK=1 python -m unittest discover -s tests -p test_s19_native_harness.py -v",
+    "python -m examples.s19.native_harness --workspace /tmp/academy-s19-unique --model YOUR_PERMITTED_MODEL --phase start",
+    "python -m examples.s19.native_harness --workspace /tmp/academy-s19-unique --model YOUR_PERMITTED_MODEL --phase resume"
+  ],
+  "executionByAuthor": "NONE: no compile, test, install, browser, SDK or provider execution",
+  "centralQaRequired": [
+    "Syntax and deterministic contract tests",
+    "Actual SDK/browser scripted-model separate-process interruption and continuation",
+    "Actual configured-provider planning, native skill reads, native specialist contributions and parent synthesis",
+    "Source/artifact tamper rejection, unchanged actual SQLite continuation and real browser budget persistence",
+    "Inspect raw known tool/provider evidence and genuine terminal/browser captures"
+  ],
+  "classification": {
+    "scriptedModel": "Deterministic contract responses over the actual SDK; not provider output",
+    "browser": "Actual Playwright observations only when central QA executes tools",
+    "provider": "Not executed; CLI may incur charges and requires explicit central authorization",
+    "evaluation": "Individual deterministic contract facts and gaps, not factual content approval"
+  },
+  "officialReferences": [
+    "https://docs.langchain.com/oss/python/deepagents/skills",
+    "https://docs.langchain.com/oss/python/deepagents/subagents",
+    "https://docs.langchain.com/oss/python/langgraph/persistence"
+  ]
+}

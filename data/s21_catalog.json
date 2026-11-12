@@ -5,17 +5,20 @@
       "sku": "ECA-KEY-01",
       "name": "Practice Keyboard",
       "stock": 12,
-      "price_pence": 2500
+      "price_pence": 2500,
+      "product_id": "P-KEY"
     },
     {
       "sku": "ECA-MOUSE-02",
       "name": "Practice Mouse",
       "stock": 0,
-      "price_pence": 1500
+      "price_pence": 1500,
+      "product_id": "P-MOUSE"
     }
   ],
   "delivery_zones": {
     "AB": 2,
     "CD": 4
-  }
+  },
+  "scenario": "Academy synthetic shop: stock and delivery in stage21; ticket policies for the same products in stage22"
 }

@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.backend
+    environment:
+      ACADEMY_LOCAL_TOKEN: ${ACADEMY_LOCAL_TOKEN:?Set a unique practice operator token}
+      ACADEMY_REVIEW_TOKEN: ${ACADEMY_REVIEW_TOKEN:?Set a separate practice reviewer token}
+      ACADEMY_PAPER_DB: /data/paper.sqlite
+      ACADEMY_FEEDBACK_DB: /data/feedback.sqlite
+    volumes:
+      - paper-data:/data
+    expose:
+      - "8000"
+    restart: "no"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+  frontend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile.frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${ACADEMY_UI_PORT:-8088}:8080"
+    restart: "no"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  paper-data:

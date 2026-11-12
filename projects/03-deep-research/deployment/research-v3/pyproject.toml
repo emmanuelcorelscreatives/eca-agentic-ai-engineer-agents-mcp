@@ -1,0 +1,13 @@
+[project]
+name = "eca-deep-research-application"
+version = "0.3.0"
+description = "Emmanuel Corels Academy owned-session research application"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "openai-agents==0.24.0",
+  "openai==3.49.0",
+  "pydantic==2.14.3",
+  "gradio==6.31.0",
+  "fastapi==0.162.5",
+  "uvicorn==0.54.0",
+]

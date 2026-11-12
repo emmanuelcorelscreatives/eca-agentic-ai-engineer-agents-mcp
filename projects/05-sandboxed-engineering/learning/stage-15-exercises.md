@@ -162,13 +162,27 @@ Verification: `test_projects_4_5.py`.
 
 Objective: Organize the final application, setup instructions, dependencies, tests and usage documentation.
 
-Implementation: `README.md`.
+Implementation: `delivery_package.py`, the successful `container_entrypoint.py`
+route and `container_launch.py:verified_delivery`.
 
-Exercise: Use the baseline team package operation on its verified template; inspect archive inventory, setup, source/tests and credential exclusions.
+Exercise: After an admitted whole-crew run, package its exact successful result
+against the original completion event. Inspect generated source/docs/dependencies,
+immutable course and QA tests, typed artifacts, attempted-test receipts, acceptance
+matrix and archive member hashes. Verify the new `delivery.zip` and its receipt,
+then perform a clean documented extraction/setup/test. Retain private raw evidence
+separately; review source and logs for credentials before sharing.
 
-Reference solution: The baseline package permits only byte-identical reviewed template files. Modified model-generated delivery requires fresh independent package review; never relabel the template receipt.
+Reference solution: The production entrypoint packages the actual final files and
+completion-bound evidence, never the fixed template. Unpassed observations, source
+or receipt mismatch, unsafe/extra paths, quotas and existing/racing destinations
+hold delivery. Explicit fixture packages remain `OFFLINE_FIXTURE_NOT_PRODUCTION`;
+the production launcher rejects that class. The earlier baseline template ZIP is
+a separate historical exercise and cannot certify a generated whole-crew package.
 
-Verification: `test_projects_4_5.py`.
+Verification: `test_engineering_delivery_package.py` and affected semantic-team/
+whole-container regressions require first central execution for these new bytes.
+Actual genuine archive extraction/setup/tests and independent acceptance remain
+pending; authoring this exercise does not assert that a model/container run passed.
 
 ## s15-l15: Complete the Sandboxed Engineering Team
 

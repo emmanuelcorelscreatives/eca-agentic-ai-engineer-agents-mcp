@@ -22,3 +22,7 @@ The six-call shared fact tool budget is enforced in Python; iteration and timeou
 - https://docs.crewai.com/v1.15.40/en/concepts/memory
 
 These references support the APIs, not an assertion that this environment has run the SDK.
+
+## Authored semantic repair pending central QA
+
+The independent PDF audit identified one missing implementation: Stage12 lesson5 needed real external-information access. `external_research.py` and `research_main.py` now provide bounded official-document HTTPS research with typed queries, source normalization and a real researcher/reviewer CrewAI adapter. The retailer fixture is not described as internet research. `memory_integration.py` adds an opt-in actual scoped framework-memory variant for lesson10 while retaining the default memory-disabled debate. New code and `tests/test_market_learning_semantic.py` are **author-only, not yet executed or approved**. Historical installation/constructor proofs above describe their original bytes and do not certify these repairs. See `docs/stages11-12-coherence.md` for the exact topic/roles and extension boundary. Do not create observed walkthrough claims or captures from expected outputs alone.

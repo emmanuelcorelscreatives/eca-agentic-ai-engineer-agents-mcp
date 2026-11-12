@@ -22,7 +22,7 @@ def build_tools(search):
         return json.dumps(search.search(query, max_results))
     return search_facts
 
-def build_crew(model, fact_path, process='sequential'):
+def build_crew(model, fact_path, process='sequential', *, memory_backend=None, role_memory=None):
     from crewai import Agent, Task, Crew, Process, LLM
     if process not in {'sequential','hierarchical'}: raise ValueError('unsupported process')
     pack=load_facts(fact_path)
@@ -30,9 +30,13 @@ def build_crew(model, fact_path, process='sequential'):
     search=FactSearch(pack,limit=6)
     tool=build_tools(search)
     llm=LLM(model=model,temperature=0,timeout=60,max_tokens=1200)
+    if role_memory is not None and set(role_memory) != set(agents_cfg):
+        raise ValueError('an explicit memory view is required for every role')
     agents={name:Agent(**cfg,llm=llm,tools=[tool],allow_delegation=False,
                        max_iter=4,max_retry_limit=0,max_execution_time=90,
-                       respect_context_window=True,verbose=False) for name,cfg in agents_cfg.items()}
+                       respect_context_window=True,verbose=False,
+                       **({'memory': role_memory[name]} if role_memory is not None else {}))
+            for name,cfg in agents_cfg.items()}
     tasks={}
     for name,cfg in tasks_cfg.items():
         kwargs=dict(description=cfg['description'],expected_output=cfg['expected_output'],
@@ -40,7 +44,8 @@ def build_crew(model, fact_path, process='sequential'):
         if name=='verdict': kwargs['output_pydantic']=verdict_model()
         tasks[name]=Task(**kwargs)
     kwargs=dict(agents=list(agents.values()),tasks=list(tasks.values()),
-                process=getattr(Process,process),memory=False,verbose=False,max_rpm=6)
+                process=getattr(Process,process),memory=memory_backend if memory_backend is not None else False,
+                verbose=False,max_rpm=6)
     if process=='hierarchical': kwargs['manager_llm']=llm
     return Crew(**kwargs),pack,search
 

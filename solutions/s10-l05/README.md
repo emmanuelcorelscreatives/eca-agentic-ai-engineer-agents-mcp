@@ -1,9 +1,16 @@
-# Reference solution: s10-l05
+# s10-l05: Add Report Export and Email Delivery
 
-Provide a runnable reference solution and explanation for the named exercise; do not mark it tested until actual execution evidence is retained.
+Approval binds recipient/content. Completed delivery is reused, changed content is refused, and unknown delivery is held. Fake SMTP is not a real receipt.
 
-Implementation: projects/03-deep-research/research_lab/reporting.py.
+Current implementation, relative to `projects/03-deep-research/`:
 
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
+- research_lab/exports_v2.py
+- research_lab/transports.py:SmtpDelivery
 
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+
+Still required:
+
+- actual approved course-owned local SMTP receipt
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

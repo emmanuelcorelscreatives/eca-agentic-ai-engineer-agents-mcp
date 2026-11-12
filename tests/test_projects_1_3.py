@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from contextlib import contextmanager
 
 ROOT = Path(__file__).resolve().parents[1]
 def load(name, project, module):
@@ -20,6 +21,24 @@ research = load('academy_research', '03-deep-research', 'research')
 
 def fixture(project, name):
     return json.loads((ROOT/'projects'/project/'fixtures'/name).read_text())
+
+@contextmanager
+def project_imports(project):
+    """Match a project-local launch without leaking generic module names."""
+    directory = ROOT / 'projects' / project
+    names = {path.stem for path in directory.glob('*.py')}
+    previous = {name: sys.modules[name] for name in names if name in sys.modules}
+    old_path = list(sys.path)
+    try:
+        for name in names:
+            sys.modules.pop(name, None)
+        sys.path.insert(0, str(directory))
+        yield
+    finally:
+        sys.path[:] = old_path
+        for name in names:
+            sys.modules.pop(name, None)
+        sys.modules.update(previous)
 
 class TwinTests(unittest.TestCase):
     def setUp(self):
@@ -136,7 +155,7 @@ class OptionalAdapterTests(unittest.TestCase):
             self.calls.append(agent.name)
             values={'Prospect researcher':dict(need='CSV summaries',source_id='synthetic-brief-cedar-001',limitations='synthetic'), 'Outreach strategist':dict(value_proposition='Demo',source_id='synthetic-brief-cedar-001'),'Email writer':dict(subject='Demo',body='A sourced practice demonstration.',source_id='synthetic-brief-cedar-001'),'Quality reviewer':dict(passed=True,issues=[])}
             return self.types.SimpleNamespace(final_output=self.Schema(**values[agent.name]))
-        with self.patch.dict(sys.modules,self.fake_modules(run)):
+        with project_imports('02-sales-team'), self.patch.dict(sys.modules,self.fake_modules(run)):
             adapter=load('academy_sales_adapter','02-sales-team','agents_adapter')
             result=asyncio.run(adapter.run_pipeline(sales.Prospect(**fixture('02-sales-team','prospect.json')['prospect']),'test-model'))
         self.assertEqual(len(self.calls),4)
@@ -153,17 +172,28 @@ class OptionalAdapterTests(unittest.TestCase):
             corpus=[research.Evidence(**e) for e in fixture('03-deep-research','evidence.json')['evidence']]
             with self.assertRaises(ValueError): asyncio.run(adapter.run_pipeline('Cedar reporting',corpus,'test-model'))
     def test_gradio_build_and_chat_without_shared_database(self):
+        from tempfile import TemporaryDirectory
         class Blocks:
             def __enter__(inner): return inner
             def __exit__(inner,*args): return False
+        class Component:
+            def __init__(inner,*args,**kwargs): pass
+            def click(inner,*args,**kwargs): return inner
         recorded={}
         def chatinterface(**kw): recorded.update(kw)
-        fake=self.types.SimpleNamespace(Blocks=Blocks,Markdown=lambda text:None,ChatInterface=chatinterface)
+        fake=self.types.SimpleNamespace(Blocks=Blocks,Markdown=lambda text:None,ChatInterface=chatinterface,
+            State=Component,Textbox=Component,Checkbox=Component,JSON=Component,Button=Component)
         sys.modules['twin']=twin
-        with self.patch.dict(sys.modules,{'gradio':fake}):
+        with TemporaryDirectory() as temporary, project_imports('01-digital-twin'), self.patch.dict(sys.modules,{'gradio':fake}):
             app=load('academy_twin_app','01-digital-twin','app')
-            app.build_app()
-            result=recorded['fn']('Python experience',[])
-        self.assertIn('profile-01',result)
+            database=Path(temporary)/'private-twin.sqlite'
+            settings=app.Settings(database=str(database))
+            first=app.build_app(settings)
+            second=app.build_app(settings)
+            self.assertIsNot(first.academy_service,second.academy_service)
+            result=list(recorded['fn']('Python experience',[],'test-private-session'))
+            self.assertIn('Retrieving',result[0])
+            self.assertIn('profile-01',result[-1])
+            self.assertFalse(database.exists(),'Answering must not create a shared contact database')
 
 if __name__=='__main__': unittest.main()

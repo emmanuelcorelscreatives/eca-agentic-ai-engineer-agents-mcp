@@ -1,0 +1,20 @@
+SYNTHETIC RÉSUMÉ — Academy practice material
+Amara Okoye — fictional professional persona
+
+Professional summary
+Builds Python ETL jobs and SQLite reporting tools for Cedar Library,
+a fictional community-library software project.
+
+Selected experience
+Cedar Library reporting practice
+Implemented input validation for library-loan records.
+Wrote unit tests for reporting transformations.
+Documented dataset provenance and known limitations.
+
+Technical skills
+Python; SQLite; input validation; unit testing; data provenance.
+
+Source boundaries
+These statements are fictional training facts, not the instructor’s résumé.
+No employer dates, degrees, salary, personal phone or credentials are supplied.
+Newly extracted material requires human approval before retrieval use.

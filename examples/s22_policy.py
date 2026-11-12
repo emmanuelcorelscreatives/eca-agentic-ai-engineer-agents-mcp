@@ -24,9 +24,12 @@ class RequestContext:
     request_id: str
     ticket_id: str
     policies: PolicyService
+    role: str = 'triager'
     def __post_init__(self):
         if not self.request_id or not isinstance(self.policies, PolicyService):
             raise ValueError('Request context requires an ID and typed PolicyService')
+        if self.role not in {'reader','triager'}:
+            raise ValueError('Unknown application role')
         self.policies.ticket(self.ticket_id)
 
 def validate_triage(value: dict, context: RequestContext) -> dict:
@@ -49,6 +52,8 @@ def validate_triage(value: dict, context: RequestContext) -> dict:
 
 def escalation_draft(context: RequestContext, reason: str) -> dict:
     """Create a local value only: no sending, external mutation or automatic approval."""
+    if context.role != 'triager':
+        raise PermissionError('Reader role cannot prepare escalation drafts')
     if not reason.strip():
         raise ValueError('Reason required')
     return {'ticket_id':context.ticket_id,'reason':reason,'status':'draft_only','request_id':context.request_id}

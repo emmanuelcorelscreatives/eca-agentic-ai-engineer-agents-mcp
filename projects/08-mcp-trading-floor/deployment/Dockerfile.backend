@@ -1,0 +1,12 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements-api.txt /app/requirements-api.txt
+RUN pip install --no-cache-dir -r requirements-api.txt && useradd --uid 10001 --create-home academy && mkdir /data && chown academy:academy /data
+COPY api.py trading_floor.py services.py /app/
+COPY fixtures/ /app/fixtures/
+COPY evaluation_lab/ /app/evaluation_lab/
+USER 10001:10001
+ENV ACADEMY_PAPER_DB=/data/paper.sqlite
+EXPOSE 8000
+HEALTHCHECK --interval=10s --timeout=3s --retries=5 CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]

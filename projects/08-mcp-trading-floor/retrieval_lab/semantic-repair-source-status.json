@@ -1,0 +1,23 @@
+{
+  "schema": "academy-retrieval-semantic-authoring-v1",
+  "status": "AUTHORED_NOT_TESTED_PENDING_PARENT_CENTRAL_QA",
+  "newRuntimeCommandsByAuthor": 0,
+  "topics": ["s27-l02", "s27-l03", "s27-l07", "s27-l08", "s27-l09", "s27-l10", "s27-l11", "s27-l12", "s28-l09", "s28-l12", "s28-l13", "s28-l14", "s28-l16"],
+  "notWholeLessonReady": true,
+  "requiredRuntimeEvidence": [
+    "Centralized source tests and actual new progressive MCP stdio regression",
+    "Bounded genuine model-selected two-product existing fetch/browser research with final source quotations",
+    "Bounded genuine model-selected owner-bound MCP RAG answer with exact chunk citations",
+    "Actual configured real search provider observation, retained raw sanitized results and typed failures",
+    "Actual Qdrant HTTP service configuration, image digest, insert/search/delete/isolation and restart persistence",
+    "Optional pretrained encoder immutable upstream revision/dependency pin and real embedding execution if semantic quality is claimed",
+    "Fresh genuine source-current app/terminal/browser captures and independent per-lesson acceptance"
+  ],
+  "historicalEvidence": "verification.json and external existing-servers-v1 receipts retain their original byte/run scope. New authored code does not inherit those prior passes. Initial unadmitted-runtime incident remains preserved.",
+  "securityLimit": "Pinned Playwright0.0.54 permitted direct owned sentinel file navigation outside cwd. Native file containment is NOT established; host facades and private networking are limited defense-in-depth, not an OS filesystem sandbox. Do not expose generic session/tool dispatcher to a model.",
+  "centralQACommands": [
+    "python -m unittest discover -s tests -p test_project8_retrieval.py -v",
+    "python -m unittest discover -s tests -p test_project8_retrieval_semantics.py -v"
+  ],
+  "optIn": "ACADEMY_QDRANT_TEST_URL enables actual owned HTTP Qdrant service test; absent means explicit skip. Test doubles and embedded client evidence remain distinct from service/model evidence."
+}

@@ -1,5 +1,6 @@
-# Exact versions actually installed in the initial isolated test runtime.
-# Browser package installed; browser binary / existing MCP integration unverified.
+# Shared course runtime SDK. Separate old fetch-server venv is required below.
 qdrant-client==1.16.1
-mcp==1.22.0
+mcp==1.26.0
 playwright==1.56.0
+# Optional pretrained encoder dependency/revision must be independently pinned by QA;
+# not silently installed or represented as validated by this source manifest.

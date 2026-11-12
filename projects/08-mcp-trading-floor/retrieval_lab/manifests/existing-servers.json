@@ -1,0 +1,22 @@
+{
+  "schema": "academy-existing-research-servers-v1",
+  "authoringStatus": "SOURCE_ONLY new workflow; separately recorded named-server observations do not certify every lesson",
+  "fetch": {
+    "distribution": "mcp-server-fetch",
+    "version": "2025.4.7",
+    "pythonSdk": "1.26.0",
+    "httpx": "0.27.2",
+    "launch": ["<explicit isolated-fetch-python>", "-m", "mcp_server_fetch"],
+    "allowedNativeTools": ["fetch"],
+    "limitations": ["This pinned old version lacks a native private-address security boundary", "Host facade enforces exact enrolled URLs", "Use network-level egress restrictions for arbitrary untrusted content", "A client origin allowlist alone does not prevent DNS rebinding/redirect SSRF"]
+  },
+  "browser": {
+    "distribution": "@playwright/mcp",
+    "version": "0.0.54",
+    "launch": ["node", "<pinned package root>/cli.js", "--headless", "--isolated", "--executable-path", "<explicit approved Chromium>", "--block-service-workers"],
+    "allowedNativeTools": ["browser_navigate", "browser_snapshot", "browser_close"],
+    "requirements": ["Fresh isolated profile", "Owned Academy-only fixture", "PrivateNetwork=yes with local fixture in the same namespace", "No raw SDK session or generic call_tool exposed to model", "No browser_click, browser_evaluate, upload, submit or arbitrary navigation descriptors"],
+    "limitations": ["Actual0.0.54 direct file navigation read an owned outside-workspace sentinel in a negative test", "Native filesystem containment is NOT provided", "PrivateNetwork restricts network reachability, not host filesystem", "Use an additional OS filesystem sandbox before any untrusted generic-browser use", "Root-run Chromium required no-sandbox in the isolated test; no native Chromium sandbox claim"]
+  },
+  "secrets": "Trusted launcher passes only required nonsecret configuration; provider credentials stay outside prompts/model tool arguments and logs. Never use personal profiles."
+}

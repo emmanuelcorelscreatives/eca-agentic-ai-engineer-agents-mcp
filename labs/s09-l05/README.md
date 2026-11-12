@@ -1,11 +1,16 @@
 # s09-l05: Build the Web Search Agent
 
-Execute searches, collect relevant results and return normalized source records.
+Inspect an independently admitted real Brave query, actual raw response/hash, retrieval time, normalized URL and source/task attribution.
 
-## Exercise
+Current implementation, relative to `projects/03-deep-research/`:
 
-Normalize fixture results and simulate errors offline, then execute one authorized real-provider query against the approved research question. Retain the actual query, provider, timestamp, response and normalized source records; inspect the observed results before creating the walkthrough.
+- research_lab/brave_search.py
+- capstone_v2.py
 
-Read projects/03-deep-research/research_lab/search.py.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
 
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+Still required:
+
+- actual finite Brave response and redacted receipt
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

@@ -1,0 +1,10 @@
+services:
+  qdrant:
+    # Pinned version; parent QA must record the resolved image digest before capture.
+    image: qdrant/qdrant:v1.16.0
+    ports:
+      - "127.0.0.1:6333:6333"
+    volumes:
+      - academy_qdrant:/qdrant/storage
+volumes:
+  academy_qdrant:

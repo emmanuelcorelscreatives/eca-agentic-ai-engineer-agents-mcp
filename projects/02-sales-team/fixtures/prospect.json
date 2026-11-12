@@ -1,12 +1,5 @@
 {
-  "synthetic": true,
-  "notice": "Fictional company/person. Reserved .invalid email cannot be delivered.",
-  "prospect": {
-    "name": "Jordan Lee",
-    "company": "Cedar Library Cooperative",
-    "role": "Operations coordinator",
-    "verified_need": "weekly circulation summaries from three branch CSV files",
-    "source_id": "synthetic-brief-cedar-001",
-    "email": "jordan@cedar-library.invalid"
-  }
+ "synthetic":true,
+ "notice":"Fictional company/person. Reserved .invalid email; real SMTP targets an explicitly owned loopback sink only.",
+ "prospect":{"name":"Jordan Lee","company":"Cedar Library Cooperative","role":"Operations coordinator","verified_need":"weekly circulation summaries from three branch CSV files","source_id":"synthetic-brief-cedar-001","email":"jordan@cedar-library.invalid","prospect_id":"prospect-cedar-001","company_id":"company-cedar-001","campaign_id":"campaign-cedar-001"}
 }

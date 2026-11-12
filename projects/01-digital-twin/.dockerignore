@@ -1,4 +1,11 @@
 .venv
 __pycache__
+*.pyc
 *.sqlite
-.env
+*.sqlite-*
+*.db
+.env*
+!.env.example
+private_data
+*.pem
+*.key

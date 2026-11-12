@@ -11,7 +11,7 @@ import json
 import secrets
 import threading
 import time
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 from sidekick import Step
 from advanced import Finding, Plan, PlannedStep, canonical
@@ -58,7 +58,13 @@ class Sandbox:
                 try:
                     length = int(self.headers.get('Content-Length', '0'))
                     if not 1 <= length <= 8192: raise ValueError('size')
-                    data = json.loads(self.rfile.read(length))
+                    body = self.rfile.read(length)
+                    if self.headers.get('Content-Type', '').startswith('application/x-www-form-urlencoded'):
+                        fields = parse_qs(body.decode('utf-8'), keep_blank_values=True)
+                        if any(len(values) != 1 for values in fields.values()): raise ValueError('duplicate fields')
+                        data = {key: values[0] for key, values in fields.items()}
+                    else:
+                        data = json.loads(body)
                     if set(data) != {'workshop', 'note'}: raise ValueError('fields')
                     if any(not isinstance(v, str) or len(v) > 2000 for v in data.values()): raise ValueError('values')
                     key = self.headers.get('Idempotency-Key', '')

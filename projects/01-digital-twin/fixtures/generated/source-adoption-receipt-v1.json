@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_EXISTING_SYNTHETIC_DOCUMENT_BYTES_ADOPTED",
+  "at": "2026-11-12T18:50:32.797965+00:00",
+  "operation": "File copy plus byte/SHA verification only; no new PDF generation, extraction, tests, browser or provider execution.",
+  "generator": {
+    "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/repository/projects/01-digital-twin/make_pdf_fixture.py",
+    "sha256": "cbac6119a11009efaaf4a4b81d60a9c0bbf0f827b96d4db1ce7c4eff44f94a8c",
+    "sizeBytes": 5575
+  },
+  "font": {
+    "filename": "DejaVuSans.ttf",
+    "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280"
+  },
+  "fontCopied": false,
+  "documents": [
+    {
+      "kind": "resume",
+      "versionedTextSource": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/repository/projects/01-digital-twin/fixtures/resume-source.txt",
+        "sha256": "4c0a84e99373467e8fc4e35ca454041aaea680857d9dd5e9b21dc97f27c47131",
+        "sizeBytes": 778
+      },
+      "originalGeneratedPdf": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/generated/synthetic-resume.pdf",
+        "sha256": "50158dc52b680e54ea4c1db5909644268c022eabc955b5ee07cb86e4bbb27544",
+        "sizeBytes": 23518
+      },
+      "adoptedRepositoryPdf": {
+        "path": "projects/01-digital-twin/fixtures/generated/synthetic-resume.pdf",
+        "sha256": "50158dc52b680e54ea4c1db5909644268c022eabc955b5ee07cb86e4bbb27544",
+        "sizeBytes": 23518
+      },
+      "exactBytesEqual": true,
+      "extractionSections": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/resume-extract/sections.json",
+        "sha256": "185abaf4b9b49e59d5cd03af7ec6768a8ad2dc865e52450c8389d46275b0553b",
+        "sizeBytes": 1243
+      },
+      "humanSourceApproval": "NOT_CLAIMED; all extracted sections retain approved=false"
+    },
+    {
+      "kind": "portfolio",
+      "versionedTextSource": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/repository/projects/01-digital-twin/fixtures/portfolio-source.txt",
+        "sha256": "c43f8021727325e6a3c1d9cf57b73a8c247f8c979016ca9a8b6a3aa7c9f3fdea",
+        "sizeBytes": 1120
+      },
+      "originalGeneratedPdf": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/generated/synthetic-portfolio.pdf",
+        "sha256": "ad562d3c3264e97cd51fcde62cc0aca3e388696b5b1f0eff456f39e01b2fcd7f",
+        "sizeBytes": 23683
+      },
+      "adoptedRepositoryPdf": {
+        "path": "projects/01-digital-twin/fixtures/generated/synthetic-portfolio.pdf",
+        "sha256": "ad562d3c3264e97cd51fcde62cc0aca3e388696b5b1f0eff456f39e01b2fcd7f",
+        "sizeBytes": 23683
+      },
+      "exactBytesEqual": true,
+      "extractionSections": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/portfolio-extract/sections.json",
+        "sha256": "063d8bef08b4b475e0599aa7a51d6299609bd1f37cfbcb0c53709a11322aab49",
+        "sizeBytes": 1595
+      },
+      "humanSourceApproval": "NOT_CLAIMED; all extracted sections retain approved=false"
+    }
+  ],
+  "preservedGeneratedManifest": {
+    "path": "projects/01-digital-twin/fixtures/generated/document-provenance.json",
+    "sha256": "0b24fc72c3a8e8c8dde347d79044d0f60402119b4d2ddc9a281efbae6c1de2f0",
+    "status": "generated_not_independently_verified",
+    "modified": false
+  },
+  "pendingOriginalManifest": {
+    "current": {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/repository/projects/01-digital-twin/fixtures/document-provenance.json",
+      "sha256": "0715f96f7bedc1eb4c0d7404c5dfb5604c27c51b94313645721faded2a411746",
+      "sizeBytes": 1211
+    },
+    "frozenOriginal": {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-repair-stage05-frozen-author-packet-v1/snapshots/projects/01-digital-twin/fixtures/document-provenance.json",
+      "sha256": "0715f96f7bedc1eb4c0d7404c5dfb5604c27c51b94313645721faded2a411746",
+      "sizeBytes": 1211
+    },
+    "unchanged": true
+  },
+  "actualPriorGenerationExtractionRenderProofs": [
+    {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-qa-stage05-documents-v1/result.json",
+      "sha256": "60d6c2ffb1b25f186834775932ead93d9f7aa038c1819f71ac6163a2acabb0ca",
+      "sizeBytes": 4120
+    },
+    {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/validation-result.json",
+      "sha256": "877192789907321c5ffe405bb37a24072d72023caf8b9b964cc6f10f79e420ec",
+      "sizeBytes": 1433
+    },
+    {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/generated/document-provenance.json",
+      "sha256": "0b24fc72c3a8e8c8dde347d79044d0f60402119b4d2ddc9a281efbae6c1de2f0",
+      "sizeBytes": 1311
+    }
+  ],
+  "renderEvidence": [
+    {
+      "kind": "resume",
+      "renderedPage": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/resume-page.png",
+        "sha256": "93b333463b09f7217d0668eaa674dea523711cc408f4f328ded2ba003929220a"
+      }
+    },
+    {
+      "kind": "portfolio",
+      "renderedPage": {
+        "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/semantic-stage05-documents-v1/portfolio-page.png",
+        "sha256": "03043d0fd156e9e57afddf79cbabb523dd6712f9d440d46988a97c9d3eb15453"
+      }
+    }
+  ],
+  "independentReaderContext": {
+    "audit": {
+      "path": "/var/lib/trejj-studio/maintenance/agentic-ai-engineer-clean-rebuild-20261112/material-semantic-delta-review-v1/stage-05.json",
+      "sha256": "4ee30de4c655ea9951c2ba642301f6de31032bbf3ed4b2965ba489845294d9e9",
+      "sizeBytes": 54778
+    },
+    "scope": "Reader inspected both actual PDF pages. This adoption does not upgrade the original generated manifest or assert human factual/source approval."
+  },
+  "humanSourceApproval": false,
+  "productionApproval": false,
+  "renderRelease": false
+}

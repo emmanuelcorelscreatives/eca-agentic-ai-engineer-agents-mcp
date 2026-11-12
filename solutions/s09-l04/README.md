@@ -1,9 +1,15 @@
-# Reference solution: s09-l04
+# s09-l04: Generate Focused Search Queries
 
-A reference solution covers every research branch, deduplicates whitespace/case-equivalent queries and includes a counterevidence intent.
+Queries retain current task attribution and must not imply that sources were already found.
 
-Implementation: projects/03-deep-research/research_lab/planning.py.
+Current implementation, relative to `projects/03-deep-research/`:
 
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
+- research_lab/pipeline_v2.py:make_queries
 
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+
+Still required:
+
+- lesson-specific actual capture and independent review
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

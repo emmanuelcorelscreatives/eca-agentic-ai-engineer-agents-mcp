@@ -1,0 +1,3 @@
+# Visible action checklist
+
+The caller supplies one stable task/call ID. `Checklist` starts consent, validation, storage and notification at pending. Explicit refusal yields consent_required before the database is opened. A successful typed lead receipt permits consent/validation/storage to pass and notification to become queued. “Complete” describes local contact submission, never an external notification. Validation failures produce failed; unresolved storage outcomes produce unknown and require exact-receipt investigation before retry. Public events omit name/email/message and all private reasoning. Receipts may be shown only to their own visitor; the application never lists other visitors' stored requests.

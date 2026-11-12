@@ -1,387 +1,173 @@
-# Stage 25 — Project 7: Agent Application Factory
+# Stage 25: Agent Application Factory
 
-These exercises connect the actual baseline to the complete curriculum. Each section distinguishes the executed offline contract from additional framework/browser/model/Docker work. Passing an offline contract does not certify the complete lesson.
+A typed Academy catalog-research/draft-notification agent specification. Generated requirements, architecture, tools, instructions, tests and reviews must feed the same approved dependency graph and produce a real runnable selected-framework project.
+
+This workbook preserves every original PDF lesson objective. It is author-only semantic repair, not production approval. Deterministic contracts, genuine SDK construction, real browser/container execution and model-generated observations are distinct evidence classes. A passing helper or constructor does not establish a finished application.
+
+## Integrated-source handoff
+
+The new stable authoring handoff is projects/07-agent-factory/model_pipeline.py and model_schemas.py; MODEL-PIPELINE-AUTHORING.md records its exact boundaries. Pipeline.analyze→design→generate→inspect→repair feeds async run_factory, followed by launch_validated only after exact release. AutoGenBackend uses actual structured AssistantAgent proposals; a deterministic test backend is explicitly not a genuine model observation. No CLI frontend is supplied. Trusted external approval, Docker execution and receipt-authentication callbacks remain central integration boundaries. All new code is pending centralized runtime verification; no actual provider/container/launch success is claimed.
 
 ## s25-l01: Design the Agent Application Factory
 
 Define the factory workflow, generated artifacts, supported capabilities, validation and safety boundaries.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l01.md) and [reference answer](../solutions/s25/s25-l01.md).
 
-```sh
-python3 examples/s25_factory_labs.py schema
-```
+Draw the typed generation pipeline and each authority boundary from original specification to generated and validated application.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Define a supported-capability matrix with unsupported requests rejected before generation.
-- Write an artifact graph and trust-boundary diagram for model output, source code, tools and host execution.
-- Specify separate output directories and a release gate requiring all mandatory acceptance tests.
-
-Acceptance checks:
-
-- A missing approved specification prevents downstream generation.
-- A request for host shell or credential access outside the capability policy fails closed.
-- Every downstream artifact has input hashes and generator/version provenance.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Separate model proposals, validated typed handoffs, explicit artifact approval, sandbox execution and final launch. Fixed trusted templates are a useful baseline, not proof of a model-driven generation factory. Keep original requirements and independent acceptance criteria immutable across repair.
 
 ## s25-l02: Define the Typed Agent Specification
 
 Create a schema describing purpose, users, tools, data, outputs, policies and deployment requirements.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l02.md) and [reference answer](../solutions/s25/s25-l02.md).
 
-```sh
-python3 examples/s25_factory_labs.py schema
-```
+Inspect and validate purpose, users, tools, input/output schemas, data, policies, secrets and deployment requirements. Try malformed and forbidden variants.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Reject unknown fields, ambiguous tool definitions, invalid identifiers and undeclared secret references.
-- Create valid research-assistant and support-triage specs plus intentionally invalid cases.
-- Version the schema and serialize normalized specs deterministically.
-
-Acceptance checks:
-
-- Valid specs round-trip without losing required fields.
-- Missing policy, malformed output schema and duplicate tool names produce precise validation errors.
-- Traversal paths and literal credentials are rejected.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: The canonical spec must be strict, bounded and stable enough to hash. Environment variable names are configuration, never secret values. Unsupported tools/framework capabilities fail explicitly. Every downstream stage binds the same approved specification digest.
 
 ## s25-l03: Build the Requirements Analysis Agent
 
 Transform the specification into functional requirements, constraints and measurable acceptance criteria.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l03.md) and [reference answer](../solutions/s25/s25-l03.md).
 
-```sh
-python3 examples/s25_factory_labs.py schema
-```
+Ask the requirements model stage to turn the approved spec into functional requirements, constraints and measurable acceptance criteria, then validate its typed output.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Use typed requirement IDs and trace each acceptance criterion to a spec field.
-- Represent unresolved questions explicitly and require approval before architecture planning.
-- Keep the deterministic fixture harness separate from a real opt-in model-backed requirements agent.
-
-Acceptance checks:
-
-- Every mandatory spec capability has at least one requirement and executable acceptance criterion.
-- An unresolved deployment constraint blocks advancement.
-- Prompt-injected requests cannot expand tools or remove safety policy.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: The actual structured model result must feed downstream planning after validation/approval. A deterministic mapping can check expected invariants, but it is not the named requirements analysis agent. Reject invented supplied data, contradictory policies, missing spec requirements and unmeasurable acceptance prose.
 
 ## s25-l04: Build the Architecture Planning Agent
 
 Select components and produce an implementation plan based on the approved requirements.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l04.md) and [reference answer](../solutions/s25/s25-l04.md).
 
-```sh
-python3 examples/s25_factory_labs.py schema
-```
+Generate a typed architecture from the approved requirements, inspect selected components/framework and dependencies, then approve its exact current digest.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Define component and dependency manifests with entry points, storage and adapter boundaries.
-- Record rationale tied to requirements without inventing package APIs.
-- Validate supported framework versions and explicit human approval before scaffolding.
-
-Acceptance checks:
-
-- All requirements map to components and planned test IDs.
-- Unsupported framework or unavailable capability is rejected rather than silently substituted.
-- An unapproved requirements revision invalidates an older architecture plan.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: The architecture must reference actual accepted requirement IDs and preserve tool/schema/policy constraints. The planner cannot fabricate supported framework features or self-authorize code execution. Invalid or stale handoffs block scaffolding.
 
 ## s25-l05: Build the Agent Scaffolding Agent
 
 Generate the project directories, modules, configuration and application entry points.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l05.md) and [reference answer](../solutions/s25/s25-l05.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Generate proposed directories, modules, configuration and entrypoints for the approved architecture; review their exact contents before writing the isolated workspace.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Generate files into a new isolated workspace using relative allowlisted paths.
-- Use Python syntax/compile checks and explicit overwrite protection.
-- Retain a manifest of generated paths and content hashes.
-
-Acceptance checks:
-
-- A generated minimal package imports and exposes the promised entry point.
-- Absolute paths, symlink escapes and ../ traversal are refused.
-- A pre-existing edited file is not silently overwritten.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: A model-produced file proposal needs strict path/size/count validation and review. Writes stay inside an owned fresh workspace. Trusted scaffolding is explicitly a baseline; it must not be narrated as observed autonomous source generation. Do not execute newly generated code before its authorized sandbox step.
 
 ## s25-l06: Build the Tool Generation Agent
 
 Create typed tool definitions, validation logic and placeholder integrations from the specification.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l06.md) and [reference answer](../solutions/s25/s25-l06.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Generate typed tool definitions, argument/result validation and an explicit placeholder for an unavailable integration from the approved specification.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Create a read-only synthetic catalog lookup and a draft-only notification tool with typed schemas.
-- Keep credentials environment-only and distinguish placeholders from working integrations.
-- Implement timeouts, typed failures and policy checks before tool execution.
-
-Acceptance checks:
-
-- Valid lookup arguments return a fixture-backed result; invalid arguments never reach the tool.
-- Draft generation causes no email delivery or other external side effect.
-- A placeholder raises an explicit integration-not-configured result instead of fake success.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Declared schemas and limits survive generation exactly. A placeholder must say it is unavailable; it cannot fabricate external success. Review proposed tool code before sandbox execution. Arbitrary unsupported tools must be rejected rather than silently mapped to catalog_lookup or draft_notification.
 
 ## s25-l07: Build the Prompt and Instruction Generator
 
 Produce focused agent instructions that define role, behavior, boundaries and tool-use policy.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l07.md) and [reference answer](../solutions/s25/s25-l07.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Generate focused role, behavior, boundaries and tool-use instructions from the approved requirements and review their policy consistency.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Use structured role/goals/allowed-tools/refusal/escalation sections.
-- Quote untrusted source content as data, not authoritative instructions.
-- Version prompts and trace each policy clause to the spec.
-
-Acceptance checks:
-
-- A required no-delivery boundary remains present in generated instructions.
-- Injected spec commentary cannot grant undeclared tools.
-- Missing tool-use or escalation policy blocks release.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: A model prompt generator may propose prose but cannot change immutable application permissions, expand the allowed tools or remove human approval requirements. Preserve the source spec and acceptance IDs in the handoff; do not confuse a static instruction template with observed generated instructions.
 
 ## s25-l08: Build the Test Generation Agent
 
 Generate unit, integration and behavioral tests from the project’s acceptance criteria.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l08.md) and [reference answer](../solutions/s25/s25-l08.md).
 
-```sh
-python3 examples/s25_factory_labs.py failure
-```
+Generate unit, integration and behavioral tests linked to each approved acceptance criterion. Seed a requirement defect and verify tests detect it.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Generate tests independently of implementation details and preserve requirement-to-test traceability.
-- Include negative authorization, malformed input and timeout cases.
-- Separate deterministic adapter tests from bounded real model behavioral evaluations.
-
-Acceptance checks:
-
-- Deliberately broken output validation is caught by the generated test suite.
-- Each acceptance criterion has an explicit test or a documented unresolved evaluation requirement.
-- Fixtures never masquerade as observed model quality or live integration evidence.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: The independent acceptance suite is not writable by the generator or repair loop. Generated tests must be reviewed for criterion coverage and actually executed only in the authorized sandbox. Fixed tests for two templates alone do not establish a general test-generation stage.
 
 ## s25-l09: Build the Code Review Agent
 
 Inspect generated code for correctness, consistency, security and missing requirements.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l09.md) and [reference answer](../solutions/s25/s25-l09.md).
 
-```sh
-python3 examples/s25_factory_labs.py review
-```
+Review generated code against the original requirements with seeded correctness, consistency, security and missing-feature defects. Compare the specialist findings with deterministic diagnostics.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Emit structured findings with file/line, severity, evidence, requirement ID and proposed correction.
-- Combine actual static/test diagnostics with agent reasoning without treating clean lint as full security proof.
-- Require no unresolved blocking findings before sandbox validation.
-
-Acceptance checks:
-
-- Seeded path traversal and missing validation defects generate actionable findings.
-- Review identifies a missing required test.
-- A malformed or empty review response cannot certify the project safe.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Keep exact file references and concrete supported findings. Static clean output or a model approval is not a security certificate, runtime result or execution permission. The review stage must inspect the same proposed artifacts that would be written and tested.
 
 ## s25-l10: Add Framework Selection and Adapters
 
 Map project requirements to supported frameworks through a replaceable adapter architecture.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l10.md) and [reference answer](../solutions/s25/s25-l10.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Select a supported framework whose declared capabilities satisfy the approved spec; generate and inspect its real adapter rather than a silent standard-library substitute.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Implement a Python Agno adapter and a TypeScript Mastra adapter against pinned verified APIs from Stage 24; each produces a runnable native-language project with its own dependency lock and smoke command.
-- Normalize invocation, tool registration, configuration and lifecycle boundaries without hiding unsupported features.
-- Keep core generated-project contracts independent of framework imports.
-
-Acceptance checks:
-
-- A shared deterministic contract suite runs against each implemented adapter.
-- Unsupported streaming/tool capability is reported explicitly.
-- At least one genuine opt-in invocation per selected framework is recorded before a live walkthrough.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Framework selection is replaceable but explicit. Unsupported requirements fail before generation. Top-level dependency pins do not prove a transitive lock or actual runtime compatibility; retain the selected generated adapter build/runtime evidence.
 
 ## s25-l11: Generate Complete Agent Project Structures
 
 Assemble code, prompts, schemas, tools, tests and configuration into a runnable project.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l11.md) and [reference answer](../solutions/s25/s25-l11.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Assemble accepted generated code, prompts, schemas, tools, tests, data and configuration into one coherent runnable project. Trace artifact dependencies back to the approved specification.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Stage all generated artifacts, verify hashes and reject unresolved imports.
-- Emit a machine-readable bill of materials and requirement/test coverage report.
-- Build into a new directory without modifying source templates or host files.
-
-Acceptance checks:
-
-- A fresh generated project installs into an isolated environment and runs its offline sample.
-- A missing prompt, schema or tool module fails assembly.
-- Two equivalent specs produce a stable normalized manifest, excluding explicitly recorded volatile metadata.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: The integrated pipeline must consume actual validated generation-stage outputs. A collection of disconnected role transcripts or templates is not the complete factory. Reject stale requirements/architecture/artifact hashes and missing required files before validation.
 
 ## s25-l12: Create README and Environment Templates
 
 Generate setup instructions, usage examples, dependency information and .env.example files.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l12.md) and [reference answer](../solutions/s25/s25-l12.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Inspect actual generated setup instructions, usage commands, dependency information and environment template path. Follow the documentation in a fresh isolated environment.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Derive command examples from actual entry points and tested environment setup.
-- List required vs optional credentials, supported Python/framework versions and offline/live modes.
-- Use placeholders only and document capability limitations and synthetic dataset provenance.
-
-Acceptance checks:
-
-- All README offline commands execute in a fresh test workspace.
-- .env.example contains variable names and safe placeholders with no secrets.
-- An optional provider is never required for the documented offline smoke test.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Do not claim a .env.example file exists when generation emitted env.example, or vice versa. The current generated artifact inventory is authoritative. Templates contain names/placeholders only, never credentials. Update docs when artifacts change and retain the exact tested commands.
 
 ## s25-l13: Validate Generated Projects Inside Docker
 
 Build and execute generated applications within an isolated environment.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l13.md) and [reference answer](../solutions/s25/s25-l13.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Build and execute the approved generated project using the actual authorized Docker validator and retain container/build/test evidence.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Provide a pinned or digest-bound base image, non-root user and fixed dependency lock.
-- Run with no host socket/credentials, restricted mounts, default network disabled and CPU/memory/pid/time limits.
-- Retain build logs, exit codes and generated test reports; image build networking is separately scoped.
-
-Acceptance checks:
-
-- A genuine Docker build and container smoke test pass before this lesson is scripted as executed.
-- Container cannot write outside its designated scratch mount or access injected host-secret sentinels.
-- An intentional infinite loop is terminated by a bounded timeout/resource policy.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: A Docker command plan, permission check or mocked subprocess is not Docker execution. Use the validator declared isolation/resource/network policy, owned cleanup and a verified image/build context. Retain image identity, generated artifact digests, actual exit code and logs. Report unavailable daemon/image honestly; do not relabel the lesson complete.
 
 ## s25-l14: Build an Automated Repair Loop
 
 Use test and runtime failures to propose, validate and apply bounded corrections.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l14.md) and [reference answer](../solutions/s25/s25-l14.md).
 
-```sh
-python3 examples/s25_factory_labs.py failure
-```
+Use an actual sandbox test/runtime failure to request a bounded model correction, validate the changed proposal and rerun independent acceptance.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Classify syntax, failing test, missing dependency and runtime errors using real retained diagnostics.
-- Limit repair count, changed file scope and external call budget; require fresh tests and review after each candidate.
-- Retain rejected patches and restore the prior workspace on validation failure.
-
-Acceptance checks:
-
-- A seeded syntax defect is corrected, tests rerun and provenance appended.
-- A patch outside allowed files or one removing a required assertion is rejected.
-- Exhausted budget ends in an explicit unresolved failure, never forced approval.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Preserve every failed candidate and real test result. Limit model/repair attempts and exact writable files. The model cannot delete failing tests or weaken original requirements. AST-only repair validation is not equivalent to a successful full test/container result.
 
 ## s25-l15: Launch the Generated Agent
 
 Start the validated application and demonstrate interaction with the generated agent.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l15.md) and [reference answer](../solutions/s25/s25-l15.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Start the exact validated generated application in its intended isolated environment and interact with its actual agent.
 
-Complete these specific curriculum requirements before recording the full practical:
-
-- Start only the approved generated artifact hash and verify effective configuration.
-- Demonstrate the synthetic catalog lookup and draft-only response with genuine bounded model calls for agent behavior.
-- Retain request/response/tool trace with secrets redacted and stop the owned process cleanly.
-
-Acceptance checks:
-
-- The launched instance reports its release manifest identity and passes health checks.
-- An allowed request reaches the configured tool; an unauthorized delivery request produces no side effect.
-- A genuine interaction trace exists before narrating observed model behavior; offline stubs are explicitly labeled.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Acceptance: Launch only the artifact digest that passed the required validation. A deterministic tool dispatcher is not proof of model intelligence; label fixture interaction honestly and retain genuine model/framework behavior when claiming it. Stop and clean up the owned runtime after demonstration.
 
 ## s25-l16: Complete the Agent Application Factory
 
 Review the full workflow, generated artifacts, evaluations, limitations and final project architecture.
 
-Run the existing engineering contract:
+Read [the lesson practical](s25/s25-l16.md) and [reference answer](../solutions/s25/s25-l16.md).
 
-```sh
-python3 examples/s25_factory_labs.py generate
-```
+Demonstrate one full typed-spec→requirements→architecture→scaffold/tools/instructions/tests→review→sandbox→bounded repair if needed→validated launch run.
 
-Complete these specific curriculum requirements before recording the full practical:
+Acceptance: Record actual model-generated stage artifacts and validated handoffs, not only disconnected proposals. Preserve original spec/acceptance lineage, artifact hashes, runtime evidence and unresolved limits. Review capabilities and architecture from the finished application, not a speculative diagram.
 
-- Exercise the full artifact lineage and compare generated artifacts against each spec without changing objectives.
-- Publish architecture, exercises, reference solutions, failure cases and documented limitations.
-- Record actual end-to-end runs, test coverage and unresolved issues without claiming unsupported production readiness.
+## Model-call evidence and replay boundary
 
-Acceptance checks:
-
-- Both sample specs yield runnable projects passing mandatory deterministic and genuine sandbox checks.
-- A deliberately invalid spec is rejected before code generation; a seeded failure follows the bounded repair path.
-- A release inventory links every requirement, artifact, test, review and observed runtime trace.
-
-Retain actual command output and source hashes. Classify each result as offline, genuine browser/sandbox, installed framework, Docker or live model; do not mix those evidence classes.
+Each proposal reserves its once key and bounded call budget before submission, fsyncs raw responses before validation, and leaves failed/time-out/missing outcomes UNKNOWN. Recover the original receipt; do not automatically resubmit an unresolved request. Configure the actual model transport with retries disabled and retain real provider/model/version. Source identity is evidence of what was authored, not proof it ran.

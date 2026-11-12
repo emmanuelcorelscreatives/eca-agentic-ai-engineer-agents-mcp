@@ -1,53 +1,49 @@
-# Project 1: Professional Digital Twin
+# Project 1: Professional Digital Twin Agent
 
-Curriculum: Stage 5, lessons 1–13. This runnable **deterministic reference core** establishes grounding, typed tool boundaries and contact consent before adding a model/UI. Amara and Cedar Library are fictional; do not upload a real résumé to the public repository.
+Stage 5 implements a professional representative of **fictional Amara Okoye**. The résumé, portfolio and Cedar Library work are synthetic Academy teaching material, never a claim about a real person's employment. The project includes approved-source answers, an implemented grounded SDK adapter, typed contact/question tools, durable action receipts, a local notification outbox, conversation/tool context allocation, a real Gradio interface and deploy/privacy configuration.
 
-From repository root, with Python 3.10 or newer:
+## Current validation status
+
+The earlier baseline had actual dependency-construction/PDF extraction checks. This semantic-repair revision adds required features beyond that baseline. Its new source and tests are **authored and awaiting central guarded execution**. Do not reuse old passing totals to certify new code. No live model response, new generated portfolio PDF, browser interaction or deployment success is claimed here until its actual run is recorded.
+
+## Run the actual application
+
+Use a separate environment and install the project plus `requirements-optional.txt`. The executable entry points are `eca-twin` for approved-excerpt answers and `eca-twin-ui` for Gradio. From a checkout, the equivalent commands are:
 
 ```sh
-python3 projects/01-digital-twin/twin.py "What Python experience does Amara have?"
-python3 projects/01-digital-twin/twin.py "Salary and private contact details"
-python3 -m unittest discover -s tests -p 'test_projects_1_3.py' -v
+python3 projects/01-digital-twin/twin.py 'Python experience'
+python3 projects/01-digital-twin/app.py
 ```
 
-Expected first result cites `profile-01`; the second refuses to establish private information. Retrieval returns **verbatim approved excerpts**, not generated paraphrases. It is lexical retrieval, not semantic search or a complete LLM agent. Citation identifiers remain stable. `run_tools` exposes only named retrieval/contact operations. Unknown tools and consent failures yield explicit rejected results. Contacts are stored locally; no notification is sent. Use a file SQLite database only when persistence is intentional; protect it from public serving. `delete_contact` supports practice retention/deletion.
+The UI shows its exact mode. The default deterministic baseline returns approved excerpts, discloses the AI representation, cites sources and demonstrates contact flows with no model charge. For actual generated answers, deliberately configure `TWIN_LIVE_MODEL_ENABLED=true`, `ACADEMY_MODEL` and a private `OPENAI_API_KEY`; the same UI then invokes the real SDK adapter with bounded turns and explicit context allocation. This authorizes paid model use. The application never enables it merely because a key happens to exist. Model grounding, identity, tone and injection behaviour must be evaluated from genuine retained responses, not SDK object construction.
 
-## Build sequence and practical work
+## Sources and ingestion
 
-1. Describe the audience, source approval policy and success criteria in a project brief.
-2. Use a **synthetic** résumé PDF to practise local text extraction. Optional `pypdf` may extract text, but review extraction order and approve the resulting sections before indexing; this core deliberately consumes reviewed JSON.
-3. Draft system instructions: answer only from approved sections; express uncertainty; never infer availability, credentials or salary. Instructions complement tool restrictions, rather than replacing them.
-4. Extend `retrieve` with paragraph indexing while preserving document IDs. Compare test outcomes before and after changes.
-5. Call `run_tools` with one retrieval and one contact request. Observe that contact storage requires `consent=True`.
-6. Add a configurable notification adapter with a dry-run default. Keep notification failure separate from saved-contact success.
-7. Add visible status events such as `retrieving`, `ready`, `contact_saved`; do not display hidden reasoning.
-8. Optional live/UI layer: install `gradio` and an approved model SDK in a separate environment; inject a model adapter, display cited sources and require an explicit contact-consent control. No live SDK/model, PDF parser, Gradio UI or hosted deployment is claimed by this core.
-9. Deploy only after authentication/rate limits, privacy notice, secret management and contact retention have been designed for the chosen host.
+`make_pdf_fixture.py` can generate a matching résumé **and portfolio** from `fixtures/resume-source.txt` and `fixtures/portfolio-source.txt`, preserving Unicode and line structure with a real embedded TTF. It writes actual document/source/font/generator SHA values when executed. See [ingestion](docs/ingestion.md). New document generation and independent visual inspection are pending central QA. The older one-page synthetic resume fixture is retained as historical teaching evidence.
 
-## Exercises and solution notes
+`pdf_ingest.py` records document SHA, exact raw page text and page text hashes, cleaned multiline text, page association, extraction warnings and exports. Extraction never grants factual approval. Scanned/corrupt/encrypted cases return actionable errors. Reviewed extraction sections can be approved individually before loading them into `DigitalTwin`; the `provenance` field is accepted and retained. The supplied `fixtures/profile.json` is the small preapproved starter dataset and is duplicated byte-for-byte as package data for installed CLI use.
 
-- **Unsupported award:** ask whether Amara won a national prize. Solution: `insufficient_evidence`, no invented award or citation.
-- **Unapproved source:** add a matching section with `approved=false`. Solution: it never appears in retrieval or answers.
-- **Contact consent:** try storage before and after opt-in. Solution: first call raises `PermissionError`; second returns `stored_locally` with `notification=not_sent`.
-- **Multiple tools:** submit an unknown tool between valid calls. Solution: reject only the unknown operation, retaining explicit ordered per-call outcomes.
-- **Deletion:** store then delete a fictional contact. Solution: first delete returns true, repeat returns false.
+## Agent and authority boundaries
 
-See `tests/test_projects_1_3.py` for executable acceptance examples. Authentication of the person granting consent and rate limiting belong to the eventual UI/service, not this local CLI.
+- `prompts.py`: explicit AI representation identity, professional tone, grounded citations and untrusted document/history/tool boundaries.
+- `context.py`: whole evidence, recent conversation and tool receipts with an output reserve and allocation report. An injectable counter can measure actual tokenizer units. Default character counts are labelled characters, never tokens.
+- `twin.py`: deterministic approved-section retrieval and the legacy introductory API. Unsupported questions abstain; this is lexical retrieval, not semantic truth verification.
+- `tools.py`, `storage.py`: typed `Lead`, `Question`, `ToolCall`; explicit registry, eight-call turn bound, transactional call-ID fingerprint ledger, persistent resume/replay dedupe and retained source of each local action.
+- `notifications.py`: default local dry run and an explicitly configured notification adapter. SQLite outbox payloads are structured JSON record IDs. Lead creation and outbox insertion are atomic; notification execution is separately recorded. Unknown external outcomes never become automatically retryable.
+- `status.py`, `service.py`, `app.py`: stable action IDs, consent/validation/storage/notification checklist, no premature success, real contact/opportunity/question controls, private local state and per-session request limits.
 
-## Implemented optional local interface
+Repeated submission of the same call ID and payload returns the same receipt. A changed email/message with the old call ID is refused. A retired action ID cannot recreate personal information after retention cleanup. The UI's “Start another” controls deliberately create a new action identity; this is separate from replaying an old action.
 
-`app.py` builds an actual Gradio Blocks/ChatInterface around the approved-profile core. In a separate virtual environment install `requirements-optional.txt`, then run `python3 projects/01-digital-twin/app.py` from repository root. It binds loopback, disables public sharing and performs no model calls. The interface intentionally omits contact collection until service authentication/retention is configured. It was syntax-checked and build-tested with a component fake; an installed Gradio browser run remains required in the target environment. [Official ChatInterface documentation](https://gradio.app/docs/gradio/chatinterface).
+## Exercises and evidence
 
-## Additional implemented workflow components
+[Project charter](docs/project-charter.md) defines the users, approved sources, boundaries and ten classified scenarios. [Architecture](docs/architecture.md) explains import-safe module authority. `data/evaluation/professional-questions.jsonl` contains 24 versioned professional, privacy, identity, consent, replay, notification and context cases. `evaluate.py --output ACTUAL_REPORT.json` writes actual observations, failures and explicit model-quality limitations when executed.
 
-`workflow.py` implements the explicit system-instruction contract, whole-section character budgeting, visible phase events and consented contact/notification composition. Notification adapters receive a record identifier; no external adapter is enabled by default, and failed notification does not erase successful local contact storage.
+Tests are authored in repository `tests/test_stage05_semantic_repairs_application.py`, `tests/test_stage05_semantic_repairs_tools.py` and `tests/test_stage05_semantic_repairs_ingest.py`. The parent QA service owns execution under the shared resource governor. Live model cases and browser captures must be separately admitted; a static prompt assertion or fake runner is never reported as observed model behaviour.
 
-`make_pdf_fixture.py` creates a real synthetic PDF. After installing optional `pypdf`, run `python3 pdf_ingest.py fixtures/synthetic-resume.pdf` from this directory. Extracted text is **unapproved** until reviewed. Encrypted or image-only PDFs fail explicitly rather than inventing text. `evaluate.py` runs the transparent offline grounding scenarios.
+## Deploy and retain data
 
-`agents_adapter.py` is an implemented optional real SDK grounded-answer adapter. It passes only approved retrieved sections to a typed answer agent, rejects invented source identifiers and requires attribution for supported answers. Use `python3 agents_adapter.py 'Python experience' --live` with the same explicit environment configuration described in the other project adapters. It makes paid model requests; it has not been run against a provider. Citation validation is not an automatic claim-level truth guarantee.
+Read [deployment](docs/deploy.md) before any external exposure. The Dockerfile runs nonroot, private state belongs on an owned `/data` volume and default public sharing is disabled. Public binding requires configured authentication; HTTPS and network-wide rate controls belong at the approved proxy. A readiness probe is not an authenticated visitor test. `maintenance.py purge` applies configured retention; `outbox` and `dry-run-one` are private operator actions. Never put credentials, real résumés, contact databases or private receipts in a public repository or screenshot.
 
-The Dockerfile runs as a nonroot user. For a local-only deployment exercise: `docker build -t academy-twin .` followed by `docker run --rm -p 127.0.0.1:7860:7860 academy-twin`. Actual image build/run and authenticated hosted deployment remain to be validated on the chosen target. Never embed credentials, local contact databases or personal profile documents in the image.
+### Subsequent central QA evidence
 
-## Actual local runtime validation (2026-11-12)
-
-A finite resource-governed validation environment installed OpenAI Agents SDK 0.24.0, Pydantic 2.14.3, Gradio 6.31.0 and pypdf 6.21.4. Actual SDK agent configurations and both twin/sales Gradio interfaces built successfully; pypdf extracted the synthetic resume. This proves imports/configuration and text extraction, not live model behavior or browser interaction. No model requests or UI servers were started. Reproduce in an isolated environment; retain version resolution and rerun the tests before deployment.
+The central guarded QA owner subsequently executed all **48 semantic repair tests, with zero skips**, and actually generated both Unicode résumé/portfolio PDFs, extracted each document and compared raw Unicode lines with the authored sources. Both pages were rendered and inspected. These observations establish the scoped local behaviour and document production; source sections remain unapproved until explicit human factual approval. They do not establish actual model behaviour, browser interaction or deployed visitor readiness.

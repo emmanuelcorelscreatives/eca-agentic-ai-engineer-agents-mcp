@@ -40,9 +40,9 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 ## Stage 2
 
 ### s02-l01: Environment Setup with Python, uv, Git and GitHub
-- **Practical:** Create a Python 3.11+ environment with uv, initialize a private practice Git repository and push a harmless README to your own GitHub repository.
-- **Deliverable:** Output of `python --version`, `uv --version`, `git --version`, environment interpreter path and remote commit URL.
-- **Accept when:** A fresh clone recreates the environment; no credentials or generated private files are committed.
+- **Practical:** Follow `labs/s02/s02-l01.md` in a disposable exercise clone: use stdlib-first uv sync, generate a real lockfile, pin the observed Python version, and push the inspected exercise to your own authorized GitHub repository. Add an SDK extra only for that integration track.
+- **Deliverable:** Actual tool/interpreter versions, generated lock and Python pin, inspected staged-file list, remote commit URL and a fresh-clone frozen-sync receipt.
+- **Accept when:** A fresh clone recreates the demonstrated environment from its actual lock; no credentials or private files are committed. Existing Academy CI is not evidence of your clone, uv setup or GitHub push.
 
 ### s02-l02: Windows Development Environment Setup
 - **Practical:** On Windows, install Python, uv and Git; create a venv and run `python -m unittest discover -s tests -v` in PowerShell.
@@ -60,80 +60,80 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** The debugger and integrated terminal resolve the same interpreter; no secrets are visible.
 
 ### s02-l05: API Keys, Environment Variables and .env Files
-- **Practical:** Copy `.env.example` locally, load a dummy credential and inspect ignored/tracked files before using a real key.
+- **Practical:** Use `data/s02/.env.example` with explicit `stage02_configuration.load_configuration` in `examples/stages02-04/stage02_configuration.py`. Demonstrate dummy-file loading, environment precedence, conflicting aliases and missing credentials; separately inspect actual Git tracked/staged files before using a real key.
 - **Deliverable:** A redacted environment-loading demonstration and secret-exclusion check.
-- **Accept when:** A missing key fails clearly; no actual key is printed, committed or embedded in screenshots.
+- **Accept when:** Missing or conflicting configuration fails without echoing secrets; no real key is printed, committed or captured. Ignore-file declarations alone do not prove the Git index is clean.
 
 ### s02-l06: Managing Model Costs, Usage Limits and Development Budgets
-- **Practical:** Set a small development budget and calculate estimated cost from a recorded request's actual token usage.
-- **Deliverable:** A provider-limit screenshot and a cost worksheet with model, units, date and stop threshold.
-- **Accept when:** Distinguish estimates from billed charges; show how the application stops additional calls when its budget is reached.
+- **Practical:** Use `Observation` and `UsageLedger` in `examples/stages02-04/stage02_configuration.py` to reserve a bounded request budget, account for reported tokens and stop on missing usage, unresolved pending requests or overrun. Separately inspect real provider controls and current pricing for any live demonstration.
+- **Deliverable:** An attributed usage/cost worksheet with model, units, price date, observed usage status and stop reason, plus an actual provider-limit screenshot when a dashboard control is claimed.
+- **Accept when:** Missing usage remains unknown rather than zero; pending/unknown requests retain their admission and block further calls. Illustrative estimated cost is distinct from billed charges, and the local ledger is not a provider billing cap.
 
 ### s02-l07: Make Your First Model API Call in Python
-- **Practical:** Send one real prompt through a configured provider SDK and save a redacted request/response record.
+- **Practical:** Send one real prompt through a configured Python SDK or `ObservedCompatibleModel` documented HTTP adapter in `examples/stages02-04/stage02_configuration.py`; save the redacted actual response observation.
 - **Deliverable:** A minimal Python client, model identifier, request ID when available and actual response.
-- **Accept when:** Credentials come from the environment; an offline canned answer is not accepted as a model call.
+- **Accept when:** Credentials come from explicit configuration; an injected HTTP transport is not a provider observation, and an HTTP adapter run is not mislabeled an SDK run.
 
 ### s02-l08: Chain Multiple Model Calls into a Workflow
-- **Practical:** Chain a real extraction call into a second summarization call, validating the first result before forwarding it.
+- **Practical:** Use `requirements_chain` and `validate_requirements` in `examples/stages02-04/stage02_configuration.py` to pass actual extracted requirements into a checklist/summary transformation. Validate IDs, text, bounds and uniqueness before admitting the second call.
 - **Deliverable:** Two linked request records and an intermediate schema validation result.
-- **Accept when:** The second request uses the actual first output; malformed intermediate data prevents the second call.
+- **Accept when:** The second request uses the validated actual first output; malformed prerequisites block it and preserve diagnostics. Schema validity alone does not certify factual accuracy.
 
 ### s02-l09: Handle API Errors, Rate Limits and Invalid Responses
-- **Practical:** Exercise timeout, 429 and malformed-response paths with injected failures, then run one live happy path.
+- **Practical:** Use `ModelBoundaryError`, `qualified_retry` and the observed HTTP boundary to exercise injected 429/Retry-After, authentication, timeout/unknown and malformed-response cases. Reuse the exact s02-l07 actual happy-path observation when its input/configuration match.
 - **Deliverable:** Tests for capped backoff, retry exhaustion and schema rejection plus a live response receipt.
-- **Accept when:** Retries are bounded and respect retry hints; unknown external actions are not blindly repeated.
+- **Accept when:** Only qualified transient failures retry within elapsed/attempt budgets; authentication/input failures stop. Unknown outcomes retain their state and are not blindly replayed; injected failures require no paid failure generation.
 
 
 ## Stage 3
 
 ### s03-l01: What Is an AI Agent?
-- **Practical:** Describe a digital-twin agent in terms of objective, observation, state, tool, feedback and termination.
+- **Practical:** Describe a digital-twin agent in terms of objective, observation, state, tool, feedback and termination. Inspect `observed_agent_loop` in `examples/stages02-04/stage03_patterns.py` for component-tagged events and terminal records.
 - **Deliverable:** A state-transition diagram for one grounded answer and one unsupported question.
 - **Accept when:** Each transition names the application component responsible; a chatbot without tools is not mislabeled autonomous.
 
 ### s03-l02: AI Agents vs Deterministic Workflows
-- **Practical:** Implement the same fictional contact task as a fixed workflow and a bounded agent loop.
+- **Practical:** Implement the same fictional contact task as a fixed workflow and a bounded agent loop. Use that module's `contact_workflow`, `contact_agent` and application-owned `RequestState`, with separate in-memory stores.
 - **Deliverable:** Two execution traces and a short architecture decision record.
 - **Accept when:** The comparison identifies predictability, ambiguity, cost and the conditions favoring each approach.
 
 ### s03-l03: Understanding the Agent Loop
-- **Practical:** Instrument observe, tool request, validated action, tool result and stop events in the shared bounded loop.
+- **Practical:** Instrument observe, tool request, validated action, tool result and stop events in the shared bounded loop. Use `observed_agent_loop` and `application_tool` in `examples/stages02-04/stage03_patterns.py`.
 - **Deliverable:** An event log including a successful request and a maximum-turn stop.
 - **Accept when:** Actions only execute after validation; tool errors return as feedback without an infinite loop.
 
 ### s03-l04: Prompt Chaining and Sequential Workflows
-- **Practical:** Create a three-step extraction, validation and formatting workflow with explicit intermediate records.
+- **Practical:** Create a three-step extraction, validation and formatting workflow with explicit intermediate records. Use `extract_validate_format`, `Profile` and `validate_profile` in `examples/stages02-04/stage03_patterns.py`.
 - **Deliverable:** Code and examples showing valid and invalid intermediate outputs.
 - **Accept when:** A failed prerequisite blocks dependent steps and preserves the diagnostic record.
 
 ### s03-l05: Routing and Conditional Execution
-- **Practical:** Route fictional requests into professional-information retrieval, contact capture or unsupported-request handling.
+- **Practical:** Route fictional requests into professional-information retrieval, contact capture or unsupported-request handling. Use `route_request` and `RequestState` in `examples/stages02-04/stage03_patterns.py`; the taxonomy is explicit structured input, not a demonstrated natural-language classifier.
 - **Deliverable:** A routing table and tests with ambiguous and out-of-scope examples.
 - **Accept when:** Unsupported inputs cannot trigger contact storage; each decision has an explicit category.
 
 ### s03-l06: Parallelization and Concurrent Model Calls
-- **Practical:** Run three independent model requests sequentially and concurrently with a fixed concurrency cap.
-- **Deliverable:** Actual elapsed timings, per-request IDs and a deterministic result association.
-- **Accept when:** Compare the same tasks; one failed branch remains attributable and does not reorder results incorrectly.
+- **Practical:** Use `ModelTask` and `measured_requests` in `examples/stages02-04/stage03_patterns.py` to compare identical independent requests sequentially and concurrently under a fixed cap. First inspect labeled fixture transports; actual model-call timing requires a separately authorized real transport.
+- **Deliverable:** Observed elapsed timing, stable request IDs, input hashes and per-branch success/failure attribution, labeled fixture transport or actual provider observation.
+- **Accept when:** Compare the same tasks and preserve result identity on failure or reordered completion. Fixture/barrier timing establishes scheduling behavior, never provider speed; a claimed model-performance comparison requires actual model observations.
 
 ### s03-l07: Orchestrator-Worker Systems
-- **Practical:** Divide a professional profile review into factual grounding, tone and privacy workers under one coordinator.
+- **Practical:** Divide a professional profile review into factual grounding, tone and privacy workers under one coordinator. Use `profile_review_plan`, `ReviewTask`, `WorkerResult` and `review_profile` in `examples/stages02-04/stage03_patterns.py`; deterministic grounding/tone/privacy heuristics have limited stated scope.
 - **Deliverable:** A typed work plan and a combined report with worker provenance.
 - **Accept when:** Only independent work runs concurrently; missing workers are reported rather than fabricated.
 
 ### s03-l08: Evaluator-Optimizer Loops
-- **Practical:** Create a reviewer that requests at most two revisions to a draft using an explicit rubric.
+- **Practical:** Create a reviewer that requests at most two revisions to a draft using an explicit rubric. Inspect the bounded `optimize` implementation in `examples/stages02-04/foundations.py` and its fixture demonstration in `stage03_patterns.py`.
 - **Deliverable:** Versioned drafts, reviewer feedback and a recorded termination reason.
 - **Accept when:** The revision limit is enforced; a score increase is not claimed without the actual evaluations.
 
 ### s03-l09: Agentic AI Risks, Failure Modes and Common Traps
-- **Practical:** Threat-model malicious document instructions, invented credentials, unbounded loops and unauthorized contact capture.
+- **Practical:** Threat-model malicious document instructions, invented credentials, unbounded loops and unauthorized contact capture. Use `RISK_REGISTER` and the application-tool negative cases in `examples/stages02-04/stage03_patterns.py`.
 - **Deliverable:** A risk register with attack inputs, affected boundary and mitigation tests.
 - **Accept when:** Retrieved text remains data; tests show the application enforces tool and budget boundaries.
 
 ### s03-l10: Guardrails, Evaluations and Human Oversight
-- **Practical:** Create a small evaluation set with grounded, unsupported, malicious and contact-consent cases.
+- **Practical:** Create a small evaluation set with grounded, unsupported, malicious and contact-consent cases. Use `EVALUATION_CASES`, `evaluate_controls` and `HUMAN_ESCALATION_CHECKLIST` in `examples/stages02-04/stage03_patterns.py`; subjective relevance/tone remains separately reviewed.
 - **Deliverable:** A rubric, actual run results and a human escalation checklist.
 - **Accept when:** Separate deterministic validation from subjective review; no model output can grant human approval.
 
@@ -146,9 +146,9 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Identify hardware and model versions; unmeasured dimensions are marked unmeasured.
 
 ### s04-l02: Configure Multiple Model Providers
-- **Practical:** Implement environment-based provider selection with provider-specific credentials and model names.
-- **Deliverable:** Two configurations and one real response from each configured provider.
-- **Accept when:** Changing provider does not change business logic; unsupported options fail visibly.
+- **Practical:** Use `load_provider_settings`, `provider_factory` and `SelectedProvider` in `examples/stages02-04/stage04_selection.py` to select declared hosted-compatible or native Ollama configurations without changing workflow logic. Supply the selected hosted credential through its configured environment name; request execution is a separate explicit opt-in.
+- **Deliverable:** Two validated provider configurations, rejection observations for unsupported options, and separately retained actual responses from both providers when a live demonstration is claimed.
+- **Accept when:** Construction sends no request; missing selected credentials or unsupported provider/options fail visibly. Native Ollama supports this text route only and rejects unimplemented tool normalization; injected HTTP fixtures do not certify real provider or Ollama observations.
 
 ### s04-l03: Work with OpenAI-Compatible APIs
 - **Practical:** Call an OpenAI-compatible endpoint using explicit base URL, model and environment credential settings.
@@ -161,9 +161,9 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** The Python response comes from the local service; a missing service produces a clear error.
 
 ### s04-l05: Select Models by Capability, Cost, Speed and Reliability
-- **Practical:** Select a model for grounded professional Q&A using an explicit weighted rubric.
-- **Deliverable:** A three-task comparison and a justified selection decision.
-- **Accept when:** Weights precede scoring; record factual errors and missing measurements without inventing a winner.
+- **Practical:** Use `TaskRubric`, `Measurement` and `weighted_model_worksheet` in `examples/stages02-04/stage04_selection.py` to predeclare three grounded-Q&A tasks, metric/task weights, quality floors, latency/cost ceilings and required capabilities before measuring candidate models.
+- **Deliverable:** A dated three-task worksheet retaining quality labels, latency, cost units, successes/attempts, capability observations and a justified task-specific selection or explicit incomplete/tied result.
+- **Accept when:** Weights and thresholds precede observations; missing metrics remain missing without an imputed score or winner. Synthetic measurements stay labeled, ties/all-ineligible outcomes remain explicit, and a real recommendation needs actual comparable model observations and current dated pricing.
 
 ### s04-l06: Use a Model as an Evaluator
 - **Practical:** Ask a model evaluator to score two candidate answers against grounding and uncertainty criteria.
@@ -181,14 +181,14 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** The model requests the tool; application code executes it and returns the correctly linked result.
 
 ### s04-l09: Tool Schemas, Arguments, Results and Validation
-- **Practical:** Define a typed contact tool and test missing fields, invalid types, unknown arguments and invalid return values.
-- **Deliverable:** Tool schema and positive/negative validation tests.
-- **Accept when:** Reject invalid inputs before any write and return a predictable structured error.
+- **Practical:** Use `CONTACT_TOOL`, `CONTACT_RESULT_SCHEMA`, `ContactResult`, `dispatch_contact` and `validate_contact_result` in `examples/stages02-04/stage04_selection.py`. Exercise matching application-owned consent, malformed inputs and malformed/mismatched backend returns against the synthetic in-memory contact backend.
+- **Deliverable:** Typed input/result contracts and positive/negative observations identifying NOT_INVOKED versus UNKNOWN_DO_NOT_RETRY, with final in-memory state inspected.
+- **Accept when:** Invalid input or missing consent prevents backend invocation. Result identity, email, types and storage/synthetic fields validate after execution; an invalid backend result may follow an effect and is held unknown, never described as rolled back or automatically retried. No external CRM/email action is implied.
 
 ### s04-l10: Build a Tool-Calling Agent Loop with Python
-- **Practical:** Implement a bounded Python loop with a tool allowlist and multiple-call handling.
-- **Deliverable:** A real tool-using run plus unknown-tool and turn-limit tests.
-- **Accept when:** Each tool result references its request; unsupported tools do not execute and limits terminate the loop.
+- **Practical:** Use `contact_tool_loop` in `examples/stages02-04/stage04_selection.py` with the result-validating contact dispatcher and application-owned matching consent. Demonstrate two tool calls in one assistant turn, both correlated results in the next model input, final response, duplicate-ID rejection and bounded stopping.
+- **Deliverable:** An explicitly labeled model-double trace for the two-call round trip and failure boundaries; separately retain a genuine supported-provider request/tool-result/final-response observation when claimed.
+- **Accept when:** Each result preserves its tool_call_id and all input/consent/result checks; an unknown backend effect stops before another model request. The bound is at most three tools per model turn with max_calls 1–5, hence no more than 15 backend admissions. Double outputs and final prose are not proof of provider inference or stored contacts; native Ollama tool normalization remains unsupported.
 
 
 ## Stage 5
@@ -262,7 +262,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 ## Stage 6
 
 ### s06-l01: Introduction to the OpenAI Agents SDK
-- **Practical:** Create an isolated OpenAI Agents SDK environment using `frameworks/requirements/openai-agents.txt` and inspect `frameworks/openai_agents.py`.
+- **Practical:** Use the isolated SDK environment described in `examples/stages06-07/README.md` and its pinned `requirements.txt`; inspect the catalogue agent in `examples/stages06-07/sdk_adapter.py`. The separate arithmetic framework companion is a comparison, not the catalogue walkthrough.
 - **Deliverable:** Installed SDK version, a component map and the adapter's actual bounded run.
 - **Accept when:** A live SDK response is required for SDK execution claims; deterministic core tests remain separate.
 
@@ -272,95 +272,95 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** The dependent step waits for prerequisites; no blocking sleep is used inside the event loop.
 
 ### s06-l03: Agents, Runners, Results and Execution Traces
-- **Practical:** Trace Agent configuration through Runner execution into the result and visible execution events.
+- **Practical:** Trace Agent configuration through Runner execution into the result and visible execution events. Inspect `ObservationHooks` in `examples/stages06-07/sdk_observation.py` alongside `Runner` and actual result fields in `sdk_adapter.py`.
 - **Deliverable:** A redacted object/event inspection from an actual SDK run.
 - **Accept when:** Identify model output, tool events and the final result distinctly; do not print credentials or hidden reasoning.
 
 ### s06-l04: Build Your First SDK Agent
-- **Practical:** Define a minimal SDK Agent and run it with a configured model and explicit turn cap.
+- **Practical:** Define a minimal SDK Agent and run it with a configured model and explicit turn cap. Use the catalogue mode of `examples/stages06-07/sdk_adapter.py` with `data/s06-catalogue.json` and an explicitly selected available model.
 - **Deliverable:** Runnable code and an actual final-output record.
 - **Accept when:** The response comes from Runner, with the exact SDK/model version recorded.
 
 ### s06-l05: Stream Agent Responses
-- **Practical:** Use the SDK's current streaming API to display response increments and lifecycle events.
+- **Practical:** Use catalogue streaming in `examples/stages06-07/sdk_adapter.py` and `stream_receipt.consume_sdk_stream` to display actual deltas and lifecycle events; inspect partial-error and same-iterator cancellation behavior with labeled fixtures before a separately authorized real streaming observation.
 - **Deliverable:** A streaming client and captured ordered event log.
-- **Accept when:** Cancellation stops further work; final assembled output matches the streamed content.
+- **Accept when:** Partial text is separate from a completed answer; cancellation requests immediate stop and drains the same iterator, retaining cleanup uncertainty. A failed stream never automatically sends a second model request.
 
 ### s06-l06: Add Tools with the Function Tool Decorator
-- **Practical:** Expose a typed arithmetic function through the SDK function-tool decorator.
+- **Practical:** Expose `catalogue_lookup(course_id)` through the function-tool decorator in `examples/stages06-07/sdk_adapter.py`, reading `data/s06-catalogue.json`; inspect its schema and validated tool result.
 - **Deliverable:** A real SDK request, validated function arguments and observed tool result.
-- **Accept when:** The result is computed by the function; invalid arguments cannot execute silently.
+- **Accept when:** The function returns only the requested fixture facts or the explicit unknown variant; argument and result validation remain distinct. Arithmetic examples are separate companion exercises.
 
 ### s06-l07: Validate Tool Inputs and Outputs
-- **Practical:** Validate an amount and currency before tool execution, and validate the returned record.
-- **Deliverable:** Schema tests for valid, missing, extra and malformed values plus one live tool use.
-- **Accept when:** Bad input fails before a side effect; invalid output cannot be passed downstream as success.
+- **Practical:** Use `CatalogueRecord`, `CatalogueToolResult` and `validated_catalogue_result` in `examples/stages06-07/sdk_adapter.py`. Compare known ECA-101 and unknown ECA-999, then mutate input/return shape, Boolean type, prerequisites, title and cross-request ID.
+- **Deliverable:** Validation observations for missing/extra/malformed fields, known/unknown variants and plausible but invented or mismatched catalogue facts; separately retain an actual live tool-use receipt when claimed.
+- **Accept when:** Invalid tool arguments reject and invalid returned facts fail before reaching the model. `found=False, course=None` is the unknown result; final `CourseAnswer` validation does not replace this tool-return boundary.
 
 ### s06-l08: Add Conversation Memory with Sessions
-- **Practical:** Add an SDK session to a two-turn fictional conversation.
+- **Practical:** Use `run_dialogue_turn` and the seed/followup/control dialogue steps in `examples/stages06-07/sdk_adapter.py` with a new course-owned SQLite database; each invocation admits one separately budgeted actual SDK call.
 - **Deliverable:** Two real turn records sharing one session and an unrelated session for comparison.
-- **Accept when:** The second turn recalls only the intended session; session isolation is demonstrated.
+- **Accept when:** Record what the model actually recalls and whether the unrelated session admits missing information; do not assume success or manually inject an answer. The synthetic history-contract probe establishes SDK wiring, not model recall.
 
 ### s06-l09: Persist Agent Sessions with SQLite
-- **Practical:** Persist the SDK session in SQLite, restart the process and continue the same conversation.
+- **Practical:** Continue the same `SQLiteSession` in a second process using the dialogue entrypoint and compare its persisted input with an unrelated control session. Inspect `session_contract_probe.py` as a separately labeled provider-free real-SDK contract exercise.
 - **Deliverable:** Database path, restart transcript and separate-session isolation check.
-- **Accept when:** History survives restart without exposing it to a new session; the database is excluded from commits.
+- **Accept when:** History persists and stays session-specific; real process/SDK persistence evidence is distinct from learned recall. Private SQLite files stay out of commits, and application/SDK schemas never share an existing learner database.
 
 ### s06-l10: Inspect and Debug Agent Traces
-- **Practical:** Explicitly enable tracing for a sanitized SDK run; the baseline adapter disables tracing by default.
+- **Practical:** Use `--trace-file` in `examples/stages06-07/sdk_adapter.py` to retain actual local SDK spans and `ObservationHooks` timing/available usage. Hosted tracing remains a separate explicit telemetry opt-in.
 - **Deliverable:** Actual trace identifier or supported trace export with model/tool/error timing.
-- **Accept when:** Confirm trace configuration and redaction; a fabricated dashboard or local print log is not a hosted trace.
+- **Accept when:** Actual span IDs, hierarchy and outcomes remain distinct from printed application events; missing usage stays null, not zero. A local SDK export or requested hosted upload is not evidence of hosted acceptance.
 
 
 ## Stage 7
 
 ### s07-l01: Single-Agent vs Multi-Agent Architecture
-- **Practical:** Compare one generalist with specialist agents for a multi-part fictional company task.
+- **Practical:** Compare a generalist with specialist inventory/policy/shipping agents for the synthetic support cases in `data/s07-support-cases.json`, using `examples/stages06-07/workflows.py` and `sdk_adapter.py` as separate application/SDK layers.
 - **Deliverable:** An architecture decision backed by actual outputs, call count and observed latency.
 - **Accept when:** Extra agents need a measured benefit; limitations and disagreement are recorded.
 
 ### s07-l02: Orchestration by Code vs Orchestration by the Model
-- **Practical:** Implement code-directed and model-directed coordination for the same research/draft/review task.
+- **Practical:** Compare code-directed support coordination in `examples/stages06-07/workflows.py` with the actual SDK manager mode in `sdk_adapter.py` for the same synthetic facts and request context.
 - **Deliverable:** Two execution graphs and actual delegation traces.
 - **Accept when:** Distinguish fixed sequencing from the model's observed choice of specialists.
 
 ### s07-l03: Run Agents Concurrently with asyncio.gather
-- **Practical:** Run independent SDK specialists with `asyncio.gather` and a concurrency cap.
+- **Practical:** Run independent SDK specialists with `asyncio.gather` and a concurrency cap. Use `run_parallel_live`/parallel mode in `examples/stages06-07/sdk_adapter.py`; each role retains healthy, failed or unknown results without retrying uncertain requests.
 - **Deliverable:** Per-agent results, timing and an injected failure demonstration.
 - **Accept when:** Result identity survives completion-order changes; exceptions have explicit handling.
 
 ### s07-l04: Use Agents as Tools
-- **Practical:** Expose a specialist using the SDK's agent-as-tool mechanism.
+- **Practical:** Expose a specialist using the SDK's agent-as-tool mechanism. Inspect inventory/policy `Agent.as_tool` calls with `SpecialistInput` in `examples/stages06-07/sdk_adapter.py`.
 - **Deliverable:** A manager run showing the specialist tool invocation and returned result.
 - **Accept when:** The manager retains control; distinguish this from transferring control through a handoff.
 
 ### s07-l05: Build a Manager-Agent Architecture
-- **Practical:** Build a manager that delegates research and writing and assembles a cited answer.
+- **Practical:** Use the SDK support manager in `examples/stages06-07/sdk_adapter.py` to call inventory and policy specialists and synthesize only their attributed results, retaining missing facts as unresolved.
 - **Deliverable:** Manager instructions, specialist contracts and actual execution trace.
 - **Accept when:** The final answer uses actual specialist results and reports missing evidence.
 
 ### s07-l06: Delegate Work Through Handoffs
-- **Practical:** Implement a handoff between an intake agent and a specialist with a clear transfer condition.
+- **Practical:** Implement a handoff between an intake agent and a specialist with a clear transfer condition. Use triage mode and its shipping handoff in `examples/stages06-07/sdk_adapter.py`.
 - **Deliverable:** A real SDK trace showing which agent owns each stage.
 - **Accept when:** Only the intended recipient receives the handoff; responsibility for final response is explicit.
 
 ### s07-l07: Pass Context Between Agents
-- **Practical:** Pass a typed context object containing prospect ID, allowed actions and approved source IDs.
-- **Deliverable:** Typed context schema and isolation tests for two concurrent prospects.
+- **Practical:** Pass the actual `RequestContext` in `examples/stages06-07/workflows.py` through the SDK agents: request ID, product ID and policy version remain application-owned. Exercise two distinct request contexts and permission boundaries.
+- **Deliverable:** Typed context schema and isolation observations for the two requests, with source attribution and tool permissions.
 - **Accept when:** Do not forward unnecessary private conversation history; each agent sees the intended context.
 
 ### s07-l08: Control Agent Responsibilities and Boundaries
-- **Practical:** Restrict each agent to its own tools and demonstrate attempts outside its role.
+- **Practical:** Restrict each agent to its own tools and demonstrate attempts outside its role. Use the inventory, policy and shipping capability boundaries defined in `examples/stages06-07/workflows.py` and the matching SDK tools.
 - **Deliverable:** A permissions matrix and positive/negative execution tests.
 - **Accept when:** Instructions and application tool permissions agree; a specialist cannot silently acquire extra tools.
 
 ### s07-l09: Handle Multi-Agent Failures
-- **Practical:** Exercise worker timeout, provider error and partial completion in a coordinated task.
+- **Practical:** Exercise worker timeout, provider error and partial completion in a coordinated task. Inspect `specialists_with_fallback`: retain original failure, `unresolved`, `facts_recovered=False` and an unsent `draft_manual_review`; fallback is an application recovery action, never an invented product fact.
 - **Deliverable:** Failure fixtures, bounded recovery logic and an actual partial-result report.
 - **Accept when:** Unknown side effects are reconciled rather than repeated; unavailable results are labeled missing.
 
 ### s07-l10: Trace a Complete Multi-Agent Run
-- **Practical:** Follow one complete multi-agent run from user request through delegation and synthesis.
+- **Practical:** Follow one complete multi-agent run from user request through delegation and synthesis. Use complete mode in `examples/stages06-07/sdk_adapter.py`: inventory/policy tools, handoff, shipping tool and receiving-agent synthesis. Compare `complete_lineage_observed` with actual callbacks; the deterministic application lineage is separately labeled.
 - **Deliverable:** A sanitized trace annotated with input IDs, tools, handoffs, latency and final outcome.
 - **Accept when:** Every claimed step is present in the actual run and linked to its predecessor.
 
@@ -441,67 +441,67 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 ## Stage 9
 
 ### s09-l01: Design the Deep Research System
-- **Practical:** Scope a research question, evidence boundaries, report audience and completion criteria.
+- **Practical:** Scope a research question, evidence boundaries, report audience and completion criteria. Scope the current workshop evidence and any genuinely fetched sources separately; the legacy Cedar Library corpus is only a comparison fixture.
 - **Deliverable:** A research brief separating corpus practice from live-web research.
 - **Accept when:** The brief names coverage requirements and what would count as insufficient evidence.
 
 ### s09-l02: Define the Research Workflow and Agent Responsibilities
-- **Practical:** Assign planning, search, evidence analysis, source review and report writing to explicit components.
+- **Practical:** Assign planning, search, evidence analysis, source review and report writing to explicit components. Inspect the planner/analyst in `projects/03-deep-research/research_lab/sdk_v2.py` and phase ownership in `pipeline_v2.py`.
 - **Deliverable:** A workflow diagram and typed handoff contracts.
 - **Accept when:** Each component has one accountable output; source review precedes supported conclusions.
 
 ### s09-l03: Build the Research Planning Agent
-- **Practical:** Build a planner that decomposes a broad question into bounded research tasks.
+- **Practical:** Build a planner that decomposes a broad question into bounded research tasks. Use `research_lab/sdk_v2.py` and `capstone_v2.py` under `projects/03-deep-research`; the actual question drives the structured plan, not a fixed workshop-topic list.
 - **Deliverable:** An actual generated plan with task IDs, coverage and stop conditions.
 - **Accept when:** Tasks address the question and specify evidence needs rather than claiming results prematurely.
 
 ### s09-l04: Generate Focused Search Queries
-- **Practical:** Generate distinct focused queries for each planned subtopic.
+- **Practical:** Generate distinct focused queries for each planned subtopic. Use the versioned plan/query contracts in `projects/03-deep-research/research_lab/contracts_v2.py` and retain task/dependency attribution.
 - **Deliverable:** A query set with task mapping, rationale and duplicate detection.
 - **Accept when:** Queries cover multiple angles without fabricating sources or implying searches already ran.
 
 ### s09-l05: Build the Web Search Agent
-- **Practical:** Implement a real search-provider adapter alongside the labeled local-corpus baseline.
+- **Practical:** Implement a real search-provider adapter alongside the labeled local-corpus baseline. Use `projects/03-deep-research/research_lab/brave_search.py`; preserve the actual raw Brave response, retrieval time and response hash. Search descriptions are snippets, publication dates may remain unknown and page reachability is not inferred.
 - **Deliverable:** Actual query receipts, retrieved URLs and normalized results from a configured live search.
 - **Accept when:** Do not present `research.py`'s synthetic corpus lookup as web search; failed queries remain visible.
 
 ### s09-l06: Capture Sources and Evidence
-- **Practical:** Capture source title, URL/location, publication/access dates, excerpt and claim IDs.
+- **Practical:** Capture source title, URL/location, publication/access dates, excerpt and claim IDs. Use the current source/evidence contracts in `projects/03-deep-research/research_lab/contracts_v2.py`; an exact snippet is not an independently fetched full-page quotation.
 - **Deliverable:** An evidence ledger and saved source snapshots when permitted.
 - **Accept when:** Excerpts match the captured source; invented or inaccessible references cannot support conclusions.
 
 ### s09-l07: Build the Evidence Analysis Agent
-- **Practical:** Analyze evidence for agreement, contradiction and comparability using the 45/70-minute fixture and live evidence separately.
+- **Practical:** Use the actual analyst in `projects/03-deep-research/research_lab/sdk_v2.py` and `capstone_v2.py` to analyze the same current workshop/search evidence consumed by the report. Keep the older Cedar Library 45/70-minute corpus as a separate comparability exercise, never as workshop or live-web evidence.
 - **Deliverable:** A structured findings table linking every conclusion to source IDs.
-- **Accept when:** Preserve the two different measurement scopes; do not average incompatible observations.
+- **Accept when:** Primary findings cite the actual current source scope and disclose uncertainty; separate 45/70-minute observations retain their different measurement scopes and are not averaged or mixed into workshop results.
 
 ### s09-l08: Build the Research Report Writer
-- **Practical:** Write a report from the actual plan and evidence ledger with citations and limitations.
+- **Practical:** Write a report from the actual plan and evidence ledger with citations and limitations. Use `projects/03-deep-research/research_lab/pipeline_v2.py` with its actual current plan, attributed evidence and findings.
 - **Deliverable:** A report whose factual claims point to captured evidence.
 - **Accept when:** Unsupported sections state uncertainty; no new sources appear only in the prose.
 
 ### s09-l09: Add Structured Research Outputs
-- **Practical:** Define schemas for plans, queries, evidence, findings, sections and final reports.
+- **Practical:** Define schemas for plans, queries, evidence, findings, sections and final reports. Inspect `research_lab/contracts_v2.py` and `schemas/research-v2.schema.json` under `projects/03-deep-research`, including versions, dependencies, exact excerpts and dangling-citation rejection.
 - **Deliverable:** Schema validation tests for missing citation IDs, dates and malformed sections.
 - **Accept when:** Invalid records fail at boundaries and cannot masquerade as complete research.
 
 ### s09-l10: Coordinate the Research Team Through Code
-- **Practical:** Coordinate planning, search, normalization, analysis and reporting through explicit code dependencies.
+- **Practical:** Coordinate planning, search, normalization, analysis and reporting through explicit code dependencies. Use `projects/03-deep-research/research_lab/pipeline_v2.py` and its per-step `Journal`, recording admission before requests and raw known responses before validation.
 - **Deliverable:** An execution log linking phase inputs, outputs and failure states.
 - **Accept when:** Report generation waits for validated evidence and identifies missing branches.
 
 ### s09-l11: Manage Parallel Research Tasks
-- **Practical:** Run independent research branches concurrently while preserving query and source attribution.
+- **Practical:** Run independent research branches concurrently while preserving query and source attribution. Use the dependency-aware bounded scheduler in `projects/03-deep-research/research_lab/pipeline_v2.py`; independent tasks may overlap, prerequisites must complete first.
 - **Deliverable:** A bounded parallel execution trace and equivalent sequential comparison.
 - **Accept when:** Concurrency does not change citation identity or silently discard failed branches.
 
 ### s09-l12: Assemble a Complete Evidence-Based Report
-- **Practical:** Assemble specialist sections into one report, deduplicate sources and verify claim references.
+- **Practical:** Assemble specialist sections into one report, deduplicate sources and verify claim references. Use current report contracts and reference validation in `projects/03-deep-research/research_lab/contracts_v2.py` and `pipeline_v2.py`.
 - **Deliverable:** A merged report and a citation coverage check.
 - **Accept when:** Every cited ID exists; duplicate source records do not count as independent corroboration.
 
 ### s09-l13: Handle Missing, Conflicting and Insufficient Evidence
-- **Practical:** Test contradictory, stale, absent and incomparable evidence cases.
+- **Practical:** Test contradictory, stale, absent and incomparable evidence cases. Use `projects/03-deep-research/research_lab/quality_v2.py`; nullable dates, stale evidence, incomparable scope, link observations and untrusted instructions remain explicit.
 - **Deliverable:** Observed reports and a rubric for uncertainty and conflict disclosure.
 - **Accept when:** The system preserves disagreement and missing evidence instead of fabricating a confident answer.
 
@@ -509,57 +509,57 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 ## Stage 10
 
 ### s10-l01: Refactor the Research System into Python Modules
-- **Practical:** Separate research agents, schemas, search adapters, orchestration, settings and UI modules.
+- **Practical:** Separate research agents, schemas, search adapters, orchestration, settings and UI modules. Use the current `research_lab/*_v2.py` modules under `projects/03-deep-research`; historical v1 test receipts do not certify this revised implementation.
 - **Deliverable:** A module map and passing baseline/citation regression tests.
 - **Accept when:** Imports do not trigger searches or launch a server; actual adapter behavior stays explicit.
 
 ### s10-l02: Build the Deep Research Gradio Interface
-- **Practical:** Build a real Gradio interface for entering a research question and inspecting the final report.
+- **Practical:** Build a real Gradio interface for entering a research question and inspecting the final report. Use `projects/03-deep-research/research_lab/interface_v2.py`; retain genuine browser observations and separate private run directories per submission.
 - **Deliverable:** A runnable UI with actual browser captures and a configured research run.
 - **Accept when:** The interface displays real execution results and separates synthetic corpus mode from live web mode.
 
 ### s10-l03: Stream Research Progress to the User
-- **Practical:** Stream planning, searching, analyzing and writing events from the actual orchestration.
+- **Practical:** Stream planning, searching, analyzing and writing events from the actual orchestration. Use the async status stream in `projects/03-deep-research/research_lab/interface_v2.py` and observed per-step journal/spans from `pipeline_v2.py`; cancellation does not erase an unknown in-flight request.
 - **Deliverable:** A timestamped event log and matching UI progress captures.
 - **Accept when:** Events describe completed/current operations; failure and cancellation produce truthful terminal states.
 
 ### s10-l04: Display Plans, Sources and Agent Activity
-- **Practical:** Display the plan, source ledger and public agent activity in separate UI panels.
+- **Practical:** Display the plan, source ledger and public agent activity in separate UI panels. Use the current interface's public event allowlist and escaped report display; arbitrary payloads/private reasoning are excluded.
 - **Deliverable:** Browser captures linking a report claim back to its source record.
 - **Accept when:** Operational activity is visible without revealing hidden reasoning or provider credentials.
 
 ### s10-l05: Add Report Export and Email Delivery
-- **Practical:** Export a report and implement an approval-gated email adapter with dry-run default.
+- **Practical:** Export a report and implement an approval-gated email adapter with dry-run default. Use `projects/03-deep-research/research_lab/exports_v2.py` for Markdown/HTML/JSON/file hashes and recipient/report-bound approval. Actual approved local SMTP observation is distinct from the simulated outbox.
 - **Deliverable:** A readable exported report plus preview/approval records; a live send requires a redacted real receipt.
 - **Accept when:** Export preserves citations; recipient and report hash bind approval, and repeat submission is idempotent.
 
 ### s10-l06: Create a Research Evaluation Dataset
-- **Practical:** Create evaluation cases for straightforward, ambiguous, conflicting and unanswerable questions.
+- **Practical:** Create evaluation cases for straightforward, ambiguous, conflicting and unanswerable questions. Use `projects/03-deep-research/data/s10-evaluation-v2.json`, preserving its representative questions, held-out split and explicit evidence/uncertainty criteria.
 - **Deliverable:** A versioned dataset specifying expected coverage, evidence constraints and failure criteria.
 - **Accept when:** Expected criteria do not contain fabricated live answers; include at least one deliberately unsupported case.
 
 ### s10-l07: Evaluate Source Quality and Report Completeness
-- **Practical:** Score actual reports for source relevance, diversity, question coverage and cited factual support.
+- **Practical:** Score actual reports for source relevance, diversity, question coverage and cited factual support. Use the attributed `annotated_rubric` in `projects/03-deep-research/research_lab/quality_v2.py`; human 0–4 judgments require supporting evidence and remain separate from structural counts.
 - **Deliverable:** A scored evaluation sheet with human-reviewed disagreements.
 - **Accept when:** Several pages from one source are not independent evidence; scores retain supporting examples.
 
 ### s10-l08: Analyze Traces, Latency and Token Usage
-- **Practical:** Analyze observed model/search events for latency, token usage and cost concentration.
+- **Practical:** Analyze observed model/search events for latency, token usage and cost concentration. Use `trace_summary` and actual spans in the current `projects/03-deep-research/research_lab` implementation; distinguish summed concurrent spans from wall time and keep missing token usage null.
 - **Deliverable:** A per-stage timing/usage table from one actual run and a measured optimization proposal.
 - **Accept when:** Missing provider usage is marked unavailable; estimated cost is not reported as billed spend.
 
 ### s10-l09: Add Retries and Failure Recovery
-- **Practical:** Inject failed search, malformed agent output and interruption after saved evidence.
-- **Deliverable:** Recovery tests and a resumed execution log with checkpoint IDs.
-- **Accept when:** Resume reuses verified evidence, bounds retries and avoids duplicate approved email delivery.
+- **Practical:** Use `projects/03-deep-research/research_lab/pipeline_v3.py` and `recovery_v3.py` for selective recovery in the same journal: bind a distinct reviewer's authorization to the exact known failed attempt, input and retained failure evidence, then give only that step a new attempt identity. Reuse validated completed sibling results.
+- **Deliverable:** A retained original attempt/history, exact recovery authorization and resumed phase log showing a known HTTP/connection-refused or malformed-response case without repeating completed work.
+- **Accept when:** Recovery keeps original inputs and all history, admits at most three total attempts and never replays current or historical IN_FLIGHT/UNKNOWN outcomes. Missing authorization, changed inputs or unverified failure classification remain held; test fixtures do not certify actual provider recovery.
 
 ### s10-l10: Deploy the Deep Research Application
-- **Practical:** Deploy the real research UI with secure secrets, limits and separate user sessions.
-- **Deliverable:** A reachable deployment, sanitized configuration and a fresh-user test report.
-- **Accept when:** A new session can complete research and export; source provenance and private sessions remain protected.
+- **Practical:** Use `projects/03-deep-research/research_lab/interface_v3.py`, `deploy_v3.py` and `deployment/research-v3/` to deploy the real research application. Resolve the exact direct-version requirements input into a complete tested transitive-hash lock; then exercise submit/report and the server-session-owned opaque-run-token File downloads after your own run completes.
+- **Deliverable:** An actually resolved dependency hash lock, clean build/startup/health/private-state observations, reachable deployment and genuine browser evidence of own-run report download plus foreign-session/tampered-token refusal.
+- **Accept when:** Deployment serves the actual v3 UI, private persistence and exact completed-run exports without accepting browser-supplied filesystem paths; download hashes match the completed report. `requirements.in`/`pyproject.toml` alone are resolver inputs, not lock/build evidence. Actual provider/Brave results, fresh-session browser behavior and a deployed build remain unproven until observed; secrets and other sessions stay protected.
 
 ### s10-l11: Complete the OpenAI Agents SDK Module
-- **Practical:** Run a final demonstration connecting SDK tools, handoffs, research, tracing, evaluations and approval boundaries.
+- **Practical:** Run a final demonstration connecting SDK tools, handoffs, research, tracing, evaluations and approval boundaries. Use `projects/03-deep-research/capstone_v2.py` for an explicitly admitted live capstone; preserve actual sources, raw responses, operational spans, human annotations and meaningful failure evidence.
 - **Deliverable:** A module completion checklist linking each claim to actual project evidence.
 - **Accept when:** Unfinished live SDK/UI/deployment work remains explicitly incomplete; local baseline tests alone do not certify those features.
 

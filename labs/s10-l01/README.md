@@ -1,13 +1,18 @@
 # s10-l01: Refactor the Research System into Python Modules
 
-Separate agents, schemas, tools, orchestration, configuration and interface logic into maintainable components.
+Draw the current module boundaries and verify imports do not perform provider requests or launch a server.
 
-## Exercise
+Current implementation, relative to `projects/03-deep-research/`:
 
-Move the Stage 9 working research fixture into modules without changing report fields.
-Keep provider clients behind an injected interface and load secrets only in config.
-Exercise: extract one tool and replace direct network access with a fixture-backed implementation.
+- research_lab/contracts_v2.py
+- research_lab/sdk_v2.py
+- research_lab/pipeline_v2.py
+- research_lab/interface_v2.py
 
-Read projects/03-deep-research/research_lab/__init__.py, projects/03-deep-research/docs/stages09-10-architecture.md.
+Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
 
-Run `python3 examples/stages09-10/run_research.py --export /tmp/academy-research-lab` from the repository root. Run `python3 -m unittest discover -s projects/03-deep-research/tests -p test_stages_09_10.py`. Change one fixture in a temporary copy and demonstrate the relevant failure path. Retain actual terminal output and mark synthetic observations explicitly.
+Still required:
+
+- lesson-specific actual capture and independent review
+
+See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.

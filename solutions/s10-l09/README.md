@@ -1,9 +1,12 @@
-# Reference solution: s10-l09
+# s10-l09 reference: retain history and recover only the known failed step
 
-Provide a runnable reference solution and explanation for the named exercise; do not mark it tested until actual execution evidence is retained.
+RecoveryJournal binds the exact old attempt SHA, input SHA, positively retained failure
+SHA, distinct reviewer/executor and new attempt identity. It moves the complete old
+attempt into same-journal attempt_history and runs only that exact step again. Completed
+siblings are reused. Three total attempts is the bound; stale permits, changed input,
+UNKNOWN/IN_FLIGHT or any unknown historical attempt are refused.
 
-Implementation: projects/03-deep-research/research_lab/runtime.py.
-
-The supplied run produces a real offline report with unresolved cost conflict, exact source excerpts and unknown dates; it does not assert a winner. Inspect exported research.json and sha256.json. For a negative case, use an empty FixtureSearch corpus; quality.decision must be insufficient_evidence. The test suite covers invalid dependencies, invented citations, request-mismatched recovery and unknown-outcome non-retry.
-
-Optional UI/browser, live search, actual provider tokens, real email and hosted deployment observations require separate execution and are not claimed by these offline fixtures.
+A known malformed output retains raw_result; a known HTTP response retains actual code
+and body. Hidden SDK output without recoverable positive response evidence remains
+unknown. No fixture test is a real provider observation. Central QA executes the new
+regressions and retains actual results before teaching their success.
