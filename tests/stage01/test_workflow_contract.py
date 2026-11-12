@@ -19,7 +19,10 @@ class WorkflowContract(unittest.TestCase):
             self.skipTest('Node.js required for actual offline Code-node execution')
         payload = {'code': self.nodes[name]['parameters']['jsCode'], 'item': item}
         script = r'''const vm=require('node:vm');let raw='';process.stdin.on('data',x=>raw+=x);process.stdin.on('end',()=>{const p=JSON.parse(raw);const fixture={id:'enquiry-001',text:'Where can I find the course exercises?'};const context={$input:{first:()=>({json:p.item})},$:name=>({first:()=>({json:fixture})})};try{const result=vm.runInNewContext('(function(){'+p.code+'})()',context,{timeout:1000});process.stdout.write(JSON.stringify({ok:true,result}));}catch(e){process.stdout.write(JSON.stringify({ok:false,error:e.message}));}});'''
-        p = subprocess.run(['node', '-e', script], input=json.dumps(payload), capture_output=True, text=True, check=True, timeout=5)
+        # The JS sandbox remains bounded to one second above. Allow a separate
+        # finite process-startup/IPC budget on shared CI hosts; retain failures
+        # rather than retrying or changing workflow logic when that expires.
+        p = subprocess.run(['node', '-e', script], input=json.dumps(payload), capture_output=True, text=True, check=True, timeout=20)
         return json.loads(p.stdout)
 
     def classify(self, result):
