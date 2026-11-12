@@ -1,0 +1,66 @@
+{
+  "simulated": true,
+  "note": "Authored negative contract inputs. Not responses from any external model.",
+  "invalid": [
+    {
+      "name": "unknown route",
+      "response": {
+        "route": "send_email",
+        "faq_id": "faq-course-access",
+        "confidence": 0.9
+      }
+    },
+    {
+      "name": "arbitrary tool argument",
+      "response": {
+        "route": "answer",
+        "faq_id": "https://private.invalid",
+        "confidence": 0.9
+      }
+    },
+    {
+      "name": "extra field",
+      "response": {
+        "route": "answer",
+        "faq_id": "faq-course-access",
+        "confidence": 0.9,
+        "tool": "shell"
+      }
+    },
+    {
+      "name": "wrong confidence type",
+      "response": {
+        "route": "answer",
+        "faq_id": "faq-course-access",
+        "confidence": "high"
+      }
+    },
+    {
+      "name": "confidence out of range",
+      "response": {
+        "route": "answer",
+        "faq_id": "faq-course-access",
+        "confidence": 1.5
+      }
+    },
+    {
+      "name": "review with FAQ",
+      "response": {
+        "route": "human_review",
+        "faq_id": "faq-course-access",
+        "confidence": 0.9
+      }
+    },
+    {
+      "name": "missing field",
+      "response": {
+        "route": "answer",
+        "faq_id": "faq-course-access"
+      }
+    },
+    {
+      "name": "null object",
+      "response": null
+    }
+  ]
+}
