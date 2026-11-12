@@ -1,0 +1,14 @@
+[
+  {
+    "url": "academy://docs",
+    "title": "Browser Sidekick",
+    "category": "automation",
+    "version": "1.0"
+  },
+  {
+    "url": "academy://docs",
+    "title": "Checkpoint Kit",
+    "category": "persistence",
+    "version": "2.0"
+  }
+]

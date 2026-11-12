@@ -1,0 +1,9 @@
+{
+  "name": "academy-mcp-filesystem-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official Node filesystem MCP server, limited to a new course fixture root",
+  "dependencies": {
+    "@modelcontextprotocol/server-filesystem": "2.3.0"
+  }
+}

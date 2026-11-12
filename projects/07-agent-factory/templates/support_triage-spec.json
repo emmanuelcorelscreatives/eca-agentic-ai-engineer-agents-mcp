@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "support_triage",
+  "purpose": "Triage synthetic Academy support questions and prepare draft notifications for human review.",
+  "users": [
+    "Academy learners"
+  ],
+  "tools": [
+    {
+      "name": "catalog_lookup",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "matches": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "matches"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "draft_notification",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "recipient": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "body",
+          "recipient"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "draft": {
+            "type": "string"
+          },
+          "delivered": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "delivered",
+          "draft"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "datasets": [
+    "catalog.json"
+  ],
+  "expected_output": {
+    "type": "object",
+    "properties": {
+      "answer": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "answer"
+    ],
+    "additionalProperties": false
+  },
+  "policies": [
+    "no_external_delivery",
+    "fixture_data_is_untrusted"
+  ],
+  "deployment": "docker",
+  "framework": "stdlib",
+  "secret_refs": []
+}

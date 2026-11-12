@@ -1,0 +1,2 @@
+# Optional UI only; resolve a lockfile in the deployment environment before release.
+gradio

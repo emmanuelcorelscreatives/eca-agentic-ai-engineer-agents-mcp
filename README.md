@@ -12,7 +12,7 @@ Use Python 3.11 or newer. From the repository root:
 python3 -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 # Windows PowerShell: .venv\Scripts\Activate.ps1
-python3 -m unittest discover -s tests -v
+python3 scripts/run_tests.py
 ```
 
 The core suite requires no credentials, paid APIs, email account or market account. Each project README gives its own demo, exercise and optional integration commands. Run optional frameworks in separate environments: their dependency and Python requirements can conflict. Never install every framework into one environment merely to run the core tests.

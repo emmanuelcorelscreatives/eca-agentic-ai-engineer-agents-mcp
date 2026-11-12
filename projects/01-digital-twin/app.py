@@ -1,5 +1,6 @@
 """Optional local Gradio UI; profile and contacts remain local. No model calls."""
 import json
+import os
 from pathlib import Path
 from twin import DigitalTwin
 
@@ -21,4 +22,4 @@ def build_app():
     return app
 
 if __name__ == '__main__':
-    build_app().launch(server_name='127.0.0.1', share=False)
+    build_app().launch(server_name=os.environ.get('GRADIO_SERVER_NAME','127.0.0.1'), share=False)

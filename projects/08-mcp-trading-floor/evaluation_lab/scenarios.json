@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "as_of": "2026-01-15T16:00:00Z",
+  "cases": [
+    {"id":"bounded-buy","family":"normal","split":"development","symbol":"ACA","quantity":5,"side":"BUY","expected_allowed":true,"evidence_id":"fixture-aca-001"},
+    {"id":"oversized-buy","family":"over-limit","split":"held-out","symbol":"ACA","quantity":30,"side":"BUY","expected_allowed":false,"evidence_id":"fixture-aca-001"},
+    {"id":"no-short-sale","family":"empty-position","split":"held-out","symbol":"LAB","quantity":1,"side":"SELL","expected_allowed":false,"evidence_id":"fixture-lab-001"},
+    {"id":"small-lab-buy","family":"normal","split":"development","symbol":"LAB","quantity":10,"side":"BUY","expected_allowed":true,"evidence_id":"fixture-lab-001"}
+  ]
+}

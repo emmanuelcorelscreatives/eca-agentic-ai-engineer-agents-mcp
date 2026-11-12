@@ -2,7 +2,7 @@
 
 These companions teach the framework-specific APIs used in the original course curriculum. The eight projects and lesson workbooks supply the larger applications. A small arithmetic recipe does **not** demonstrate all the advanced memory, MCP, team, persistence, evaluation or deployment objectives in its stage.
 
-Official documentation and package registries were checked on **2026-11-12**. `registry-versions.json` records exact observed package versions and Python requirements; `catalog.json` maps each recipe to its original stages. These are documentation-aligned examples with **offline tests only**, not claims of a successful live SDK/provider integration. Provider account permissions, model availability and evolving SDK behavior still need the separately recorded practical run.
+Official documentation and package registries were checked on **2026-11-12**. `registry-versions.json` records exact observed package versions and Python requirements; `catalog.json` maps each recipe to its original stages. The initial companion preparation used **offline tests only**. A separate bounded SDK installation and construction audit is underway; neither installation nor construction alone proves a successful live provider integration. Provider account permissions, model availability and evolving SDK behavior still need the separately recorded practical run. Initial static evidence remains in `verification.json`; later audit receipts must be read separately and never inferred from that earlier result.
 
 ## Work in separate environments
 
@@ -199,7 +199,7 @@ Use Node.js **22.13 or later** as required by the observed core package. From `f
 
 Import `n8n/order-workflow.json` into your own n8n workspace. It starts inactive and contains only a manual trigger and Code node; executing it should calculate `3750` cents from the visible fixture. No credentials, webhook, public URL or external write is configured. The preparation test actually evaluates this Code node with Node.js, but does not claim the workflow was imported into n8n.
 
-For Stage 1 Lesson 2's **autonomous AI workflow**, use `examples/s01/first-workflow.n8n.json` and its accompanying practical instructions when available. To extend the arithmetic foundation separately in the real n8n editor: add an AI Agent node, connect a supported Chat Model with your own credentials, provide a fixture question and a read-only calculation tool, and execute it. Inspect the actual model/tool execution data and record the n8n version. The model chooses a tool; the arithmetic node alone does not. Keep any email/order action disconnected until the course's real human-approval step. The completed autonomous exercise requires that actual model execution; do not pass off the deterministic starter as its result.
+For Stage 1 Lesson 2's **autonomous AI workflow**, use `examples/s01/first-workflow.n8n.json` and its accompanying practical instructions. To extend the arithmetic foundation separately in the real n8n editor: add an AI Agent node, connect a supported Chat Model with your own credentials, provide a fixture question and a read-only calculation tool, and execute it. Inspect the actual model/tool execution data and record the n8n version. The model chooses a tool; the arithmetic node alone does not. Keep any email/order action disconnected until the course's real human-approval step. The completed autonomous exercise requires that actual model execution; do not pass off the deterministic starter as its result.
 
 ## Further practical exercises
 

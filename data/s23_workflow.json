@@ -1,0 +1,13 @@
+{
+  "synthetic": true,
+  "specialists": [
+    "policy",
+    "delivery"
+  ],
+  "routes": {
+    "damaged": "policy",
+    "delivery": "delivery"
+  },
+  "sensitive_action": "send_escalation",
+  "external_sending_enabled": false
+}

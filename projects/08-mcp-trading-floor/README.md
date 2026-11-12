@@ -87,7 +87,7 @@ npm install
 npm run dev
 ```
 
-Open the printed localhost URL, enter the local token, research a proposal and refresh the portfolio. Vite proxies `/api` to localhost:8000. The browser intentionally cannot approve an order. `npm install` creates a lockfile; freeze and verify dependencies before deployment. The optional browser/framework/server routes require installed dependencies and are not part of the dependency-free test result.
+Open the printed localhost URL, enter the local token, research a proposal and refresh the portfolio. Vite proxies `/api` to localhost:8000. The browser intentionally cannot approve an order. `npm install` creates a lockfile; freeze and verify dependencies before deployment. The optional browser/framework/server routes require installed dependencies and are tested separately from the dependency-free suite. Actual isolated runtime validation now covers HTTP and both browser interfaces; see the runtime evidence section below.
 
 For the stage 29 dashboard instead, run `python gradio_app.py`. It displays real fixture research, current proposal risk and an initial simulation account, with no shared public Gradio link.
 
@@ -115,4 +115,12 @@ No screenshot should show a fake live brokerage, invented return or invented eva
 
 The eight MCP tools provide research, proposals, portfolio, lexical local-corpus search, extractive retrieval with source citations and abstention, namespaced persistent memory write/read, and a complete reference multi-role orchestration. Search is explicitly local synthetic data, not internet search. `orchestrate` returns researcher/strategist/risk-manager records and stops at `AWAITING_HUMAN_APPROVAL`; it never grants itself approval. These deterministic adapters are real runnable course components, not a claim that external model agents have been evaluated.
 
-Sixteen dependency-free tests now pass, including actual concurrent SQLite service calls, persistent memory across worker threads/instances, retrieval grounding/abstention, and real MCP/API/Gradio Python callbacks invoked on worker threads with stub framework registration shells. Those callback tests prove connection ownership, **not** framework transport, schema validation, HTTP, UI or full SDK compatibility; optional dependency end-to-end tests remain separate.
+Sixteen dependency-free boundary tests pass, including actual concurrent SQLite service calls, persistent memory across worker threads/instances, retrieval grounding/abstention, and real MCP/API/Gradio Python callbacks invoked on worker threads with stub framework registration shells. Those callback tests prove connection ownership, **not** framework transport, schema validation, HTTP, UI or full SDK compatibility; optional dependency end-to-end tests remain separate.
+
+## Actual isolated optional runtime evidence
+
+The selected optional versions in `requirements-optional.txt` were actually installed in a finite resource-admitted course helper. `validate_runtime.py` started real Uvicorn and Vite preview processes, exercised real HTTP requests and actual Chromium/Playwright browser interactions, and shut them down. Nine checks passed: initial account, missing-token rejection, typed proposal, strict boolean-quantity rejection, unapproved execution rejection, exact approved/idempotent fill, React proposal, React portfolio/trace, and Gradio research/risk callback. Both interfaces were genuinely screenshotted from the running application. The demonstration used only a new temporary synthetic database and a disposable local test token.
+
+The MCP laboratory separately passed four genuine SDK1.26 tests with no skips, including actual stdio and Streamable HTTP sessions plus official Node filesystem-server2.3.0 discovery/read/denial and a host-side read-only allowlist. The deterministic sampling callback demonstrates protocol negotiation, not external model intelligence. Retrieval has seven additional actual HTTP/Qdrant/custom-MCP tests in the same admitted runtime.
+
+`evaluation_lab/` adds nine deterministic tests for real core-workflow tracing, redaction, usage, feedback, recovery and dataset accounting. A real paid model judge or hosted deployment has not run. `workbook-stages26-30.md` and the external material mapping preserve all74lesson objectives and explicitly identify remaining acceptance gaps; tested reusable components do not automatically imply every complete lesson is ready for render.

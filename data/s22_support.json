@@ -1,0 +1,31 @@
+{
+  "synthetic": true,
+  "tickets": [
+    {
+      "id": "T-001",
+      "product_id": "P-KEY",
+      "summary": "Keyboard arrived with a missing key",
+      "category": "damaged"
+    },
+    {
+      "id": "T-002",
+      "product_id": "P-MOUSE",
+      "summary": "Mouse has not arrived",
+      "category": "delivery"
+    }
+  ],
+  "policies": [
+    {
+      "id": "POL-KEY-1",
+      "product_id": "P-KEY",
+      "version": 1,
+      "rule": "Draft a replacement review for reported physical damage; no automatic purchase."
+    },
+    {
+      "id": "POL-MOUSE-2",
+      "product_id": "P-MOUSE",
+      "version": 2,
+      "rule": "Request tracking reference before escalating delivery."
+    }
+  ]
+}

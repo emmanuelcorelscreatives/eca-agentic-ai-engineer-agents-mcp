@@ -91,3 +91,12 @@ while tests check this exercise's acceptance criteria; they are not a proof that
 arbitrary malicious code is safe. Reviewed current API reference:
 [CrewAI crews](https://docs.crewai.com/v1.15.40/en/concepts/crews) and
 [tasks](https://docs.crewai.com/v1.15.40/en/concepts/tasks).
+
+### Bounded live-code logs
+
+The optional live adapter now delegates Docker execution to `learning/sandbox.py`:
+stdout/stderr spool to size-limited files, Docker daemon logs are disabled, timeout
+cleanup targets only the owned container, and unproven cleanup fails delivery. An
+actual local controlled subprocess flood and timeout were tested with Docker calls
+mocked; neither result is evidence that a real container was run. A model's claimed
+success or an exit-zero process without the minimum observed test count is rejected.

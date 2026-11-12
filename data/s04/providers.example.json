@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "providers": [
+    {
+      "name": "hosted",
+      "base_url": "https://api.openai.com/v1",
+      "model": "CHOOSE_AN_AVAILABLE_MODEL",
+      "credential": "MODEL_API_KEY environment only"
+    },
+    {
+      "name": "local",
+      "base_url": "http://127.0.0.1:11434",
+      "model": "CHOOSE_A_PULLED_MODEL"
+    }
+  ],
+  "observations": [
+    {
+      "model": "synthetic-a",
+      "quality": 4,
+      "latency_seconds": 2,
+      "example_cost": ".01"
+    },
+    {
+      "model": "synthetic-b",
+      "quality": 3,
+      "latency_seconds": 1,
+      "example_cost": ".001"
+    }
+  ]
+}

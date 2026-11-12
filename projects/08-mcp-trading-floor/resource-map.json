@@ -1,0 +1,2302 @@
+{
+  "at": "2026-11-12T17:16:53.655087+00:00",
+  "status": "ADDITIVE_MATERIAL_IMPLEMENTATION_MAPPING_NOT_FULL_RENDER_APPROVAL",
+  "lessonCount": 74,
+  "plannedResourcePaths": 278,
+  "sourceStagePlans": [
+    {
+      "stage": 26,
+      "sha256": "20d06bf1e44925fc75fc2dbd9c3d19fae86cb4a4e0d5429cb6e3263783c5b779"
+    },
+    {
+      "stage": 27,
+      "sha256": "547bfe9a008314f8b7167bc21c8b08586f2e1f4ff9303eada385221f47e6efe5"
+    },
+    {
+      "stage": 28,
+      "sha256": "c72eac66cafa93b117ea26d4fbd1ae53bdeb2f9b911210bd0937ac711d0add11"
+    },
+    {
+      "stage": 29,
+      "sha256": "a6345938d0190406a0cb13ab074879a893614c86d09250eccff16b350a66dbc7"
+    },
+    {
+      "stage": 30,
+      "sha256": "17c78e4029399d5b167ec4a65e9902a2a2e677165fd1dd334bc0fc85b3e05ab9"
+    }
+  ],
+  "lessons": [
+    {
+      "lessonId": "s26-l01",
+      "stage": 26,
+      "title": "Welcome to Model Context Protocol",
+      "pdfObjective": "Introduce MCP and explain how it standardizes connections between AI applications, tools and data services.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/01-orientation.md",
+        "frameworks/mcp/foundations/exercises/01-orientation.md",
+        "frameworks/mcp/foundations/fixtures/architecture.svg",
+        "frameworks/mcp/foundations/solutions/01-orientation.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Draw the architecture boundary and identify which component owns the model."
+      ],
+      "acceptanceSpecifications": [
+        "The role map distinguishes protocol integration from model execution and application policy."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l02",
+      "stage": 26,
+      "title": "What Is MCP?",
+      "pdfObjective": "Explain the problems MCP addresses and the benefits of reusable, discoverable integrations.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/02-integration-comparison.md",
+        "frameworks/mcp/foundations/exercises/02-integration-comparison.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/02-integration-comparison.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Classify which repeated adapter responsibilities MCP standardizes and which remain application specific."
+      ],
+      "acceptanceSpecifications": [
+        "The comparison correctly separates structured invocation, discovery and transport from authorization."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l03",
+      "stage": 26,
+      "title": "MCP Hosts, Clients and Servers",
+      "pdfObjective": "Define each architectural role and follow a request from an agent to an MCP capability.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/03-roles.md",
+        "frameworks/mcp/foundations/exercises/03-roles.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/03-roles.md",
+        "frameworks/mcp/foundations/src/trace_local_session.mjs",
+        "frameworks/mcp/foundations/tests/test_roles.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Annotate a captured initialization, discovery and invocation trace with owner roles and matching request IDs."
+      ],
+      "acceptanceSpecifications": [
+        "A real SDK-backed local session supplies the trace; tests validate IDs, role boundaries and one invocation."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l04",
+      "stage": 26,
+      "title": "Tools, Resources and Prompts",
+      "pdfObjective": "Differentiate executable actions, readable context and reusable prompt templates.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/04-capability-types.md",
+        "frameworks/mcp/foundations/exercises/04-capability-types.md",
+        "frameworks/mcp/foundations/fixtures/handbook.md",
+        "frameworks/mcp/foundations/solutions/04-capability-types.md",
+        "frameworks/mcp/foundations/src/catalogue_server.mjs",
+        "frameworks/mcp/foundations/tests/test_capability_types.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Classify three needs, discover the matching capabilities, and call or retrieve them."
+      ],
+      "acceptanceSpecifications": [
+        "Tests exercise actual tool validation/output, exact resource bytes and prompt arguments; retrieving a prompt is distinguished from executing it."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l05",
+      "stage": 26,
+      "title": "Capability Discovery and Negotiation",
+      "pdfObjective": "Explain how participants advertise and agree on the capabilities available during a connection.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/05-negotiation.md",
+        "frameworks/mcp/foundations/exercises/05-negotiation.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/05-negotiation.md",
+        "frameworks/mcp/foundations/src/inspect_handshake.mjs",
+        "frameworks/mcp/foundations/tests/test_negotiation.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inspect both initialization messages and explain an unavailable feature and a supported feature."
+      ],
+      "acceptanceSpecifications": [
+        "Real SDK integration tests cover initialization and unavailable-feature handling; document the actual negotiated version rather than an unverified latest version. Capability support is not user permission."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l06",
+      "stage": 26,
+      "title": "Local vs Remote MCP Servers",
+      "pdfObjective": "Compare local process integrations with network-accessible services and their operational implications.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/06-local-remote.md",
+        "frameworks/mcp/foundations/exercises/06-local-remote.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/06-local-remote.md",
+        "frameworks/mcp/foundations/src/server_placement.mjs",
+        "frameworks/mcp/foundations/tests/test_local_remote.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Choose a deployment for three scenarios and compare configuration, lifecycle, trust boundary and failure handling."
+      ],
+      "acceptanceSpecifications": [
+        "Both real SDK-backed variants return the same fixture record; test clean shutdown and unavailable endpoint. Public hosting and its authorization are not implied by a loopback demo."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l07",
+      "stage": 26,
+      "title": "MCP Connection and Transport Models",
+      "pdfObjective": "Introduce the supported communication patterns and how clients establish and maintain sessions.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/07-transports.md",
+        "frameworks/mcp/foundations/exercises/07-transports.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/07-transports.md",
+        "frameworks/mcp/foundations/src/transport_demo.mjs",
+        "frameworks/mcp/foundations/tests/test_transports.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Trace initialization, request, error and shutdown behavior on both transports."
+      ],
+      "acceptanceSpecifications": [
+        "Real SDK tests cover ordered lifecycle, disconnect, timeout and structured errors. Verify supported transport and session rules in official documentation during implementation; historical transports are clearly marked and HTTP is not falsely described as always requiring a persistent session."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l08",
+      "stage": 26,
+      "title": "Working with Node-Based MCP Servers",
+      "pdfObjective": "Install and run an existing Node-based server and inspect its exposed capabilities.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/08-node-server.md",
+        "frameworks/mcp/foundations/exercises/08-node-server.md",
+        "frameworks/mcp/foundations/fixtures/workspace/README.md",
+        "frameworks/mcp/foundations/package-lock.json",
+        "frameworks/mcp/foundations/package.json",
+        "frameworks/mcp/foundations/solutions/08-node-server.md",
+        "frameworks/mcp/foundations/src/launch_existing_server.mjs",
+        "frameworks/mcp/foundations/tests/test_node_server.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/node-filesystem/package.json",
+          "exists": true,
+          "sha256": "608b6afd80468a105f354dba5855ad68e15650f6e9fce7500a257bdea2ae342c"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/client_policy.py",
+          "exists": true,
+          "sha256": "9b0946d144b43e4862a4061e156f79195bcd412ef576e232f4676ca4eb9979c5"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Recreate installation, launch the existing server and inspect its capabilities without touching personal files."
+      ],
+      "acceptanceSpecifications": [
+        "Clean-environment tests launch the actual third-party server, retrieve exact fixture bytes through a real client, and reject out-of-root/traversal access. Record actual Node/package versions and commands. An Academy-written replacement does not satisfy this lesson."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping.",
+      "actualRuntimeProof": "mcp_lab/verification.json actual officialNodefilesystem2.3.0 read/containment/read-onlyhost tests PASS"
+    },
+    {
+      "lessonId": "s26-l09",
+      "stage": 26,
+      "title": "Inspect MCP Server Capabilities",
+      "pdfObjective": "Use inspection tools to review available tools, schemas, resources and prompts before integration.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/09-inspection.md",
+        "frameworks/mcp/foundations/exercises/09-inspection.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/09-inspection.md",
+        "frameworks/mcp/foundations/src/launch_inspector.mjs",
+        "frameworks/mcp/foundations/tests/test_inspection.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/README.md",
+          "exists": true,
+          "sha256": "3fcb74496b0348da1b7952308eba0e079a901878096756c7c392027fca10caf6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inspect discovery, submit valid and invalid lookup arguments and explain why listed capability does not imply permission."
+      ],
+      "acceptanceSpecifications": [
+        "Capture actual Inspector attached to the tested server and compare discovery with the client. The filesystem server may lack resources/prompts; demonstrate those categories with the Academy teaching server rather than inventing support."
+      ],
+      "runtimeGaps": [
+        "Interactive MCP Inspector session not captured; client protocol tests do not substitute for Inspector."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s26-l10",
+      "stage": 26,
+      "title": "Understand the Agent Harness and MCP Relationship",
+      "pdfObjective": "Explain how an agent runtime decides when and how to invoke capabilities supplied through MCP.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "frameworks/mcp/foundations/docs/10-harness-relationship.md",
+        "frameworks/mcp/foundations/exercises/10-harness-relationship.md",
+        "frameworks/mcp/foundations/fixtures/catalogue.json",
+        "frameworks/mcp/foundations/solutions/10-harness-relationship.md",
+        "frameworks/mcp/foundations/src/harness_bridge.mjs",
+        "frameworks/mcp/foundations/tests/test_harness_relationship.mjs"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Compare the protocol trace with the harness decision trace and locate action choice, validation and denial/error handling."
+      ],
+      "acceptanceSpecifications": [
+        "Deterministic tests use a clearly labeled model stub for control flow and deny/malformed/error cases. A separate finite authorized real-model run must precede the filmed demonstration and retain actual request, selected tool and response; never present a stub as a real model result."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l01",
+      "stage": 27,
+      "title": "Connect to a Filesystem MCP Server",
+      "pdfObjective": "Give an agent restricted access to approved files and directories through an MCP client.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/README.md",
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/client/filesystem_session.py",
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/config/filesystem-policy.json",
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/fixtures/outside/denied.txt",
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/fixtures/workspace/course-notes.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/client_policy.py",
+          "exists": true,
+          "sha256": "9b0946d144b43e4862a4061e156f79195bcd412ef576e232f4676ca4eb9979c5"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add a second approved subdirectory without widening access to the fixture parent."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/tests/test_restricted_filesystem.py: Approved read returns exact fixture bytes; relative traversal, absolute outside paths and symlink escape fail without disclosing outside bytes.",
+        "projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/tests/test_restricted_filesystem.py: Record the real selected server launch command, allowed-root arguments and tool discovery; test platform-specific path behavior in the actual execution environment."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l02",
+      "stage": 27,
+      "title": "Connect to a Web Fetch MCP Server",
+      "pdfObjective": "Retrieve web content through a standardized MCP tool and return structured results.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/README.md",
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/client/fetch_session.py",
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/fixtures/site/broken.html",
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/fixtures/site/product.html",
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/schemas/fetch-result.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/server.py",
+          "exists": true,
+          "sha256": "943df97c122680cde8eb2956f6f2cfb5a877b0f2e290868e98e85b010a1c012e"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Extract the fixture product name and policy excerpt; preserve source provenance and handle a missing page."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/tests/test_structured_fetch.py: Actual server retrieves the owned fixture page; exact expected excerpt is present and records validate against schema.",
+        "projects/08-mcp-trading-floor/stage27/02-structured-fetch/tests/test_structured_fetch.py: 404, denied destinations and invalid response shapes return explicit failures rather than invented content; external network policy is enforced by the application or sandbox when the server lacks it."
+      ],
+      "runtimeGaps": [
+        "Controlled owned HTTP fetch tested; existing third-party fetch-server integration remains separate."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l03",
+      "stage": 27,
+      "title": "Connect to a Playwright MCP Server",
+      "pdfObjective": "Make browser navigation and extraction capabilities available to an agent through MCP.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/README.md",
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/client/playwright_session.py",
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/config/browser-policy.json",
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/fixtures/site/dynamic.html",
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/fixtures/site/form.html"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/mcp_adapter.py",
+          "exists": true,
+          "sha256": "75b6300c3f2512ccca5454d5d8665f8efb69abc285300434b6775098fae51cc4"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Read the dynamically rendered article heading and visible table; leave the demonstration form unsubmitted."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/tests/test_playwright_session.py: Actual browser tool discovery and render/extraction succeeds against the owned local site; raw tool output matches the visible page.",
+        "projects/08-mcp-trading-floor/stage27/03-playwright-session/tests/test_playwright_session.py: Browser is isolated from personal profiles, remote navigation is restricted, submit actions are unavailable, and all owned processes close at teardown."
+      ],
+      "runtimeGaps": [
+        "Playwright MCP named existing-server browser run not yet executed."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l04",
+      "stage": 27,
+      "title": "Call MCP Tools from an AI Agent",
+      "pdfObjective": "Discover tools, supply validated arguments and return tool results to the agent loop.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/README.md",
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/client/agent_dispatch.py",
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/client/tool_registry.py",
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/fixtures/agent-tool-cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/mcp_adapter.py",
+          "exists": true,
+          "sha256": "75b6300c3f2512ccca5454d5d8665f8efb69abc285300434b6775098fae51cc4"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Route a file-read request and a fetch request to their intended servers; reject an unknown tool and malformed arguments."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/tests/test_agent_tool_dispatch.py: Discovered argument schemas are validated before invoking a real server; invalid arguments make zero tool dispatches.",
+        "projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/tests/test_agent_tool_dispatch.py: Namespaced duplicate tool names cannot collide; agent iteration/tool budgets stop loops, and observed tool results are returned without becoming trusted instructions."
+      ],
+      "runtimeGaps": [
+        "Real bounded model/agent tool-loop run not performed; no paid provider call authorized in this task."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l05",
+      "stage": 27,
+      "title": "Read MCP Resources",
+      "pdfObjective": "Access server-provided documents and data without treating every operation as an executable tool.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/README.md",
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/client/resource_reader.py",
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/fixtures/resources/course-guide.md",
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/fixtures/resources/data-dictionary.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Select the provided course guide by discovered identifier and include a cited excerpt in a research note."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/tests/test_resource_reader.py: List/read resources through the actual MCP client APIs on a capable server, and compare returned bytes with the fixture.",
+        "projects/08-mcp-trading-floor/stage27/05-resource-reader/tests/test_resource_reader.py: Unknown identifiers, unsupported capabilities and non-text resource payloads are handled explicitly; reading a resource never silently invokes a mutation tool."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l06",
+      "stage": 27,
+      "title": "Work with MCP Prompts",
+      "pdfObjective": "Discover and use reusable prompt templates supplied by an MCP server.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/README.md",
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/client/prompt_loader.py",
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/fixtures/prompts/argument-cases.json",
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/fixtures/prompts/research-brief.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Retrieve a research-brief template with a topic argument and inspect the returned messages before invoking an agent."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/tests/test_prompt_loader.py: The chosen real server advertises prompts; list/get calls return observed messages and expected supplied arguments.",
+        "projects/08-mcp-trading-floor/stage27/06-prompt-loader/tests/test_prompt_loader.py: Missing arguments and unknown prompt names produce clear errors; template content cannot override application tool permissions or approval rules."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l07",
+      "stage": 27,
+      "title": "Build a Web-Browsing MCP Agent",
+      "pdfObjective": "Combine fetch and browser servers into a controlled research and navigation workflow.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/README.md",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/agents/web_research.py",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/fixtures/research-tasks.json",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/fixtures/site/research-index.html",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/schemas/research-report.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/mcp_adapter.py",
+          "exists": true,
+          "sha256": "75b6300c3f2512ccca5454d5d8665f8efb69abc285300434b6775098fae51cc4"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Compare two fictional course products using cited page excerpts, using rendered extraction only where needed."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: Two owned fixture pages yield schema-valid records with citations resolved to actual content, not guessed facts.",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: A controlled genuine model integration demonstrates observed server selection; deterministic dispatch tests remain explicitly separate from model behavior.",
+        "projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: Tool and time budgets are enforced; page prompt injection cannot enable denied tools, submit forms, or expand network destinations."
+      ],
+      "runtimeGaps": [
+        "Real model-driven browsing run not performed; browser adapter alone is not evidence."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l08",
+      "stage": 27,
+      "title": "Trace MCP Tool Calls",
+      "pdfObjective": "Record server selection, arguments, responses, latency, failures and agent decisions.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/README.md",
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/client/tracing.py",
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/fixtures/trace-cases.json",
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/schemas/trace-event.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/observability.py",
+          "exists": true,
+          "sha256": "d6495b9c35aeb0089961593b206a53db916bd826989d9c88e8f406736f549607"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Follow one research request across two servers and reconstruct its ordering from correlation IDs."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/tests/test_trace_events.py: Actual MCP tool calls emit a validated start/end trace with correlation IDs, server/tool identifiers, measured latency and terminal status.",
+        "projects/08-mcp-trading-floor/stage27/08-trace-events/tests/test_trace_events.py: Concurrent requests remain distinguishable; failure events retain error classifications and redacted argument/result summaries without exposing secret fixture values."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l09",
+      "stage": 27,
+      "title": "Handle Tool Failures and Invalid Results",
+      "pdfObjective": "Recover from unavailable servers, invalid arguments, timeouts and malformed responses.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/README.md",
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/client/recovery.py",
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/fixtures/failure-matrix.json",
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/fault_servers.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/recovery.py",
+          "exists": true,
+          "sha256": "03e4d82b54706ef2c6703bc57c434b066c1105f0c3223657dab16aca4dcf17d6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Repair a malformed result adapter and configure a finite retry policy for a documented safe read."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Stopped server, invalid schema, timeout and malformed payload cases each terminate predictably with trace evidence.",
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Invalid arguments are not retried unchanged; retries have deadlines/backoff limits, and timeout on a possible side effect remains uncertain rather than blindly replayed.",
+        "projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Exercise uses genuine server failure for at least one case; explicitly labeled test servers cover otherwise hard-to-trigger malformed responses."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l10",
+      "stage": 27,
+      "title": "Filter and Organize MCP Tools",
+      "pdfObjective": "Present only relevant capabilities to an agent and group tools by task or permission level.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/README.md",
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/client/tool_views.py",
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/config/task-tool-groups.json",
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/fixtures/tool-selection-cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/client_policy.py",
+          "exists": true,
+          "sha256": "9b0946d144b43e4862a4061e156f79195bcd412ef576e232f4676ca4eb9979c5"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Give the researcher read-only file/fetch tools and remove browser form actions from its view."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/tests/test_tool_filtering.py: Each task sees exactly its authorized tools; equivalent calls against a hidden tool are also rejected by the dispatcher.",
+        "projects/08-mcp-trading-floor/stage27/10-tool-filtering/tests/test_tool_filtering.py: Unknown new tools default to unavailable; duplicate tool names remain server-qualified and logged."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l11",
+      "stage": 27,
+      "title": "Apply Least-Privilege Tool Access",
+      "pdfObjective": "Restrict each agent to the minimum tools, data and actions required for its role.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/README.md",
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/client/authorization.py",
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/config/role-policies.json",
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/fixtures/authorization-cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/client_policy.py",
+          "exists": true,
+          "sha256": "9b0946d144b43e4862a4061e156f79195bcd412ef576e232f4676ca4eb9979c5"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add a reviewer role that can read a final report but cannot access drafts or write files."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/tests/test_least_privilege.py: Role/action/path matrix passes allow and deny cases through the real dispatcher and relevant actual server.",
+        "projects/08-mcp-trading-floor/stage27/11-least-privilege/tests/test_least_privilege.py: Traversal, symlink escape, unauthorized destinations and direct hidden-tool dispatch remain denied; each policy denial is auditable and does not disclose denied data."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l12",
+      "stage": 27,
+      "title": "Secure Secrets and Sensitive Data",
+      "pdfObjective": "Keep credentials outside prompts, logs, generated files and untrusted server content.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/.env.example",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/README.md",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/client/redaction.py",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/client/secret_config.py",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/fixtures/secret-canaries.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/observability.py",
+          "exists": true,
+          "sha256": "d6495b9c35aeb0089961593b206a53db916bd826989d9c88e8f406736f549607"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/README.md",
+          "exists": true,
+          "sha256": "3fcb74496b0348da1b7952308eba0e079a901878096756c7c392027fca10caf6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Locate and remove an intentionally unsafe fake-token log path; verify the replacement retains useful diagnostic context."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Fake secret canaries appear only in approved runtime input, never prompts, traces, report artifacts, screenshots or checked-in files.",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Redaction handles nested argument/result fields and common error paths; untrusted server content cannot request or retrieve runtime credentials.",
+        "projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Environment examples contain placeholders only; actual integration credentials, when required, are not stored or captured."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s27-l13",
+      "stage": 27,
+      "title": "Add Human Approval to MCP Tools",
+      "pdfObjective": "Require confirmation before high-impact MCP operations are executed.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/README.md",
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/client/approval_gate.py",
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/config/high-impact-tools.json",
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/fixtures/approval-cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/approve_order.py",
+          "exists": true,
+          "sha256": "120e53febbb14f4fbf80061e7720f0c489e6c17be4d9d69711c758fb10a9a4d5"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inspect a report-write proposal, deny it once, then explicitly approve the exact sandbox destination and content digest."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Denied, missing, expired and mismatched approval cause zero mutation dispatches; matching approval permits exactly the intended sandbox write.",
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Changed path, arguments or content digest invalidates prior approval; a model-generated approval string is rejected.",
+        "projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Actual approved write is verified on the filesystem; timeout/unknown mutation outcome is retained and not silently replayed."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l01",
+      "stage": 28,
+      "title": "When to Build a Custom MCP Server",
+      "pdfObjective": "Decide whether a capability belongs in MCP, a native application function or a conventional API.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/01-capability-placement/decision-matrix.md",
+        "labs/stage28-custom-mcp-servers/01-capability-placement/fixtures/capability_cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Classify memory lookup, application formatting and partner HTTP access; justify each choice against the actual consumers."
+      ],
+      "acceptanceSpecifications": [
+        "Reject a decision matrix with missing consumer, permissions or operational owner; verify examples exercise all three placements."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l02",
+      "stage": 28,
+      "title": "Design an MCP Server Contract",
+      "pdfObjective": "Define capability names, schemas, outputs, errors, permissions and operational boundaries before implementation.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/02-contract/contracts/capabilities.json",
+        "labs/stage28-custom-mcp-servers/02-contract/contracts/errors.json",
+        "labs/stage28-custom-mcp-servers/02-contract/contracts/permissions.yaml"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Design a bounded memory.search tool and a read-only document resource; reject unconstrained query sizes and ambiguous errors."
+      ],
+      "acceptanceSpecifications": [
+        "Validate example requests and responses against schemas; detect duplicate names, missing bounds, undocumented errors and write permissions assigned to read-only roles."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l03",
+      "stage": 28,
+      "title": "Introduction to FastMCP",
+      "pdfObjective": "Introduce the Python development model for creating servers, clients and reusable capabilities.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/03-fastmcp-model/environment/requirements.lock",
+        "labs/stage28-custom-mcp-servers/03-fastmcp-model/environment/version-record.json",
+        "labs/stage28-custom-mcp-servers/03-fastmcp-model/examples/fastmcp_model.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Identify where a Python function becomes a discovered MCP capability and explain transport versus application logic."
+      ],
+      "acceptanceSpecifications": [
+        "Import the pinned real package; verify a real minimal server exposes the expected capability through its supported client API. Mock-only success does not satisfy this check."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l04",
+      "stage": 28,
+      "title": "Build Your First FastMCP Server",
+      "pdfObjective": "Create and run a minimal server and verify that a client can connect to it.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/04-first-server/client.py",
+        "labs/stage28-custom-mcp-servers/04-first-server/fixtures/catalogue.json",
+        "labs/stage28-custom-mcp-servers/04-first-server/server.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Start the server, discover its capabilities and invoke a known catalogue lookup from a separate real session."
+      ],
+      "acceptanceSpecifications": [
+        "Exercise actual session initialization, list_tools and a successful tool call; verify clean shutdown and unknown-item behavior."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l05",
+      "stage": 28,
+      "title": "Create Typed MCP Tools",
+      "pdfObjective": "Expose Python functions as documented tools with validated parameters and results.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/05-typed-tools/fixtures/tool_cases.json",
+        "labs/stage28-custom-mcp-servers/05-typed-tools/models.py",
+        "labs/stage28-custom-mcp-servers/05-typed-tools/tools/catalogue.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add a typed catalogue price lookup and demonstrate rejected malformed IDs and out-of-range result limits."
+      ],
+      "acceptanceSpecifications": [
+        "Use a real MCP session to verify discovered input schemas, accepted inputs, invalid-type rejection and documented structured outputs without relying on a framework-specific error shape until inspected."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l06",
+      "stage": 28,
+      "title": "Add MCP Resources",
+      "pdfObjective": "Publish readable data and documents through stable resource identifiers.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/06-resources/data/catalogue.json",
+        "labs/stage28-custom-mcp-servers/06-resources/data/course-guide.md",
+        "labs/stage28-custom-mcp-servers/06-resources/resources.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Discover resources and read one exact document and one parameterized catalogue resource."
+      ],
+      "acceptanceSpecifications": [
+        "Verify actual list/read operations and stable URI mapping; reject traversal, nonexistent records and unintended files outside the course data directory."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l07",
+      "stage": 28,
+      "title": "Add Reusable MCP Prompts",
+      "pdfObjective": "Provide parameterized prompt templates that clients can discover and reuse.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/07-prompts/fixtures/prompt_cases.json",
+        "labs/stage28-custom-mcp-servers/07-prompts/prompts.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Discover and render a prompt with supplied arguments, then explain why rendering a prompt is not equivalent to executing its instructions."
+      ],
+      "acceptanceSpecifications": [
+        "Verify real prompt discovery and retrieval, required-argument errors, deterministic fixture rendering and preservation of quoted untrusted content."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l08",
+      "stage": 28,
+      "title": "Run and Inspect the Server",
+      "pdfObjective": "Launch the server and examine its capabilities, schemas and responses with an inspector.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/08-inspector/docs/inspector-checklist.md",
+        "labs/stage28-custom-mcp-servers/08-inspector/fixtures/inspection_cases.json",
+        "labs/stage28-custom-mcp-servers/08-inspector/scripts/run_inspector.sh"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/README.md",
+          "exists": true,
+          "sha256": "3fcb74496b0348da1b7952308eba0e079a901878096756c7c392027fca10caf6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inspect the same contract implemented in earlier lessons and compare observed schemas with the saved specification."
+      ],
+      "acceptanceSpecifications": [
+        "Record actual Inspector and server versions, connection transcript and screenshots; verify one discovery/read/prompt/tool success and one invalid request. Do not substitute a drawn inspector UI."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l09",
+      "stage": 28,
+      "title": "Connect the Server to an AI Agent",
+      "pdfObjective": "Configure a client session and make the custom capabilities available to an agent.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/09-agent-client/agents/mcp_client_agent.py",
+        "labs/stage28-custom-mcp-servers/09-agent-client/agents/policy.yaml",
+        "labs/stage28-custom-mcp-servers/09-agent-client/fixtures/agent_task.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/mcp_adapter.py",
+          "exists": true,
+          "sha256": "75b6300c3f2512ccca5454d5d8665f8efb69abc285300434b6775098fae51cc4"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Have the agent discover and invoke the catalogue tool, and produce an answer traceable to the returned record."
+      ],
+      "acceptanceSpecifications": [
+        "Run a bounded genuine agent/provider integration when configured; assert tool trace and returned record attribution. Offline adapters test dispatch but are labeled and cannot stand in for observed agent behavior."
+      ],
+      "runtimeGaps": [
+        "Live agent/model integration not executed."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l10",
+      "stage": 28,
+      "title": "Test MCP Tools and Error Handling",
+      "pdfObjective": "Verify valid calls, invalid inputs, permission errors, timeouts and server failures.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/10-error-tests/fixtures/error_cases.json",
+        "labs/stage28-custom-mcp-servers/10-error-tests/tests/test_permissions.py",
+        "labs/stage28-custom-mcp-servers/10-error-tests/tests/test_protocol_failures.py",
+        "labs/stage28-custom-mcp-servers/10-error-tests/tests/test_timeouts.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_lab/server.py",
+          "exists": true,
+          "sha256": "52a16df8e9fab58b9be4cb558161c14cb4303bef2b9d589ad01224583623d42f"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Introduce a controlled delayed operation and unauthorized write; show bounded failure and successful later reconnection."
+      ],
+      "acceptanceSpecifications": [
+        "Assert actual invalid input handling, no write on denial, configured timeout termination, controlled server crash behavior and subsequent clean new session. No flaky reliance on wall-clock sleeps alone."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l11",
+      "stage": 28,
+      "title": "Build a Long-Term Memory MCP Server",
+      "pdfObjective": "Store, retrieve, update and search persistent memories through controlled operations.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/11-memory-server/data/memory_seed.json",
+        "labs/stage28-custom-mcp-servers/11-memory-server/migrations/001_memory.sql",
+        "labs/stage28-custom-mcp-servers/11-memory-server/servers/memory.py",
+        "labs/stage28-custom-mcp-servers/11-memory-server/tests/test_memory.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_server.py",
+          "exists": true,
+          "sha256": "fad9610ac5734cd39e2d9f4486c5efef5c6ad177937e1b98d7ee4aa9baedb5dd"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Store a fictional learner preference, restart the server, retrieve it, update it and search within the same tenant scope."
+      ],
+      "acceptanceSpecifications": [
+        "Verify persistence across actual process restart, deterministic seed setup, cross-tenant read/write denial, validation, versioned update conflict and bounded search results."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l12",
+      "stage": 28,
+      "title": "Build a Web Search MCP Server",
+      "pdfObjective": "Wrap a search provider behind normalized queries, results, limits and error handling.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/12-search-server/adapters/search_provider.py",
+        "labs/stage28-custom-mcp-servers/12-search-server/fixtures/search_provider_fixture.json",
+        "labs/stage28-custom-mcp-servers/12-search-server/servers/search.py",
+        "labs/stage28-custom-mcp-servers/12-search-server/tests/test_search.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/server.py",
+          "exists": true,
+          "sha256": "943df97c122680cde8eb2956f6f2cfb5a877b0f2e290868e98e85b010a1c012e"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Compare explicitly labeled recorded fixture results with a bounded live provider query, recording result URLs, timestamps and provenance."
+      ],
+      "acceptanceSpecifications": [
+        "Offline tests cover schema normalization, empty results, quota and timeout errors; a separately bounded genuine provider run verifies actual response and provenance. Missing credentials must be reported as skipped, not replaced by invented live results."
+      ],
+      "runtimeGaps": [
+        "Actual public search endpoint not called; owned response fixture is labeled."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l13",
+      "stage": 28,
+      "title": "Connect an Agentic RAG Service",
+      "pdfObjective": "Expose document ingestion and retrieval capabilities for evidence-grounded agent responses.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/13-rag-service/data/documents/academy-lab-policy.md",
+        "labs/stage28-custom-mcp-servers/13-rag-service/data/documents/academy-mcp-guide.md",
+        "labs/stage28-custom-mcp-servers/13-rag-service/servers/rag.py",
+        "labs/stage28-custom-mcp-servers/13-rag-service/tests/test_rag.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Ingest both supplied documents and retrieve evidence for a question; display exact supporting source passages and an explicit insufficient-evidence path."
+      ],
+      "acceptanceSpecifications": [
+        "Verify duplicate ingestion policy, source/chunk linkage, tenant isolation, bounded retrieval and actual agent answer trace. Unsupported answers are not accepted as grounded merely because they contain a citation."
+      ],
+      "runtimeGaps": [
+        "Model-backed answer generation not run; extractive grounding remains explicit baseline."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l14",
+      "stage": 28,
+      "title": "Connect Vector Search with Qdrant",
+      "pdfObjective": "Store embeddings and return relevant records through an MCP retrieval capability.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/14-qdrant/adapters/qdrant_store.py",
+        "labs/stage28-custom-mcp-servers/14-qdrant/compose.qdrant.yaml",
+        "labs/stage28-custom-mcp-servers/14-qdrant/config/embedding-model.json",
+        "labs/stage28-custom-mcp-servers/14-qdrant/tests/test_qdrant.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Index the same course documents, inspect stored payload provenance and retrieve relevant chunks through the MCP tool."
+      ],
+      "acceptanceSpecifications": [
+        "Start real Qdrant; verify collection dimensions, upsert/read/search and restart persistence, deleted-record behavior and invalid-vector rejection. Record actual embedding model identity and compare relevance against a small human-authored expected-document set, without inventing scores."
+      ],
+      "runtimeGaps": [
+        "Actual local Qdrant uses deterministic teaching encoder; pretrained semantic-embedding comparison not executed."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l15",
+      "stage": 28,
+      "title": "Build a Market Data MCP Service",
+      "pdfObjective": "Provide normalized educational market data through typed and permission-aware tools.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/15-market-data/adapters/market_provider.py",
+        "labs/stage28-custom-mcp-servers/15-market-data/data/market_quotes.synthetic.json",
+        "labs/stage28-custom-mcp-servers/15-market-data/servers/market_data.py",
+        "labs/stage28-custom-mcp-servers/15-market-data/tests/test_market_data.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_server.py",
+          "exists": true,
+          "sha256": "fad9610ac5734cd39e2d9f4486c5efef5c6ad177937e1b98d7ee4aa9baedb5dd"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/fixtures/market.json",
+          "exists": true,
+          "sha256": "8dfa1b2159d7fc88abc4eb5fd4846c777140fd51702444d10f7ec092fb201468"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Query clearly labeled synthetic quotes, inspect their source and age, and optionally compare one bounded configured provider observation."
+      ],
+      "acceptanceSpecifications": [
+        "Assert decimal precision, currency/unit normalization, timestamp timezone, stale-data flag, unknown symbols and denied writes. Synthetic rows never appear as live prices; a live adapter needs an actual retained response before any narrated current-price claim."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s28-l16",
+      "stage": 28,
+      "title": "Apply Progressive Tool Discovery",
+      "pdfObjective": "Reduce tool overload by revealing specialist capabilities only when the current task requires them.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "labs/stage28-custom-mcp-servers/16-progressive-discovery/discovery/catalogue.json",
+        "labs/stage28-custom-mcp-servers/16-progressive-discovery/discovery/router.py",
+        "labs/stage28-custom-mcp-servers/16-progressive-discovery/fixtures/discovery_tasks.json",
+        "labs/stage28-custom-mcp-servers/16-progressive-discovery/tests/test_discovery.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Run the same educational task with the full catalogue and progressive discovery; record exposed tool names and actual invocation traces."
+      ],
+      "acceptanceSpecifications": [
+        "Assert initial specialist tools are withheld, the selected capability becomes discoverable, authorization cannot be bypassed and unknown routes fail clearly. Measure real exposed-tool count; claim quality, latency or cost improvement only if an actual controlled comparison supports it."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l01",
+      "stage": 29,
+      "title": "Design the MCP Trading Floor",
+      "pdfObjective": "Define the educational paper-trading scope, users, workflows, controls and final application experience.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-01/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-01/fixtures/scope_cases.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-01/scope.yaml"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Complete the scope worksheet and classify actions as read-only, proposal, approval or simulated execution."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-01/tests/test_lesson_01.py: Missing simulation label and live brokerage capabilities fail validation; scope includes explicit users, reset and approval controls."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l02",
+      "stage": 29,
+      "title": "Define the Capstone Architecture",
+      "pdfObjective": "Map agents, application services, MCP servers, state, approvals, evaluations and interface components.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-02/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-02/architecture.yaml",
+        "projects/08-mcp-trading-floor/stage29/lesson-02/docs/architecture.mmd"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Trace one proposal from evidence through manual approval into the paper ledger and identify trust boundaries."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-02/tests/test_lesson_02.py: Every component reference resolves; execution depends on independent manual approval; agents cannot grant themselves execution authority."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l03",
+      "stage": 29,
+      "title": "Define the Market Research Agent",
+      "pdfObjective": "Create an agent that gathers and structures company, industry and market evidence.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-03/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-03/agents/research.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-03/fixtures/research_evidence.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/fixtures/market.json",
+          "exists": true,
+          "sha256": "8dfa1b2159d7fc88abc4eb5fd4846c777140fd51702444d10f7ec092fb201468"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Implement structured evidence extraction and expose unavailable and stale evidence explicitly."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-03/tests/test_lesson_03.py: Claims reference known sources and timestamps; invented evidence identifiers fail; stale facts stay visibly marked."
+      ],
+      "runtimeGaps": [
+        "Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l04",
+      "stage": 29,
+      "title": "Define the Trading Strategy Agent",
+      "pdfObjective": "Create an agent that converts research into a transparent simulated trading proposal.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-04/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-04/agents/strategy.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-04/fixtures/strategy_cases.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Implement a no-trade result when evidence is insufficient and keep deterministic policy outside model text."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-04/tests/test_lesson_04.py: Validate symbol, side, quantity, rationale and evidence IDs; reject unknown symbols and proposals without evidence."
+      ],
+      "runtimeGaps": [
+        "Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l05",
+      "stage": 29,
+      "title": "Define the Risk Management Agent",
+      "pdfObjective": "Create an agent that applies position limits, portfolio rules and deterministic risk checks.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-05/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-05/agents/risk.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-05/policies/risk.yaml"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add position, concentration and freshness checks with reviewable violation messages."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-05/tests/test_lesson_05.py: Boundary, over-limit, missing-price and insufficient-cash cases reject correctly; model explanations cannot override deterministic rejection."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l06",
+      "stage": 29,
+      "title": "Define the Portfolio and Paper-Execution Agent",
+      "pdfObjective": "Create an agent that maintains simulated account state and executes approved paper trades.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-06/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-06/agents/execution.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-06/fixtures/account.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Implement idempotent paper submission and account reset without brokerage credentials or routes."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-06/tests/test_lesson_06.py: Duplicate idempotency keys have one ledger effect; mismatched approvals and stale account revisions cannot change holdings or cash."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l07",
+      "stage": 29,
+      "title": "Build the Market Data MCP Integration",
+      "pdfObjective": "Connect normalized prices, company data and market information to the research workflow.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-07/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-07/data/synthetic_prices.csv",
+        "projects/08-mcp-trading-floor/stage29/lesson-07/mcp/market_data_server.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_server.py",
+          "exists": true,
+          "sha256": "fad9610ac5734cd39e2d9f4486c5efef5c6ad177937e1b98d7ee4aa9baedb5dd"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/fixtures/market.json",
+          "exists": true,
+          "sha256": "8dfa1b2159d7fc88abc4eb5fd4846c777140fd51702444d10f7ec092fb201468"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Create clearly labelled fictional company records and fixed-time synthetic quotes; invoke actual MCP price and company tools."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-07/tests/test_lesson_07.py: Actual handshake, list-tools and call-tool succeed; unknown symbol, stale quote and malformed input return controlled errors with provenance."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l08",
+      "stage": 29,
+      "title": "Build the Research MCP Integration",
+      "pdfObjective": "Provide search and evidence-collection capabilities through a controlled service interface.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-08/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-08/data/research_documents.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-08/mcp/research_server.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/server.py",
+          "exists": true,
+          "sha256": "943df97c122680cde8eb2956f6f2cfb5a877b0f2e290868e98e85b010a1c012e"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/retrieval_lab/core.py",
+          "exists": true,
+          "sha256": "3c668a44f5903a9196f66680504420eee1aa85ceeb300e1929d1e23298735b60"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Implement source-ID lookup, domain permission rules and bounded results with preserved citations."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-08/tests/test_lesson_08.py: Real MCP calls return source IDs and retrieval times; denied sources and oversized queries fail; document instructions cannot change tool permissions."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l09",
+      "stage": 29,
+      "title": "Build the Memory MCP Integration",
+      "pdfObjective": "Preserve prior analyses, decisions, feedback and portfolio context across sessions.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-09/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-09/mcp/memory_server.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-09/storage/memory_schema.sql"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_server.py",
+          "exists": true,
+          "sha256": "fad9610ac5734cd39e2d9f4486c5efef5c6ad177937e1b98d7ee4aa9baedb5dd"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Implement write, retrieve and reset tools with per-account isolation and actual session restart retrieval."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-09/tests/test_lesson_09.py: Data survives a fresh session; cross-account access fails; resetting one account leaves another untouched; old quotes never become current prices."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l10",
+      "stage": 29,
+      "title": "Build the Portfolio MCP Service",
+      "pdfObjective": "Implement tools for simulated cash, positions, orders, transactions and portfolio valuation.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-10/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-10/mcp/portfolio_server.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-10/storage/portfolio_schema.sql"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/mcp_server.py",
+          "exists": true,
+          "sha256": "fad9610ac5734cd39e2d9f4486c5efef5c6ad177937e1b98d7ee4aa9baedb5dd"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Use Decimal or integer minor units and atomic writes; value holdings with explicit quote timestamps."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-10/tests/test_lesson_10.py: Atomic commit preserves cash and holding invariants; duplicate orders, rounding, overselling and unavailable valuation prices have tested outcomes."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l11",
+      "stage": 29,
+      "title": "Use the Researcher-as-a-Tool Pattern",
+      "pdfObjective": "Allow other agents to request structured research without duplicating research responsibilities.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-11/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-11/contracts/research_request.schema.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-11/tools/researcher.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Validate a research request and run an actual agent-to-researcher invocation without duplicated research roles."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-11/tests/test_lesson_11.py: Return the common research schema; recursion and exhausted call budgets fail safely; freshness-bound cache cannot hide changed evidence."
+      ],
+      "runtimeGaps": [
+        "Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l12",
+      "stage": 29,
+      "title": "Pass Structured Information Between Agents",
+      "pdfObjective": "Define reliable contracts for research, proposals, risk decisions and execution results.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-12/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-12/contracts/models.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-12/fixtures/handoffs_invalid.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Replace free-text handoffs with typed contracts and inspect actual validation failures."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-12/tests/test_lesson_12.py: Valid envelopes round-trip; invalid enum, missing ID, changed proposal revision and forged evidence reference stop downstream execution."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l13",
+      "stage": 29,
+      "title": "Apply Risk and Portfolio Rules",
+      "pdfObjective": "Enforce deterministic checks before any proposed simulated transaction can continue.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-13/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-13/fixtures/risk_boundary_matrix.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-13/policies/enforce.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add table-driven cash, concentration, quote-age and portfolio-revision checks and demonstrate state changes invalidating a proposal."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-13/tests/test_lesson_13.py: Boundary cases behave as specified; stale state and quotes reject; every rejected transaction leaves the ledger unchanged."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l14",
+      "stage": 29,
+      "title": "Execute Controlled Paper Trades",
+      "pdfObjective": "Validate, approve and record simulated orders without connecting the project to live brokerage execution.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-14/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-14/fixtures/approval_cases.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-14/services/paper_execution.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/approve_order.py",
+          "exists": true,
+          "sha256": "120e53febbb14f4fbf80061e7720f0c489e6c17be4d9d69711c758fb10a9a4d5"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Approve one exact proposal, reject another and demonstrate expiry, duplicate submission and audit history through actual local runs."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-14/tests/test_lesson_14.py: Approval binds account, proposal hash, reviewer action and expiry; replay/mismatch fails; successful execution records one transaction."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l15",
+      "stage": 29,
+      "title": "Orchestrate the Complete Trading Floor",
+      "pdfObjective": "Coordinate research, strategy, risk and execution agents through the full capstone workflow.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-15/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-15/fixtures/scenarios.json",
+        "projects/08-mcp-trading-floor/stage29/lesson-15/orchestrator.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/services.py",
+          "exists": true,
+          "sha256": "9582c16dc527e165d87f9aac3a0812751cac142f1cfe619402ee020af86399bb"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/workflow.py",
+          "exists": true,
+          "sha256": "4bed687a63865016815bf3a278b60fb79fe6ddbe70ad3d3f2cace73de57311d6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Run approved trade, insufficient-evidence hold, risk rejection and interrupted-session resume scenarios."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-15/tests/test_lesson_15.py: Legal transitions and budgets are enforced; no automatic approval; resume has exactly-once ledger effects; only actual run traces support observed results."
+      ],
+      "runtimeGaps": [
+        "Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s29-l16",
+      "stage": 29,
+      "title": "Build the Gradio Trading Dashboard",
+      "pdfObjective": "Display research, proposals, approvals, simulated positions, activity and agent status.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage29/lesson-16/README.md",
+        "projects/08-mcp-trading-floor/stage29/lesson-16/app.py",
+        "projects/08-mcp-trading-floor/stage29/lesson-16/ui/components.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/gradio_app.py",
+          "exists": true,
+          "sha256": "683ecf3456f84053df5168cb05bce44fe8970cd99815fac701bb05694a776d83"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inspect real interface states, approve a paper order and compare displayed balances with the authoritative ledger."
+      ],
+      "acceptanceSpecifications": [
+        "projects/08-mcp-trading-floor/stage29/lesson-16/tests/test_lesson_16.py: Actual Gradio browser smoke covers initial, research, rejected, awaiting-approval, executed and error states; changed proposals revoke stale approval; no live brokerage controls or secrets appear."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l01",
+      "stage": 30,
+      "title": "Add Tracing and Observability to the Trading Floor",
+      "pdfObjective": "Record model calls, agent transitions, MCP activity, approvals, errors and execution timing.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/observability.py",
+        "projects/08-mcp-trading-floor/stage30/fixtures/redaction_cases.json",
+        "projects/08-mcp-trading-floor/stage30/schemas/trace_event.schema.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/observability.py",
+          "exists": true,
+          "sha256": "d6495b9c35aeb0089961593b206a53db916bd826989d9c88e8f406736f549607"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/workflow.py",
+          "exists": true,
+          "sha256": "4bed687a63865016815bf3a278b60fb79fe6ddbe70ad3d3f2cace73de57311d6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add one trace event around the risk tool and follow its parent span without logging credentials or private prompt data."
+      ],
+      "acceptanceSpecifications": [
+        "A complete real local run has an unbroken parent-child trace from research to approved paper-order ledger; rejected and failed runs retain their outcome.",
+        "Secret sentinel values are absent from exported events; event times and durations are nonnegative and documented."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l02",
+      "stage": 30,
+      "title": "Build Capstone Evaluation Datasets",
+      "pdfObjective": "Create representative market scenarios, expected constraints and repeatable test cases.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/evaluation/dataset_manifest.json",
+        "projects/08-mcp-trading-floor/stage30/evaluation/scenario.schema.json",
+        "projects/08-mcp-trading-floor/stage30/evaluation/scenarios.jsonl"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/dataset.py",
+          "exists": true,
+          "sha256": "bfe83e130eaef2fe3bad7675af84a5fb4c433f7437346009c4d432aa26d96273"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/scenarios.json",
+          "exists": true,
+          "sha256": "81e6219acc48f82fbba25e7ccc8c3af06766965536e5239249a416ff06f70941"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Add normal, stale-data, over-limit and conflicting-evidence scenarios and explain each expected invariant."
+      ],
+      "acceptanceSpecifications": [
+        "Every case validates against the schema and references a real fixture ID; dataset manifest hashes every fixture.",
+        "Split development and held-out cases by scenario family; no case asserts an invented model response or future investment return."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l03",
+      "stage": 30,
+      "title": "Evaluate Research and Trading Decisions",
+      "pdfObjective": "Measure evidence quality, decision consistency, rule compliance and explanation clarity.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/evaluation/decision_metrics.py",
+        "projects/08-mcp-trading-floor/stage30/evaluation/rubrics/decision_quality.yaml",
+        "projects/08-mcp-trading-floor/stage30/evaluation/run_decision_evaluation.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/dataset.py",
+          "exists": true,
+          "sha256": "bfe83e130eaef2fe3bad7675af84a5fb4c433f7437346009c4d432aa26d96273"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/quality.py",
+          "exists": true,
+          "sha256": "02cf00e5586fa4500a47aeb33b66505223ba8603de5e9300ba8033a315f014b6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Compare actual two-run decisions for one unchanged scenario and record supported differences rather than claiming determinism for a model."
+      ],
+      "acceptanceSpecifications": [
+        "Metric calculations pass hand-computed fixture tests and report denominator, failures and unavailable values.",
+        "Every reported observed metric resolves to retained actual run artifacts and dataset revision; identical seeded fixture logic is reproducible."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l04",
+      "stage": 30,
+      "title": "Add Deterministic Risk Checks",
+      "pdfObjective": "Test portfolio limits and execution constraints with ordinary software assertions.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/risk_checks.py",
+        "projects/08-mcp-trading-floor/stage30/fixtures/risk_boundaries.json",
+        "projects/08-mcp-trading-floor/stage30/tests/test_risk_boundaries.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/trading_floor.py",
+          "exists": true,
+          "sha256": "4d20b851a5670670487ee6a2e778b0b1357e300615be6a3f260ff654cde32156"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/evaluate.py",
+          "exists": true,
+          "sha256": "c168e688638511c79a7ff848dd5f527827ceb2f9acfaec6540e2d4500618f524"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Write tests immediately below, at and above an allocation limit, then prove a rejected order never reaches the simulated ledger."
+      ],
+      "acceptanceSpecifications": [
+        "Reject NaN, negative quantities, missing approvals and overspending using typed validation and explicit currency/decimal rules.",
+        "Boundary and property-based tests establish exposure/cash invariants across paper-trade batches; no live brokerage adapter is configured."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l05",
+      "stage": 30,
+      "title": "Add Model-Based Quality Evaluators",
+      "pdfObjective": "Score qualitative outputs using explicit rubrics and structured evaluator responses.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/evaluation/judge_response.schema.json",
+        "projects/08-mcp-trading-floor/stage30/evaluation/model_judge.py",
+        "projects/08-mcp-trading-floor/stage30/evaluation/rubrics/explanation.yaml"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/quality.py",
+          "exists": true,
+          "sha256": "02cf00e5586fa4500a47aeb33b66505223ba8603de5e9300ba8033a315f014b6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Score two labelled illustrative explanations with the same rubric and compare actual judge output against a human assessment."
+      ],
+      "acceptanceSpecifications": [
+        "Schema-invalid responses are counted as evaluator failures, never converted into passes; per-dimension scores cite output evidence.",
+        "Fixtures test judge parsing offline, while any claimed actual judge example requires a separate genuine bounded provider run and retained model/version/input hashes."
+      ],
+      "runtimeGaps": [
+        "Structured judge implementation exists; genuine authorized model response/rubric evaluation not executed."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l06",
+      "stage": 30,
+      "title": "Collect Human Feedback",
+      "pdfObjective": "Capture reviewer ratings, corrections and comments for later analysis and improvement.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/feedback.py",
+        "projects/08-mcp-trading-floor/stage30/evaluation/analyze_feedback.py",
+        "projects/08-mcp-trading-floor/stage30/schemas/feedback.schema.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/quality.py",
+          "exists": true,
+          "sha256": "02cf00e5586fa4500a47aeb33b66505223ba8603de5e9300ba8033a315f014b6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Submit one genuine reviewer correction in the practice app, then inspect its provenance and compare the two evaluator opinions."
+      ],
+      "acceptanceSpecifications": [
+        "Feedback cannot mutate historical decisions or silently approve paper orders; duplicate submissions use a stable key.",
+        "Ratings validate allowed ranges, comments are escaped in the UI, and exported examples use only Academy practice identities."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l07",
+      "stage": 30,
+      "title": "Test Tool and Agent Failure Scenarios",
+      "pdfObjective": "Simulate unavailable services, malformed data, agent errors and incomplete workflows.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/fixtures/failures.json",
+        "projects/08-mcp-trading-floor/stage30/tests/faults/fault_injector.py",
+        "projects/08-mcp-trading-floor/stage30/tests/test_failure_workflows.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/recovery.py",
+          "exists": true,
+          "sha256": "03e4d82b54706ef2c6703bc57c434b066c1105f0c3223657dab16aca4dcf17d6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Inject an MCP timeout after research and inspect the failed trace, unchanged portfolio and unresolved workflow state."
+      ],
+      "acceptanceSpecifications": [
+        "Each injected fault produces a classified failure with retained trace and no unapproved ledger write.",
+        "Use an owned local MCP test server for unavailable/malformed-response cases; distinguish simulated failure fixtures from actual remote outages."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l08",
+      "stage": 30,
+      "title": "Add Retry and Recovery Strategies",
+      "pdfObjective": "Resume interrupted operations and select appropriate retries, fallbacks or human escalation.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/checkpoints.py",
+        "projects/08-mcp-trading-floor/stage30/backend/recovery.py",
+        "projects/08-mcp-trading-floor/stage30/tests/test_retry_idempotency.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/recovery.py",
+          "exists": true,
+          "sha256": "03e4d82b54706ef2c6703bc57c434b066c1105f0c3223657dab16aca4dcf17d6"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Interrupt a workflow after checkpoint persistence and resume it once without duplicating the simulated order."
+      ],
+      "acceptanceSpecifications": [
+        "Retryable reads obey maximum attempts/backoff/deadline; validation failures do not retry.",
+        "An actual process interruption/restart test proves single ledger effect; unknown write outcomes stay unresolved until reconciled, never blindly replayed."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l09",
+      "stage": 30,
+      "title": "Monitor Token Usage, Latency and Cost",
+      "pdfObjective": "Measure resource consumption by model, agent, tool and complete workflow.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/usage.py",
+        "projects/08-mcp-trading-floor/stage30/evaluation/pricing.example.json",
+        "projects/08-mcp-trading-floor/stage30/evaluation/usage_report.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/observability.py",
+          "exists": true,
+          "sha256": "d6495b9c35aeb0089961593b206a53db916bd826989d9c88e8f406736f549607"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Generate a report from actual local traces and mark missing provider token counts or unpriced models as unknown."
+      ],
+      "acceptanceSpecifications": [
+        "Totals reconcile to leaf call records without double-counting agent/tool containers; cached tokens are separately identified.",
+        "Measured durations use a monotonic clock; fixture arithmetic passes known hand calculations and unknown is never silently treated as free."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l10",
+      "stage": 30,
+      "title": "Build the FastAPI Backend",
+      "pdfObjective": "Expose capstone operations, state and results through validated API endpoints.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/backend/api.py",
+        "projects/08-mcp-trading-floor/stage30/backend/api_models.py",
+        "projects/08-mcp-trading-floor/stage30/docs/api-contract.md",
+        "projects/08-mcp-trading-floor/stage30/tests/test_api.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/api.py",
+          "exists": true,
+          "sha256": "b4549b75a810bbddc213ceb26f826c7db27e96fd6e39feee81b516d4b0776324"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Start the backend and submit one controlled scenario using its real OpenAPI interface; poll the resulting status and inspect validation errors."
+      ],
+      "acceptanceSpecifications": [
+        "Actual in-process integration tests exercise schema validation, missing IDs, state transitions, idempotency and approval requirements.",
+        "API authentication/authorization configuration is explicit; public endpoints do not reveal secrets, and no model request executes merely from viewing status."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l11",
+      "stage": 30,
+      "title": "Build the React Front End",
+      "pdfObjective": "Create a responsive dashboard that communicates with the backend and displays system activity.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/frontend/src/App.tsx",
+        "projects/08-mcp-trading-floor/stage30/frontend/src/api.ts",
+        "projects/08-mcp-trading-floor/stage30/frontend/src/components/RunDashboard.tsx",
+        "projects/08-mcp-trading-floor/stage30/frontend/tests/dashboard.spec.ts"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/frontend/src/main.jsx",
+          "exists": true,
+          "sha256": "d26e81b3226d521db4c811d59a171e6bfcf46b66db41ce448f28aa17557ed0cf"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/frontend/package.json",
+          "exists": true,
+          "sha256": "7847e9728822e4541b490bdacb493cf5bdf72b5274287da0941ea7dac283685d"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/frontend/vite.config.js",
+          "exists": true,
+          "sha256": "bbba787c5801b2dcf8f8cc064f4e543536087bf9912124fa005b8fe3b9737b8e"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Launch the app, run a fixture scenario, inspect evidence and give explicit approval before the paper-order update."
+      ],
+      "acceptanceSpecifications": [
+        "Browser tests cover loading, success, failure, disconnected backend, rejected approval and safe rendering of comments.",
+        "A genuine full-stack browser run shows backend state changing after a real practice interaction; synthetic example data remains labelled and no static mock is presented as live integration."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l12",
+      "stage": 30,
+      "title": "Package the Application with Docker",
+      "pdfObjective": "Containerize the services and configure networking, environment variables and persistent storage.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/deployment/.env.example",
+        "projects/08-mcp-trading-floor/stage30/deployment/Dockerfile.backend",
+        "projects/08-mcp-trading-floor/stage30/deployment/Dockerfile.frontend",
+        "projects/08-mcp-trading-floor/stage30/deployment/compose.yaml"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/Dockerfile",
+          "exists": true,
+          "sha256": "387552a53e5b7b2cb4b8a3c8a0a1d2e8c38866a303b0510ca6edee990226a6ad"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Build the containers, start the stack on an owned local host and restart it to verify persisted paper-portfolio state."
+      ],
+      "acceptanceSpecifications": [
+        "Actual build and compose health checks succeed using a recorded dependency lock and image revision; missing mandatory configuration fails clearly.",
+        "No secret is baked into an image or committed; persistence survives a documented restart and service-to-service addressing matches the running network."
+      ],
+      "runtimeGaps": [
+        "Docker image build/persistent container restart not yet executed."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l13",
+      "stage": 30,
+      "title": "Deploy the MCP-Powered Trading Floor",
+      "pdfObjective": "Release the application to a hosting environment and verify the complete deployed workflow.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/deployment/DEPLOY.md",
+        "projects/08-mcp-trading-floor/stage30/deployment/release-manifest.example.json",
+        "projects/08-mcp-trading-floor/stage30/deployment/rollback.md",
+        "projects/08-mcp-trading-floor/stage30/deployment/smoke_test.py"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/deployment/RUNBOOK.md",
+          "exists": true,
+          "sha256": "5e5afa966b6f583f9cb8e8adfdf00f9f0f95ba5f1b3e1deddb91e6f52509d84a"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Follow the deployment runbook, run an actual research-to-approved-paper-order smoke test and exercise the rollback procedure on the practice service."
+      ],
+      "acceptanceSpecifications": [
+        "Deployment evidence includes actual host/environment, revision, healthy services and one real complete test, with credentials removed.",
+        "A local container run alone is not claimed as hosted deployment; hosting access and cost require an approved environment before recording this lesson."
+      ],
+      "runtimeGaps": [
+        "Hosting deployment not performed; runbook is not deployed evidence."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l14",
+      "stage": 30,
+      "title": "Inspect Complete Capstone Traces",
+      "pdfObjective": "Follow representative executions from initial research through approval and simulated portfolio updates.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/docs/trace-walkthrough.md",
+        "projects/08-mcp-trading-floor/stage30/evaluation/select_representative_runs.py",
+        "projects/08-mcp-trading-floor/stage30/schemas/trace_index.schema.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/evaluation_lab/workflow.py",
+          "exists": true,
+          "sha256": "4bed687a63865016815bf3a278b60fb79fe6ddbe70ad3d3f2cace73de57311d6"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/validate_runtime.py",
+          "exists": true,
+          "sha256": "28232163fa9059fcef8a630df6be609a5fed4c07c60034eb07d5a1c805622250"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Annotate one accepted and one rejected real run, linking every conclusion to a trace event or evidence record."
+      ],
+      "acceptanceSpecifications": [
+        "The walkthrough links to existing immutable run IDs and every excerpt matches retained actual trace bytes.",
+        "Approved paper-order totals reconcile with the before/after ledger; rejected runs show no portfolio mutation."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l15",
+      "stage": 30,
+      "title": "Present the Final Capstone Project",
+      "pdfObjective": "Demonstrate the problem, architecture, workflow, controls, evaluation results and application interface.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/portfolio/architecture.mmd",
+        "projects/08-mcp-trading-floor/stage30/portfolio/capstone-presentation.md",
+        "projects/08-mcp-trading-floor/stage30/portfolio/demo-runbook.md",
+        "projects/08-mcp-trading-floor/stage30/portfolio/evidence-index.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/README.md",
+          "exists": true,
+          "sha256": "540aceb7f256e943be12567dff436870f04e8290c980d67f365cf0e28b337dc3"
+        },
+        {
+          "path": "projects/08-mcp-trading-floor/architecture.md",
+          "exists": true,
+          "sha256": "8ec986d201a23ce3e3c041fc1aaf17e3fcc20b588b562eed18256300e1a549d9"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Deliver a short demonstration from a fresh checkout and attach a failure example alongside a successful run."
+      ],
+      "acceptanceSpecifications": [
+        "Every advertised feature and metric links to implemented code and actual evidence; setup works from the documented locked environment.",
+        "The presentation explicitly identifies simulated trading, synthetic market data and any provider-dependent limitations; no claims of investment performance are invented."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l16",
+      "stage": 30,
+      "title": "Choosing the Right Agent Framework",
+      "pdfObjective": "Compare frameworks by control, state, ecosystem, interoperability, observability and deployment requirements.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/docs/framework-decision-matrix.csv",
+        "projects/08-mcp-trading-floor/stage30/docs/framework-selection.md",
+        "projects/08-mcp-trading-floor/stage30/exercises/framework-selection-case.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/portfolio-and-framework-decisions.md",
+          "exists": true,
+          "sha256": "eadf9266bdb77cd2520432d57a3eabc39a5fa9f9a0f9b384d59b1230c2179701"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Choose a framework for two contrasting requirements and justify trade-offs using course projects and pinned official documentation."
+      ],
+      "acceptanceSpecifications": [
+        "Matrix rows include version/date and evidence source; no untested feature is labelled measured or supported by a fabricated benchmark.",
+        "Solution rationale allows multiple defensible choices and ties each choice to concrete state, interoperability and deployment requirements."
+      ],
+      "runtimeGaps": [
+        "Actual same-fixture framework comparison runs remain to be observed; decision worksheet and criteria are authored."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l17",
+      "stage": 30,
+      "title": "Ten Principles of Effective Agentic AI Engineering",
+      "pdfObjective": "Consolidate the architectural and operational principles that support dependable agent applications.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/docs/ten-principles.md",
+        "projects/08-mcp-trading-floor/stage30/exercises/capstone-review-checklist.md",
+        "projects/08-mcp-trading-floor/stage30/solutions/capstone-review-example.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/portfolio-and-framework-decisions.md",
+          "exists": true,
+          "sha256": "eadf9266bdb77cd2520432d57a3eabc39a5fa9f9a0f9b384d59b1230c2179701"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Audit the capstone against all ten principles and open a concrete improvement issue for one documented limitation."
+      ],
+      "acceptanceSpecifications": [
+        "Each principle cites an actual repository component and a test or observation where available.",
+        "Checklist failures remain visible; principle summaries do not imply all application risks have been eliminated."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l18",
+      "stage": 30,
+      "title": "Your Agentic AI Engineering Career Roadmap",
+      "pdfObjective": "Translate completed projects into portfolio assets, interview demonstrations, services and product opportunities.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/exercises/career-roadmap.md",
+        "projects/08-mcp-trading-floor/stage30/portfolio/portfolio-index.template.md",
+        "projects/08-mcp-trading-floor/stage30/solutions/example-roadmap.md"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/portfolio-and-framework-decisions.md",
+          "exists": true,
+          "sha256": "eadf9266bdb77cd2520432d57a3eabc39a5fa9f9a0f9b384d59b1230c2179701"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Prepare a project-specific interview walkthrough and a 30/60/90-day plan using only work the learner actually completed."
+      ],
+      "acceptanceSpecifications": [
+        "Portfolio template separates completed work, proposed work and measured outcomes; it makes no invented customer, employment, certification or revenue claims.",
+        "Example roadmap references all eight real project folders and marks learner-specific links as required inputs rather than nonexistent published URLs."
+      ],
+      "runtimeGaps": [
+        "Learner portfolio and peer handoff are learner assessments, not observations claimed by this starter."
+      ],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    },
+    {
+      "lessonId": "s30-l19",
+      "stage": 30,
+      "title": "Course Completion and Next Steps",
+      "pdfObjective": "Review the completed journey and provide a path for continued specialization and project development.",
+      "status": "IMPLEMENTED_COMPONENTS_FULL_LESSON_ACCEPTANCE_PENDING",
+      "plannedResourcePaths": [
+        "projects/08-mcp-trading-floor/stage30/docs/course-completion-checklist.md",
+        "projects/08-mcp-trading-floor/stage30/docs/next-steps.md",
+        "projects/08-mcp-trading-floor/stage30/portfolio/course-evidence-index.json"
+      ],
+      "actualEquivalentFiles": [
+        {
+          "path": "projects/08-mcp-trading-floor/portfolio-and-framework-decisions.md",
+          "exists": true,
+          "sha256": "eadf9266bdb77cd2520432d57a3eabc39a5fa9f9a0f9b384d59b1230c2179701"
+        }
+      ],
+      "exerciseSpecifications": [
+        "Complete the final checklist, verify repository/resource links and identify one next project without declaring unfinished labs complete."
+      ],
+      "acceptanceSpecifications": [
+        "Checklist resolves all 362 planned lesson IDs and eight project deliverables, records incomplete items honestly and excludes the separate bonus from the 362-lesson count.",
+        "All published links and setup commands are verified before recording the final lesson; no certificate or assessment result is invented."
+      ],
+      "runtimeGaps": [],
+      "approval": "No independent full-lesson material approval or render release inferred from this mapping."
+    }
+  ]
+}

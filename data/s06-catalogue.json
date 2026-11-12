@@ -1,0 +1,5 @@
+[
+ {"course_id":"ECA-101","title":"Python Foundations","level":"beginner","prerequisites":[]},
+ {"course_id":"ECA-201","title":"Agent Applications","level":"intermediate","prerequisites":["ECA-101"]},
+ {"course_id":"ECA-301","title":"Agent Security Lab","level":"advanced","prerequisites":["ECA-201"]}
+]

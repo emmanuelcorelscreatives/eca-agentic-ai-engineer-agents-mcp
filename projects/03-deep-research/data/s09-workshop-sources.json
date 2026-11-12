@@ -1,0 +1,41 @@
+{
+  "synthetic": true,
+  "records": [
+    {
+      "id": "access-a",
+      "title": "Synthetic accessibility memo",
+      "url": "https://example.invalid/workshop/access",
+      "topic": "accessibility",
+      "value": "screen-reader form available",
+      "text": "The synthetic workshop form supports screen-reader navigation.",
+      "published": null
+    },
+    {
+      "id": "cost-a",
+      "title": "Synthetic pilot budget",
+      "url": "https://example.invalid/workshop/budget",
+      "topic": "cost",
+      "value": "30 credits",
+      "text": "The synthetic pilot estimates 30 credits per month.",
+      "published": "2026-01-01"
+    },
+    {
+      "id": "cost-b",
+      "title": "Synthetic revised budget",
+      "url": "https://example.invalid/workshop/revision",
+      "topic": "cost",
+      "value": "45 credits",
+      "text": "The synthetic revised budget estimates 45 credits per month.",
+      "published": null
+    },
+    {
+      "id": "ops-a",
+      "title": "Synthetic operations note",
+      "url": "https://example.invalid/workshop/ops",
+      "topic": "operations",
+      "value": "weekly review",
+      "text": "The synthetic operations team reviews reservations weekly.",
+      "published": null
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Optional real SDK adapter; deterministic workflows/tests use Python stdlib only.
+openai-agents==0.24.0

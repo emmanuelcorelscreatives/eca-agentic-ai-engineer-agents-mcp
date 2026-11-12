@@ -1,5 +1,5 @@
 """Check exact curriculum inventory and practical directory references."""
-import json
+import json,hashlib
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 lessons=json.loads((root/'curriculum/lessons.json').read_text())
@@ -14,3 +14,16 @@ for lesson in lessons:
  assert lesson['title'] and lesson['objective'] and lesson['suggestedMinutes']>0
  assert (root/lesson['practicalPath']/'README.md').is_file(),lesson['id']
 print('PASS: 362 lessons, 30 stages, 8 practical project directories')
+
+material_index=root/'curriculum/materials.json'
+if material_index.exists():
+ data=json.loads(material_index.read_text())
+ assert data['lessonCount']==362 and len(data['lessons'])==362
+ assert [l['id'] for l in data['lessons']]==[l['id'] for l in lessons]
+ for lesson in data['lessons']:
+  assert lesson['actualMaterials'],lesson['id']
+  for item in lesson['actualMaterials']:
+   path=root/item['path']
+   assert path.resolve().is_relative_to(root.resolve()),item['path']
+   assert path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest()==item['sha256'],item['path']
+ print('PASS: all 362 current material mappings match their actual file hashes')

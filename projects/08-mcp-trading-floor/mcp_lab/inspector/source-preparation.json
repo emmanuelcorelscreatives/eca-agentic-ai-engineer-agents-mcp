@@ -1,0 +1,18 @@
+{
+  "state": "SOURCE_PREPARED_RUNTIME_NOT_EXECUTED",
+  "inspector_version": "2.15.0",
+  "registry_evidence": "project8-runtime/inspector-registry.json",
+  "reason": "Serialized behind genuine existing fetch and Playwright MCP helpers; parent stable batch freeze pending",
+  "files": {
+    "capture.py": "b51403897d823d30044277749ec1e0c342fff9e6867c17520eef68be3f554772",
+    "package.json": "faa9dbe3883b92bc99489b6744e91beaf38a7dc2d3dce06bbd429e54fafd327b"
+  },
+  "not_claimed": [
+    "npm installation",
+    "Inspector startup",
+    "connected server",
+    "capability browser view",
+    "screenshot"
+  ],
+  "prepared_at": "2026-11-12T17:16:01.224652+00:00"
+}

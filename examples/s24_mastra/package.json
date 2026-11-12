@@ -1,0 +1,26 @@
+{
+  "name": "eca-stage24-triage",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "tsx --test contract.test.ts",
+    "dev": "mastra dev"
+  },
+  "dependencies": {
+    "@mastra/core": "1.82.0",
+    "@mastra/mcp": "2.8.0",
+    "zod": "4.6.7",
+    "@mastra/memory": "1.41.0",
+    "@mastra/libsql": "1.29.0"
+  },
+  "devDependencies": {
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "@types/node": "26.6.6",
+    "mastra": "1.38.0"
+  }
+}

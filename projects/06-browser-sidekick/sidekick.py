@@ -75,11 +75,12 @@ class PlaywrightBrowser:
     Only navigate/extract are implemented; sensitive browser writes fail closed.
     The persistent approval lifecycle can be reused by a separately audited adapter.
     """
-    def __init__(self, origin: str):
+    def __init__(self, origin: str, executable_path: str | None = None):
         parsed = urlparse(origin)
         if parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "localhost"} or parsed.path not in {"", "/"}:
             raise ValueError("use a dedicated loopback fixture origin")
         self.origin = origin.rstrip("/")
+        self.executable_path = executable_path
     def execute(self, step: Step) -> str:
         from playwright.sync_api import sync_playwright
         if step.action not in {"navigate", "extract"}:
@@ -88,7 +89,7 @@ class PlaywrightBrowser:
         if ".." in step.target or urlparse(step.target).scheme:
             raise ValueError("unsafe relative URL")
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(headless=True, executable_path=self.executable_path)
             try:
                 context = browser.new_context(service_workers="block", accept_downloads=False)
                 def route(request_route):

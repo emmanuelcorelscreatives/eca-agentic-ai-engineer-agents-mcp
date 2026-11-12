@@ -1,0 +1,25 @@
+{
+  "support": {
+    "agent": "advocate",
+    "description": "Argue for a bounded pilot for {topic}. Use only F1-F4 from the fact tool. Cite IDs and acknowledge limitations.",
+    "expected_output": "A position, at least two fact IDs and at least one uncertainty.",
+    "context": []
+  },
+  "challenge": {
+    "agent": "skeptic",
+    "description": "Argue for deferral using the same F1-F4. Address the support argument without treating it as a new fact.",
+    "expected_output": "A counterposition, at least two fact IDs and at least one uncertainty.",
+    "context": [
+      "support"
+    ]
+  },
+  "verdict": {
+    "agent": "reviewer",
+    "description": "Compare support and challenge. Return decision bounded_pilot or defer, fact_ids, rationale and uncertainties; fictional must be true. Never add metrics.",
+    "expected_output": "A validated DebateVerdict referencing real fixture fact IDs.",
+    "context": [
+      "support",
+      "challenge"
+    ]
+  }
+}

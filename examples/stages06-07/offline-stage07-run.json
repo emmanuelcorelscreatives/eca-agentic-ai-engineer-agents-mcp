@@ -1,0 +1,87 @@
+{
+  "mode": "deterministic-offline",
+  "owner": "manager",
+  "results": [
+    {
+      "role": "research",
+      "result": {
+        "request_id": "REQ-001",
+        "product_id": "KB-01",
+        "stock": 7,
+        "source": "synthetic-inventory"
+      },
+      "error": null
+    },
+    {
+      "role": "policy",
+      "result": {
+        "request_id": "REQ-001",
+        "policy_version": "2026-11-demo",
+        "return_days": 30,
+        "source": "synthetic-policy"
+      },
+      "error": null
+    }
+  ],
+  "unresolved": [],
+  "trace": [
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "kind": "start",
+      "role": "manager",
+      "request_id": "REQ-001"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-2",
+      "parent_span_id": "span-1",
+      "kind": "delegation",
+      "role": "research",
+      "operation": "inventory"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-3",
+      "parent_span_id": "span-1",
+      "kind": "delegation",
+      "role": "policy",
+      "operation": "policy"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-4",
+      "parent_span_id": "span-2",
+      "kind": "tool",
+      "role": "research",
+      "operation": "inventory",
+      "status": "ok"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-5",
+      "parent_span_id": "span-3",
+      "kind": "tool",
+      "role": "policy",
+      "operation": "policy",
+      "status": "ok"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-6",
+      "parent_span_id": "span-1",
+      "kind": "synthesis",
+      "role": "manager",
+      "status": "complete"
+    },
+    {
+      "run_id": "25f2a13d-4c25-4bb5-8835-2b80b4355ae9",
+      "span_id": "span-7",
+      "parent_span_id": "span-1",
+      "kind": "terminal",
+      "role": "manager",
+      "status": "complete"
+    }
+  ]
+}

@@ -38,4 +38,4 @@ Primary documentation checked 2026-11-12:
 - [LangGraph interrupt and Command](https://reference.langchain.com/python/langgraph/types/interrupt)
 - [SqliteSaver context manager](https://reference.langchain.com/python/langgraph.checkpoint.sqlite/SqliteSaver/from_conn_string)
 
-This adapter was syntax-checked only in the baseline build: the optional SDK is absent from that test environment. A genuine installed-SDK checkpoint/pause/resume test remains required before publishing its framework-specific practical as verified.
+A separate installed-SDK test actually ran the graph with SqliteSaver, paused before the file effect, closed/reopened the graph database, resumed with the exact approval hash, and verified the saved artifact and complete state. Direct pins and the resolved environment are included beside this file. This proves the checkpoint/interrupt integration, not live-model planning or all application behavior.

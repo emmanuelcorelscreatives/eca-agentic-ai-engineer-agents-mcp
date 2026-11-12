@@ -1,0 +1,25 @@
+{
+  "provenance": "offline-human-reference",
+  "requirements": {
+    "revision": 1,
+    "stories": ["As a learner, I total expense amounts without binary floating-point ambiguity."],
+    "criteria": {
+      "R1": "An empty list returns integer zero.",
+      "R2": "125 and 275 integer minor units total exactly 400.",
+      "R3": "Negative, decimal and boolean amounts are rejected."
+    }
+  },
+  "tasks": {
+    "product_manager": [],
+    "architect": ["product_manager"],
+    "developer": ["architect"],
+    "quality_assurance": ["developer"]
+  },
+  "role_permissions": {
+    "product_manager": {"produces": "requirements", "execute_code": false},
+    "architect": {"produces": "architecture", "execute_code": false},
+    "developer": {"writes": ["src/*.py"], "can_modify_acceptance_tests": false},
+    "quality_assurance": {"command_id": "tests", "can_modify_application": false}
+  },
+  "completion_requires": ["all criteria have actual runtime evidence", "all four genuine role responses retained", "Docker limits and owned cleanup observed", "independent acceptance review", "package inventory and credentials scan"]
+}

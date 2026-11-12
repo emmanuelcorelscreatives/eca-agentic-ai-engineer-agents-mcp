@@ -1,0 +1,27 @@
+{
+  "fictional": true,
+  "topic": "Should fictional Alder Retail launch a second delivery region?",
+  "facts": [
+    {
+      "id": "F1",
+      "text": "The trial delivered 200 orders; 184 arrived on time."
+    },
+    {
+      "id": "F2",
+      "text": "The fictional delivery margin was 6 percent before central overhead."
+    },
+    {
+      "id": "F3",
+      "text": "Only one region was observed for four weeks."
+    },
+    {
+      "id": "F4",
+      "text": "A second-region pilot is capped at 100 orders and a fictional 2000-unit budget."
+    }
+  ],
+  "allowed_decisions": [
+    "bounded_pilot",
+    "defer"
+  ],
+  "max_fact_chars": 1200
+}

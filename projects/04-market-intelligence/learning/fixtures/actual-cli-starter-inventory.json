@@ -1,0 +1,69 @@
+{
+  "command": "crewai create crew academy_practice --skip-provider --classic",
+  "version": "1.15.40",
+  "network": "PrivateNetwork=yes",
+  "generated_not_executed": true,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "df7e47906a868f4c369af07f5a1100c41a17e81f4dc530ba2884724dbf0b10fd"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "a81cc299a71bec9a1b007e912a9bb58ff3e2bc6da57589e7dd14a5b2865aab07"
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "eaac258c47fb39063acdfd016eec1064dba67c2efb202368ec2fe340dc5ed5d3"
+    },
+    {
+      "path": "CURSOR.md",
+      "sha256": "7b3f5ca1f1accde36de5afc6e6e1a0dc941d082615e29c67356938dbe764e4a6"
+    },
+    {
+      "path": "GEMINI.md",
+      "sha256": "f7b1e037f74f8adf590041ec221b6d57f7c51a1c647dbcd0b514ffd3bc7f661f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "77497a881a3528be15e168df67acedbd5b355735ee84480c220f54f31745e6fb"
+    },
+    {
+      "path": "knowledge/user_preference.txt",
+      "sha256": "6f8d6ee24a1051a6abd5f46f7d7fddd3a2b35947e9a6c474c0c8468b113e2213"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "8140cd2d1c0a014c060ed72311fbb125bcb662bca857bd25f0f118222beb7cfa"
+    },
+    {
+      "path": "src/academy_practice/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/academy_practice/config/agents.yaml",
+      "sha256": "9c487244e8083a53275b4cedeb4ee1cd60321902ecbc705d05c897928cbcdbd4"
+    },
+    {
+      "path": "src/academy_practice/config/tasks.yaml",
+      "sha256": "68b33834de4bda6c83a12aadffb2679e814e675dcd161bc4cc5a5da1325467f0"
+    },
+    {
+      "path": "src/academy_practice/crew.py",
+      "sha256": "0fe601636d0198e5c07cb82243dea871912e1bba24717d9c21fce6544bab4e1f"
+    },
+    {
+      "path": "src/academy_practice/main.py",
+      "sha256": "924014cc31ad613e4ce9ad758e52d8119e529415f3f5d3e24abd2b30506e2888"
+    },
+    {
+      "path": "src/academy_practice/tools/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/academy_practice/tools/custom_tool.py",
+      "sha256": "bfdca6c41a4c51437876cdeb9c0de0e72e0fa67a3538c6c6f8e4c37ae4d170cb"
+    }
+  ],
+  "note": "CLI also initializes a local .git folder in the disposable external workspace; no application repository history was changed."
+}

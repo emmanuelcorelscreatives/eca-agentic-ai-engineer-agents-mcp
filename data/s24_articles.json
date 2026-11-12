@@ -1,0 +1,31 @@
+{
+  "synthetic": true,
+  "tickets": [
+    {
+      "id": "T-001",
+      "product_id": "P-KEY",
+      "summary": "Keyboard arrived with a missing key",
+      "category": "damaged"
+    },
+    {
+      "id": "T-002",
+      "product_id": "P-MOUSE",
+      "summary": "Mouse has not arrived",
+      "category": "delivery"
+    }
+  ],
+  "articles": [
+    {
+      "id": "A-001",
+      "product_id": "P-KEY",
+      "title": "Keyboard damage",
+      "text": "Photograph the damage and prepare a replacement review."
+    },
+    {
+      "id": "A-002",
+      "product_id": "P-MOUSE",
+      "title": "Delivery tracking",
+      "text": "Request a tracking reference before escalation."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "extract",
+    "triggers": [
+      "extract"
+    ],
+    "body": "extract/SKILL.md"
+  }
+]

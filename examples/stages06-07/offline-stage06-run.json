@@ -1,0 +1,41 @@
+{
+  "mode": "deterministic-offline",
+  "final_output": {
+    "found": true,
+    "course": {
+      "course_id": "ECA-101",
+      "title": "Python Foundations",
+      "level": "beginner",
+      "prerequisites": []
+    }
+  },
+  "last_agent": "catalogue",
+  "events": [
+    {
+      "run_id": "4c289a3f-e7a7-427f-9645-36306512544f",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "kind": "start",
+      "role": "manager",
+      "course_id": "ECA-101"
+    },
+    {
+      "run_id": "4c289a3f-e7a7-427f-9645-36306512544f",
+      "span_id": "span-2",
+      "parent_span_id": "span-1",
+      "kind": "tool",
+      "role": "manager",
+      "operation": "lookup_course",
+      "status": "ok"
+    },
+    {
+      "run_id": "4c289a3f-e7a7-427f-9645-36306512544f",
+      "span_id": "span-3",
+      "parent_span_id": "span-1",
+      "kind": "terminal",
+      "role": "manager",
+      "status": "complete"
+    }
+  ],
+  "usage": null
+}

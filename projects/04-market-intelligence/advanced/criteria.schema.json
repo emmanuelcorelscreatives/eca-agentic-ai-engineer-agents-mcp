@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Equal-weight fraction screening thresholds",
+  "type": "object",
+  "required": [
+    "min_growth",
+    "min_margin",
+    "max_debt_ratio"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "min_growth": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "min_margin": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "max_debt_ratio": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

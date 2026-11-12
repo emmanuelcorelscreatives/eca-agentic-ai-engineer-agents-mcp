@@ -1,0 +1,47 @@
+{
+  "manifest": {
+    "dataset_sha256": "81e6219acc48f82fbba25e7ccc8c3af06766965536e5239249a416ff06f70941",
+    "market_sha256": "8dfa1b2159d7fc88abc4eb5fd4846c777140fd51702444d10f7ec092fb201468",
+    "cases": 4
+  },
+  "results": [
+    {
+      "id": "bounded-buy",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "reasons": []
+    },
+    {
+      "id": "oversized-buy",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "reasons": [
+        "order_limit",
+        "position_limit"
+      ]
+    },
+    {
+      "id": "no-short-sale",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "reasons": [
+        "short_sales_disabled"
+      ]
+    },
+    {
+      "id": "small-lab-buy",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "reasons": []
+    }
+  ],
+  "metrics": {
+    "total": 4,
+    "observed": 4,
+    "unavailable": 0,
+    "correct": 4,
+    "accuracy_on_observed": 1.0
+  },
+  "model_calls": 0,
+  "scope": "deterministic synthetic risk decisions only"
+}

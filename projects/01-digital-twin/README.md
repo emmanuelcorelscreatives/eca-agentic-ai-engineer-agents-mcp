@@ -37,3 +37,17 @@ See `tests/test_projects_1_3.py` for executable acceptance examples. Authenticat
 ## Implemented optional local interface
 
 `app.py` builds an actual Gradio Blocks/ChatInterface around the approved-profile core. In a separate virtual environment install `requirements-optional.txt`, then run `python3 projects/01-digital-twin/app.py` from repository root. It binds loopback, disables public sharing and performs no model calls. The interface intentionally omits contact collection until service authentication/retention is configured. It was syntax-checked and build-tested with a component fake; an installed Gradio browser run remains required in the target environment. [Official ChatInterface documentation](https://gradio.app/docs/gradio/chatinterface).
+
+## Additional implemented workflow components
+
+`workflow.py` implements the explicit system-instruction contract, whole-section character budgeting, visible phase events and consented contact/notification composition. Notification adapters receive a record identifier; no external adapter is enabled by default, and failed notification does not erase successful local contact storage.
+
+`make_pdf_fixture.py` creates a real synthetic PDF. After installing optional `pypdf`, run `python3 pdf_ingest.py fixtures/synthetic-resume.pdf` from this directory. Extracted text is **unapproved** until reviewed. Encrypted or image-only PDFs fail explicitly rather than inventing text. `evaluate.py` runs the transparent offline grounding scenarios.
+
+`agents_adapter.py` is an implemented optional real SDK grounded-answer adapter. It passes only approved retrieved sections to a typed answer agent, rejects invented source identifiers and requires attribution for supported answers. Use `python3 agents_adapter.py 'Python experience' --live` with the same explicit environment configuration described in the other project adapters. It makes paid model requests; it has not been run against a provider. Citation validation is not an automatic claim-level truth guarantee.
+
+The Dockerfile runs as a nonroot user. For a local-only deployment exercise: `docker build -t academy-twin .` followed by `docker run --rm -p 127.0.0.1:7860:7860 academy-twin`. Actual image build/run and authenticated hosted deployment remain to be validated on the chosen target. Never embed credentials, local contact databases or personal profile documents in the image.
+
+## Actual local runtime validation (2026-11-12)
+
+A finite resource-governed validation environment installed OpenAI Agents SDK 0.24.0, Pydantic 2.14.3, Gradio 6.31.0 and pypdf 6.21.4. Actual SDK agent configurations and both twin/sales Gradio interfaces built successfully; pypdf extracted the synthetic resume. This proves imports/configuration and text extraction, not live model behavior or browser interaction. No model requests or UI servers were started. Reproduce in an isolated environment; retain version resolution and rerun the tests before deployment.

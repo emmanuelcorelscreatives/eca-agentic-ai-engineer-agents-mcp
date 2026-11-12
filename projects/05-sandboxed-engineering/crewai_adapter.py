@@ -5,8 +5,10 @@ import re
 from pathlib import Path
 import subprocess
 import tempfile
-import uuid
 import zipfile
+import importlib.util
+import math
+import sys
 from team import Specification, plan, safe_path, TESTS
 
 ALLOWED_FILES = {'expense_app.py', 'test_expense_app.py', 'README.md', 'requirements.txt'}
@@ -60,29 +62,32 @@ def build_crew(model: str, spec: Specification):
 
 
 def docker_qa(root: Path, image: str, timeout: float = 30) -> dict:
+    """Run only the exact owned container through the bounded learning executor."""
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/:~-]*@sha256:[0-9a-f]{64}', image):
         raise ValueError('preloaded digest-pinned Docker image required')
     if not 0 < timeout <= 60: raise ValueError('bounded timeout 0..60 required')
-    # The copied inputs are made readable for the unprivileged container, not host homes.
+    root=Path(root)
+    if root.absolute() != root.resolve(strict=True):raise ValueError('canonical workspace required')
+    entries=list(root.iterdir())
+    if any(p.is_symlink() or not p.is_file() for p in entries):
+        raise ValueError('workspace must contain only owned ordinary files')
     root.chmod(0o755)
-    for p in root.iterdir(): p.chmod(0o444)
-    name = 'eca-live-engineering-'+uuid.uuid4().hex
-    cmd = ['docker','run','--rm','--name',name,'--pull=never','--network=none','--read-only',
-           '--cap-drop=ALL','--security-opt=no-new-privileges','--pids-limit=64','--memory=256m',
-           '--cpus=1','--user=65534:65534','--mount',f'type=bind,source={root.resolve()},target=/workspace,readonly',
-           '--tmpfs','/tmp:rw,noexec,nosuid,size=16m','--workdir=/workspace',image,
-           'python','-B','-m','unittest','-v']
-    try:
-        result = subprocess.run(cmd,capture_output=True,text=True,timeout=timeout)
-        count = re.search(r'Ran (\d+) tests?', result.stderr)
-        return dict(passed=result.returncode == 0 and count is not None and int(count.group(1)) >= 6, returncode=result.returncode,
-                    stdout=result.stdout,stderr=result.stderr)
-    finally:
-        removed = subprocess.run(['docker','rm','-f',name],capture_output=True,timeout=10)
-        if removed.returncode:
-            inspected = subprocess.run(['docker','container','inspect',name],capture_output=True,timeout=10)
-            if inspected.returncode != 1 or b'No such container' not in inspected.stderr:
-                raise RuntimeError('owned container cleanup unproven; held')
+    for path in entries:path.chmod(0o444)
+    # Reuse the independently unit-tested bounded execution boundary: disk-spooled
+    # RLIMIT_FSIZE output, no Docker daemon logs, fixed command, strict quotas,
+    # exact random-name cleanup and truthful infrastructure/timeout failures.
+    location=Path(__file__).with_name('learning')/'sandbox.py'
+    key='eca_engineering_learning_sandbox_adapter'
+    sandbox=sys.modules.get(key)
+    if sandbox is None:
+        spec=importlib.util.spec_from_file_location(key,location)
+        sandbox=importlib.util.module_from_spec(spec);sys.modules[key]=sandbox
+        spec.loader.exec_module(sandbox)
+    result=sandbox.execute(sandbox.Policy(image=image,seconds=math.ceil(timeout)),root,root,'tests')
+    count=re.search(r'Ran (\d+) tests?',result['stderr'])
+    result['passed']=result['passed'] and count is not None and int(count.group(1)) >= 6
+    result['acceptance_test_count']=None if count is None else int(count.group(1))
+    return result
 
 
 def main():

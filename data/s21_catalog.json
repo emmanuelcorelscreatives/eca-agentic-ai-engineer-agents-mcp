@@ -1,0 +1,21 @@
+{
+  "synthetic": true,
+  "products": [
+    {
+      "sku": "ECA-KEY-01",
+      "name": "Practice Keyboard",
+      "stock": 12,
+      "price_pence": 2500
+    },
+    {
+      "sku": "ECA-MOUSE-02",
+      "name": "Practice Mouse",
+      "stock": 0,
+      "price_pence": 1500
+    }
+  ],
+  "delivery_zones": {
+    "AB": 2,
+    "CD": 4
+  }
+}
