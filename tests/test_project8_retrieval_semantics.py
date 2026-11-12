@@ -86,6 +86,7 @@ class WorkflowTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(RetrievalError): await ResearchWorkflow(Bad(),{STATIC}).read('research::fetch_page',{'url':STATIC})
 
 class ProgressiveTests(unittest.IsolatedAsyncioTestCase):
+    @unittest.skipUnless(importlib.util.find_spec('jsonschema'),'requires actual optional jsonschema')
     async def test_discovery_dispatch_guessed_hidden_revoked_and_two_session_isolation(self):
         permission={'rag:read'};calls=[]
         spec=ToolSpec('retrieve_documents','rag','rag:read','Read chunks',{'type':'object','properties':{'query':{'type':'string'}},'required':['query'],'additionalProperties':False},lambda query:calls.append(query) or {'matches':[]})
@@ -97,10 +98,12 @@ class ProgressiveTests(unittest.IsolatedAsyncioTestCase):
         permission.clear()
         with self.assertRaises(PermissionError): await first.dispatch('retrieve_documents',{'query':'approval'})
         self.assertEqual(calls,['approval'])
+    @unittest.skipUnless(importlib.util.find_spec('jsonschema'),'requires actual optional jsonschema')
     async def test_bad_schema_before_provider_invocation(self):
+        from jsonschema.exceptions import ValidationError
         calls=[];spec=ToolSpec('search_web','search','search:read','Search',{'type':'object','properties':{'query':{'type':'string'}},'required':['query'],'additionalProperties':False},lambda **kwargs:calls.append(kwargs))
         router=ProgressiveRouter([spec],lambda:{'search:read'});router.discover('search')
-        with self.assertRaises(Exception): await router.dispatch('search_web',{'query':123})
+        with self.assertRaises(ValidationError): await router.dispatch('search_web',{'query':123})
         self.assertEqual(calls,[])
 
 class SearchTests(unittest.TestCase):

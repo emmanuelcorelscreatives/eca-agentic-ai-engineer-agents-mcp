@@ -25836,8 +25836,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -25895,7 +25895,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -25950,8 +25975,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -26009,7 +26034,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -26274,8 +26324,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -26333,7 +26383,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -27762,8 +27837,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -27821,7 +27896,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -27866,8 +27966,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -27925,7 +28025,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -27975,8 +28100,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -28034,7 +28159,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -28167,8 +28317,8 @@
         },
         {
           "path": "tests/test_project8_retrieval_semantics.py",
-          "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
-          "sizeBytes": 14466
+          "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+          "sizeBytes": 14736
         },
         {
           "path": "projects/08-mcp-trading-floor/mcp_lab/fixtures/handbook.md",
@@ -28210,7 +28360,32 @@
         "practicalWorkbookSource": {
           "sha256": "5b98dceb824938ad5f85173b2e0d3ee23b9aaea5b1f17063feb52a9e8cf3d7c4",
           "sizeBytes": 67285
-        }
+        },
+        "testOnlySourceEvolution": [
+          {
+            "path": "tests/test_project8_retrieval_semantics.py",
+            "historicalMappedSource": {
+              "sha256": "fb238b2ea9f641f7623485711d092aadffe987201a09b000e798c901e8da1cfd",
+              "sizeBytes": 14466
+            },
+            "currentSource": {
+              "sha256": "1ad4e653ecaa879a1998b0f4476acfbbb500dabe712f2e7d6e350d8ac8c668cd",
+              "sizeBytes": 14736
+            },
+            "independentReview": {
+              "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+              "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb"
+            },
+            "actualScopedQA": {
+              "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+              "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d"
+            },
+            "testOnly": true,
+            "assertionStrengthenedToSpecificValidationError": true,
+            "historicalRuntimeApprovalTransferred": false,
+            "productionApproval": false
+          }
+        ]
       }
     },
     {
@@ -30538,7 +30713,7 @@
       }
     }
   ],
-  "indexRevision": 2,
+  "indexRevision": 3,
   "preparationStatus": "PREPARED_NOT_CANONICAL_NOT_PUBLISHED",
   "productionApproval": false,
   "sourceInputs": [
@@ -30661,6 +30836,21 @@
       "evidenceIdentifier": "stage10-optional-gradio-harness-delta-v1/qa/result.json",
       "sha256": "658456d24f16247e204170e1b976a2cb1f3b0daa3a149d0262af47f355d25d0d",
       "sizeBytes": 3190
+    },
+    {
+      "evidenceIdentifier": "project8-jsonschema-ci-test-only-delta-v1.json",
+      "sha256": "0b395cfa3763f98697d0d9b1eda2a3d0971f831ae10ced0f4f8ea3b00c9af855",
+      "sizeBytes": 3755
+    },
+    {
+      "evidenceIdentifier": "project8-jsonschema-ci-qa-v1/result.json",
+      "sha256": "f823b135b04d512a7ddef7c371c490cabbadd3db3615265fdf347ba40358487d",
+      "sizeBytes": 3840
+    },
+    {
+      "evidenceIdentifier": "project8-jsonschema-ci-independent-test-only-addendum-v1.json",
+      "sha256": "ea1172b217817e49b1284930c722ae4edff05b6af5c2b8c3e8f4eec39db513cb",
+      "sizeBytes": 2820
     }
   ],
   "compatibility": {
