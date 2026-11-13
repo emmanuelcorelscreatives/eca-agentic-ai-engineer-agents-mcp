@@ -520,6 +520,7 @@ Run commands from the repository root. Each section is a learner exercise and ac
 - Source: `examples/s19/browser_research.py; examples/s19/native_harness.py`; detailed exercise: `labs/s19/s19-l06.md`.
 - Task: Connect create_browser_mcp's actual server to a client and discover/call inspect_page.
 - Deliverable and acceptance: Deliver genuine protocol/tool-discovery/read result and cleanup evidence; direct Playwright is not MCP connectivity.
+- Async boundary: MCP `inspect_page` awaits `asyncio.to_thread(inspect_sync)`; the entire synchronous Playwright context stays on that worker outside MCP's event loop.
 
 ### s19-l07 — Build a Browser Research Agent
 - Source: `examples/s19/browser_research.py; examples/s19/native_harness.py`; detailed exercise: `labs/s19/s19-l07.md`.
@@ -530,6 +531,7 @@ Run commands from the repository root. Each section is a learner exercise and ac
 - Source: `examples/s19/browser_research.py; examples/s19/native_harness.py`; detailed exercise: `labs/s19/s19-l08.md`.
 - Task: Inspect native_harness planner, FilesystemBackend, skills, specialist and SQLite wiring.
 - Deliverable and acceptance: Deliver a harness map separating authored capability, construction and observed work; filesystem scoping is not an OS sandbox.
+- Planning persistence: Register Todo middleware explicitly. A direct native `write_todos` Command is applied with `update_state(..., as_node='tools')`, then read after SQLite close/reopen; the default input writer omits `todos`. This provider-free direct-tool demonstration is not a model-generated plan or graph invocation.
 
 ### s19-l09 — Planning and File-System Tools
 - Source: `examples/s19/browser_research.py; examples/s19/native_harness.py`; detailed exercise: `labs/s19/s19-l09.md`.

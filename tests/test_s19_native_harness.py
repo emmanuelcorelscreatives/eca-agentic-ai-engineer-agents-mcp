@@ -89,6 +89,62 @@ class ActualNativeSDKTests(unittest.TestCase):
                     self.assertFalse(result['evaluation']['unrelated_skill_read_requested'])
                     self.assertEqual(result['evaluation']['failed_or_unknown_browser_calls'], [])
 
+    def test_explicit_native_todos_persist_through_tools_writer_without_model(self):
+        """Actual tool/state contracts; no model, browser, or graph.invoke."""
+        from langchain_core.language_models.chat_models import BaseChatModel
+        from langchain.agents.middleware.todo import write_todos
+        from langgraph.checkpoint.sqlite import SqliteSaver
+        from langgraph.types import Command
+        from pydantic import PrivateAttr
+        from examples.s19.native_harness import create_native_agent
+
+        class NeverInvokedModel(BaseChatModel):
+            model_name: str = 'synthetic-no-inference-planning-contract'
+            _calls: int = PrivateAttr(default=0)
+            @property
+            def _llm_type(self):
+                return 'synthetic-no-inference'
+            def bind_tools(self, tools, **kwargs):
+                return self
+            def _generate(self, *args, **kwargs):
+                self._calls += 1
+                raise AssertionError('Planning persistence must not invoke a model')
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            workspace = root / 'workspace'
+            workspace.mkdir()
+            install_skills(workspace)
+            ledger = EvidenceStore(root / 'evidence.sqlite')
+            config = {'configurable': {'thread_id': 'synthetic-direct-todo-contract'}}
+            planned = [{'content': 'Inspect the owned source', 'status': 'in_progress'},
+                       {'content': 'Compare observed evidence', 'status': 'pending'}]
+            command = write_todos.invoke({'name': 'write_todos', 'args': {'todos': planned},
+                                          'id': 'synthetic-direct-plan', 'type': 'tool_call'})
+            self.assertIsInstance(command, Command)
+            self.assertEqual(command.update['todos'], planned)
+            database = str(root / 'state.sqlite')
+            first_model = NeverInvokedModel()
+            with SqliteSaver.from_conn_string(database) as saver:
+                graph = create_native_agent(first_model, 'http://127.0.0.1:1', workspace, saver, ledger)
+                self.assertIn('todos', graph.channels)
+                self.assertIn('tools', graph.get_graph().nodes)
+                # The native tool Command is a tools-node write, not fresh input.
+                graph.update_state(config, command.update, as_node='tools')
+                snapshot = graph.get_state(config)
+                self.assertEqual(snapshot.values['todos'], planned)
+                checkpoint_id = snapshot.config['configurable']['checkpoint_id']
+                self.assertTrue(checkpoint_id)
+                self.assertEqual(first_model._calls, 0)
+            reopened_model = NeverInvokedModel()
+            with SqliteSaver.from_conn_string(database) as saver:
+                graph = create_native_agent(reopened_model, 'http://127.0.0.1:1', workspace, saver, ledger)
+                snapshot = graph.get_state(config)
+                self.assertEqual(snapshot.values['todos'], planned)
+                self.assertEqual(snapshot.config['configurable']['checkpoint_id'], checkpoint_id)
+                self.assertEqual(reopened_model._calls, 0)
+            self.assertEqual(ledger.rows(), [])
+
     def test_changed_source_blocks_resume_before_model(self):
         with tempfile.TemporaryDirectory() as tmp:
             # State is created by actual native invocation, not a forged checkpoint file.

@@ -22,13 +22,7 @@ async def build_mcp_agent(model: str, *, api_key: str | None = None):
     from agno.models.openai import OpenAIChat
     from agno.tools.mcp import MCPTools
     from mcp import StdioServerParameters
-    from pydantic import BaseModel
-
-    class Triage(BaseModel):
-        ticket_id: str
-        summary: str
-        article_ids: list[str]
-        unresolved: list[str]
+    from examples.s24_triage import triage_schema
 
     root = Path(__file__).resolve().parents[1]
     toolkit = MCPTools(server_params=StdioServerParameters(
@@ -43,7 +37,7 @@ async def build_mcp_agent(model: str, *, api_key: str | None = None):
             raise RuntimeError('MCP discovery does not match the read-only allowlist')
         agent = Agent(name='Academy MCP triage',
             model=OpenAIChat(id=model, api_key=api_key), tools=[toolkit],
-            output_schema=Triage,
+            output_schema=triage_schema(),
             instructions='Use only retrieved synthetic ticket/article evidence. '
                          'Cite actual article IDs. Report unknowns; draft only.')
         yield agent

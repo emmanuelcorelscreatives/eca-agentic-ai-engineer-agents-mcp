@@ -138,6 +138,51 @@ class ActualFrameworkRuntimeTests(unittest.TestCase):
         # The SDK's explicit TestModel is a simulated model, not a provider response.
         self.assertIn('37.50', str(result.all_messages()))
 
+    @unittest.skipUnless(FAMILY == 'pydantic-ai', 'Select installed Pydantic AI family')
+    def test_native_triage_confidence_matches_raw_numeric_boundary(self):
+        """Explicit TestModel fixtures exercise coercion, not provider quality."""
+        from pydantic_ai.models.test import TestModel
+        from pydantic_ai.exceptions import UnexpectedModelBehavior
+        from examples.s22_agents import build_pydantic
+        from examples.s22_policy import PolicyService, RequestContext, validate_triage
+        context = RequestContext('native-confidence-fixture', 'T-001', PolicyService())
+        valid = dict(ticket_id='T-001', category='damaged', rationale='Synthetic missing-key fixture',
+            policy_ids=['POL-KEY-1'], confidence=0.7, unresolved=['No photo supplied'])
+        for confidence in (0.0, 0.7, 1.0, 0, 1, True, False):
+            with self.subTest(confidence=confidence):
+                payload = dict(valid, confidence=confidence)
+                agent = build_pydantic(TestModel(call_tools=[], custom_output_args=payload))
+                if type(confidence) is bool:
+                    with self.assertRaises(ValueError):
+                        validate_triage(payload, context)
+                    with self.assertRaises(UnexpectedModelBehavior):
+                        agent.run_sync('Validate the synthetic fixture.', deps=context)
+                else:
+                    expected = validate_triage(payload, context)
+                    actual = agent.run_sync('Validate the synthetic fixture.', deps=context).output.model_dump()
+                    self.assertEqual(actual['confidence'], expected['confidence'])
+                    self.assertEqual(actual['policy_ids'], expected['policy_ids'])
+
+    @unittest.skipUnless(FAMILY == 'agno', 'Select installed Agno family')
+    def test_actual_agno_output_schema_binds_ticket_and_article_evidence(self):
+        """Schema construction only; all candidates below are synthetic values."""
+        from pydantic import ValidationError
+        from examples.s24_triage import build_agno, validate_triage_response
+        with patch.dict(os.environ, {'OPENAI_API_KEY': 'academy-offline-placeholder'}):
+            schema = build_agno('offline-placeholder').output_schema
+        valid = dict(ticket_id='T-001', summary='Synthetic citation-boundary fixture',
+                     article_ids=['A-001'], unresolved=[])
+        self.assertEqual(schema.model_validate(valid).article_ids, ['A-001'])
+        for ids in (['A-999'], ['A-002'], [], ['A-001', 'A-001']):
+            with self.subTest(article_ids=ids), self.assertRaises(ValidationError):
+                schema.model_validate(dict(valid, article_ids=ids))
+        # Another ticket's internally valid result still cannot answer this request.
+        other = dict(valid, ticket_id='T-002', article_ids=['A-002'])
+        self.assertEqual(schema.model_validate(other).ticket_id, 'T-002')
+        with self.assertRaisesRegex(ValueError, 'requested_ticket_mismatch'):
+            validate_triage_response(other, requested_ticket_id='T-001')
+        self.assertEqual(validate_triage_response(valid, requested_ticket_id='T-001').ticket_id, 'T-001')
+
     @unittest.skipUnless(FAMILY == 'strands', 'Select installed Strands family')
     def test_actual_strands_tool_and_bedrock_model_construct(self):
         from strands import Agent, tool

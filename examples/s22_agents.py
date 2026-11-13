@@ -31,7 +31,7 @@ def build_pydantic(model=None, *, toolsets=None, role='triager'):
         category: Literal['damaged','delivery','unknown']
         rationale: str
         policy_ids: list[str]
-        confidence: float = Field(ge=0, le=1)
+        confidence: float = Field(strict=True, ge=0, le=1)
         unresolved: list[str]
     agent = Agent(model, deps_type=RequestContext, output_type=Triage, toolsets=[*selected_toolsets, *(toolsets or [])],
         instructions='Triage the supplied synthetic ticket. Look up and cite real fixture policies. Do not send anything.')

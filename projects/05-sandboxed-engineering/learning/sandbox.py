@@ -157,11 +157,70 @@ def docker_command(policy, workspace, tests, command_id, owner):
             policy.image, *COMMANDS[command_id]]
 
 
+def _cleanup_owned(owner, interrupted):
+    """Reconcile only this invocation's name, for at most four attempts/10s.
+
+    Killing a Docker client does not cancel the daemon's create request. Absence
+    observed during this finite window cannot exclude creation after we return.
+    A successful removal acknowledges the owned object; otherwise an interrupted
+    request remains unknown, including when every inspect reports absence.
+    """
+    deadline = time.monotonic() + 10
+    receipt = dict(confirmed=False, outcome='UNKNOWN', attempts=[],
+                   max_attempts=4, deadline_seconds=10,
+                   possible_late_creation=interrupted)
+
+    def timeout():
+        remaining = deadline - time.monotonic()
+        if remaining <= 0: raise subprocess.TimeoutExpired('owned cleanup deadline', 10)
+        return min(2, remaining)
+
+    def limits():
+        import resource
+        resource.setrlimit(resource.RLIMIT_FSIZE, (1024, 1024))
+
+    for number in range(1, 5):
+        attempt = dict(attempt=number)
+        receipt['attempts'].append(attempt)
+        try:
+            removed = subprocess.run(['docker', 'rm', '-f', owner],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                timeout=timeout(), env={'PATH': os.defpath})
+            attempt['remove_returncode'] = removed.returncode
+            if removed.returncode == 0:
+                receipt.update(confirmed=True, outcome='REMOVED', possible_late_creation=False)
+                return receipt
+            # Inspect errors are disk-spooled and capped; never capture arbitrary
+            # daemon output in host memory or equate every return code 1 to absence.
+            with tempfile.TemporaryFile() as err:
+                inspected = subprocess.run(['docker', 'container', 'inspect', owner],
+                    stdout=subprocess.DEVNULL, stderr=err, timeout=timeout(),
+                    env={'PATH': os.defpath}, preexec_fn=limits)
+                err.seek(0); diagnostic = err.read(1024)
+            absent = inspected.returncode == 1 and b'No such container' in diagnostic
+            attempt.update(inspect_returncode=inspected.returncode, observed_absent=absent)
+            if absent and not interrupted:
+                receipt.update(confirmed=True, outcome='ABSENT_AFTER_COMPLETED_CLIENT',
+                               possible_late_creation=False)
+                return receipt
+        except OSError as exc:
+            attempt['error'] = type(exc).__name__
+            break  # An unavailable CLI cannot be repaired by polling.
+        except subprocess.TimeoutExpired:
+            attempt['error'] = 'TimeoutExpired'
+        remaining = deadline - time.monotonic()
+        if number == 4 or remaining <= 0: break
+        time.sleep(min(0.25, remaining))
+    # No background cleanup or retry of the original effectful run is started.
+    return receipt
+
+
 def execute(policy, workspace, tests, command_id):
     """Explicit opt-in Docker operation. Never called by offline unit tests.
 
     Spool capped process output to disk rather than unbounded host RAM. Docker's
-    client is stopped on timeout; the exact owned container is removed in finally.
+    client is stopped on timeout; same-owner cleanup is reconciled in finally.
+    An unresolved daemon create is reported UNKNOWN, never confirmed by absence.
     No broad container cleanup, pulls, host env/credentials, shell or retries.
     """
     owner = 'eca-learning-' + uuid.uuid4().hex
@@ -190,15 +249,10 @@ def execute(policy, workspace, tests, command_id):
                 result[key] = raw.decode('utf-8', errors='replace')
                 result['truncated'] |= len(raw) == policy.output_bytes
     finally:
-        try:
-            cleanup = subprocess.run(['docker', 'rm', '-f', owner], stdout=subprocess.DEVNULL,
-                                     stderr=subprocess.DEVNULL, timeout=10, env={'PATH': os.defpath})
-            if cleanup.returncode == 0: result['cleanup_confirmed'] = True
-            else:
-                check = subprocess.run(['docker', 'container', 'inspect', owner], capture_output=True,
-                                       timeout=5, env={'PATH': os.defpath})
-                result['cleanup_confirmed'] = check.returncode == 1 and b'No such container' in check.stderr
-        except (OSError, subprocess.TimeoutExpired): pass
+        result['cleanup'] = _cleanup_owned(owner,
+            interrupted=(result['timed_out'] or result['returncode'] != 0
+                         or result['infrastructure_error'] is not None))
+        result['cleanup_confirmed'] = result['cleanup']['confirmed']
     result['elapsed_seconds'] = round(time.monotonic() - start, 6)
     result['passed'] = (result['returncode'] == 0 and not result['timed_out']
                         and not result['truncated'] and not result['infrastructure_error']

@@ -3,6 +3,7 @@ Offline extraction is explicitly fixture processing, never a browser or model ob
 """
 from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import asyncio
 from contextlib import contextmanager
 import hashlib
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -131,11 +132,14 @@ def create_browser_mcp(origin):
     mcp = FastMCP('academy-browser-fixture')
 
     @mcp.tool()
-    def inspect_page(path: str = '/docs.html') -> dict:
+    async def inspect_page(path: str = '/docs.html') -> dict:
         """Navigate and extract from an allowlisted local Academy fixture path."""
-        with actual_browser(origin) as tools:
-            view = tools.navigate(path)
-            return {'view': view, 'records': tools.extract() if path == '/docs.html' else []}
+        # Keep the sync Playwright lifetime on one worker, outside MCP's event loop.
+        def inspect_sync():
+            with actual_browser(origin) as tools:
+                view = tools.navigate(path)
+                return {'view': view, 'records': tools.extract() if path == '/docs.html' else []}
+        return await asyncio.to_thread(inspect_sync)
     return mcp
 
 

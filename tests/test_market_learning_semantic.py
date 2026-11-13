@@ -98,6 +98,12 @@ class ActualSDKSemanticConstructionTests(unittest.TestCase):
         self.assertEqual(crew.tasks[1].context,[crew.tasks[0]])
         schema=crew.agents[0].tools[0].args_schema.model_json_schema()
         self.assertEqual(schema['properties']['query']['type'],'string')
+        bounds = schema['properties']['max_results']
+        self.assertEqual((bounds['minimum'], bounds['maximum'], bounds['default']), (1, 3, 2))
+        self.assertEqual(crew.agents[0].tools[0].to_structured_tool().args_schema.model_json_schema()['properties']['max_results'], bounds)
+        for invalid in (0, 4, 5, True, False, 1.5, '2'):
+            with self.subTest(max_results=invalid), self.assertRaises(ValueError):
+                crew.agents[0].tools[0].args_schema.model_validate({'query': 'tools', 'max_results': invalid})
         self.assertIsNotNone(crew.tasks[1].output_pydantic)
 
     def test_actual_memory_scope_wiring_without_backend_calls(self):

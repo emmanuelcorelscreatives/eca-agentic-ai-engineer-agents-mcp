@@ -112,6 +112,108 @@ class MockLifecycleTests(unittest.TestCase):
         self.assertTrue(receipt['timed_out']); self.assertFalse(receipt['passed'])
         kill.assert_called_once()
 
+class CleanupReconciliationTests(unittest.TestCase):
+    """Model the reproduced daemon late-create race; never invoke Docker."""
+    owner = 'eca-learning-' + 'a' * 32
+
+    @staticmethod
+    def absent(argv, **kwargs):
+        from types import SimpleNamespace
+        if argv[1:3] == ['container', 'inspect']:
+            kwargs['stderr'].write(b'Error: No such container: owned-name\n')
+        return SimpleNamespace(returncode=1)
+
+    def test_timeout_absence_then_late_owned_creation_is_removed(self):
+        from unittest.mock import patch
+        from types import SimpleNamespace
+        import subprocess
+        waits = iter([subprocess.TimeoutExpired('docker', 1), 0])
+        def wait(timeout):
+            value = next(waits)
+            if isinstance(value, Exception): raise value
+            return value
+        calls = []
+        def cleanup(argv, **kwargs):
+            calls.append(argv)
+            if len(calls) == 3:
+                return SimpleNamespace(returncode=0)  # Late create now exists.
+            return self.absent(argv, **kwargs)
+        with tempfile.TemporaryDirectory() as temp:
+            with patch.object(s.subprocess, 'Popen', return_value=SimpleNamespace(pid=12345, wait=wait)), \
+                 patch.object(s.subprocess, 'run', side_effect=cleanup), \
+                 patch.object(s.os, 'killpg'), patch.object(s.time, 'sleep'):
+                receipt = s.execute(s.Policy('python@sha256:' + '4' * 64), Path(temp), Path(temp), 'tests')
+        self.assertTrue(receipt['timed_out']); self.assertFalse(receipt['passed'])
+        self.assertTrue(receipt['cleanup_confirmed'])
+        self.assertEqual(receipt['cleanup']['outcome'], 'REMOVED')
+        self.assertEqual(len(receipt['cleanup']['attempts']), 2)
+        self.assertEqual([a[1:3] for a in calls], [['rm', '-f'], ['container', 'inspect'], ['rm', '-f']])
+        self.assertEqual({a[-1] for a in calls}, {receipt['run_id']})
+
+    def test_interrupted_request_absent_for_entire_window_remains_unknown(self):
+        from unittest.mock import patch
+        with patch.object(s.subprocess, 'run', side_effect=self.absent) as run, \
+             patch.object(s.time, 'sleep'):
+            result = s._cleanup_owned(self.owner, interrupted=True)
+        self.assertFalse(result['confirmed'])
+        self.assertEqual(result['outcome'], 'UNKNOWN')
+        self.assertTrue(result['possible_late_creation'])
+        self.assertEqual(len(result['attempts']), 4)
+        self.assertEqual(run.call_count, 8)
+        self.assertTrue(all(c.args[0][-1] == self.owner for c in run.call_args_list))
+        self.assertTrue(all('capture_output' not in c.kwargs for c in run.call_args_list))
+
+    def test_normal_completed_rm_container_absence_still_confirms(self):
+        from unittest.mock import patch
+        with patch.object(s.subprocess, 'run', side_effect=self.absent) as run:
+            result = s._cleanup_owned(self.owner, interrupted=False)
+        self.assertTrue(result['confirmed'])
+        self.assertEqual(result['outcome'], 'ABSENT_AFTER_COMPLETED_CLIENT')
+        self.assertEqual(run.call_count, 2)
+
+    def test_daemon_failure_is_not_misread_as_absence(self):
+        from unittest.mock import patch
+        from types import SimpleNamespace
+        def unavailable(argv, **kwargs):
+            if argv[1:3] == ['container', 'inspect']:
+                kwargs['stderr'].write(b'Cannot connect to the Docker daemon\n')
+            return SimpleNamespace(returncode=1)
+        with patch.object(s.subprocess, 'run', side_effect=unavailable), patch.object(s.time, 'sleep'):
+            result = s._cleanup_owned(self.owner, interrupted=False)
+        self.assertFalse(result['confirmed'])
+        self.assertTrue(all(not a['observed_absent'] for a in result['attempts']))
+
+    def test_cleanup_deadline_stops_reconciliation_before_attempt_limit(self):
+        from unittest.mock import patch
+        with patch.object(s.subprocess, 'run', side_effect=self.absent) as run, \
+             patch.object(s.time, 'monotonic', side_effect=[0, 0, 0, 11]), \
+             patch.object(s.time, 'sleep') as sleep:
+            result = s._cleanup_owned(self.owner, interrupted=True)
+        self.assertFalse(result['confirmed']); self.assertEqual(run.call_count, 2)
+        self.assertEqual(len(result['attempts']), 1); sleep.assert_not_called()
+
+    def test_cleanup_timeout_has_finite_attempts_and_unknown_outcome(self):
+        from unittest.mock import patch
+        import subprocess
+        with patch.object(s.subprocess, 'run', side_effect=subprocess.TimeoutExpired('docker rm', 2)) as run, \
+             patch.object(s.time, 'sleep'):
+            result = s._cleanup_owned(self.owner, interrupted=True)
+        self.assertFalse(result['confirmed']); self.assertEqual(run.call_count, 4)
+        self.assertTrue(all(c.kwargs['timeout'] <= 2 for c in run.call_args_list))
+        self.assertTrue(all(a['error'] == 'TimeoutExpired' for a in result['attempts']))
+
+    def test_nonzero_completed_client_keeps_unknown_create_outcome(self):
+        from unittest.mock import patch
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as temp:
+            with patch.object(s.subprocess, 'Popen', return_value=SimpleNamespace(wait=lambda timeout: 125)), \
+                 patch.object(s.subprocess, 'run', side_effect=self.absent), patch.object(s.time, 'sleep'):
+                receipt = s.execute(s.Policy('python@sha256:' + '5' * 64), Path(temp), Path(temp), 'tests')
+        self.assertFalse(receipt['passed']); self.assertFalse(receipt['cleanup_confirmed'])
+        self.assertEqual(receipt['returncode'], 125)
+        self.assertTrue(receipt['cleanup']['possible_late_creation'])
+
+
 class WorkflowTests(unittest.TestCase):
     def setUp(self):
         self.req = dict(revision=1, stories=['As a learner I total expenses'], criteria={'R1': 'Empty input returns zero', 'R2': '125 + 275 gives 400'})

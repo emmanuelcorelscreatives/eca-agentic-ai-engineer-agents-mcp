@@ -237,6 +237,7 @@ Before narrating a result as observed, obtain the exact current-source evidence 
 
 - **Task:** Inspect and exercise the actual typed lookup_ticket(ticket_id) and search_articles(product_id) tools plus the Triage output_schema in examples/s24_triage.py; add one bounded validation case without changing the ticket/article domain.
 - **Deliverable:** agno-ticket-tools.md and validation cases covering a known ticket, an unknown ticket, a product with no matching articles and malformed Triage output.
+- **Validation:** Shared `triage_schema()` binds article IDs to the returned ticket/product fixture; `validate_triage_response(..., requested_ticket_id=...)` binds the original request. Unsupported, cross-product, duplicate and absent evidence IDs fail. There is no priority field; fixture membership does not prove model retrieval or free-text factuality.
 - **Accept when:** The real model/tool run grounds article_ids in the returned ticket/product evidence and reports unresolved facts. Unknown tickets remain explicit errors, empty article matches are not invented, and malformed structured output is rejected; provider-free contract checks remain separately labelled.
 
 ### s24-l04 — Connect Agno to MCP
@@ -249,6 +250,7 @@ Before narrating a result as observed, obtain the exact current-source evidence 
 
 - **Task:** Coordinate a research specialist and review specialist as an Agno team.
 - **Deliverable:** agno_team.py and both agents' observed contributions.
+- **Native result handling:** Inspect `specialist_completion_summary(result)` and retained member responses. Team `COMPLETED` and delegation `tool_call_error=False` do not prove member success; missing/error/empty specialist records remain explicitly incomplete without rewriting native status. Recorded completion is separate from evidence quality.
 - **Accept when:** A final answer attributes evidence to each actual contribution, while unavailable tools or failed members remain visible.
 
 ### s24-l06 — Introduction to Mastra

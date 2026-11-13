@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import sys
 from pathlib import Path
 import signal
 import subprocess
@@ -94,7 +95,7 @@ result=unittest.TextTestRunner(verbosity=2,resultclass=Observed).run(suite)
 print(json.dumps({'testsRun':result.testsRun,'passed':result.wasSuccessful(),'success_ids':result.success_ids,'tests':result.observed}))
 sys.exit(0 if result.wasSuccessful() and result.testsRun>0 else 1)
 '''
-        argv = ['python', '-B', '-I', '-c', runner]
+        argv = [sys.executable, '-B', '-I', '-c', runner]
         receipt = {'execution': 'inside-owned-container', 'source_sha256': sha(files),
                    'acceptance_sha256': sha(acceptance_tests), 'qa_tests_sha256': sha(qa_tests),
                    'passed': False, 'returncode': None, 'timed_out': False, 'truncated': False,

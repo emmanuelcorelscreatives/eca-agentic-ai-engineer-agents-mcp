@@ -1,6 +1,6 @@
 # Stage 15: exercises and reference solutions
 
-Run the repository tests in learning/README.md. Runtime requirements below remain explicit holds until actually executed.
+Use `learning/README.md` for repository checks. Distinguish the baseline control fixtures in `workflow.py` and `sandbox.py` from the generated application workflow in `semantic_team.py`, `crewai_roles.py` and `container_entrypoint.py`. The recorded worked example below is an observed private course run; it does not certify a fresh installation or the current public runtime. New runs require their own actual receipts.
 
 ## s15-l01: Design the Four-Agent Engineering Team
 
@@ -18,7 +18,7 @@ Verification: `test_tasks`.
 
 Objective: Convert a product request into user stories, requirements, acceptance criteria and delivery priorities.
 
-Implementation: `workflow.py:requirements`.
+Implementation: `semantic_team.py:validate_requirements` and `crewai_roles.py:CrewAIRoleProvider`; `workflow.py` supplies separate baseline contract exercises.
 
 Exercise: Produce measurable expense stories and criteria; try an empty criteria object or malformed identifier.
 
@@ -30,11 +30,11 @@ Verification: `test_contracts`.
 
 Objective: Transform requirements into components, data flows, interfaces and an implementation plan.
 
-Implementation: `workflow.py:architecture`.
+Implementation: `semantic_team.py:validate_architecture` and `crewai_roles.py:CrewAIRoleProvider`.
 
 Exercise: Bind a module/interface to every approved criterion and explain why dependencies are empty.
 
-Reference solution: Use src/expense_app.py and total_expenses(amounts); require current requirements hash and coverage of every R ID. Unknown IDs or stale revisions block consumption.
+Reference solution: In the generated workflow, use the application component `expense_app.py` and `total_expenses(amounts)`, bound to the current requirements hash and every R ID. Put the test and documentation deliverables in the implementation plan; they are not extra application components. The earlier `sandbox.py` control fixture uses a different `src/` workspace layout. Unknown IDs and stale revisions block consumption.
 
 Verification: `test_unknown_reference`.
 
@@ -42,11 +42,11 @@ Verification: `test_unknown_reference`.
 
 Objective: Generate and modify source code according to the approved architecture and task specification.
 
-Implementation: `sandbox.py:FileTools`.
+Implementation: `semantic_team.py:validate_files` and `run_team`; `sandbox.py:FileTools` is a separate control exercise.
 
-Exercise: Propose an application diff, inspect it, and apply it using exact old source SHA; attempt to modify a test.
+Exercise: Generate the approved four-file application bundle, then inspect a source-only repair against the retained implementation hash. In the separate FileTools exercise, try an out-of-scope write.
 
-Reference solution: Only src scope changes and exact CAS updates are permitted; tests cannot be weakened by the developer capability.
+Reference solution: The generated bundle contains `expense_app.py`, `test_expense_app.py`, `README.md` and `requirements.txt`. A repair changes only the approved application source and keeps developer, QA and course tests intact. The separate FileTools fixture permits writes only in its `src/` scope.
 
 Verification: `test_stale_write`.
 
@@ -54,11 +54,11 @@ Verification: `test_stale_write`.
 
 Objective: Review requirements, create tests, run validations and report defects to the development workflow.
 
-Implementation: `workflow.py:expense_fixture`.
+Implementation: `semantic_team.py:run_team`, its immutable `CourseAcceptance` tests, and the QA role in `crewai_roles.py`.
 
-Exercise: Report the seeded defect with actual inputs, expected and observed amounts and the relevant requirement ID.
+Exercise: Inspect the recorded generated implementation, independent QA tests and actual failure receipt. Identify the failing requirement and distinguish an application error from an infrastructure error.
 
-Reference solution: Observed 125 versus expected 400 violates R2. Keep both failing evidence and the later passing receipt; QA narrative alone is not proof.
+Reference solution: In the recorded generated run, arithmetic passed; two invalid-type cases errored because the architecture used `TypeError` while the unchanged course acceptance suite expected `ValueError`. This is an R3 contract mismatch. The separate baseline fixture returning 125 rather than 400 is a different, explicitly seeded R2 exercise. Keep each example's own failing and passing receipts; do not substitute one story for the other.
 
 Verification: `test_actual_arithmetic_failure_and_repair`.
 
@@ -94,7 +94,7 @@ Implementation: `sandbox.py:COMMANDS`.
 
 Exercise: Construct uv-version, uv-venv, uv-lock-check and uv-sync commands without accepting arbitrary shell text.
 
-Reference solution: Commands execute inside Docker only, use an ephemeral environment and offline/frozen dependency controls; actual uv smoke is still required in a prepared runtime.
+Reference solution: Commands execute inside Docker only, with read-only source inputs, owned writable environment/cache outputs and offline/frozen dependency controls. Recorded controlled runs observed uv 0.13.8, an environment using CPython 3.12.16, a 141-package lock check and installation of 137 locked packages. These observations concern controlled commands, not a claim that an agent independently selected every command; a fresh runtime needs fresh receipts.
 
 Verification: `test_uv_offline`.
 
@@ -114,21 +114,21 @@ Verification: `test_dependency_rejected`.
 
 Objective: Execute the complete team workflow within an isolated project workspace.
 
-Implementation: `sandbox.py:execute`.
+Implementation: `container_entrypoint.py`, `container_launch.py`, `semantic_team.py:run_team` and `crewai_roles.py:CrewAIRoleProvider`.
 
-Exercise: Run the complete real adapter workflow only after recording a prepared image and provider broker boundary.
+Exercise: Trace the four actual roles through typed requirements, architecture, implementation and QA, using the recorded whole-container run. For a new run, first prepare the image and host broker boundary; credentials stay outside the no-network container.
 
-Reference solution: No provider calls occurred in this layer. Keep real role responses distinct from offline fixtures and container logs; a runtime absence blocks this walkthrough.
+Reference solution: The recorded workflow contains product-manager, architect, developer and quality-assurance roles. Planning, implementation, review and repair are stages, not a fifth agent. Retain exact provider-response bindings and actual container receipts separately. The recorded private runtime used an explicit interpreter-resolution correction; its success is not proof that an uncorrected public checkout runs.
 
-Verification: `runtime-not-executed`.
+Verification: Inspect actual role bindings and container receipts; repository control tests alone do not prove a new provider run.
 
 ## s15-l11: Execute Automated Tests
 
 Objective: Run unit and integration tests and return structured failures to the responsible agents.
 
-Implementation: `sandbox.py:execute`.
+Implementation: `container_entrypoint.py:InsideContainerExecutor` and `semantic_team.py:validate_receipt`; `sandbox.py` provides separate command-control fixtures.
 
-Exercise: Map exit status, timeout and structured acceptance evidence to QA; try fake model-says-passed provenance.
+Exercise: Map exit status, timeout and structured acceptance evidence to QA; try fake model-says-passed provenance. Compare the recorded first 22-test execution with the final execution, including the immutable QA and course-test hashes.
 
 Reference solution: Only actual Docker or explicitly labelled executed fixture evidence is accepted; runtime failure and absent receipt never become PASS.
 
@@ -138,11 +138,11 @@ Verification: `test_fake_success_denied`.
 
 Objective: Use test and runtime feedback to implement bounded, traceable repair cycles.
 
-Implementation: `workflow.py:bounded_repair`.
+Implementation: `semantic_team.py:run_team`; `workflow.py:bounded_repair` remains a separate baseline control fixture.
 
-Exercise: Repair the seeded first-element bug once, then test exhausted budget, unchanged repeated patch and test modification.
+Exercise: Trace the recorded exception-contract mismatch from the 22-test failure through QA review, one developer source patch and the unchanged 22-test rerun. Separately test exhausted budgets, repeated patch identities and attempted test modification in the baseline controls.
 
-Reference solution: One sum patch records failed then passed observations; budget exhaustion preserves failures; repeated identities stop and any test alteration is rejected.
+Reference solution: The actual generated repair introduced `InvalidAmountError(TypeError, ValueError)` for invalid types, satisfying both exception contracts while still rejecting the input. Discuss this compatibility tradeoff explicitly: multiple inheritance is the observed repair, not a general instruction to hide conflicting requirements. Prefer reconciling the exception contract before implementation in a new project. No test was weakened or rewritten; budget exhaustion and repeated patches remain stops.
 
 Verification: `test_budget_exhausted`.
 
@@ -154,7 +154,7 @@ Implementation: `reference-contracts.json`.
 
 Exercise: Compare implementation and actual evidence against R1–R3, including negative, bool and decimal rejection.
 
-Reference solution: Do not infer R3 from the arithmetic fixture: baseline team.py tests cover those boundaries. Every missing observation remains incomplete even if a smaller suite passes.
+Reference solution: Do not infer R3 from an arithmetic-only fixture. Inspect the actual generated source, developer tests, QA tests, course acceptance tests and per-criterion observations. The recorded final 22-test execution covers R1–R3; the initial 20-pass/two-error result and the exception-compatibility tradeoff remain part of the review. A smaller or unrelated passing suite cannot fill a missing observation.
 
 Verification: `test_projects_4_5.py`.
 
@@ -181,8 +181,11 @@ a separate historical exercise and cannot certify a generated whole-crew package
 
 Verification: `test_engineering_delivery_package.py` and affected semantic-team/
 whole-container regressions require first central execution for these new bytes.
-Actual genuine archive extraction/setup/tests and independent acceptance remain
-pending; authoring this exercise does not assert that a model/container run passed.
+The recorded original delivery archive was freshly extracted in an isolated,
+no-network learner workspace: its documented README command passed seven tests,
+and full discovery passed 22 tests. Its empty requirements needed no installation.
+Those are observations of that archive, not validation of a new checkout or of
+unexecuted candidate changes; independent acceptance remains separate.
 
 ## s15-l15: Complete the Sandboxed Engineering Team
 
@@ -192,6 +195,38 @@ Implementation: `README.md#role-and-completion-contracts`.
 
 Exercise: Assemble a final trace with genuine four-role responses, actual container tests/repair, acceptance matrix and package evidence.
 
-Reference solution: Retain failed attempts and list unverified Docker/uv/provider work. The local offline fixtures prove controls, not completion of the authored real-agent project.
+Reference solution: Reuse the same coherent recorded four-role run, its genuine failure and source-only repair, final acceptance matrix, original delivery archive and clean-extraction observations. Explicitly list private runtime compatibility and all remaining setup limitations. Offline fixtures prove separate controls and never substitute for real provider/container observations.
 
-Verification: `runtime-not-executed`.
+Verification: Cross-check original completion, final source, acceptance receipts and every archive member; a new end-to-end run needs its own observations.
+
+
+## Recorded example: contracts, repair and delivery layout
+
+The retained worked run used four CrewAI roles. Its first actual execution ran
+22 tests: 20 passed and two invalid-type cases errored. QA reviewed the actual
+failure; the developer changed only `expense_app.py`. The final execution ran
+the same 22 tests successfully, followed by a successful QA review. Both executions
+used the same course-test hash
+`a404d35c05b9e680d4462f25caa3ed7b74b258ffd3705f70c1b7edcfc9314251`
+and QA-test hash
+`834b1c23f3fdc8aa27727a41bf2783a916d243a4fcfd4b951145d3146c2a6ff2`.
+Do not describe this as the baseline first-element arithmetic defect.
+
+The recorded architecture specified `TypeError` for invalid types; the course
+acceptance suite required `ValueError`. The generated `InvalidAmountError`
+inherited both, so either exception handler catches it. Explain this observed
+compatibility choice and its maintenance cost; it does not justify accepting
+invalid input or changing tests to manufacture a pass.
+
+The four application deliverables are `expense_app.py`, `test_expense_app.py`,
+`README.md` and `requirements.txt`. The delivery ZIP contains nine members because
+it also includes QA/course tests and completion evidence. Inspect the actual
+member manifest rather than treating the application-file count as the archive
+member count. Keep the original ZIP and failed-run history unchanged.
+
+The successful whole-container recording used a private copy of
+`InsideContainerExecutor` selecting the already-running interpreter through
+`sys.executable`, instead of searching for `python` through a restricted PATH.
+Other private runtime compatibility settings are recorded with that run. These
+recordings are historical observations; publishing a source correction still
+requires the repository owner's normal integration and validation.

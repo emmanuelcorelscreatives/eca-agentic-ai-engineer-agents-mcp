@@ -101,4 +101,38 @@ class ArticleContracts(unittest.TestCase):
     def test_article_scope(self):self.assertEqual([a['id'] for a in search_articles('P-KEY')['articles']],['A-001'])
     def test_unknown_product_has_no_invented_article(self):self.assertEqual(search_articles('P-UNKNOWN'),{'articles':[]})
 
+class SpecialistRecordContracts(unittest.TestCase):
+    """Pure synthetic records, not retained or newly observed Agno Team runs."""
+    def fixture(self):
+        return {'status': 'COMPLETED', 'tools': [{'tool_call_error': False}],
+                'member_responses': [
+                    {'agent_id': 'article-researcher', 'run_id': 'synthetic-research',
+                     'status': 'COMPLETED', 'content': 'Synthetic evidence notes'},
+                    {'agent_id': 'evidence-reviewer', 'run_id': 'synthetic-review',
+                     'status': 'COMPLETED', 'content': 'Synthetic review notes'}]}
+
+    def test_member_failure_cannot_hide_behind_coordinator_completed(self):
+        from examples.s24_triage import specialist_completion_summary
+        raw = self.fixture()
+        raw['member_responses'][1].update(status='ERROR', content='Synthetic member failure')
+        before = deepcopy(raw)
+        result = specialist_completion_summary(raw)
+        self.assertEqual(result['native_team_status'], 'COMPLETED')
+        self.assertEqual(result['outcome'], 'incomplete')
+        reviewer = next(r for r in result['specialist_records'] if r['member_id'] == 'evidence-reviewer')
+        self.assertEqual(reviewer['native_status'], 'ERROR')
+        self.assertFalse(reviewer['complete_record'])
+        self.assertEqual(raw, before)
+
+    def test_missing_specialist_and_complete_records_are_distinct(self):
+        from examples.s24_triage import specialist_completion_summary
+        raw = self.fixture()
+        complete = specialist_completion_summary(raw)
+        self.assertEqual(complete['outcome'], 'specialist-records-complete')
+        self.assertIn('not evidence citation validation', complete['limitation'])
+        raw['member_responses'] = raw['member_responses'][:1]
+        missing = specialist_completion_summary(raw)
+        self.assertEqual(missing['outcome'], 'incomplete')
+        self.assertEqual(missing['missing_specialists'], ['evidence-reviewer'])
+
 if __name__=='__main__':unittest.main()

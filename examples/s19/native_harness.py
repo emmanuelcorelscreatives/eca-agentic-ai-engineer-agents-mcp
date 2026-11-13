@@ -136,7 +136,7 @@ def create_native_agent(model, origin, workspace, checkpointer, ledger):
     from deepagents import create_deep_agent
     from deepagents.backends import FilesystemBackend
     from deepagents.middleware.subagents import SubAgent
-    from langchain.agents.middleware import ModelCallLimitMiddleware
+    from langchain.agents.middleware import ModelCallLimitMiddleware, TodoListMiddleware
     from langchain_core.tools import tool
 
     tools = browser_tools(origin, ledger)
@@ -163,7 +163,10 @@ def create_native_agent(model, origin, workspace, checkpointer, ledger):
         model=model, tools=[*tools, review_checkpoint], subagents=roles,
         backend=FilesystemBackend(root_dir=str(Path(workspace).resolve()), virtual_mode=True),
         skills=['/skills/'], checkpointer=checkpointer,
-        middleware=[ModelCallLimitMiddleware(run_limit=14, exit_behavior='error')],
+        # Planning is required for every selected model. Deep Agents 0.7.36
+        # supplies this only through some profiles; its public middleware merge
+        # replaces the same named profile slot, preventing a duplicate Todo tool.
+        middleware=[TodoListMiddleware(), ModelCallLimitMiddleware(run_limit=14, exit_behavior='error')],
         interrupt_on={'review_checkpoint': {'allowed_decisions': ['approve', 'reject']}},
         system_prompt='Research only the owned Academy fixture. Make a native todo plan. '
           'Delegate source research to source-researcher and evidence checking to evidence-critic using task. '

@@ -119,6 +119,7 @@ def build_research_crew(model, search):
     from crewai import Agent, Crew, Task, Process, LLM
     from crewai.tools import tool
     from pydantic import BaseModel, ConfigDict, Field
+    from typing import Annotated
     class Citation(BaseModel):
         model_config = ConfigDict(extra='forbid')
         source_id: str
@@ -130,7 +131,7 @@ def build_research_crew(model, search):
         citations: list[Citation] = Field(min_length=1, max_length=3)
         limitations: list[str] = Field(min_length=1)
     @tool('search_approved_external_documents')
-    def external_search(query: str, max_results: int = 2) -> str:
+    def external_search(query: str, max_results: Annotated[int, Field(ge=1, le=3, strict=True)] = 2) -> str:
         """Search approved official CrewAI documentation via HTTPS; returns dated source URLs and exact excerpts. No retailer metrics."""
         return json.dumps(search.search(query, max_results))
     llm = LLM(model=model, temperature=0, timeout=60, max_tokens=1200)
