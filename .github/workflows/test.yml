@@ -1,14 +1,25 @@
-name: Course practicals
-on: [push, pull_request]
+name: One macOS course baseline
+on:
+  push:
+    branches: [course/macos-baseline-s02-l03-20261113-025]
 permissions:
   contents: read
 jobs:
-  offline-practicals:
-    runs-on: ubuntu-latest
+  macos-course-baseline:
+    runs-on: macos-15
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          python-version: '3.11'
-      - run: python scripts/run_tests.py
-      - run: python scripts/check_curriculum.py
+          persist-credentials: false
+      - name: Observe the one isolated course exercise
+        run: python3 scripts/macos_course_baseline.py
+      - name: Retain small original observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: macos-s02-l03-original-observations
+          path: macos-course-observations/
+          retention-days: 3
+          if-no-files-found: error
+          compression-level: 6
