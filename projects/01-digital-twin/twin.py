@@ -2,6 +2,7 @@
 from dataclasses import dataclass, asdict
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import sqlite3
@@ -32,7 +33,7 @@ class DigitalTwin:
     def retrieve(self, question, limit=3):
         if not 1 <= limit <= 10:
             raise ValueError("limit must be 1..10")
-        query = tokens(question)
+        query = tokens(question) - {"amara", "okoye"}
         ranked = [(len(query & tokens(s.title + " " + s.text)), s) for s in self.sections if s.approved]
         return [s for score, s in sorted(ranked, key=lambda x: (-x[0], x[1].id)) if score > 0][:limit]
 
@@ -74,10 +75,14 @@ class DigitalTwin:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("question", nargs="?", default="What Python experience does Amara have?")
+    parser.add_argument("--profile", default=os.environ.get("TWIN_PROFILE"), help="private reviewed sections JSON; defaults to the supplied synthetic profile")
     args = parser.parse_args()
-    from config import profile_path
-    sections = json.loads(profile_path().read_text())["sections"]
-    print(json.dumps(DigitalTwin(sections).answer(args.question), indent=2))
+    from config import load_profile_sections
+    core = DigitalTwin(load_profile_sections(args.profile))
+    try:
+        print(json.dumps(core.answer(args.question), indent=2))
+    finally:
+        core.db.close()
 
 if __name__ == "__main__":
     main()

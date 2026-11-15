@@ -14,6 +14,6 @@ Use an evidence file such as `s01-l02-observation.md` in your own workspace. Do 
 
 For n8n, retain the real imported workflow execution and the actual model/tool/decision path. The exported workflow and offline JavaScript tests in this repository establish authoring and local logic only; they are not proof of an n8n model execution. Each manual workflow run can incur one model request. Keep retries disabled and review the configured account and budget first.
 
-Screenshots should show the actual application screen, without decorative devices or narration subtitles. Never include private browser tabs, tokens, personal workbooks or customer data. Student portfolio evidence should contain only the Academy fixtures or information the student explicitly intends to publish.
+Screenshots should show the relevant application controls, inputs and actual result. Never include private browser tabs, tokens, personal workbooks or customer data. Student portfolio evidence should contain only the Academy fixtures or information the student explicitly intends to publish.
 
-The repository's GitHub Actions log reports the suite that actually ran for its commit. Additional Studio build receipts are operational records and are not silently promoted into public live-provider observations.
+The repository's GitHub Actions log reports the suite that actually ran for its commit. Local test output must not be presented as a live-provider observation.

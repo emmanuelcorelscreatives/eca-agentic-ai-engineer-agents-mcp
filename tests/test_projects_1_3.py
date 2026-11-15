@@ -154,7 +154,8 @@ class OptionalAdapterTests(unittest.TestCase):
         async def run(agent,payload,**kwargs):
             self.calls.append(agent.name)
             values={'Prospect researcher':dict(need='CSV summaries',source_id='synthetic-brief-cedar-001',limitations='synthetic'), 'Outreach strategist':dict(value_proposition='Demo',source_id='synthetic-brief-cedar-001'),'Email writer':dict(subject='Demo',body='A sourced practice demonstration.',source_id='synthetic-brief-cedar-001'),'Quality reviewer':dict(passed=True,issues=[])}
-            return self.types.SimpleNamespace(final_output=self.Schema(**values[agent.name]))
+            identity=json.loads(payload)['identity']
+            return self.types.SimpleNamespace(final_output=self.Schema(**identity,**values[agent.name]),last_agent=agent,new_items=[])
         with project_imports('02-sales-team'), self.patch.dict(sys.modules,self.fake_modules(run)):
             adapter=load('academy_sales_adapter','02-sales-team','agents_adapter')
             result=asyncio.run(adapter.run_pipeline(sales.Prospect(**fixture('02-sales-team','prospect.json')['prospect']),'test-model'))

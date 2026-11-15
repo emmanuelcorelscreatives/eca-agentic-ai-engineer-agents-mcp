@@ -2,7 +2,7 @@
 
 PDF objective: **Store, retrieve, update and search persistent memories through controlled operations.** This solution implements those operations; it does not invent a retention period, benchmark target, number of exercise records or a separate business objective.
 
-Status: authored source and tests, awaiting centralized execution and genuine source-current captures. Earlier passing remember/recall evidence remains historical and does not certify the new search code.
+Status: authored source and tests, awaiting execution in your environment and genuine source-current captures. Earlier passing remember/recall evidence remains historical and does not certify the new search code.
 
 ## Scope and honest identity boundary
 
@@ -20,7 +20,7 @@ For a local exercise, create `ToolServices(database_path, memory_read_namespaces
 2. `remember('lesson', 'policy', 'Paper orders need human approval')` updates the same key rather than creating a duplicate.
 3. `recall('lesson', 'policy')` returns the exact current value.
 4. `search_memory('lesson', 'approval', limit=5)` searches keys and values in **that namespace only**. Results are ordered by key, with a bounded limit and explicit literal-search mode. No semantic relevance score is invented.
-5. Close that process and start a new service/server against the same database. Repeat recall and search. The supplied real MCP regression creates two successive server/client processes to test this, but it remains an unexecuted test until central QA runs it.
+5. Close that process and start a new service/server against the same database. Repeat recall and search. The supplied real MCP regression creates two successive server/client processes to test this, but it remains an unexecuted test until local validation runs it.
 6. Ask the scoped service to recall or search another namespace. It raises a permission error before a query is dispatched, even when the other namespace contains a matching fixture row.
 
 `search_memory` accepts a nonempty query of at most500 characters and integer limit1–10. These are input/output safety bounds, not fabricated performance claims. The query is a parameterized literal substring; `%`, `_`, quotes and SQL-looking input do not become wildcard or SQL instructions. SQLite performs ASCII case folding; Unicode semantic search is not claimed.
@@ -33,7 +33,7 @@ Do not put secrets or personal data in course memory. Credential-shaped content 
 
 Historical unsafe rows remain preserved in SQLite. Recall withholds their values; search excludes them before the result limit. This is defense in depth, not a guarantee that every unknown credential or personal detail can be recognized automatically. Namespace permissions, account-level database selection and keeping secrets out of memory remain the primary boundaries. Searches do not log raw queries or returned values. Existing write traces contain namespace/key metadata only, after validation; no value is placed in that trace.
 
-## Central QA handoff
+## local validation handoff
 
 Run only through the repository's designated admitted QA owner:
 

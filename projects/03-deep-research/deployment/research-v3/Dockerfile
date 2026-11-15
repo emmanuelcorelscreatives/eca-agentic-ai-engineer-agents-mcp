@@ -1,4 +1,4 @@
-# Context: projects/03-deep-research. Central QA must provide real requirements.lock.
+# Context: projects/03-deep-research. Install the supplied transitive hash lock.
 FROM python:3.12-slim
 WORKDIR /app
 COPY deployment/research-v3/requirements.lock /tmp/requirements.lock

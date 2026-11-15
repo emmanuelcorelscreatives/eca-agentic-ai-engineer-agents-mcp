@@ -17,14 +17,16 @@ def build_app(*, allow_sdk=False, model=None, sink=None, database=None, export_d
 
     def fields(result):
         row = result.get('preview', {})
-        return (result.get('draft_id'), row.get('recipient', ''), row.get('subject', ''),
+        return (result.get('draft_id'), result.get('observation_id'), row.get('recipient', ''), row.get('subject', ''),
                 row.get('body', ''), row.get('revision'), row.get('payload_hash', ''), result)
 
     async def create(mode):
         return fields(await controller.create(prospect, mode))
 
     def action(ident, recipient, subject, body, revision, shown_hash, choice):
-        if choice in {'approve', 'submit-owned-sink'}:
+        if ident is None:
+            raise ValueError('Coordination observations cannot be edited, approved or delivered; generate a draft first')
+        if choice in {'approve', 'simulate', 'submit-owned-sink'}:
             current = controller.action(ident, 'preview')
             # Approval is of what the user sees, not merely hidden stale state.
             if (recipient, subject, body, revision) != (current['recipient'], current['subject'], current['body'], current['revision']):
@@ -37,6 +39,7 @@ def build_app(*, allow_sdk=False, model=None, sink=None, database=None, export_d
     with gr.Blocks() as app:
         gr.Markdown('# Academy sales team\nSynthetic data only. A local human must approve the exact recipient, subject, body and revision. SMTP submits only to an explicitly owned loopback sink. Manager/handoff observations do not silently become drafts. This local UI is not authenticated production deployment.')
         ident = gr.State(None)
+        observation = gr.State(None)
         mode = gr.Dropdown(['deterministic', 'sdk-sequential', 'sdk-manager', 'sdk-handoff'], value='deterministic', label='Generation mode; SDK modes can incur charges when enabled')
         recipient = gr.Textbox(label='Recipient')
         subject = gr.Textbox(label='Subject')
@@ -44,13 +47,15 @@ def build_app(*, allow_sdk=False, model=None, sink=None, database=None, export_d
         revision = gr.Number(label='Revision', interactive=False, precision=0)
         shown_hash = gr.Textbox(label='Exact preview hash', interactive=False)
         report = gr.JSON(label='Actual operational result; mechanical checks are not model quality approval')
-        gr.Button('Generate or observe selected workflow').click(create, inputs=mode, outputs=[ident, recipient, subject, body, revision, shown_hash, report])
+        gr.Button('Generate or observe selected workflow').click(create, inputs=mode, outputs=[ident, observation, recipient, subject, body, revision, shown_hash, report])
         for label, choice in [('Save edit; revoke approval', 'edit'), ('Approve exact preview', 'approve'),
-                              ('Reject', 'reject'), ('Refresh preview', 'preview'), ('Submit approved to owned SMTP sink', 'submit-owned-sink')]:
+                              ('Reject', 'reject'), ('Refresh preview', 'preview'), ('Simulate approved delivery; no email', 'simulate'),
+                              ('Submit approved to owned SMTP sink', 'submit-owned-sink')]:
             gr.Button(label).click(lambda i,r,s,b,v,h,c=choice: action(i,r,s,b,v,h,c),
                 inputs=[ident,recipient,subject,body,revision,shown_hash], outputs=[recipient,subject,body,revision,shown_hash,report])
         artifact = gr.File(label='Download local operational/evaluation report')
         gr.Button('Export current trace, evaluation and approval history').click(lambda i: controller.export(i, prospect), inputs=ident, outputs=artifact)
+        gr.Button('Export selected manager/handoff observation').click(controller.export_observation, inputs=observation, outputs=artifact)
     app.academy_controller = controller
     return app
 

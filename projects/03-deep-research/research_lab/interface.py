@@ -32,9 +32,9 @@ def progress(question, records):
 
 def build_ui(records):
     try: import gradio as gr
-    except ImportError as error: raise RuntimeError("Install requirements-optional.txt for Gradio") from error
+    except ImportError as error: raise RuntimeError("From the repository root, run: python3 -m pip install -r projects/03-deep-research/requirements-ui-stages09-10.txt") from error
     with gr.Blocks(title="Academy Deep Research — synthetic offline lab") as demo:
-        gr.Markdown("# Deep Research Lab\nAcademy synthetic corpus. No live search or real email delivery.")
+        gr.Markdown('# Deep Research Lab\nAcademy synthetic corpus. No live search or real email delivery. This fixed exercise supports only "Community workshop scheduling"; other questions are rejected, not researched.')
         question = gr.Textbox(label="Research question", value="Community workshop scheduling")
         submit = gr.Button("Research")
         status = gr.Textbox(label="Operational status")

@@ -1,6 +1,11 @@
 # Stage 15: exercises and reference solutions
 
-Use `learning/README.md` for repository checks. Distinguish the baseline control fixtures in `workflow.py` and `sandbox.py` from the generated application workflow in `semantic_team.py`, `crewai_roles.py` and `container_entrypoint.py`. The recorded worked example below is an observed private course run; it does not certify a fresh installation or the current public runtime. New runs require their own actual receipts.
+Use [README.md](README.md#local-verification-map) for repository-root checks and
+[WORKED-EXAMPLE.md](WORKED-EXAMPLE.md) for complete accessible exercise inputs.
+Distinguish baseline controls from the integrated `semantic_team.py`,
+`crewai_roles.py` and `container_entrypoint.py` workflow. The offline notebook
+uses local fixtures and learner-created contract exercises, not private recorded
+runs. Optional live work requires separate setup, consent and actual outputs.
 
 ## s15-l01: Design the Four-Agent Engineering Team
 
@@ -24,7 +29,7 @@ Exercise: Produce measurable expense stories and criteria; try an empty criteria
 
 Reference solution: Use R1 empty→0, R2 125+275→400 and R3 invalid-input rejection. Empty or unlabelled criteria fail validation; human reference is not a provider response.
 
-Verification: `test_contracts`.
+Verification: run `student_lab.py handoffs` as shown in the notebook; `SemanticTests.test_missing_priority_refused` in `tests/test_engineering_semantic_team.py` checks the integrated requirements contract. `WorkflowTests.test_contracts` is a separate baseline check.
 
 ## s15-l03: Build the Software Architect Agent
 
@@ -36,7 +41,7 @@ Exercise: Bind a module/interface to every approved criterion and explain why de
 
 Reference solution: In the generated workflow, use the application component `expense_app.py` and `total_expenses(amounts)`, bound to the current requirements hash and every R ID. Put the test and documentation deliverables in the implementation plan; they are not extra application components. The earlier `sandbox.py` control fixture uses a different `src/` workspace layout. Unknown IDs and stale revisions block consumption.
 
-Verification: `test_unknown_reference`.
+Verification: `SemanticTests.test_stale_architecture_refused` and `test_unapproved_dependency_refused` in `tests/test_engineering_semantic_team.py`. `WorkflowTests.test_unknown_reference` is a separate baseline check.
 
 ## s15-l04: Build the Developer Agent
 
@@ -44,11 +49,11 @@ Objective: Generate and modify source code according to the approved architectur
 
 Implementation: `semantic_team.py:validate_files` and `run_team`; `sandbox.py:FileTools` is a separate control exercise.
 
-Exercise: Generate the approved four-file application bundle, then inspect a source-only repair against the retained implementation hash. In the separate FileTools exercise, try an out-of-scope write.
+Exercise: Inspect the supplied four-file template bundle in `../team.py`, then inspect the source-only repair inputs in `ProviderDouble` and `SemanticTests.test_stale_patch_refused` in `tests/test_engineering_semantic_team.py`. These strings are not executed by that suite. Use the notebook's separate FileTools activity for out-of-scope writes. A new model-generated bundle is optional container work, never host execution.
 
 Reference solution: The generated bundle contains `expense_app.py`, `test_expense_app.py`, `README.md` and `requirements.txt`. A repair changes only the approved application source and keeps developer, QA and course tests intact. The separate FileTools fixture permits writes only in its `src/` scope.
 
-Verification: `test_stale_write`.
+Verification: `SemanticTests.test_test_changes_and_extra_files_forbidden` and `test_stale_patch_refused` in `tests/test_engineering_semantic_team.py`; `FileTests.test_stale_write` is the separate file-tool control.
 
 ## s15-l05: Build the Quality Assurance Agent
 
@@ -56,11 +61,11 @@ Objective: Review requirements, create tests, run validations and report defects
 
 Implementation: `semantic_team.py:run_team`, its immutable `CourseAcceptance` tests, and the QA role in `crewai_roles.py`.
 
-Exercise: Inspect the recorded generated implementation, independent QA tests and actual failure receipt. Identify the failing requirement and distinguish an application error from an infrastructure error.
+Exercise: Complete notebook sections 2 and 4. Identify the R2 failure in your local arithmetic trace, compare the supplied template and course R3 tests, and write the learner-created TypeError/ValueError contract comparison. Inspect the integrated QA-double test separately; do not call it a runtime observation.
 
-Reference solution: In the recorded generated run, arithmetic passed; two invalid-type cases errored because the architecture used `TypeError` while the unchanged course acceptance suite expected `ValueError`. This is an R3 contract mismatch. The separate baseline fixture returning 125 rather than 400 is a different, explicitly seeded R2 exercise. Keep each example's own failing and passing receipts; do not substitute one story for the other.
+Reference solution: The seeded arithmetic fixture observes 125 instead of 400, an R2 failure. The learner-created exception table exposes a separate R3 contract disagreement; agree on `ValueError` before implementation. An infrastructure error or missing run is not a test failure/pass observation. No historical failure receipt is required or invented.
 
-Verification: `test_actual_arithmetic_failure_and_repair`.
+Verification: `SemanticTests.test_model_cannot_override_actual_tool_observations` and `test_model_review_must_reference_current_receipt` in `tests/test_engineering_semantic_team.py` check integrated QA with doubles. `WorkflowTests.test_actual_arithmetic_failure_and_repair` covers only the local arithmetic fixture.
 
 ## s15-l06: Define Engineering Tasks and Dependencies
 
@@ -78,13 +83,13 @@ Verification: `test_tasks`.
 
 Objective: Share structured requirements, architecture decisions, code locations and test feedback between specialists.
 
-Implementation: `workflow.py:Envelope`.
+Implementation: `semantic_team.py:envelope` and `consume`; `workflow.py:Envelope` is the separate baseline example.
 
-Exercise: Hash a requirements envelope, mutate the content and consume it using the old SHA; then try obsolete revision 2.
+Exercise: Run `student_lab.py handoffs` using the notebook command. Inspect the valid integrated requirements envelope, changed-content rejection and obsolete-revision rejection. Its response hash identifies local human reference data only.
 
 Reference solution: Both mismatches fail; transfer role, schema version, revision, exact SHA and honest provenance rather than an unstructured success sentence.
 
-Verification: `test_handoff`.
+Verification: `SemanticTests.test_artifact_content_or_revision_tamper` in `tests/test_engineering_semantic_team.py`; `WorkflowTests.test_handoff` checks the older baseline separately.
 
 ## s15-l08: Build uv-Based Sandbox Tools
 
@@ -94,7 +99,7 @@ Implementation: `sandbox.py:COMMANDS`.
 
 Exercise: Construct uv-version, uv-venv, uv-lock-check and uv-sync commands without accepting arbitrary shell text.
 
-Reference solution: Commands execute inside Docker only, with read-only source inputs, owned writable environment/cache outputs and offline/frozen dependency controls. Recorded controlled runs observed uv 0.13.8, an environment using CPython 3.12.16, a 141-package lock check and installation of 137 locked packages. These observations concern controlled commands, not a claim that an agent independently selected every command; a fresh runtime needs fresh receipts.
+Reference solution: The command builder declares Docker-only commands, read-only source inputs and ephemeral outputs with offline/frozen dependency controls. Inspect the whole-container cache recipe separately in [CONTAINER.md](CONTAINER.md). Command construction and mocked tests do not establish an installation, cache hit or uv version in your environment.
 
 Verification: `test_uv_offline`.
 
@@ -106,7 +111,7 @@ Implementation: `workflow.py:architecture`.
 
 Exercise: Propose an unnecessary external dependency for this standard-library expense calculator and inspect the rejection.
 
-Reference solution: Dependencies remain empty for the chosen interface. A real lockfile must be generated by uv and checked; no fabricated uv.lock is supplied.
+Reference solution: Dependencies remain empty for the expense app. The supplied real `uv.lock` and `pyproject.toml` describe the separate Python-3.12 CrewAI orchestrator. Inspect both and the offline preparation recipe; do not regenerate the lock merely to run this exercise, install app dependencies from it or infer installation from its presence.
 
 Verification: `test_dependency_rejected`.
 
@@ -116,9 +121,9 @@ Objective: Execute the complete team workflow within an isolated project workspa
 
 Implementation: `container_entrypoint.py`, `container_launch.py`, `semantic_team.py:run_team` and `crewai_roles.py:CrewAIRoleProvider`.
 
-Exercise: Trace the four actual roles through typed requirements, architecture, implementation and QA, using the recorded whole-container run. For a new run, first prepare the image and host broker boundary; credentials stay outside the no-network container.
+Exercise: First trace the four-role integrated fixture in `tests/test_engineering_semantic_team.py`; all model/executor responses there are doubles. For the optional real-container extension, follow [CONTAINER.md](CONTAINER.md), including its deliberately unconfigured provider transport. Stop if prerequisites are missing; credentials stay outside the no-network container.
 
-Reference solution: The recorded workflow contains product-manager, architect, developer and quality-assurance roles. Planning, implementation, review and repair are stages, not a fifth agent. Retain exact provider-response bindings and actual container receipts separately. The recorded private runtime used an explicit interpreter-resolution correction; its success is not proof that an uncorrected public checkout runs.
+Reference solution: PM, architect, developer and QA are the four roles; review and repair are stages, not extra agents. The current executor uses `sys.executable`. Source inspection and fixture checks are distinct from actually running CrewAI, Docker and a provider. A future live run must retain its own role bindings and runtime output.
 
 Verification: Inspect actual role bindings and container receipts; repository control tests alone do not prove a new provider run.
 
@@ -128,11 +133,11 @@ Objective: Run unit and integration tests and return structured failures to the 
 
 Implementation: `container_entrypoint.py:InsideContainerExecutor` and `semantic_team.py:validate_receipt`; `sandbox.py` provides separate command-control fixtures.
 
-Exercise: Map exit status, timeout and structured acceptance evidence to QA; try fake model-says-passed provenance. Compare the recorded first 22-test execution with the final execution, including the immutable QA and course-test hashes.
+Exercise: Inspect the two attempts from the local repair activity and the integrated `ExecutorDouble`/QA checks. Map exit status, timeout, source/test hashes and R observations to QA in the integrated source. Try the suite's contradictory-success and source-mismatch cases; do not invent a real execution receipt.
 
 Reference solution: Only actual Docker or explicitly labelled executed fixture evidence is accepted; runtime failure and absent receipt never become PASS.
 
-Verification: `test_fake_success_denied`.
+Verification: `SemanticTests.test_contradictory_success_refused`, `test_execution_bound_to_exact_source` and `test_missing_cleanup_not_pass` in `tests/test_engineering_semantic_team.py`. `WorkflowTests.test_fake_success_denied` is baseline-only.
 
 ## s15-l12: Diagnose and Repair Failed Builds
 
@@ -140,11 +145,11 @@ Objective: Use test and runtime feedback to implement bounded, traceable repair 
 
 Implementation: `semantic_team.py:run_team`; `workflow.py:bounded_repair` remains a separate baseline control fixture.
 
-Exercise: Trace the recorded exception-contract mismatch from the 22-test failure through QA review, one developer source patch and the unchanged 22-test rerun. Separately test exhausted budgets, repeated patch identities and attempted test modification in the baseline controls.
+Exercise: Use the notebook's failed `first` to passing `sum` trace and keep both outputs. Inspect the integrated fixture's source-only repair and unchanged tests. Try exhausted budgets, repeated patch identities and attempted test modification using the supplied test cases.
 
-Reference solution: The actual generated repair introduced `InvalidAmountError(TypeError, ValueError)` for invalid types, satisfying both exception contracts while still rejecting the input. Discuss this compatibility tradeoff explicitly: multiple inheritance is the observed repair, not a general instruction to hide conflicting requirements. Prefer reconciling the exception contract before implementation in a new project. No test was weakened or rewritten; budget exhaustion and repeated patches remain stops.
+Reference solution: Diagnose the seeded R2 first-element aggregation and replace only the allowed label/source. The local trace preserves the failed observation and unchanged test marker. Reconcile the separate learner-created exception contract before implementation; do not change tests to hide a failure. Neither trace nor canned integrated receipt proves a live generated-code repair.
 
-Verification: `test_budget_exhausted`.
+Verification: `SemanticTests.test_zero_budget_preserves_unresolved`, `test_repeat_source_refused` and `test_test_changes_and_extra_files_forbidden` in `tests/test_engineering_semantic_team.py`; baseline budget checks are separate in `tests/test_engineering_learning.py`.
 
 ## s15-l13: Review the Completed Application
 
@@ -154,7 +159,7 @@ Implementation: `reference-contracts.json`.
 
 Exercise: Compare implementation and actual evidence against R1–R3, including negative, bool and decimal rejection.
 
-Reference solution: Do not infer R3 from an arithmetic-only fixture. Inspect the actual generated source, developer tests, QA tests, course acceptance tests and per-criterion observations. The recorded final 22-test execution covers R1–R3; the initial 20-pass/two-error result and the exception-compatibility tradeoff remain part of the review. A smaller or unrelated passing suite cannot fill a missing observation.
+Reference solution: Use the notebook's supplied template/course tests for the R1–R3 source review. Do not infer R3 from the arithmetic-only fixture or a generated application pass from canned observations. If you run the unchanged reviewed template quickstart, retain its actual six-test output separately; it does not certify a new whole-team application.
 
 Verification: `test_projects_4_5.py`.
 
@@ -165,7 +170,7 @@ Objective: Organize the final application, setup instructions, dependencies, tes
 Implementation: `delivery_package.py`, the successful `container_entrypoint.py`
 route and `container_launch.py:verified_delivery`.
 
-Exercise: After an admitted whole-crew run, package its exact successful result
+Exercise: Offline, inspect the explicit fixture packaging in `tests/test_engineering_delivery_package.py` and its member/hash assertions. This supplies accessible package inputs without private recordings. For an optional authorized whole-crew run, package its exact successful result
 against the original completion event. Inspect generated source/docs/dependencies,
 immutable course and QA tests, typed artifacts, attempted-test receipts, acceptance
 matrix and archive member hashes. Verify the new `delivery.zip` and its receipt,
@@ -179,13 +184,11 @@ hold delivery. Explicit fixture packages remain `OFFLINE_FIXTURE_NOT_PRODUCTION`
 the production launcher rejects that class. The earlier baseline template ZIP is
 a separate historical exercise and cannot certify a generated whole-crew package.
 
-Verification: `test_engineering_delivery_package.py` and affected semantic-team/
-whole-container regressions require first central execution for these new bytes.
-The recorded original delivery archive was freshly extracted in an isolated,
-no-network learner workspace: its documented README command passed seven tests,
-and full discovery passed 22 tests. Its empty requirements needed no installation.
-Those are observations of that archive, not validation of a new checkout or of
-unexecuted candidate changes; independent acceptance remains separate.
+Verification: run `tests/test_engineering_delivery_package.py` using the README
+discovery command. `WholeTeamDeliveryTests.test_exact_generated_source_artifacts_and_receipts_are_packaged`
+checks fixture archive contents; this is not live delivery evidence. A future live
+archive needs its own actual clean extraction/setup/tests inside the approved
+execution boundary, not host execution of unreviewed source.
 
 ## s15-l15: Complete the Sandboxed Engineering Team
 
@@ -193,40 +196,19 @@ Objective: Demonstrate the end-to-end workflow and review its architecture, trac
 
 Implementation: `README.md#role-and-completion-contracts`.
 
-Exercise: Assemble a final trace with genuine four-role responses, actual container tests/repair, acceptance matrix and package evidence.
+Exercise: Assemble the offline notebook with your local outputs, template inventory, requirement coverage and explicit runtime limits. Optionally demonstrate a fresh real four-role run only after the advanced prerequisites and paid/live opt-in are satisfied.
 
-Reference solution: Reuse the same coherent recorded four-role run, its genuine failure and source-only repair, final acceptance matrix, original delivery archive and clean-extraction observations. Explicitly list private runtime compatibility and all remaining setup limitations. Offline fixtures prove separate controls and never substitute for real provider/container observations.
+Reference solution: Keep the failed/passing local arithmetic trace, unchanged test marker, integrated handoff checks and fixture packaging distinctions. State that model calls, generated-code execution, uv installation and container isolation were not demonstrated by these activities. A future live result must use its own genuine responses, tests and package, never substituted fixture results.
 
-Verification: Cross-check original completion, final source, acceptance receipts and every archive member; a new end-to-end run needs its own observations.
+Verification: use the notebook checklist and README's local suites. A new real end-to-end run needs its own actual observations.
 
 
-## Recorded example: contracts, repair and delivery layout
+## Accessible inputs and delivery layout
 
-The retained worked run used four CrewAI roles. Its first actual execution ran
-22 tests: 20 passed and two invalid-type cases errored. QA reviewed the actual
-failure; the developer changed only `expense_app.py`. The final execution ran
-the same 22 tests successfully, followed by a successful QA review. Both executions
-used the same course-test hash
-`a404d35c05b9e680d4462f25caa3ed7b74b258ffd3705f70c1b7edcfc9314251`
-and QA-test hash
-`834b1c23f3fdc8aa27727a41bf2783a916d243a4fcfd4b951145d3146c2a6ff2`.
-Do not describe this as the baseline first-element arithmetic defect.
-
-The recorded architecture specified `TypeError` for invalid types; the course
-acceptance suite required `ValueError`. The generated `InvalidAmountError`
-inherited both, so either exception handler catches it. Explain this observed
-compatibility choice and its maintenance cost; it does not justify accepting
-invalid input or changing tests to manufacture a pass.
-
-The four application deliverables are `expense_app.py`, `test_expense_app.py`,
-`README.md` and `requirements.txt`. The delivery ZIP contains nine members because
-it also includes QA/course tests and completion evidence. Inspect the actual
-member manifest rather than treating the application-file count as the archive
-member count. Keep the original ZIP and failed-run history unchanged.
-
-The successful whole-container recording used a private copy of
-`InsideContainerExecutor` selecting the already-running interpreter through
-`sys.executable`, instead of searching for `python` through a restricted PATH.
-Other private runtime compatibility settings are recorded with that run. These
-recordings are historical observations; publishing a source correction still
-requires the repository owner's normal integration and validation.
+The [offline notebook](WORKED-EXAMPLE.md) identifies every supplied input and
+learner-created activity. No private recording, old receipt or historical archive
+is needed. The four application deliverables are `expense_app.py`,
+`test_expense_app.py`, `README.md` and `requirements.txt`. Whole-team package tests
+also include QA/course tests and result metadata: inspect the actual manifest
+rather than confusing the application-file count with the archive-member count.
+Keep your failed local attempts and distinguish fixture packages from real runs.

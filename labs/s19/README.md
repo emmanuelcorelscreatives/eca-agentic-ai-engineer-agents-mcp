@@ -2,11 +2,11 @@
 
 The original browser primitives remain in `examples/s19/browser_research.py`. The connected native harness is `examples/s19/native_harness.py`. It combines actual Playwright read tools with native Deep Agents planning, filesystem tools, skills, specialist task delegation and SQLite checkpoint continuation.
 
-This is an owned, invented Academy documentation website. Searching its index is not an internet search. No personal browser profile is opened and browser routes allow GET requests only. The dedicated virtual filesystem is a path boundary; run it in a centrally provisioned sandbox for process isolation.
+This is an owned, invented Academy documentation website. Searching its index is not an internet search. No personal browser profile is opened and browser routes allow GET requests only. The dedicated virtual filesystem is a path boundary; run it in a separately provisioned sandbox for process isolation.
 
-## Central QA commands
+## Local validation commands
 
-These commands are authored for the central QA owner. No successful execution is implied by their presence.
+These commands are authored for local validation. No successful execution is implied by their presence.
 
 ```sh
 python -m unittest discover -s tests -p test_s19_native_harness.py -v
@@ -17,7 +17,7 @@ The second command uses a scripted model through the actual SDK and Chromium, an
 
 ## Genuine configured-model exercise
 
-Central QA must separately authorize provider requests, configure credentials outside the repository and install the pinned course environment (Deep Agents 0.7.36, Playwright/Chromium, LangChain OpenAI and langgraph-checkpoint-sqlite). Choose a fresh dedicated workspace and an explicitly permitted model:
+local validation must separately authorize provider requests, configure credentials outside the repository and install the pinned course environment (Deep Agents 0.7.36, Playwright/Chromium, LangChain OpenAI and langgraph-checkpoint-sqlite). Choose a fresh dedicated workspace and an explicitly permitted model:
 
 ```sh
 python -m examples.s19.native_harness --workspace /tmp/academy-s19-unique --model YOUR_PERMITTED_MODEL --phase start
@@ -39,4 +39,4 @@ Keep raw terminal output, environment versions, process IDs, source/artifact has
 - https://docs.langchain.com/oss/python/langgraph/persistence
 - https://docs.langchain.com/oss/python/deepagents/human-in-the-loop
 
-These materials are implementation input, not production or render approval. Independent central QA must inspect actual evidence before footage is recorded.
+Use the supplied source as a starting point and compare your actual results with the lesson acceptance criteria.

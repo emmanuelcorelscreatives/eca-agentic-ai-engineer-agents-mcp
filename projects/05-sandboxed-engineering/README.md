@@ -4,6 +4,15 @@ Stage 14–15 teaching baseline: product manager → architect → developer →
 This offline version uses a reviewed deterministic application template, without
 provider calls or claims that a live CrewAI team has run.
 
+## Start here
+
+Use Python 3.10 or newer for the standard-library template below. Use Linux/WSL
+and Python 3.12 for the [learning laboratory](learning/README.md), whose file
+tools require POSIX descriptor operations. The optional CrewAI environment is
+separate and requires Python 3.12, Docker and additional reviewed dependencies.
+Run the following commands from the **repository root**, not this directory.
+The output path must not already exist; choose a new course-only path on reruns.
+
 ```sh
 python3 projects/05-sandboxed-engineering/team.py --output /tmp/eca-expense-source.zip
 python3 -m unittest discover -s tests -p 'test_projects_4_5.py'
@@ -15,6 +24,53 @@ instructions are packaged only after actual six-test success. Every run uses a n
 temporary directory, deleted on completion. ZIP creation is exclusive and never
 replaces existing files. Currency amounts are non-negative integer minor units;
 this example has no networking, database, credentials or third-party packages.
+
+## Inspect and use the offline result
+
+This walkthrough is only for the unchanged, reviewed `team.py` template ZIP you
+just created. Never use it to run unreviewed generated source on your host.
+First inspect its five members (`expense_app.py`, `test_expense_app.py`,
+`requirements.txt`, `README.md`, `delivery-plan.json`):
+
+```sh
+python3 -m zipfile -l /tmp/eca-expense-source.zip
+python3 -m zipfile -t /tmp/eca-expense-source.zip
+```
+
+Extract only that known template into a new directory, inspect it, then run its
+documented tests and one use case:
+
+```sh
+python3 - <<'PY'
+from pathlib import Path
+import tempfile
+from zipfile import ZipFile
+
+destination = Path(tempfile.mkdtemp(prefix='eca-expense-student-'))
+with ZipFile('/tmp/eca-expense-source.zip') as archive:
+    expected = {'expense_app.py', 'test_expense_app.py', 'requirements.txt', 'README.md', 'delivery-plan.json'}
+    assert len(archive.namelist()) == 5 and set(archive.namelist()) == expected
+    archive.extractall(destination)
+print(destination)
+PY
+```
+
+Change directory to the printed path. Read the source and README before running:
+
+```sh
+python3 -m unittest -v
+python3 -c 'from expense_app import total_expenses; print(total_expenses([125, 275]))'
+```
+
+Expected: six passing tests and `400` integer minor units. This is an expected
+result for the fixed template, not a claim that your run has already succeeded.
+Retain your own output and remove only your own scratch directory when finished.
+
+Continue with the [offline worked activities](learning/WORKED-EXAMPLE.md),
+[Stage 14 exercises](learning/stage-14-exercises.md),
+[Stage 15 exercises](learning/stage-15-exercises.md) and the optional
+[whole-container setup](learning/CONTAINER.md). The worked activities include
+complete file-tool and repair calls for the short exercises below.
 
 ## Execution boundaries
 

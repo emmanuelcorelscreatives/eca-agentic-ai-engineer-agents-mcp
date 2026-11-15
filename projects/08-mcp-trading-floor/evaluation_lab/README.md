@@ -33,7 +33,7 @@ The caller must obtain an authorized bounded provider experiment before connecti
 
 `workflow.run_paper_workflow` wraps actual core research, proposal, deterministic risk, explicit caller-supplied practice approval and ledger execution. Its integration test reconciles accepted cash/positions and proves pending/rejected runs leave the ledger unchanged. This is actual local deterministic integration, not a real LLM agent/MCP transport trace.
 
-## Semantic extensions — author-only, pending sole QA owner execution
+## Semantic extensions — optional integrations to verify locally
 
 `tracing.CorrelatedTrace` uses ContextVar parentage to isolate concurrent async children, writes started/finished records with fsync, and wraps the actual injected HTTP model or MCP `ClientSession.call_tool` dispatch. `provider.HTTPJudgeProvider` is an explicit HTTPS chat-completions protocol adapter with no automatic retry/redirect, bounded response size and a private once envelope. Imports make no requests. Real provider compatibility, real usage and SDK transport still require genuine bounded experiments.
 

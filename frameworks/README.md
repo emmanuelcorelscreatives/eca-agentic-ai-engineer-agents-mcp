@@ -6,7 +6,7 @@ Official documentation and package registries were checked on **2026-11-12**. `r
 
 ## Work in separate environments
 
-Use Python **3.11 or 3.12**. Install one framework at a time, with a separate virtual environment. Do not install these dependencies in Studio or overwrite the core course environment. From the repository root, for example:
+Use Python **3.11 or 3.12**. Install one framework at a time, with a separate virtual environment. Do not overwrite the core course environment with optional SDK dependencies. From the repository root, for example:
 
 ```sh
 python3.11 -m venv .venv-openai-agents
@@ -27,7 +27,7 @@ Agent, Runner, function tools and specialist handoff. API-backed execution not r
 
 Primary source: [OpenAI Agents SDK documentation](https://developers.openai.com/api/docs/guides/agents).
 
-Install `frameworks/requirements/openai-agents.txt` in its own environment. 
+Install `frameworks/requirements/openai-agents.txt` in its own environment.
 
 ```sh
 python -m frameworks.openai_agents --run
@@ -41,7 +41,7 @@ Sequential tasks, two agents and explicit context. Educational synthetic arithme
 
 Primary source: [CrewAI documentation](https://docs.crewai.com/en/concepts/crews).
 
-Install `frameworks/requirements/crewai.txt` in its own environment. 
+Install `frameworks/requirements/crewai.txt` in its own environment.
 
 ```sh
 python -m frameworks.crewai_crew --run
@@ -55,7 +55,7 @@ Modern create_agent, not retired initialize_agent patterns.
 
 Primary source: [LangChain documentation](https://docs.langchain.com/oss/python/langchain/quickstart).
 
-Install `frameworks/requirements/langchain.txt` in its own environment. 
+Install `frameworks/requirements/langchain.txt` in its own environment.
 
 ```sh
 python -m frameworks.langchain_agent --run
@@ -69,7 +69,7 @@ Model-free graph, in-memory checkpoint, interrupt and fixture rejection. Persist
 
 Primary source: [LangGraph documentation](https://docs.langchain.com/oss/python/langgraph/interrupts).
 
-Install `frameworks/requirements/langgraph.txt` in its own environment. 
+Install `frameworks/requirements/langgraph.txt` in its own environment.
 
 ```sh
 python -m frameworks.langgraph_state
@@ -91,7 +91,7 @@ Explicit Bedrock model and region. Local tool does not send orders. Requires act
 
 Primary source: [AWS Strands documentation](https://strandsagents.com/latest/documentation/docs/user-guide/quickstart/).
 
-Install `frameworks/requirements/strands.txt` in its own environment. 
+Install `frameworks/requirements/strands.txt` in its own environment.
 
 ```sh
 python -m frameworks.strands_bedrock --run
@@ -105,7 +105,7 @@ Typed dataclass dependencies and validated structured model output. Provider out
 
 Primary source: [Pydantic AI documentation](https://pydantic.dev/docs/ai/core-concepts/dependencies/).
 
-Install `frameworks/requirements/pydantic-ai.txt` in its own environment. 
+Install `frameworks/requirements/pydantic-ai.txt` in its own environment.
 
 ```sh
 python -m frameworks.pydantic_typed --run
@@ -119,7 +119,7 @@ AgentChat-era imports, distinct from older AutoGen 0.2. This does not assert all
 
 Primary source: [AutoGen AgentChat documentation](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/quickstart.html).
 
-Install `frameworks/requirements/autogen.txt` in its own environment. 
+Install `frameworks/requirements/autogen.txt` in its own environment.
 
 ```sh
 python -m frameworks.autogen_agentchat --run
@@ -133,7 +133,7 @@ FoundryChatClient plus explicit Azure CLI credential. Deployment name and projec
 
 Primary source: [Microsoft Agent Framework documentation](https://learn.microsoft.com/en-us/agent-framework/get-started/your-first-agent).
 
-Install `frameworks/requirements/microsoft.txt` in its own environment. 
+Install `frameworks/requirements/microsoft.txt` in its own environment.
 
 ```sh
 python -m frameworks.microsoft_agent --run
@@ -147,7 +147,7 @@ Explicit OpenAI model and local function tool. SDK and provider package installe
 
 Primary source: [Agno documentation](https://docs.agno.com/agents/building-agents).
 
-Install `frameworks/requirements/agno.txt` in its own environment. The isolated requirement file also pins the OpenAI provider client; save your resolved transitive lock. 
+Install `frameworks/requirements/agno.txt` in its own environment. The isolated requirement file also pins the OpenAI provider client; save your resolved transitive lock.
 
 ```sh
 python -m frameworks.agno_agent --run

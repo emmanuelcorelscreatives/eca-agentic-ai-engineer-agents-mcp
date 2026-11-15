@@ -37,3 +37,37 @@ def evaluation_report(prospect, corpus=None):
                       'reference_annotation_source': 'Academy author-labeled synthetic case; not observed model judgment'})
     return {'kind': 'reference-corpus-mechanical-evaluation', 'rubric': RUBRIC, 'cases': cases,
             'model_scoring_performed': False, 'limitation': 'Mechanical checks may pass an invented fact or fail a valid paraphrase. Human/model subjective assessments require separately retained actual observations.'}
+
+
+def score_observations(records):
+    from sales import Prospect
+    scored = []
+    for record in records:
+        prospect = Prospect(**record['prospect'])
+        if record['output_origin'] not in {'fixture-output', 'retained-agent-output'}:
+            raise ValueError('Label fixture outputs separately from retained agent outputs')
+        if not all(isinstance(record.get(key), str) and record[key].strip()
+                   for key in ('run_id', 'reviewer', 'rationale', 'subject', 'body')):
+            raise ValueError('Run identity, reviewer, rationale and actual output text required')
+        if record['prospect_id'] != prospect.prospect_id or record['source_id'] != prospect.source_id:
+            raise ValueError('Output does not match its prospect/evidence')
+        scores = record['scores']
+        if set(scores) != set(DIMENSIONS) or any(type(value) is not int or value not in {0, 1, 2} for value in scores.values()):
+            raise ValueError('Provide a manual integer score 0..2 for every rubric dimension')
+        scored.append({**record, 'mechanical': mechanical_checks(record['subject'], record['body'], prospect),
+                       'failed_dimensions': [key for key in DIMENSIONS if scores[key] < 2]})
+    return {'kind': 'human-scored-retained-outputs', 'cases': scored,
+            'case_count': len(scored), 'failure_count': sum(bool(case['failed_dimensions']) for case in scored),
+            'failure_policy': 'A case fails this exercise if any rubric dimension scores below 2',
+            'fixture_count': sum(case['output_origin'] == 'fixture-output' for case in scored),
+            'agent_output_count': sum(case['output_origin'] == 'retained-agent-output' for case in scored),
+            'scope': 'Manual reviewer ratings, not model scoring or independently verified run provenance',
+            'model_scoring_performed': False}
+
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='Score supplied manual observations without provider calls')
+    parser.add_argument('--observations', type=Path, required=True)
+    args = parser.parse_args()
+    print(json.dumps(score_observations(json.loads(args.observations.read_text())), indent=2))

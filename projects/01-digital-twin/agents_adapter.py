@@ -3,7 +3,7 @@ import argparse
 import asyncio
 import json
 import os
-from config import profile_path
+from config import load_profile_sections
 from context import assemble_context,ContextBudget
 from prompts import SYSTEM_PROMPT,IDENTITY
 from twin import DigitalTwin
@@ -19,11 +19,11 @@ def build_agent(model):
     return Agent(name='Professional digital twin',model=model,instructions=SYSTEM_PROMPT,output_type=Answer)
 
 
-async def answer(question,model,history=(),tool_results=(),budget=None):
+async def answer(question,model,history=(),tool_results=(),budget=None,sections=None):
     from agents import Runner,RunConfig
     if question.strip().lower() in ("who are you?","who are you","are you amara?","are you amara"):
         return {"answer":IDENTITY,"citations":[],"status":"identity_disclosure"}
-    core=DigitalTwin(json.loads(profile_path().read_text())['sections'])
+    core=DigitalTwin(load_profile_sections(os.environ.get('TWIN_PROFILE')) if sections is None else sections)
     try:
         evidence=core.retrieve(question)
         if not evidence:return core.answer(question)

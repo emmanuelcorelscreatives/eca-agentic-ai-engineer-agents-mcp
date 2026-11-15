@@ -1,4 +1,4 @@
-"""Authored semantic regression tests. Central QA owns execution and results.
+"""Semantic regression tests with explicitly optional browser integration.
 
 Adapter-double tests establish contracts only. ECA_RUN_S20_BROWSER=1 enables
 actual installed Playwright sandbox integration; no test makes paid model calls.
@@ -149,7 +149,7 @@ class IntegratedContract(unittest.TestCase):
         self.assertNotIn('SYNTHETIC_SECRET_123',json.dumps(trace))
 
 
-@unittest.skipUnless(os.environ.get('ECA_RUN_S20_BROWSER')=='1','Central QA must explicitly enable genuine browser integration')
+@unittest.skipUnless(os.environ.get('ECA_RUN_S20_BROWSER')=='1','Set ECA_RUN_S20_BROWSER=1 to opt into genuine browser integration')
 class RealBrowserIntegration(unittest.TestCase):
     def test_full_read_approved_browser_submit_and_artifact(self):
         with tempfile.TemporaryDirectory() as tmp,Sandbox() as sandbox:

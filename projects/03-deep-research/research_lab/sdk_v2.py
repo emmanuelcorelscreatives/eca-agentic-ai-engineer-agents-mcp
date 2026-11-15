@@ -1,7 +1,7 @@
 """Actual Agents SDK planner/analyst over the SAME current research evidence.
 
-Constructing these agents is not a real model observation. The central QA owner
-must authorize and retain each finite live run separately. Supply an SDK model
+Constructing these agents is not a real model observation. Explicitly choose the
+account and budget for each finite live run and retain actual results. Supply an SDK model
 backed by a client configured with max_retries=0; string/default models rejected.
 """
 import json

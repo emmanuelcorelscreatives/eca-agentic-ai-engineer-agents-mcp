@@ -1,4 +1,4 @@
-"""AUTHOR-ONLY: central QA must execute. Deterministic probes are not provider evidence."""
+"""Offline typed-pipeline checks; deterministic probes are not provider evidence."""
 import asyncio
 import importlib.util
 import json

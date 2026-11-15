@@ -1,7 +1,6 @@
 """One coherent Sidekick application: native planning, browser, evidence and UI state.
 
-Authoring status: new semantic integration, awaiting central QA. No provider runs
-or screenshots are bundled or claimed. NativePlanner is the actual SDK route;
+No provider runs or screenshots are bundled or claimed. NativePlanner is the SDK route;
 FixturePlanner is a conspicuously labelled deterministic test/demo alternative.
 """
 from __future__ import annotations

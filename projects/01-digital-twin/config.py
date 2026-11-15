@@ -1,6 +1,7 @@
 """Explicit configuration; importing reads no secrets and opens no database."""
 from dataclasses import dataclass
 from pathlib import Path
+import json
 import os
 
 @dataclass(frozen=True)
@@ -14,6 +15,7 @@ class Settings:
     auth_password: str = ''
     live_model_enabled: bool = False
     model: str = ''
+    profile: str = ''
     def __post_init__(self):
         if self.retention_days<1 or self.request_limit_per_minute<1:raise ValueError('positive retention and rate limit required')
         if self.notification_mode not in ('local_outbox','dry_run'):raise ValueError('unconfigured external notification mode')
@@ -22,7 +24,7 @@ class Settings:
     @classmethod
     def from_env(cls,environ=None):
         env=os.environ if environ is None else environ
-        return cls(database=env.get('TWIN_DATABASE',str(Path.home()/'.local/share/academy-twin/twin.sqlite')),retention_days=int(env.get('TWIN_RETENTION_DAYS','30')),request_limit_per_minute=int(env.get('TWIN_RATE_LIMIT','30')),notification_mode=env.get('TWIN_NOTIFICATION_MODE','local_outbox'),public_bind=env.get('TWIN_PUBLIC_BIND','false').lower()=='true',auth_username=env.get('TWIN_AUTH_USERNAME',''),auth_password=env.get('TWIN_AUTH_PASSWORD',''),live_model_enabled=env.get('TWIN_LIVE_MODEL_ENABLED','false').lower()=='true',model=env.get('ACADEMY_MODEL',''))
+        return cls(database=env.get('TWIN_DATABASE',str(Path.home()/'.local/share/academy-twin/twin.sqlite')),retention_days=int(env.get('TWIN_RETENTION_DAYS','30')),request_limit_per_minute=int(env.get('TWIN_RATE_LIMIT','30')),notification_mode=env.get('TWIN_NOTIFICATION_MODE','local_outbox'),public_bind=env.get('TWIN_PUBLIC_BIND','false').lower()=='true',auth_username=env.get('TWIN_AUTH_USERNAME',''),auth_password=env.get('TWIN_AUTH_PASSWORD',''),live_model_enabled=env.get('TWIN_LIVE_MODEL_ENABLED','false').lower()=='true',model=env.get('ACADEMY_MODEL',''),profile=env.get('TWIN_PROFILE',''))
 
 
 def profile_path():
@@ -31,6 +33,16 @@ def profile_path():
     if local.is_file():return local
     from importlib.resources import files
     return files('twin_data').joinpath('profile.json')
+
+
+def load_profile_sections(path=None):
+    """Load a reviewed section list or profile object without changing approval."""
+    source=Path(path) if path else profile_path()
+    profile=json.loads(source.read_text(encoding='utf-8'))
+    sections=profile.get('sections') if isinstance(profile,dict) else profile
+    if not isinstance(sections,list) or any(not isinstance(section,dict) for section in sections):
+        raise ValueError('profile must contain a list of section objects')
+    return sections
 
 
 def evaluation_path():

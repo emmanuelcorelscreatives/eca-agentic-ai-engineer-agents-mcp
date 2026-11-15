@@ -1,19 +1,26 @@
-# Stage 16: native practical handouts
+# Stage 16: practical guide
 
-Read each lesson handout and its corresponding `solutions/s16/` reference solution. The exact PDF title/objective is preserved. These author-only semantic corrections replace dead pointers, confusing alternate cases and blanket stale SDK-pending statements. They do not promote runtime readiness.
+Read each lesson handout and its corresponding reference solution under `solutions/s16/`. The [stage 11–20 workbook](../../curriculum/workbooks/stages-11-20.md) supplies the exact titles, tasks and acceptance criteria.
 
 ## Shared case
 
-Read-only synthetic Academy documentation lookup using real LangChain message, tool, structured-output, middleware and memory APIs. The older order-total adapter is not the Stage16 teaching case.
+Read-only synthetic Academy documentation lookup using native LangChain messages, tools, structured output, middleware and memory APIs. The older order-total adapter is a separate introductory example.
 
-## Source and proof scopes
+## Set up the optional framework environment
 
-The retained baseline suite established 18 standard-library behaviors and four native SDK integrations. That is historical evidence for its exact earlier source, not proof of every newly authored feature. The sole central QA owner will run current native-feature tests and retain source-bound results. No SDK, model, browser, installation or test execution occurred as part of these handout edits.
+From the repository root, create a separate Python 3.11+ environment rather than modifying the dependency-free core environment:
 
-## Required versus optional
+```sh
+python3 -m venv .venv-browser
+. .venv-browser/bin/activate
+python -m pip install -r projects/06-browser-sidekick/requirements-optional.txt
+python -m unittest discover -s tests -p test_s16_native_features.py -v
+```
 
-Use actual taught SDK semantics, synthetic Academy fixtures, genuine application captures and independent review. A genuine provider observation is required when narrating observed provider behavior, not for every conceptual explanation or deterministic native-framework example. SQLite is the required persistent database here; PostgreSQL is optional. Stage17 Lesson10 explicitly requires a real LangSmith observation; Stage16 trace inspection may use real local timed SDK instrumentation. Never enforce suggested PDF minutes on native narration.
+On Windows, activate with `.venv-browser\Scripts\Activate.ps1`. Core tests can skip optional SDK cases when dependencies are absent; those skips do not verify the framework. Installing the optional requirements is not a model call. Read each exercise before enabling provider or hosted tracing operations.
 
-## Central QA handoff
+## Verify your result
 
-The newly authored SDK tests are `tests/test_s16_native_features.py`. Only the centralized QA owner executes and certifies them during this repair. Document authors have not run them or promoted their expected results to PASS.
+Record the exact checkout, dependency versions, command and actual output. SDK construction, scripted native-framework execution, live provider responses and browser interactions verify different things. Do not infer an integration result from source presence or a historical test count. SQLite is the required persistent database here; PostgreSQL is an optional extension. Stage 17 lesson 10 requires an explicitly configured real LangSmith observation; local timed instrumentation alone does not complete that hosted-tracing exercise.
+
+Start model invocation/streaming with the [lesson 3 walkthrough](s16-l03.md).

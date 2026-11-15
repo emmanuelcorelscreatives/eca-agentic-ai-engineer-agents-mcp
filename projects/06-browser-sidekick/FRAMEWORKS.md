@@ -1,6 +1,6 @@
 # Genuine LangGraph integration
 
-`langgraph_adapter.py` builds a real `StateGraph` over the tested task core, rather than labeling a handwritten state machine as LangGraph. Install `langgraph` and `langgraph-checkpoint-sqlite` in a dedicated environment and freeze the versions actually tested before recording.
+`langgraph_adapter.py` builds a real `StateGraph` over the task core, rather than labeling a handwritten state machine as LangGraph. From this project directory, activate a dedicated environment and run `python3 -m pip install -r requirements-optional.txt`; see [the setup guide](BROWSER-LABS.md). Keep the versions used with your results.
 
 ```python
 from pathlib import Path

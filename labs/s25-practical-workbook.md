@@ -2,11 +2,11 @@
 
 A typed Academy catalog-research/draft-notification agent specification. Generated requirements, architecture, tools, instructions, tests and reviews must feed the same approved dependency graph and produce a real runnable selected-framework project.
 
-This workbook preserves every original PDF lesson objective. It is author-only semantic repair, not production approval. Deterministic contracts, genuine SDK construction, real browser/container execution and model-generated observations are distinct evidence classes. A passing helper or constructor does not establish a finished application.
+This workbook preserves every original PDF lesson objective. It is a practical guide, not a record of completed integration runs. Deterministic contracts, genuine SDK construction, real browser/container execution and model-generated observations are distinct evidence classes. A passing helper or constructor does not establish a finished application.
 
 ## Integrated-source handoff
 
-The new stable authoring handoff is projects/07-agent-factory/model_pipeline.py and model_schemas.py; MODEL-PIPELINE-AUTHORING.md records its exact boundaries. Pipeline.analyze→design→generate→inspect→repair feeds async run_factory, followed by launch_validated only after exact release. AutoGenBackend uses actual structured AssistantAgent proposals; a deterministic test backend is explicitly not a genuine model observation. No CLI frontend is supplied. Trusted external approval, Docker execution and receipt-authentication callbacks remain central integration boundaries. All new code is pending centralized runtime verification; no actual provider/container/launch success is claimed.
+The optional generative implementation is projects/07-agent-factory/model_pipeline.py and model_schemas.py; MODEL-PIPELINE-AUTHORING.md records its exact boundaries. Pipeline.analyze→design→generate→inspect→repair feeds async run_factory, followed by launch_validated only after exact release. AutoGenBackend uses actual structured AssistantAgent proposals; a deterministic test backend is explicitly not a genuine model observation. No CLI frontend is supplied. Trusted external approval, Docker execution and receipt-authentication callbacks remain trusted application integration boundaries. All new code is pending runtime verification in your environment; no actual provider/container/launch success is claimed.
 
 ## s25-l01: Design the Agent Application Factory
 

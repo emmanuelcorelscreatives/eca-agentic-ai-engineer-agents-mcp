@@ -2,11 +2,11 @@
 
 An Academy-owned local workshop/catalog research task, with synthetic draft-form interactions only. Keep planning, browser observations, source-attributed findings, evaluation, approvals, artifacts and user-facing progress in one persisted session.
 
-This workbook preserves every original PDF lesson objective. It is author-only semantic repair, not production approval. Deterministic contracts, genuine SDK construction, real browser/container execution and model-generated observations are distinct evidence classes. A passing helper or constructor does not establish a finished application.
+This workbook preserves every original PDF lesson objective. It is a practical guide, not a record of completed integration runs. Deterministic contracts, genuine SDK construction, real browser/container execution and model-generated observations are distinct evidence classes. A passing helper or constructor does not establish a finished application.
 
 ## Integrated-source handoff
 
-The new source is projects/06-browser-sidekick/pipeline.py. NativePlanner and the explicitly labeled FixturePlanner feed SidekickApplication.create; PlaywrightSandboxExecutor performs bounded owned browser execution; evaluate/revise/decide update the same persisted lifecycle; snapshot/owned_file/export_trace support the user-facing workspace. UI source is projects/06-browser-sidekick/ui_gradio.py. All new integration awaits centralized runtime verification; the stable startup handoff below identifies the explicit native and fixture modes. Baseline helper success is not full-app proof.
+The new source is projects/06-browser-sidekick/pipeline.py. NativePlanner and the explicitly labeled FixturePlanner feed SidekickApplication.create; PlaywrightSandboxExecutor performs bounded owned browser execution; evaluate/revise/decide update the same persisted lifecycle; snapshot/owned_file/export_trace support the user-facing workspace. UI source is projects/06-browser-sidekick/ui_gradio.py. All new integration awaits runtime verification in your environment; the stable startup handoff below identifies the explicit native and fixture modes. Baseline helper success is not full-app proof.
 
 ## s20-l01: Design the Browser Task Sidekick
 
@@ -160,10 +160,12 @@ Acceptance: The same persisted task must connect all taught components. Retain e
 
 ## Model and artifact evidence boundary
 
-Configure a model transport with retries disabled for an admitted native run. A timed-out or missing planning receipt remains unresolved; recover its original evidence rather than automatically resubmitting. Use synthetic Academy data and an isolated owned browser context. Browser updates and files shown in the UI must resolve to current recorded observations for that task and owner. Capture only genuine screens or truthful conceptual illustrations, with no baked subtitles or decorative desks/devices.
+Configure a model transport with retries disabled for an explicitly configured native run. A timed-out or missing planning receipt remains unresolved; recover its original evidence rather than automatically resubmitting. Use synthetic Academy data and an isolated owned browser context. Browser updates and files shown in the UI must resolve to current recorded observations for that task and owner. Keep actual execution screenshots distinct from conceptual illustrations and expected output.
 
 ## Stable UI startup and mode contract
 
+Use the [integrated fixture guide](../projects/06-browser-sidekick/BROWSER-LABS.md) for setup and interaction. Resume with the same private database and workspace. The exact persisted loopback port must be available; legacy tasks without sandbox identity cannot be silently migrated. Expired approvals remain invalid, and prior unknown outcomes must not be replayed.
+
 The actual entrypoint is `projects/06-browser-sidekick/ui_gradio.py`. `build_ui(database, sandbox, *, model=None, workspace_root=None, executable_path=None, application=None)` uses the same integrated application. A configured native run passes an explicit `--model provider:model`; omitting it deliberately selects the visibly labeled deterministic fixture, with no silent fallback after a native error. `--database`, `--workspace-root` and optional `--browser-executable` bind owned local state and the admitted installed Chromium. The server binds loopback with public sharing disabled.
 
-Current UI source shows genuine owned Playwright PNG observations inline and returns artifact data links only after session membership and exact SHA checks, together with final lifecycle/evaluation and trace. That authored rendering path still requires actual central browser/UI interaction proof; a constructed Blocks object does not establish that it ran.
+Current UI source shows genuine owned Playwright PNG observations inline and returns artifact data links only after session membership and exact SHA checks, together with final lifecycle/evaluation and trace. That authored rendering path still requires actual browser/UI interaction testing; a constructed Blocks object does not establish that it ran.

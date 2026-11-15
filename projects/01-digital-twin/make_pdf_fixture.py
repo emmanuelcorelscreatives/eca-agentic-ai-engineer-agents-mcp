@@ -1,6 +1,6 @@
 """Generate genuine synthetic resume/portfolio PDFs from versioned UTF-8 text.
 
-No binaries are generated on import. The CLI writes new fixtures/generated;
+No binaries are generated on import. The CLI requires a new output directory;
 it never overwrites the retained original fixtures/synthetic-resume.pdf.
 """
 import argparse
@@ -108,7 +108,7 @@ def generate_documents(output_dir, font_path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output-dir', type=Path, default=BASE / 'fixtures/generated')
+    parser.add_argument('--output-dir', type=Path, required=True, help='new writable directory; never overwrite supplied fixtures')
     parser.add_argument('--font', type=Path, required=True, help='licensed local Unicode TrueType font file')
     args = parser.parse_args()
     print(json.dumps(generate_documents(args.output_dir, args.font), ensure_ascii=False, indent=2))

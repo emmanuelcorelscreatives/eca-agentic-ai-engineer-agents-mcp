@@ -199,7 +199,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Private information and unsupported credentials are excluded; success criteria cover uncertainty and contact consent.
 
 ### s05-l02: Extract Professional Information from PDF Documents
-- **Practical:** Create a synthetic résumé PDF, extract its text using a PDF parser and review section order before indexing.
+- **Practical:** Follow the [ingestion guide](../../projects/01-digital-twin/docs/ingestion.md): create synthetic PDFs in a fresh output directory, extract their text and review section order before indexing. Hand off reviewed structured sections explicitly; extraction alone does not approve them.
 - **Deliverable:** Synthetic PDF, extraction script and reviewed structured sections.
 - **Accept when:** Extracted facts match the PDF; headers, page breaks and missing text are explicitly checked.
 
@@ -214,7 +214,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Stable source IDs survive assembly; truncation cannot silently remove safety or uncertainty rules.
 
 ### s05-l05: Add Document Retrieval and Grounded Responses
-- **Practical:** Run `projects/01-digital-twin/twin.py` and extend retrieval while preserving approved-source filtering.
+- **Practical:** Run `projects/01-digital-twin/twin.py` and extend retrieval while preserving approved-source filtering. Use `--profile` to select your reviewed private section file instead of silently falling back to the supplied profile.
 - **Deliverable:** Retrieval tests and a grounded answer containing stable source IDs.
 - **Accept when:** Unapproved or irrelevant sections never support an answer; an unsupported question returns insufficient evidence.
 
@@ -224,6 +224,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Unknown tools reject; failed validation leaves no partial contact record.
 
 ### s05-l07: Handle Multiple Tool Calls
+- Reference boundary: The legacy ordered-call example and the typed persisted lead/question service are distinct paths; use the project README's implementation map rather than assuming their tool semantics are interchangeable.
 - **Practical:** Submit retrieval, an unknown operation and consented contact storage within one ordered turn.
 - **Deliverable:** An ordered per-tool result list and database state checks.
 - **Accept when:** The unknown operation is rejected explicitly without losing valid results or bypassing consent.
@@ -239,6 +240,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Show operational status without exposing hidden model reasoning or personal contact details.
 
 ### s05-l10: Create the Gradio Chat Interface
+- Mode boundary: Default replies use grounded excerpts. Model-generated answers require deliberate configuration, and contact writes require explicit consent; enabling a model is not permission to write contacts.
 - **Practical:** Build a real Gradio chat interface around the configured model and retrieval tools.
 - **Deliverable:** A runnable app and actual browser captures of grounded Q&A and explicit contact consent.
 - **Accept when:** UI state reflects actual operations; the deterministic CLI alone does not satisfy this interface exercise.
@@ -400,7 +402,7 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 ### s08-l07: Create Email Drafting and Delivery Tools
 - **Practical:** Keep draft creation, preview and delivery as distinct tools, starting with `sales.py`'s simulated outbox.
 - **Deliverable:** Tool contracts and tests for preapproval refusal, editing and idempotency.
-- **Accept when:** Simulation is labeled; a real delivery adapter needs authenticated approval and an actual provider receipt.
+- **Accept when:** Simulation is labeled and needs no provider receipt. Owned-loopback sink acceptance is a separate local exercise, not mailbox delivery. An external delivery adapter needs authenticated approval and an actual provider receipt.
 
 ### s08-l08: Coordinate the Sales Agents Through Code
 - **Practical:** Coordinate actual research, strategy, writer and reviewer calls in application code.
@@ -408,11 +410,13 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** A failed review prevents approval progression; downstream agents use actual upstream outputs.
 
 ### s08-l09: Coordinate the Sales Agents with a Manager Agent
+- Setup and result inspection: Follow the [coordination comparison](../../projects/02-sales-team/WORKED-SOLUTIONS.md#manager-versus-handoff), then export the selected observation rather than requiring a draft ID. If no revision occurred, record “not observed”; do not invent one.
 - **Practical:** Implement a manager agent that chooses specialists and requests a bounded revision.
 - **Deliverable:** An actual trace documenting selected specialists and the revision reason.
 - **Accept when:** The manager cannot bypass validation or issue human approval; maximum iterations terminate.
 
 ### s08-l10: Add Handoffs Between Sales Specialists
+- Setup and result inspection: Use the same [coordination comparison](../../projects/02-sales-team/WORKED-SOLUTIONS.md#manager-versus-handoff) and export actual selected-specialist/context events. If no handoff occurred, report that absence honestly.
 - **Practical:** Add a specialist handoff carrying the prospect, evidence IDs and draft revision.
 - **Deliverable:** A real handoff run and a typed transfer record.
 - **Accept when:** The recipient receives required context without unrelated prospects or private history.
@@ -428,11 +432,13 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** A model saying approved has no effect; repeated approved submission cannot duplicate delivery.
 
 ### s08-l13: Build Sales Quality and Personalization Evaluations
+- Worked path: Use the [two-prospect scoring exercise](../../projects/02-sales-team/WORKED-SOLUTIONS.md#score-two-prospects). Keep reference labels, fixture outputs and actual model outputs separate, including explicit failed cases.
 - **Practical:** Evaluate a set of fictional prospects including sparse data and deceptive claims.
 - **Deliverable:** A rubric, actual agent outputs and scored personalization/grounding results.
 - **Accept when:** Count failures explicitly; distinguish mechanical checks from human factual review.
 
 ### s08-l14: Complete the AI Sales Development Team
+- Setup: Start with the [worked solutions and capstone](../../projects/02-sales-team/WORKED-SOLUTIONS.md). Deterministic practice and separately opted-in SDK execution both use no-email simulation; one does not prove the other ran.
 - **Practical:** Integrate the SDK agents, approval UI, trace capture and evaluation suite around the sales state machine.
 - **Deliverable:** A runnable application and one end-to-end observed draft-to-approved-simulated-delivery run.
 - **Accept when:** All stages remain attributable; actual external sending stays disabled unless separately configured and approved.
@@ -554,12 +560,11 @@ Each entry preserves the exact curriculum title. Deliverables described here are
 - **Accept when:** Recovery keeps original inputs and all history, admits at most three total attempts and never replays current or historical IN_FLIGHT/UNKNOWN outcomes. Missing authorization, changed inputs or unverified failure classification remain held; test fixtures do not certify actual provider recovery.
 
 ### s10-l10: Deploy the Deep Research Application
-- **Practical:** Use `projects/03-deep-research/research_lab/interface_v3.py`, `deploy_v3.py` and `deployment/research-v3/` to deploy the real research application. Resolve the exact direct-version requirements input into a complete tested transitive-hash lock; then exercise submit/report and the server-session-owned opaque-run-token File downloads after your own run completes.
-- **Deliverable:** An actually resolved dependency hash lock, clean build/startup/health/private-state observations, reachable deployment and genuine browser evidence of own-run report download plus foreign-session/tampered-token refusal.
+- **Practical:** Use `projects/03-deep-research/research_lab/interface_v3.py`, `deploy_v3.py` and the instructions in `projects/03-deep-research/deployment/research-v3/README.md` to deploy the real research application with its supplied transitive hash lock. Then exercise submit/report and the server-session-owned opaque-run-token File downloads after your own run completes.
+- **Deliverable:** The supplied dependency hash lock and exact source revision, actual clean build/startup/health/private-state observations, reachable deployment and genuine browser evidence of own-run report download plus foreign-session/tampered-token refusal.
 - **Accept when:** Deployment serves the actual v3 UI, private persistence and exact completed-run exports without accepting browser-supplied filesystem paths; download hashes match the completed report. `requirements.in`/`pyproject.toml` alone are resolver inputs, not lock/build evidence. Actual provider/Brave results, fresh-session browser behavior and a deployed build remain unproven until observed; secrets and other sessions stay protected.
 
 ### s10-l11: Complete the OpenAI Agents SDK Module
 - **Practical:** Run a final demonstration connecting SDK tools, handoffs, research, tracing, evaluations and approval boundaries. Use `projects/03-deep-research/capstone_v2.py` for an explicitly admitted live capstone; preserve actual sources, raw responses, operational spans, human annotations and meaningful failure evidence.
 - **Deliverable:** A module completion checklist linking each claim to actual project evidence.
 - **Accept when:** Unfinished live SDK/UI/deployment work remains explicitly incomplete; local baseline tests alone do not certify those features.
-

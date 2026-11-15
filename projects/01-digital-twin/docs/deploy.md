@@ -1,8 +1,15 @@
 # Deploy and verify the fictional twin
 
-This is executable deployment configuration and a runbook, not a claim that hosting already occurred. Central QA must execute the image build, local visitor actions and health check under the approved resource guard, then obtain genuine browser captures. A public deployment requires an approved host, HTTPS and explicit configured credentials.
+This is deployment configuration and a learner runbook, not a claim that hosting already occurred. Verify the image build, local visitor actions and health check yourself before claiming deployment readiness. A public deployment requires a host you are authorized to use, HTTPS and explicitly configured credentials.
 
 ## Local container
+
+From the repository root, change to the project directory before every command in this runbook:
+
+```sh
+cd projects/01-digital-twin
+docker build -t academy-twin .
+```
 
 Build `docker build -t academy-twin .`. Use a private writable volume owned by the container's `academy` user. Mount it at `/data`, set `TWIN_DATABASE=/data/twin.sqlite` and keep all contact/lead/question state outside the image and public source tree. Default `TWIN_PUBLIC_BIND=false` binds loopback and is appropriate for a direct local process. For Docker networking use `TWIN_PUBLIC_BIND=true` with a configured username and password of at least 16 characters, and map the host only to `127.0.0.1:7860`. Store the password in a private environment file, never a shell history example or screenshot. Put an authenticated HTTPS reverse proxy in front only after explicit deployment approval.
 

@@ -1,50 +1,14 @@
 {
   "schemaVersion": 1,
-  "stage": 24,
-  "status": "AUTHOR_ONLY_NOT_EXECUTED",
-  "providerCalls": 0,
-  "sourcePdf": "agentic-ai-engineer-complete-course-curriculum-reformatted.pdf Stage 24 lessons 1\u201312",
-  "centralQaOnly": true,
-  "commands": [
-    {
-      "cwd": "repository root",
-      "environment": "admitted pinned Agno + MCP Python",
-      "command": "python -m unittest discover -s tests -p test_s24_mcp_semantics.py -v",
-      "provesIfObserved": "genuine Agent binding; MCP stdio discovery/read/error and cleanup; no model generation"
-    },
-    {
-      "cwd": "examples/s24_mastra",
-      "environment": "isolated pinned Node SDK workspace; COURSE_MCP_PYTHON absolute MCP Python",
-      "command": "npm run check",
-      "provesIfObserved": "current TypeScript compilation only"
-    },
-    {
-      "cwd": "examples/s24_mastra",
-      "environment": "same isolated workspace",
-      "command": "npm test",
-      "provesIfObserved": "existing deterministic workflow plus actual MCP and native file Memory tests; skipped MCP tests are incomplete"
-    }
-  ],
-  "providerAndCaptureGaps": [
-    "s24-l02 actual single-agent response",
-    "s24-l03 real tool-selected schema-valid Agent output",
-    "s24-l04 actual model-selected MCP call",
-    "s24-l05 genuine specialist contributions/team output",
-    "s24-l07 genuine configured Studio startup",
-    "s24-l09 actual Agent-selected MCP tool trace",
-    "s24-l10 real two-turn provider recall and structured result",
-    "s24-l11 actual Studio workflow/agent/error traces and screenshots",
-    "s24-l12 matched real provider task comparison without universal winner"
-  ],
-  "retainedPriorEvidence": "Prior SDK construction/typecheck/four workflow passes remain historical frozen-source evidence, not current modified-source approval.",
-  "changedFiles": [
+  "scope": "Student source inventory and optional validation commands. Checksums identify supplied files, not completed integration runs.",
+  "files": [
     {
       "path": "examples/s24_agno.py",
-      "sha256": "a60f347173cceefea0d9499a07f57baa429df63ff1a4ba67344b82b10d5df85c"
+      "sha256": "4287618710970b4a1dd6dd9d9f96aee9dbfd69e9fa300ab98584e8884d7e9b09"
     },
     {
       "path": "examples/s24_triage.py",
-      "sha256": "0d0c982f95d010ac3ee2a1fb3184f760a8477278e43ce03948dcd837d375de47"
+      "sha256": "387de4829b694f09cd2263a7eab9766e5694a2ffc9b8b566d77e2bc493cdbb25"
     },
     {
       "path": "tests/test_s24_mcp_semantics.py",
@@ -68,51 +32,74 @@
     },
     {
       "path": "examples/s24_mastra/studio-runbook.md",
-      "sha256": "e187396a06ab4269eb05596f2c6df852ad2cd6b5d440e88bebd021035e8a1e08"
+      "sha256": "c785f9d3a9a71b6f92d8b018199702384be22abea143f0e2ecc6130c89315e26"
     },
     {
       "path": "examples/s24_mastra/package.json",
-      "sha256": "1cb1e191ddcf9535b70ad4f7b3096a716bbe655ecd0e757bd049d2040decd189"
+      "sha256": "b924dc999d5acf792cf225de4f0997ea3223f127d1dcb518bf38bb915c3b2101"
     },
     {
       "path": "labs/s24-l04.md",
-      "sha256": "1267190e22c2c809c2d54a8d0f2b66225cc1f233fe11a132ab9acb73baf489ae"
+      "sha256": "9303689c6c2c70e3c0a8e6d26793ceadbbf37d5866f54ede3887124dce018049"
     },
     {
       "path": "labs/s24-l09.md",
-      "sha256": "49145165b19589cfd030481c04b880070b8d9ee0a51caff95ba47f29b913624e"
+      "sha256": "55ad88dfbc07089a0f0bfcabcc36d4a4c921de3aea0e02b8aea6e95cceb81fdb"
     },
     {
       "path": "labs/s24-l10.md",
-      "sha256": "efdeb1614faa3f5a1b08fe237e9d0db25118100766890ba31a94902728fad6e0"
+      "sha256": "797e54e85b347facfad9949520c343f8013efbccee68a15ce6fcce4e61650cbc"
     },
     {
       "path": "labs/s24-l11.md",
-      "sha256": "817ebddafba245d81be2de999803456412a02b55bf543b385b895c622fb8fe2f"
+      "sha256": "ed76f51e540e97b7caa3d96bd85d71359422a871c4c00724d6e7c113c2cb7e50"
     },
     {
       "path": "solutions/s24-l04.md",
-      "sha256": "ca278e88efa2d7ccfd93f631a825fc9ca20c2ed1c1e74e3173afdc1f6d45f2f6"
+      "sha256": "3f9322b7cca5df8206e7176d7e7dc92873e17820ede7bea0eae7bf6c5c856fbb"
     },
     {
       "path": "solutions/s24-l09.md",
-      "sha256": "aab71a0d6d24511e71f799f96ca6b3aa17a3f135ee5108a612ad7d650c3320f8"
+      "sha256": "b6a413e2a398c06cdff5efc5e2bdee09c6cc8c4525f701aed701ceacbe979c54"
     },
     {
       "path": "solutions/s24-l10.md",
-      "sha256": "2789d99e14df29a41142dcfe722b5c64df02239c5e08ae90e5f2a53a30625958"
+      "sha256": "d6957553f8484b2684d2ebd855e66f44404e5d5a7e816540de7cf3e7d277249e"
     },
     {
       "path": "solutions/s24-l11.md",
-      "sha256": "de0bec6b63d376558aed85e23620c5dd5ee938b8b1a0d46e402fc21b6b656ab9"
+      "sha256": "7d5b33a484b96d2a630edafcad69b138c692ddf1374120da3e7646f8e743da18"
     }
   ],
-  "sdkApiReadOnlySources": [
-    "agno/tools/mcp/mcp.py: MCPTools server_params/include_tools, context entry/build_tools/functions/session cleanup",
-    "@mastra/mcp/dist/client/configuration.d.ts: registerProcessHooks/listTools/disconnect",
-    "@mastra/mcp/dist/client/types.d.ts: cwd/env/inheritDefaultEnv",
-    "@mastra/memory/dist/index.d.ts: recall/getThreadById/saveMessages/settled",
-    "@mastra/core/dist/memory/memory.d.ts: createThread",
-    "@mastra/libsql/dist/storage/index.d.ts: init/close"
+  "commands": [
+    {
+      "cwd": "repository root",
+      "environment": "admitted pinned Agno + MCP Python",
+      "command": "python -m unittest discover -s tests -p test_s24_mcp_semantics.py -v",
+      "provesIfObserved": "genuine Agent binding; MCP stdio discovery/read/error and cleanup; no model generation"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "environment": "isolated pinned Node SDK workspace; COURSE_MCP_PYTHON absolute MCP Python",
+      "command": "npm run check",
+      "provesIfObserved": "current TypeScript compilation only"
+    },
+    {
+      "cwd": "examples/s24_mastra",
+      "environment": "same isolated workspace",
+      "command": "npm test",
+      "provesIfObserved": "existing deterministic workflow plus actual MCP and native file Memory tests; skipped MCP tests are incomplete"
+    }
+  ],
+  "integrationChecks": [
+    "s24-l02 actual single-agent response",
+    "s24-l03 real tool-selected schema-valid Agent output",
+    "s24-l04 actual model-selected MCP call",
+    "s24-l05 genuine specialist contributions/team output",
+    "s24-l07 genuine configured Studio startup",
+    "s24-l09 actual Agent-selected MCP tool trace",
+    "s24-l10 real two-turn provider recall and structured result",
+    "s24-l11 actual Studio workflow/agent/error traces and screenshots",
+    "s24-l12 matched real provider task comparison without universal winner"
   ]
 }

@@ -43,7 +43,7 @@ Verified on 2026-11-12 against official OpenAI documentation:
 
 The installed package is pinned rather than silently tracking latest. Live SDK/model execution, hosted tracing, quality and latency remain unverified here. Use genuine terminal/editor/SQLite captures; never build a mock provider trace UI.
 
-## Semantic repair additions — authored, awaiting central QA
+## Semantic repair additions — authored, awaiting local validation
 
 The authoritative Stage 6 decorator/validation exercise is the **course catalogue**
 in `data/s06-catalogue.json`. The separate arithmetic framework companion is an
@@ -143,6 +143,6 @@ read or permanent schema error may reach this fallback; no fallback fabricates
 stock, returns or delivery facts or sends an external message.
 
 New semantic tests: `tests/test_stage06_07_semantic_repairs.py`. They are **authored
-and not executed by this author**. Central QA must retain actual results, distinguish
+and not executed by this author**. local validation must retain actual results, distinguish
 SDK skips, and independently review the changed source before publication or use
 as approved teaching material. The older logs retain their historical source scope.

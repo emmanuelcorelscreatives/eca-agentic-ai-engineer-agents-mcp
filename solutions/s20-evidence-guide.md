@@ -2,7 +2,7 @@
 
 An Academy-owned local workshop/catalog research task, with synthetic draft-form interactions only. Keep planning, browser observations, source-attributed findings, evaluation, approvals, artifacts and user-facing progress in one persisted session.
 
-No new runtime was executed by the documentation author. Every expected behavior below needs source-bound actual evidence from the sole centralized QA owner before an observed-result lesson is recorded. Historic baseline tests retain their narrow original scope.
+No new runtime was executed by the documentation author. Every expected behavior below needs source-bound actual evidence from the sole local validation before an observed-result lesson is recorded. Historic baseline tests retain their narrow original scope.
 
 ## s20-l01: Design the Browser Task Sidekick
 
@@ -126,10 +126,10 @@ The detailed [reference answer](s20/s20-l15.md) preserves the exercise and evide
 
 ## Model and artifact evidence boundary
 
-Configure a model transport with retries disabled for an admitted native run. A timed-out or missing planning receipt remains unresolved; recover its original evidence rather than automatically resubmitting. Use synthetic Academy data and an isolated owned browser context. Browser updates and files shown in the UI must resolve to current recorded observations for that task and owner. Capture only genuine screens or truthful conceptual illustrations, with no baked subtitles or decorative desks/devices.
+Configure a model transport with retries disabled for an explicitly configured native run. A timed-out or missing planning receipt remains unresolved; recover its original evidence rather than automatically resubmitting. Use synthetic Academy data and an isolated owned browser context. Browser updates and files shown in the UI must resolve to current recorded observations for that task and owner. Keep actual execution screenshots distinct from conceptual illustrations and expected output.
 
 ## Stable UI startup and mode contract
 
 The actual entrypoint is `projects/06-browser-sidekick/ui_gradio.py`. `build_ui(database, sandbox, *, model=None, workspace_root=None, executable_path=None, application=None)` uses the same integrated application. A configured native run passes an explicit `--model provider:model`; omitting it deliberately selects the visibly labeled deterministic fixture, with no silent fallback after a native error. `--database`, `--workspace-root` and optional `--browser-executable` bind owned local state and the admitted installed Chromium. The server binds loopback with public sharing disabled.
 
-Current UI source shows genuine owned Playwright PNG observations inline and returns artifact data links only after session membership and exact SHA checks, together with final lifecycle/evaluation and trace. That authored rendering path still requires actual central browser/UI interaction proof; a constructed Blocks object does not establish that it ran.
+Current UI source shows genuine owned Playwright PNG observations inline and returns artifact data links only after session membership and exact SHA checks, together with final lifecycle/evaluation and trace. That authored rendering path still requires actual browser/UI interaction testing; a constructed Blocks object does not establish that it ran.

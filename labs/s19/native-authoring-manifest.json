@@ -1,13 +1,12 @@
 {
-  "scope": "Stage 19 semantic repair author-only handoff",
-  "author": "/root/agentic_engineer_repository/projects_6_7/semantic_deep19",
+  "scope": "Stage 19 source inventory and optional exercise commands; these are not successful-run receipts.",
   "implementation": {
     "path": "examples/s19/native_harness.py",
-    "sha256": "e14ee37ce3894736df04c3515cb353b1389964f03fb69c2f1ec93ed7f906aec1"
+    "sha256": "eaa4bea45caf91692b41bc03cdd492c878a2cf5f4c28d1b0b8d07998568d7a91"
   },
-  "authoredTests": {
+  "tests": {
     "path": "tests/test_s19_native_harness.py",
-    "sha256": "6d2819dbd8aac609e888135219f440abf8e3cf09ac18e5d933eba3cadd7f8d40"
+    "sha256": "5b6ad2613882cca7858bc39fa4d3f119f5cd88a3f3a3c9ef523d1cf1a34cdbc1"
   },
   "commands": [
     "python -m unittest discover -s tests -p test_s19_native_harness.py -v",
@@ -15,18 +14,17 @@
     "python -m examples.s19.native_harness --workspace /tmp/academy-s19-unique --model YOUR_PERMITTED_MODEL --phase start",
     "python -m examples.s19.native_harness --workspace /tmp/academy-s19-unique --model YOUR_PERMITTED_MODEL --phase resume"
   ],
-  "executionByAuthor": "NONE: no compile, test, install, browser, SDK or provider execution",
-  "centralQaRequired": [
+  "integrationChecks": [
     "Syntax and deterministic contract tests",
     "Actual SDK/browser scripted-model separate-process interruption and continuation",
     "Actual configured-provider planning, native skill reads, native specialist contributions and parent synthesis",
     "Source/artifact tamper rejection, unchanged actual SQLite continuation and real browser budget persistence",
     "Inspect raw known tool/provider evidence and genuine terminal/browser captures"
   ],
-  "classification": {
+  "limits": {
     "scriptedModel": "Deterministic contract responses over the actual SDK; not provider output",
-    "browser": "Actual Playwright observations only when central QA executes tools",
-    "provider": "Not executed; CLI may incur charges and requires explicit central authorization",
+    "browser": "Actual Playwright observations only when local validation executes tools",
+    "provider": "Not executed; CLI may incur charges and requires your explicit account and budget choice",
     "evaluation": "Individual deterministic contract facts and gaps, not factual content approval"
   },
   "officialReferences": [

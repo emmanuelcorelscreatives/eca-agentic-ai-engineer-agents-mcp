@@ -1,8 +1,9 @@
-# Stage10 lessons9–10: precise recovery/export delta, version3
+# Stage 10 lessons 9–10: selective recovery and owned exports
 
-This authored delta does not change the frozen stage9 packet or its23-test evidence.
-Central QA must execute the NEW tests. Actual provider, browser and deployment evidence
-remains pending. Existing v2 entry points and historical outputs retain their scope.
+Use the [student guide](student-guide.md) for local tests and the
+[v3 deployment exercise](../deployment/research-v3/README.md) for build/start steps.
+The tests use synthetic boundary cases; they do not establish actual provider,
+browser or deployed behavior. Existing v2 CLI entrypoints keep their separate scope.
 
 ## Selective recovery of a positively known failure
 
@@ -34,7 +35,7 @@ replay. The API never creates a new run to evade history.
 Known HTTP errors retain the actual response code/body; connection refusal retains its
 positive local failure classification. A returned malformed payload is retained before
 validation. If SDK internals do not expose the positively returned malformed output,
-it remains unknown rather than fabricating proof or retrying it. Central actual-provider
+it remains unknown rather than fabricating proof or retrying it. Actual-provider
 observations are not supplied by synthetic boundary tests.
 
 ## Usable own-run UI downloads
@@ -49,19 +50,20 @@ report SHA, then calls the SAME `exports_v2.export` boundary used by CLI export.
 button rechecks server session ownership, unchanged completed state, fixed file names,
 paths and hashes. A foreign session, unfinished run, changed output or symlink is
 refused. Do not configure broad Gradio allowed_paths for the private state root.
-No real UI/browser/export observation is claimed until central QA retains it.
+Only a real completed run and browser download establish actual UI/export behavior.
 
 ## Exact dependency input and deployment exercise
 
-`deployment/research-v3/requirements.in` and `pyproject.toml` pin the direct versions
-already recorded in admitted key3 dist-info metadata. Reading metadata did not install
-or execute anything. Parent owns actual transitive resolution, hashes and clean proof.
-The Dockerfile requires a real central `requirements.lock`; no hashes were invented.
-It starts `deploy_v3` with the real download-enabled UI. Secret injection, non-root
-execution, private /state volume and authenticated TLS remain required.
+`deployment/research-v3/requirements.in` and `pyproject.toml` pin direct versions;
+the supplied `requirements.lock` records transitive versions and hashes. The Dockerfile
+installs that existing lock with hash checking and starts `deploy_v3` with the
+download-enabled UI. A committed lock is not successful installation or build proof.
+Follow the [deployment guide](../deployment/research-v3/README.md) for the exact build
+context, protected settings, non-root writable private state and localhost startup.
+Remote exposure additionally requires authenticated TLS and access controls.
 
-Fresh-user exercise for central QA: start the actual clean locked deployment; observe
-health; open two genuinely separate sessions; complete one finite admitted research
+Student exercise: start the actual clean locked deployment; observe
+health; open two genuinely separate sessions; complete one finite explicitly chosen research
 request; prepare and download that session's four real exports; compare hashes and
 verify a foreign-session token cannot retrieve them. Retain actual receipts/results.
 Do not substitute a fixture report, fake provider response or synthetic browser image

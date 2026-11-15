@@ -28,7 +28,7 @@ Approval records bind to an account identity/revision and expiry. To demonstrate
 
 The actual trading-server tests are `test_project8_trading_mcp.py`; generic `mcp_lab` protocol tests are separate. Initialize a real client for `mcp_server.py`, discover `research_company` and call ACA. Compare the returned evidence ID/quote with `fixtures/market.json`. The portfolio service is a separate process with a different tool allowlist.
 
-`ToolServices.orchestrate` remains the deterministic reference. `TradingAgents` is the model-driven implementation: its configured provider is awaited for each role; tests use openly labeled scripted responses. The researcher owns evidence collection and passes a schema-versioned, run-correlated envelope to the strategist rather than asking every role to independently invent a research record. Call/time budgets are explicit and failures stop for review. They are not a production narration gate.
+`ToolServices.orchestrate` remains the deterministic reference. `TradingAgents` is the model-driven implementation: its configured provider is awaited for each role; tests use openly labeled scripted responses. The researcher owns evidence collection and passes a schema-versioned, run-correlated envelope to the strategist rather than asking every role to independently invent a research record. Call/time budgets are explicit and failures stop for review.
 
 Memory persists in the configured SQLite database across tool invocations and process restarts. Each call opens its own connection on its caller thread. Research-facing memory writes cannot overwrite `agent-runs` or `orchestration` checkpoints. Namespaces are teaching record organization, not a multi-user authentication system; use one separately authorized database per course account.
 
@@ -44,6 +44,6 @@ The API accepts operator credentials only for proposals/execution and separate r
 
 React shows loading, backend-error and rejection states, a persistent portfolio summary, exact-proposal approval/rejection, stable-ID execution and run-bound reviewer comments/corrections. Text is rendered through ordinary React text nodes; do not use raw HTML for comments. The `/api` proxy is shared with the container frontend. Deployment source and review exercises live under `deployment/` and `evaluation_lab/`; actual container and hosted observations remain separate QA work.
 
-## Commands proposed for central QA
+## Commands proposed for local validation
 
-Run dependency-free regressions first, then actual optional SDK/API/browser suites with the selected pinned dependencies. Optional test skips must not be reported as successful execution. The central QA command manifest lists these suites and required environment flags. Do not run `sdk_role_provider.py --run` as part of offline testing: it can incur provider charges.
+Run dependency-free regressions first, then actual optional SDK/API/browser suites with the selected pinned dependencies. Optional test skips must not be reported as successful execution. The local validation command manifest lists these suites and required environment flags. Do not run `sdk_role_provider.py --run` as part of offline testing: it can incur provider charges.

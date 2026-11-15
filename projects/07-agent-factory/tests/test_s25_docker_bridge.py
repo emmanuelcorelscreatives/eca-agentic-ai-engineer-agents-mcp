@@ -1,4 +1,4 @@
-"""Author-only boundary tests. Central QA must run; no fake Docker PASS fixtures."""
+"""Offline Docker boundary checks; planned or mocked runs are not Docker execution."""
 import asyncio
 import json
 from pathlib import Path

@@ -106,7 +106,7 @@ class SalesTeam:
 
     def reject(self, draft_id):
         with self.db:
-            row = self.db.execute("UPDATE drafts SET status='rejected',approved_hash=NULL,approver=NULL WHERE id=? AND status IN ('draft','approved','rejected')", (draft_id,))
+            row = self.db.execute("UPDATE drafts SET status='rejected',approved_hash=NULL,approver=NULL WHERE id=? AND status IN ('draft','approved','rejected','revision_required')", (draft_id,))
             if row.rowcount != 1:
                 raise PermissionError('sending/unknown/submitted draft cannot be rejected retrospectively')
             self.db.execute("INSERT INTO approval_events(draft_id,action) VALUES(?,'reject')", (draft_id,))

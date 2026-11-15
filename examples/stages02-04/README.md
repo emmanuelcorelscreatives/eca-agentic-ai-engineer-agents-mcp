@@ -19,7 +19,7 @@ No `.env` is loaded automatically. Prefer process environment variables; if usin
 
 ## Capture and evidence requirements
 
-Windows, macOS, Cursor/VS Code, GitHub account operations, model dashboards, Ollama and live hosted model calls require actual learner/app execution. These authored labs are not proof those actions happened. Use genuine application windows for tutorials; neutral architecture diagrams are fine for concepts. No imitation vendor UI, decorative desktop props or baked subtitles. Retain redacted command versions, model identifier, timestamps, usage when supplied and observed errors. Never record Authorization headers. Complete the actual platform track available to you; the other platform remains an alternative exercise, not a fabricated capture.
+Windows, macOS, Cursor/VS Code, GitHub account operations, model dashboards, Ollama and live hosted model calls require actual learner/app execution. These authored labs are not proof those actions happened. When documenting your exercise, distinguish actual application results from conceptual diagrams or expected output. Retain redacted command versions, model identifier, timestamps, usage when supplied and observed errors. Never record Authorization headers. Complete the actual platform track available to you; the other platform remains an alternative exercise, not a fabricated capture.
 
 ## Reference contracts checked 2026-11-12
 

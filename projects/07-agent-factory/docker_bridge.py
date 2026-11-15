@@ -64,7 +64,7 @@ def _key(path):
 
 
 class CentralDockerOwner:
-    """Construct only in the centrally admitted owner, with its private HMAC key.
+    """Construct only in the authorized validation owner, with its private HMAC key.
 
     `validate` and `verify` match run_factory's async callback boundary. The owner
     must prepare a reviewed digest-pinned image with real locked dependencies

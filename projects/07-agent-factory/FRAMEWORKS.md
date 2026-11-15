@@ -1,8 +1,10 @@
 # Genuine AutoGen factory-agent adapter
 
+This page covers the **legacy text-helper proposal team**, not the typed catalog pipeline used in s25-l03 onward. For that setup and worked examples, start with the [typed model-pipeline guide](MODEL-PIPELINE-AUTHORING.md). Neither adapter validates or launches arbitrary proposed code by itself.
+
 The optional `autogen_adapter.py` creates four actual AutoGen `AssistantAgent` instances in a `RoundRobinGroupChat`: requirements analyst, architect, developer and reviewer. It uses the supplied model client and makes a bounded four-turn proposal pass. It does not execute proposed code, mistake prose for a test receipt, or promote a reviewer opinion into production approval.
 
-Install `autogen-agentchat` and `autogen-ext[openai]` in a dedicated environment and record the exact installed versions. Configure a real supported model name through your environment. Example, deliberately opt-in and potentially billable:
+Follow the [clean optional environment setup](MODEL-PIPELINE-AUTHORING.md#setup-and-offline-checks) using the repository's pinned AutoGen requirements and record the installed versions. Run the example from `projects/07-agent-factory`. Configure a real supported model name through your environment. Example, deliberately opt-in and potentially billable:
 
 ```python
 import asyncio

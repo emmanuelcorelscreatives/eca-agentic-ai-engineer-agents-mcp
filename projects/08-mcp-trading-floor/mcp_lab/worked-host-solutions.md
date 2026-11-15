@@ -157,24 +157,24 @@ content invalidates the token. A second approval of the same proposal is
 rejected. The optional genuine Node test writes an original report only after
 approval, compares the exact filesystem bytes, then verifies a consumed token
 cannot overwrite a later independent edit. This is a test source awaiting
-central QA execution, not a claim that the new write already ran.
+local validation execution, not a claim that the new write already ran.
 
 This generic sandbox gate is **not** the paper-trading approval mechanism.
 The trusted portfolio service has a distinct server alias, exact proposal and
 account revision checks, and its own human approval. Never reuse a report-write
 token to authorize a trade.
 
-## Central QA commands
+## Local validation commands
 
-The designated QA owner executes the following through the current finite
-resource wrapper and captures the actual log. The author has not run them:
+From the repository root, run the following in your course virtual environment
+and retain the actual log, including any optional integration skips:
 
 ```sh
-python -m unittest discover -s tests -p test_project8_agent_harness.py -v
-python -m unittest discover -s tests -p test_project8_mcp_protocol.py -v
+python3 -m unittest discover -s tests -p test_project8_agent_harness.py -v
+python3 -m unittest discover -s tests -p test_project8_mcp_protocol.py -v
 ```
 
-Use the already prepared SDK runtime and official filesystem lockfile for the
+Use the [MCP lab setup](README.md) and official filesystem lockfile for the
 optional genuine sessions. Missing dependencies must remain explicit skips;
 the full SDK acceptance run must report those actual sessions executed rather
 than treating a skipped integration as a pass.

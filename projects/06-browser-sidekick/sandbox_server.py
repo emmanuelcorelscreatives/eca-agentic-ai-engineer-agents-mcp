@@ -1,14 +1,17 @@
 """Owned loopback HTTP practice site plus an exact-approval effect adapter.
 
 All data is synthetic. This lab server is deliberately not an internet deployment.
-POST requires a per-server secret; the executor checks a committed TaskStore action,
+POST requires a private sandbox token; the executor checks a committed TaskStore action,
 its exact payload approval and expiry. Server-side idempotency prevents duplication.
 """
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import os
+from pathlib import Path
 import secrets
+import sqlite3
 import threading
 import time
 from urllib.parse import parse_qs, urlparse
@@ -23,7 +26,13 @@ class NoRedirect(HTTPRedirectHandler):
 
 
 class Sandbox:
-    def __init__(self):
+    """Optionally persist this synthetic site's endpoint, token and receipts.
+
+    A persisted endpoint is reused exactly or startup fails; legacy task records
+    without sandbox identity cannot be silently adopted by a replacement server.
+    """
+    def __init__(self, database: Path | None = None):
+        self.database = Path(database) if database is not None else None
         self.secret = secrets.token_urlsafe(32)
         self.effects = []
         self.receipts = {}
@@ -78,10 +87,48 @@ class Sandbox:
                         return self.reply(409, 'idempotency payload mismatch')
                     if prior is None:
                         prior = {'accepted': True, 'payload_sha256': digest, 'effect_number': len(sandbox.effects)+1}
+                        if sandbox.database is not None:
+                            with closing(sqlite3.connect(sandbox.database)) as database, database:
+                                database.execute('INSERT INTO sidekick_sandbox_effect VALUES (?,?,?,?)',
+                                                 (key, canonical(data), canonical(prior), prior['effect_number']))
                         sandbox.effects.append({'payload': data, 'idempotency_key': key})
                         sandbox.receipts[key] = prior
                 self.reply(200, canonical(prior), 'application/json')
-        self.http = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        if self.database is None:
+            self.http = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        else:
+            try:
+                descriptor = os.open(self.database, os.O_CREAT | os.O_EXCL | os.O_RDWR, 0o600)
+            except FileExistsError:
+                pass
+            else:
+                os.close(descriptor)
+            with closing(sqlite3.connect(self.database)) as database:
+                database.execute('BEGIN IMMEDIATE')
+                tables = {row[0] for row in database.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+                identity = (database.execute('SELECT port,secret FROM sidekick_sandbox WHERE id=1').fetchone()
+                            if 'sidekick_sandbox' in tables else None)
+                if identity is None:
+                    for table in ('sidekick_owner', 'sidekick_planning'):
+                        if table in tables and database.execute('SELECT 1 FROM '+table+' LIMIT 1').fetchone():
+                            raise ValueError('Existing tasks lack a persisted sandbox identity; retain this database for inspection and use a new database for new tasks')
+                database.execute('CREATE TABLE IF NOT EXISTS sidekick_sandbox (id INTEGER PRIMARY KEY CHECK(id=1), port INTEGER NOT NULL, secret TEXT NOT NULL)')
+                database.execute('CREATE TABLE IF NOT EXISTS sidekick_sandbox_effect (idempotency_key TEXT PRIMARY KEY, payload TEXT NOT NULL, receipt TEXT NOT NULL, effect_number INTEGER UNIQUE NOT NULL)')
+                if identity is not None:
+                    port, self.secret = identity
+                else:
+                    port = 0
+                self.http = ThreadingHTTPServer(('127.0.0.1', port), Handler)
+                try:
+                    if identity is None:
+                        database.execute('INSERT INTO sidekick_sandbox VALUES (1,?,?)', (self.http.server_port, self.secret))
+                    for key, payload, receipt in database.execute('SELECT idempotency_key,payload,receipt FROM sidekick_sandbox_effect ORDER BY effect_number'):
+                        self.effects.append({'payload': json.loads(payload), 'idempotency_key': key})
+                        self.receipts[key] = json.loads(receipt)
+                    database.commit()
+                except BaseException:
+                    self.http.server_close()
+                    raise
         self.thread = threading.Thread(target=self.http.serve_forever, daemon=True)
         self.origin = 'http://127.0.0.1:'+str(self.http.server_port)
     def start(self): self.thread.start(); return self

@@ -7,11 +7,43 @@ cd projects/04-market-intelligence/learning
 PYTHONPATH=src python3 -m academy_market_debate.main --facts fixtures/retailer-facts.json
 ```
 
-Use `docs/s11-l03.md` for uv setup and `docs/s11-l09.md` for explicitly paid provider execution. The committed `uv.lock` was actually resolved and checked with uv 0.13.8, then installed successfully into a new isolated environment using `uv sync --frozen --extra crewai`. Observed versions: Python 3.12.3, CrewAI 1.15.40 and Pydantic 2.12.5. All 20 lesson docs have exercises and worked reasoning. Offline tests live at repository `tests/test_market_learning.py`.
+Use [uv setup](docs/s11-l03.md) and the [entry point guide](docs/s11-l09.md) for optional paid provider execution in the dedicated environment. The offline command above needs no SDK or credentials. Shell examples use POSIX syntax; in PowerShell set `$env:PYTHONPATH = "src"` before running the Python command. See [runtime checks and limitations](docs/runtime-evidence.md) for test commands and historical version observations.
+
+## Stage 11
+
+| Lesson | Guide | Exercise | Worked reasoning |
+| --- | --- | --- | --- |
+| 01: Framework fit | [Guide](docs/s11-l01.md) | [Exercise](exercises/s11-l01.md) | [Solution](solutions/s11-l01.md) |
+| 02: Abstractions | [Guide](docs/s11-l02.md) | [Exercise](exercises/s11-l02.md) | [Solution](solutions/s11-l02.md) |
+| 03: Install with uv | [Guide](docs/s11-l03.md) | [Exercise](exercises/s11-l03.md) | [Solution](solutions/s11-l03.md) |
+| 04: Generate a starter | [Guide](docs/s11-l04.md) | [Exercise](exercises/s11-l04.md) | [Solution](solutions/s11-l04.md) |
+| 05: Project structure | [Guide](docs/s11-l05.md) | [Exercise](exercises/s11-l05.md) | [Solution](solutions/s11-l05.md) |
+| 06: YAML configuration | [Guide](docs/s11-l06.md) | [Exercise](exercises/s11-l06.md) | [Solution](solutions/s11-l06.md) |
+| 07: Python crew configuration | [Guide](docs/s11-l07.md) | [Exercise](exercises/s11-l07.md) | [Solution](solutions/s11-l07.md) |
+| 08: Debate crew | [Guide](docs/s11-l08.md) | [Exercise](exercises/s11-l08.md) | [Solution](solutions/s11-l08.md) |
+| 09: Entry point | [Guide](docs/s11-l09.md) | [Exercise](exercises/s11-l09.md) | [Solution](solutions/s11-l09.md) |
+| 10: Run and inspect | [Guide](docs/s11-l10.md) | [Exercise](exercises/s11-l10.md) | [Solution](solutions/s11-l10.md) |
+
+## Stage 12
+
+| Lesson | Guide | Exercise | Worked reasoning |
+| --- | --- | --- | --- |
+| 01: Five-step design | [Guide](docs/s12-l01.md) | [Exercise](exercises/s12-l01.md) | [Solution](solutions/s12-l01.md) |
+| 02: Roles and goals | [Guide](docs/s12-l02.md) | [Exercise](exercises/s12-l02.md) | [Solution](solutions/s12-l02.md) |
+| 03: Measurable outputs | [Guide](docs/s12-l03.md) | [Exercise](exercises/s12-l03.md) | [Solution](solutions/s12-l03.md) |
+| 04: Task context | [Guide](docs/s12-l04.md) | [Exercise](exercises/s12-l04.md) | [Solution](solutions/s12-l04.md) |
+| 05: External research | [Guide](docs/s12-l05.md) | [Exercise](exercises/s12-l05.md) | [Solution](solutions/s12-l05.md) |
+| 06: Custom tools | [Guide](docs/s12-l06.md) | [Exercise](exercises/s12-l06.md) | [Solution](solutions/s12-l06.md) |
+| 07: Input/result validation | [Guide](docs/s12-l07.md) | [Exercise](exercises/s12-l07.md) | [Solution](solutions/s12-l07.md) |
+| 08: Pydantic outputs | [Guide](docs/s12-l08.md) | [Exercise](exercises/s12-l08.md) | [Solution](solutions/s12-l08.md) |
+| 09: Execution processes | [Guide](docs/s12-l09.md) | [Exercise](exercises/s12-l09.md) | [Solution](solutions/s12-l09.md) |
+| 10: Memory and shared context | [Guide](docs/s12-l10.md) | [Exercise](exercises/s12-l10.md) | [Solution](solutions/s12-l10.md) |
+
+Then continue to the [stage 13 screener](../README.md) and [advanced handbook](../advanced/HANDBOOK.md). The workbook's live-execution acceptance criteria are separate from these offline exercises: a manual argument or configuration check is not a completed model debate.
 
 ## Boundaries
 
-The six-call shared fact tool budget is enforced in Python; iteration and timeout settings are additionally configured on agents. They are not a hard total provider cost ceiling. The production governor must separately authorize live use. `memory=False` prevents implicit default vector-memory provider calls; explicit task context is still passed. The optional memory demonstration requires its own explicit embedder/model authorization. Actual network-denied SDK construction passed for sequential/hierarchical crews, custom tools and Pydantic output. The real Flow event engine passed with an explicitly substituted deterministic worker; this is scheduling evidence, not provider output. A genuine disposable starter was generated with `crewai create crew academy_practice --skip-provider --classic` under network isolation; its actual file inventory was retained separately. Live provider debate and real memory backend remain unexecuted pending separate evidence.
+The six-call shared fact tool budget is enforced in Python; iteration and timeout settings are additionally configured on agents. They are not a hard total provider cost ceiling. Use only authorized accounts and choose a finite provider budget before opting in. `memory=False` prevents implicit default vector-memory provider calls; explicit task context is still passed. The optional memory demonstration requires its own explicit embedder/model authorization. No live provider debate or real memory backend result is supplied; record actual outputs or failures from your own optional run rather than assuming success.
 
 ## Official references verified 2026-11-12
 
@@ -23,6 +55,6 @@ The six-call shared fact tool budget is enforced in Python; iteration and timeou
 
 These references support the APIs, not an assertion that this environment has run the SDK.
 
-## Authored semantic repair pending central QA
+## Optional extensions and their limits
 
-The independent PDF audit identified one missing implementation: Stage12 lesson5 needed real external-information access. `external_research.py` and `research_main.py` now provide bounded official-document HTTPS research with typed queries, source normalization and a real researcher/reviewer CrewAI adapter. The retailer fixture is not described as internet research. `memory_integration.py` adds an opt-in actual scoped framework-memory variant for lesson10 while retaining the default memory-disabled debate. New code and `tests/test_market_learning_semantic.py` are **author-only, not yet executed or approved**. Historical installation/constructor proofs above describe their original bytes and do not certify these repairs. See `docs/stages11-12-coherence.md` for the exact topic/roles and extension boundary. Do not create observed walkthrough claims or captures from expected outputs alone.
+[External research](docs/s12-l05.md) uses bounded official-document HTTPS retrieval with typed queries, source normalization and a separate researcher/reviewer CrewAI adapter. It is not research about the fictional retailer. [Memory integration](docs/s12-l10.md) adds an opt-in scoped framework-memory variant while retaining the default memory-disabled debate. These optional integrations need their own runtime verification; historical installation or constructor checks do not establish that retrieval, provider execution or memory recall/reset succeeded. Keep absent, failed and unknown outcomes explicit. See the [application boundaries](docs/stages11-12-coherence.md).

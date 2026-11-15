@@ -45,7 +45,7 @@ class TwinService:
         if not self.settings.live_model_enabled:raise PermissionError('live model has not been explicitly enabled')
         self.limiter.check(session)
         from agents_adapter import answer
-        return await answer(question,self.settings.model,history=history)
+        return await answer(question,self.settings.model,history=history,sections=self.sections)
     def contact_events(self,session,call_id,name,email,message,consent,opportunity=''):
         self.limiter.check(session)
         checklist=Checklist(task_id=call_id)

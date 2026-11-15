@@ -1,11 +1,11 @@
 # Genuine Mastra Studio, owned local environment
 
-Authoring instructions only; no Studio startup/capture/provider result is claimed.
+Use this guide to run the local Mastra development UI. Source instructions are not a record of a successful Studio or provider run.
 
-Use the exact package lock admitted by central QA. From this directory run
-`npm ci`, `npm run check`, then `npm test` only inside the admitted SDK helper.
+Use the committed package lock in a separate Node workspace. From this directory run
+`npm ci`, `npm run check`, then `npm test` inside the separate SDK environment.
 Set `COURSE_MODEL` to an explicitly approved provider/model. Load a dedicated
-Academy credential using the operator's secret environment mechanism, never a
+Academy credential using a private environment or secret manager, never a
 command-line argument, screen-visible `.env`, shell tracing, or a shared account
 profile. Inspect variable **names**, not values. `src/mastra/index.ts` registers
 one actual triage agent and the deterministic fixture workflow; MCP exercises
@@ -45,7 +45,6 @@ fail before reading the dataset.
 The loader verifies full fixture SHA256
 `3e2f8e8bb583e9855112adda091f3189009928967dd22787c607d1769ef4d645`.
 No copy into `.mastra` or runtime-only untracked fixture is permitted. Preserve
-the original failed startup log. Central QA must repeat typecheck/tests and
+the original failed startup log. Run typecheck/tests and
 actual Studio startup with the current source, retaining the resolved fixture
-path/SHA, PID/listener and final shutdown proof; this edit itself is not a startup
-PASS.
+path/SHA, PID/listener and final shutdown proof; source presence is not a successful startup.

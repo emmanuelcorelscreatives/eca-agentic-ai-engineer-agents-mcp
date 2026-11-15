@@ -33,47 +33,8 @@ its state helpers, plus a basic Microsoft constructor. The earlier
 ordinary application Python. They are useful comparisons, not the implementation
 of the native Microsoft workflow above.
 
-## What has actually been verified
+## Verify the native behavior
 
-The central installed-SDK result
-`stage21-25-central-current-runtime-result-v1.json` records **seven Stage 23
-native SDK tests**, with **zero model-provider calls**. They exercise typed
-validation and response identity; native tool validation and observed tool
-results; exact approval/decline/change/replay; both workflow routes and held
-ambiguity; native session continuation with a separate-process restart and owner
-isolation; and middleware timings, correlation, failure reporting and dummy-secret
-redaction. The underlying tests are in `tests/test_s23_native_semantics.py`.
+Run the native Stage 23 tests in the framework-specific environment and retain actual output. They exercise typed validation/response identity, tool validation, approval/checkpoint boundaries and middleware with scripted responses. These are local framework mechanics, not evidence of provider intelligence, model-generated decisions or cloud deployment. A skipped SDK case is not a verified integration.
 
-Those tests use an explicitly scripted model client with genuine SDK function
-invocation and middleware layers. The SDK agents, graph, tools, sessions and
-middleware execute locally; the supplied model answers are fixtures. This proves
-these scoped runtime mechanics, not model intelligence, real generated answers,
-cloud availability or production readiness. Historical negative audits describe
-the earlier source state and remain retained evidence; they do not override the
-new scoped local runtime results.
-
-Before claiming a genuine model demonstration, retain a separately authorized,
-bounded run using an actual configured provider client, its raw terminal response
-and observed specialist outputs. In particular, real generated decisions,
-multi-turn reasoning and specialist contributions remain distinct evidence from
-scripted tests. Matching current visuals and independent semantic/material review
-are still required before lesson release. Credentials and cloud-specific
-observability/deployment are optional extensions, not substitutes for the native
-local practicals or permission to make unbudgeted calls.
-
-## Migration boundaries
-
-Instructions map to `instructions` / `system_message`; tools need their actual
-registration schemas; model-client ownership and cleanup differ. Persisted
-AutoGen state is not valid Microsoft `AgentSession` state. Recreate and verify
-sessions against the target framework instead of relabelling serialized data.
-Reuse typed domain contracts and policies, while testing each framework's
-runtime, tool execution, approval and persistence behavior separately.
-
-Official sources:
-
-- [AutoGen AgentChat](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/index.html)
-- [Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/)
-- [Semantic Kernel overview](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
-
-Use the pinned installed 1.16.1 SDK source when current online examples differ.
+For a real-model comparison, explicitly choose the configured provider account and budget, then retain the actual terminal response and specialist outputs. Keep genuine multi-turn reasoning and model-selected tool behavior distinct from scripted test results. Store credentials privately and configure hosted observability or deployment only when the corresponding exercise requires it.

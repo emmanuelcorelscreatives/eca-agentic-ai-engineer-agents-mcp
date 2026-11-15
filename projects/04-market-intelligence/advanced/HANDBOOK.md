@@ -5,6 +5,10 @@ it is a teaching-data label, not an observation of real markets. Existing `marke
 `companies.json`, `synthetic-ledger.json`, `crewai_adapter.py` and these advanced tools
 form one application rather than fourteen unrelated examples.
 
+Start with the [baseline screener](../README.md); stages 11–12 use the separate
+[retailer debate](../learning/README.md). The numbered sections below match the
+14 stage 13 lessons.
+
 Run from the repository root:
 
 ```sh
@@ -12,18 +16,24 @@ python3 projects/04-market-intelligence/advanced/research_lab.py --output-dir /t
 python3 -m unittest discover -s tests -p 'test_market_advanced.py' -v
 ```
 
-The semantic extension adds `advanced/full_report.py --output-dir NEW_DIRECTORY`
-for one report containing the financial ranking **and** all business/product/competition
-profiles and dated sector signals. The new commands and semantic tests are authored
-pending central QA; the earlier eight-test receipt does not certify these new bytes.
+For one report containing the financial ranking **and** all business/product/competition
+profiles and dated sector signals, use a fresh output directory:
+
+```sh
+python3 projects/04-market-intelligence/advanced/full_report.py --output-dir /tmp/eca-market-full-report
+python3 -m unittest discover -s tests -p 'test_market_semantic_*.py' -v
+```
+
+These offline checks do not establish that any live CrewAI or provider run succeeded.
 
 `research_lab.py` executes actual fixture validation and writes JSON, Markdown and the
 full evidence registry. A new output directory is required; historical results are not
 overwritten. No provider or network operation occurs. For optional live framework
-execution use the separately pinned CrewAI environment and:
+execution first create the [separately pinned CrewAI environment](../README.md#implemented-optional-crewai-adapter),
+configure credentials privately and select that interpreter explicitly:
 
 ```sh
-python projects/04-market-intelligence/advanced/live_research.py --run-live \
+/tmp/eca-market-live/bin/python projects/04-market-intelligence/advanced/live_research.py --run-live \
   --model PROVIDER/MODEL --trace /tmp/eca-market-live-task-trace.jsonl
 ```
 
@@ -32,7 +42,7 @@ Task callbacks retain **real SDK task outputs only after execution**. The custom
 tool serves only validated structured research bound to exact source and criteria hashes;
 CrewAI embedding memory is disabled, so no hidden embedding-provider call is introduced.
 The manager's intermediate provider reasoning is not asserted by a task-output callback.
-Live runs require an approved external budget/governor; `max_iter=6` and `max_rpm=10` are
+Live runs require an authorized account and a finite provider budget; `max_iter=6` and `max_rpm=10` are
 iteration/rate controls, not a guaranteed total API-token cost ceiling. A run whose outcome
 is unknown must not be blindly replayed. Free-text summaries require human evidence review.
 

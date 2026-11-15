@@ -9,7 +9,7 @@ The Academy reference kit has been exercised locally in several distinct scopes:
 - The capstone exercised real MCP protocol calls, a local Qdrant collection, local HTTP routes, the React browser interface and a Gradio browser callback. The prices and research corpus remained explicitly synthetic.
 - The digital twin used real PDF extraction, and the sales/research examples constructed actual typed SDK agents, tools, managers and handoffs. These checks did not invoke a provider model.
 
-The checks found concrete compatibility bugs: a SQLite thread ownership issue, a changed Deep Agents backend API and missing Node types in a Mastra configuration. Those were corrected and the affected checks rerun. Earlier failures remain part of the Studio evidence rather than being presented as uninterrupted success.
+The checks found concrete compatibility bugs: a SQLite thread ownership issue, a changed Deep Agents backend API and missing Node types in a Mastra configuration. Those were corrected and the affected checks rerun. Retain failed runs as well as successful ones in your own experiment notes.
 
 These checks establish the stated local software behaviors. They do not certify live provider output, a deployed public application, a complete human study, or independent approval of every lesson. Required model runs, authentic screen captures, Docker execution where specified, and lesson-specific material/visual acceptance remain separate work.
 

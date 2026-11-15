@@ -7,10 +7,10 @@ Current implementation, relative to `projects/03-deep-research/`:
 - research_lab/interface_v2.py:public_event
 - research_lab/interface_v2.py:build_ui
 
-Central QA executed 23 scoped semantic regression tests with zero skips; this is neither a lesson-specific live observation nor independent material/visual/production approval. Historical v1 demo outputs remain historical.
+Run the relevant tests for your checkout and retain actual output. A shared regression result does not verify this lesson's optional model, browser or deployment steps.
 
 Still required:
 
 - genuine browser source/public-activity observations
 
-See `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the finite actual capstone and exact evidence boundaries. No author-made live call, browser run, SMTP send or deployment is claimed.
+Follow the [student setup and live-integration guide](../../projects/03-deep-research/docs/student-guide.md) for executable commands, prerequisites, expected results and explicit paid-run consent. Read `projects/03-deep-research/docs/semantic-repair-stages09-10-v2.md` for the current workflow contracts. Fixture tests do not establish live model/search, browser, SMTP or deployment outcomes.

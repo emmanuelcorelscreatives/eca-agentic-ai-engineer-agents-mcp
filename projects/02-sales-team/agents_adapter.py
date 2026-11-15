@@ -45,26 +45,14 @@ def build_agents(model):
 
 
 async def run_pipeline(prospect, model):
-    from agents import Runner, RunConfig
-    agents = build_agents(model)
-    config = RunConfig(tracing_disabled=True)
-    from context_wire import context_for
-    evidence = json.dumps({'brief': prospect.__dict__, 'identity': context_for(prospect).identity()})
-    research = (await Runner.run(agents['research'], evidence, max_turns=2, run_config=config)).final_output
-    if research.source_id != prospect.source_id:
-        raise ValueError('research source attribution changed')
-    strategy = (await Runner.run(agents['strategy'], research.model_dump_json(), max_turns=2, run_config=config)).final_output
-    draft = (await Runner.run(agents['writer'], evidence + '\n' + strategy.model_dump_json(), max_turns=2, run_config=config)).final_output
-    if draft.source_id != prospect.source_id:
-        raise ValueError('draft source attribution changed')
-    review = (await Runner.run(agents['reviewer'], evidence + '\n' + draft.model_dump_json(), max_turns=2, run_config=config)).final_output
-    if not review.passed:
-        return {'status': 'revision_required', 'issues': review.issues, 'draft': draft.model_dump()}
+    result = await run_integrated_pipeline(prospect, model)
+    if result['status'] == 'revision_required':
+        return {**result, 'issues': result['model_review']['issues']}
     team = SalesTeam()
     try:
         ident = team.create_draft(prospect)
-        team.edit(ident, draft.subject, draft.body)
-        return {'status': 'human_approval_required', 'draft': team.draft(ident), 'model_review': review.model_dump(), 'external_messages_sent': 0}
+        team.edit(ident, result['draft']['subject'], result['draft']['body'])
+        return {**result, 'draft': team.draft(ident)}
     finally:
         team.db.close()
 
@@ -80,10 +68,6 @@ def main():
     prospect = Prospect(**json.loads((Path(__file__).parent/'fixtures/prospect.json').read_text())['prospect'])
     print(json.dumps(asyncio.run(run_pipeline(prospect, os.environ['ACADEMY_MODEL'])), indent=2))
 
-if __name__ == '__main__':
-    main()
-
-
 async def run_context_handoff(prospect, model, destination='research'):
     """Explicit invocation; context metadata is validated by actual SDK callback."""
     from agents import Runner, RunConfig
@@ -97,6 +81,7 @@ async def run_context_handoff(prospect, model, destination='research'):
     result = await Runner.run(build_context_handoff(model), prompt, context=context,
                               max_turns=4, run_config=RunConfig(tracing_disabled=True, trace_include_sensitive_data=False))
     return {'mode': 'sdk-context-handoff', 'operational_events': context.operational_events,
+            'sdk_items': coordination_events(result),
             'last_agent': result.last_agent.name,
             'final_output': result.final_output.model_dump() if hasattr(result.final_output, 'model_dump') else result.final_output,
             'external_messages_sent': 0}
@@ -118,7 +103,7 @@ async def run_integrated_pipeline(prospect, model, *, manager=False):
         # A free-text manager answer is not silently converted into an approved draft.
         return {'status': 'manager_observation_only', 'mode': 'actual-sdk-manager',
                 'final_output': result.final_output, 'last_agent': result.last_agent.name,
-                'operational_events': [{'role': 'manager', 'new_item_types': [getattr(x, 'type', type(x).__name__) for x in result.new_items]}],
+                'operational_events': coordination_events(result),
                 'external_messages_sent': 0}
     state = {'identity': context.identity(), 'brief': original}
     outputs = {}
@@ -126,7 +111,7 @@ async def run_integrated_pipeline(prospect, model, *, manager=False):
         request = json.dumps(state, sort_keys=True)
         result = await Runner.run(specialist_agents[role], request, context=context, max_turns=2, run_config=config)
         output = result.final_output.model_dump()
-        context.validate({key: output[key] for key in context.identity()})
+        context.validate({key: output.get(key) for key in context.identity()})
         # Source checks remain independent of Pydantic shape checks.
         if role in {'research', 'strategy', 'writer'} and output.get('source_id') != prospect.source_id:
             raise ValueError(role + ' changed evidence identity')
@@ -140,3 +125,25 @@ async def run_integrated_pipeline(prospect, model, *, manager=False):
             'mode': 'actual-sdk-sequential', 'draft': outputs['writer'],
             'model_review': outputs['reviewer'], 'operational_events': events,
             'identity': context.identity(), 'external_messages_sent': 0}
+
+
+def coordination_events(result):
+    events = []
+    for item in result.new_items:
+        kind = getattr(item, 'type', type(item).__name__)
+        event = {'type': kind}
+        raw = getattr(item, 'raw_item', None)
+        if kind == 'tool_call_item':
+            for key in ('name', 'arguments', 'call_id'):
+                event[key] = raw.get(key) if isinstance(raw, dict) else getattr(raw, key, None)
+        elif kind == 'tool_call_output_item':
+            event['output'] = item.output
+        elif kind == 'handoff_output_item':
+            event['from_agent'] = item.source_agent.name
+            event['to_agent'] = item.target_agent.name
+        events.append(event)
+    return events
+
+
+if __name__ == '__main__':
+    main()

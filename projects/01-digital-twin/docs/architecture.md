@@ -4,4 +4,6 @@
 
 All modules must be safe to import without network requests, database writes, environment dumps or UI launches. The project-local pyproject supplies CLI entry points and packaged synthetic data. Legacy public methods are preserved for existing exercises; the UI uses the typed ToolsService path with stable action IDs.
 
-Fresh schema/state and import parity are author-written test requirements in `tests/test_stage05_semantic_repairs_*.py`; only central guarded QA may claim their observed results. Tool success is a receipt, source approval is an owner decision, generated-answer quality is separately evaluated, and none of these substitutes for the others.
+From the repository root, run the relevant `tests/test_stage05_semantic_repairs_*.py` suites and `tests/test_student_project_01.py` to check fresh schema/state, imports and source selection. Optional-dependency skips are not passing integration results. Tool success is a receipt, source approval is an owner decision, generated-answer quality is separately evaluated, and none of these substitutes for the others.
+
+`config.load_profile_sections` accepts a private reviewed section list or a profile object containing `sections`, preserving every explicit approval flag. `TWIN_PROFILE` selects this file for the CLI and UI; CLI `--profile` overrides it. `TwinService` passes the same selected sections to baseline retrieval and the SDK adapter. The answering model has no registered write tools. Contact/question UI controls call the consent-enforcing application service directly, not model-selected tool calls.

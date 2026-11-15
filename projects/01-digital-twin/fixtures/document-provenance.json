@@ -22,10 +22,10 @@
   ],
   "retained_original_fixture": "fixtures/synthetic-resume.pdf",
   "pending": [
-    "Central QA runs generator with reportlab and a real Unicode TTF font",
+    "Generate in a new learner-owned directory with reportlab and a licensed Unicode TTF font",
     "Generated manifest records actual source, generator, font and PDF SHA-256 values",
-    "Central QA extracts both real PDFs with pypdf and checks source correspondence",
+    "Extract both PDFs with pypdf and check source correspondence",
     "Independent rendered-page inspection and human source approval"
   ],
-  "notice": "No generated binaries or runtime success are asserted by this author-only manifest."
+  "notice": "Historical author-only plan, not current generated-file status. Supplied PDFs and actual hashes are in fixtures/generated/document-provenance.json. This plan asserts no runtime success."
 }

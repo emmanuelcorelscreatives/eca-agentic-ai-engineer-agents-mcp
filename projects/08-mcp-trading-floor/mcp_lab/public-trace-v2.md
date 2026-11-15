@@ -20,7 +20,7 @@ Select `first::lookup`, then `second::lookup`, then finish. The two public decis
 
 Compare `{"query":"private","password":"first-secret"}` with `{"password":"different-secret","query":"private"}` in one registry. Their argument digests match because credential values are redacted and key order is canonical. The raw query and either password must be absent from the public trace. A second registry uses a different private HMAC key and produces a different digest.
 
-## Central QA only
+## local validation only
 
 The new tests are authored, not executed by the author:
 

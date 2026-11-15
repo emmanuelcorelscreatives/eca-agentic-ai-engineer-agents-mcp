@@ -2,7 +2,7 @@
 
 A typed Academy catalog-research/draft-notification agent specification. Generated requirements, architecture, tools, instructions, tests and reviews must feed the same approved dependency graph and produce a real runnable selected-framework project.
 
-No new runtime was executed by the documentation author. Every expected behavior below needs source-bound actual evidence from the sole centralized QA owner before an observed-result lesson is recorded. Historic baseline tests retain their narrow original scope.
+No new runtime was executed by the documentation author. Every expected behavior below needs source-bound actual evidence from the sole local validation before an observed-result lesson is recorded. Historic baseline tests retain their narrow original scope.
 
 ## s25-l01: Design the Agent Application Factory
 

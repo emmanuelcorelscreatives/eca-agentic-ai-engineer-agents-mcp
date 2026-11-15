@@ -6,5 +6,5 @@
 4. `decide(task, 0, 'edit', replacement)` sets `approved_hash` to null. The edited target has a different digest and must be approved again.
 5. `executing` is retained. Investigate the real destination's receipt/idempotency key and local trace; reconcile a known outcome explicitly. The core intentionally provides no automatic state-reset operation.
 6. Resolve both root and candidate paths, then require `candidate.is_relative_to(root)`. Merely checking the string prefix would permit sibling-directory confusion.
-7. Expected policy: GET only, same scheme and netloc as the dedicated fixture origin. This is a policy expectation, not a captured browser execution result.
+7. Expected policy: GET only, same scheme and netloc as the dedicated fixture origin. `PlaywrightBrowser.requests` records method, origin and `allowed` for each routed request in the most recent execution; the other loopback origin must be recorded as disallowed. It does not log body/query data. This is a policy expectation, not a captured browser execution result.
 8. Create a new adapter using an explicit artifact root, bounded text input, a validated relative filename, exclusive `open(..., 'x')` and an approval-bound action. Preserve any partial file and unknown result after a crash rather than overwriting it on retry.

@@ -1,9 +1,10 @@
-# Stages 9–10: complete current research workflow
+# Stages 9–10: research contracts and workflow
 
-This is an **authored repair**, not a passed execution or visual release. The central
-QA owner must run the new tests, actual SDK/search observation, genuine Gradio browser,
-approved local mail sink and clean deployment. Historical four-source report evidence
-still describes the original implementation; it is not evidence for these new files.
+Start with the [student guide](student-guide.md) for setup, runnable fixture practice,
+lesson checks and opt-in live SDK/search. This document explains the current contracts.
+Fixture tests do not establish actual model/search behavior, browser interaction,
+approved SMTP delivery or deployment. Record each of those outcomes separately when
+you actually observe it; do not treat a historical fixture report as live evidence.
 
 ## Required features and actual new interfaces
 
@@ -53,36 +54,39 @@ still describes the original implementation; it is not evidence for these new fi
   The SDK team records actual Runner usage if supplied. Local operational spans are
   not claimed to be a remote OpenAI tracing dashboard observation.
 
-## Finite actual capstone, for central QA only
+## Optional finite live capstone
 
-Install the centrally verified optional runtime outside this authoring task. Set secrets
-outside the repository. The following command performs real search and model requests;
-run only after exact central admission, not as an ordinary offline test:
+Install the isolated Python 3.12 runtime using the supplied hash lock as described in
+the [live setup](student-guide.md#optional-live-sdk-and-search). Set secrets outside
+the repository. The following command performs real search and model requests;
+run only after explicitly choosing the account and budget, not as an ordinary offline test:
 
 ```
 python3 projects/03-deep-research/capstone_v2.py --live \
   --question 'Compare evidence for an accessible community workshop scheduling pilot.' \
   --source-revision ACTUAL_REVIEWED_REVISION --workers 3 \
-  --state /PRIVATE/course-research-state --output /PRIVATE/course-research-result
+  --state "$HOME/eca-research/run-01/state" --output "$HOME/eca-research/run-01/output"
 ```
 
 The client uses zero automatic transport retries. Keep the state directory and original
 known/unknown receipts. Do not delete state and rerun to bypass an UNKNOWN outcome.
-The provider account, exact model and observed actual result must be retained by QA.
+Retain the configured provider/model identity and actual results privately; never
+include credential values in the evidence you share.
 
 ## Deployment contract
 
-The concrete `deployment/research/Dockerfile`, env example and `deploy_v2.create_app`
-mount the actual Gradio application at `/research` and expose `/healthz` without secrets.
+Use the [v3 deployment exercise](../deployment/research-v3/README.md), supplied v3
+transitive hash lock and `deploy_v3.create_app` for the current download-enabled UI.
+It mounts Gradio at `/research` and exposes `/healthz` without secrets.
 Health means local application configuration is ready; it never claims the remote
 search/model account is healthy without an actual request. Run under a non-root user,
 read-only filesystem and writable private /state volume, behind authenticated TLS.
 
-The author is explicitly forbidden to install or run dependencies. Therefore
-`deployment/research/requirements.lock` **must be generated and independently tested
-by central QA** from requirements.in, with complete transitive hashes. Docker build
-fails until that real lock exists. No fabricated lock, hosted URL or successful build
-is claimed. Central QA must verify startup, health, persistence and an actual report.
+The older `deployment/research/Dockerfile` / `deploy_v2` is retained as a legacy
+comparison and references a v2 lock that is not supplied. Do not select it for the v3
+exercise or regenerate the existing v3 lock merely to satisfy that legacy prerequisite.
+An existing lock is not successful build/startup/provider/browser evidence. Verify
+those outcomes in your isolated learning environment before claiming they work.
 
 ## Module capstone checklist
 

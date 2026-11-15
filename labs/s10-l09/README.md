@@ -9,5 +9,5 @@ Demonstrate the failed branch alone being attempted again, completed siblings re
 all original raw failures retained, and a three-total-attempt ceiling. Repeat with an
 UNKNOWN timeout: no authorization may replay it. Do not discard the run or reset history.
 
-New tests are authored in tests/test_stage10_recovery_export_v3.py; central QA owns
+New tests are authored in tests/test_stage10_recovery_export_v3.py; local validation owns
 execution. Prior23-test evidence does not certify this delta. See the v3 project doc.

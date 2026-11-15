@@ -5,6 +5,12 @@ cost and operations branches. This package keeps facts, recommendations and unkn
 separate. `planning.ROLES` describes planner, searcher, analyst, reviewer and writer
 handoffs. The writer consumes reviewed records and has no search or email authority.
 
+This page describes the fixed v1 fixture baseline, not general question-driven
+research. Its runtime accepts only `Community workshop scheduling` (case/spacing
+variations allowed), rejecting other fixture questions before retrieval. For current
+SDK/Brave/v3 lessons, use the [student guide](student-guide.md); the v2 SDK planner
+generates tasks from the actual question instead of these fixed workshop topics.
+
 The synthetic fixtures are Academy-authored and their example.invalid URLs are
 identifiers, not web observations. Conflicting cost estimates intentionally remain
 unresolved. Unknown dates remain null. The lab cannot certify a real product choice.
@@ -33,6 +39,7 @@ The optional Gradio interface is implemented in `research_lab/interface.py`. Ins
 `projects/03-deep-research/requirements-ui-stages09-10.txt` (a deployment lockfile is still required), then run:
 
 ```
+python3 -m pip install -r projects/03-deep-research/requirements-ui-stages09-10.txt
 python3 examples/stages09-10/run_research.py --ui
 ```
 

@@ -1,27 +1,32 @@
-# Stage 17: native practical handouts
+# Stage 17: practical guide
 
-Read each lesson handout and its corresponding `solutions/s17/` reference solution. The exact PDF title/objective is preserved. These author-only semantic corrections replace dead pointers, confusing alternate cases and blanket stale SDK-pending statements. They do not promote runtime readiness.
+Read each lesson handout and its corresponding reference solution under `solutions/s17/`. The [stage 11–20 workbook](../../curriculum/workbooks/stages-11-20.md) supplies the exact titles, tasks and acceptance criteria.
 
 ## Shared case
 
-Synthetic Academy support/product lookup, with genuine LangGraph routing, ToolNode loops, parallel evidence reduction and recovery graphs. Deterministic native message production is explicitly a fixture.
+Synthetic Academy support/product lookup using LangGraph routing, ToolNode loops, parallel evidence reduction and recovery graphs. Scripted model responses are fixtures, not provider observations.
 
-## Source and proof scopes
+## Set up the optional framework environment
 
-The retained baseline suite established 18 standard-library behaviors and four native SDK integrations. That is historical evidence for its exact earlier source, not proof of every newly authored feature. The sole central QA owner will run current native-feature tests and retain source-bound results. No SDK, model, browser, installation or test execution occurred as part of these handout edits.
+From the repository root, create a separate Python 3.11+ environment rather than modifying the dependency-free core environment:
 
-## Required versus optional
+```sh
+python3 -m venv .venv-browser
+. .venv-browser/bin/activate
+python -m pip install -r projects/06-browser-sidekick/requirements-optional.txt
+python -m unittest discover -s tests -p test_s17_native_features.py -v
+```
 
-Use actual taught SDK semantics, synthetic Academy fixtures, genuine application captures and independent review. A genuine provider observation is required when narrating observed provider behavior, not for every conceptual explanation or deterministic native-framework example. SQLite is the required persistent database here; PostgreSQL is optional. Stage17 Lesson10 explicitly requires a real LangSmith observation; Stage16 trace inspection may use real local timed SDK instrumentation. Never enforce suggested PDF minutes on native narration.
+On Windows, activate with `.venv-browser\Scripts\Activate.ps1`. Core tests can skip optional SDK cases when dependencies are absent; those skips do not verify the framework. Installing the optional requirements is not a model call. Read each exercise before enabling provider or hosted tracing operations.
 
-## Central QA handoff
+## Verify your result
 
-The newly authored SDK tests are `tests/test_s17_native_features.py`. Only the centralized QA owner executes and certifies them during this repair. Document authors have not run them or promoted their expected results to PASS.
+Record the exact checkout, dependency versions, command and actual output. SDK construction, scripted native-framework execution, live provider responses and browser interactions verify different things. Do not infer an integration result from source presence or a historical test count. SQLite is the required persistent database here; PostgreSQL is an optional extension. Stage 17 lesson 10 requires an explicitly configured real LangSmith observation; local timed instrumentation alone does not complete that hosted-tracing exercise.
 
-## Native demo entrypoint
+## Run the native fixture graphs
 
 ```sh
 python -m examples.s17.native_graph_features
 ```
 
-This command executes the actual parallel-evidence, tool-loop and recovery graphs against synthetic fixtures. Default hosted telemetry is disabled. The separate `--langsmith` option is an explicit authorized external tracing operation, requires environment-only configuration and is not part of the local authoring pass. A returned run URL still requires genuine hosted inspection.
+This executes the parallel-evidence, tool-loop and recovery graphs against synthetic fixtures. Hosted telemetry is disabled by default. The separate `--langsmith` option requires private account configuration and deliberately sends tracing data; inspect the actual hosted run before claiming success.

@@ -8,5 +8,5 @@ UNKNOWN/IN_FLIGHT or any unknown historical attempt are refused.
 
 A known malformed output retains raw_result; a known HTTP response retains actual code
 and body. Hidden SDK output without recoverable positive response evidence remains
-unknown. No fixture test is a real provider observation. Central QA executes the new
+unknown. No fixture test is a real provider observation. local validation executes the new
 regressions and retains actual results before teaching their success.

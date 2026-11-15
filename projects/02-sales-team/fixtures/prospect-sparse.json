@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "notice": "Fictional sparse prospect. Only a request to discuss reporting is known; budget, scale, purchase intent and quantified benefit are unknown.",
+  "prospect": {
+    "name": "Avery Morgan",
+    "company": "Pine Community Workshop",
+    "role": "Volunteer coordinator",
+    "verified_need": "a discussion of reporting options; requirements are not yet specified",
+    "source_id": "synthetic-brief-pine-001",
+    "email": "avery@pine-workshop.invalid",
+    "prospect_id": "prospect-pine-001",
+    "company_id": "company-pine-001",
+    "campaign_id": "campaign-pine-001"
+  }
+}

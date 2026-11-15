@@ -81,6 +81,7 @@ class PlaywrightBrowser:
             raise ValueError("use a dedicated loopback fixture origin")
         self.origin = origin.rstrip("/")
         self.executable_path = executable_path
+        self.requests = []
     def execute(self, step: Step) -> str:
         from playwright.sync_api import sync_playwright
         if step.action not in {"navigate", "extract"}:
@@ -89,13 +90,18 @@ class PlaywrightBrowser:
         if ".." in step.target or urlparse(step.target).scheme:
             raise ValueError("unsafe relative URL")
         with sync_playwright() as p:
+            self.requests = []
             browser = p.chromium.launch(headless=True, executable_path=self.executable_path)
             try:
                 context = browser.new_context(service_workers="block", accept_downloads=False)
                 def route(request_route):
                     url = urlparse(request_route.request.url)
                     expected = urlparse(self.origin)
-                    if (url.scheme, url.netloc) == (expected.scheme, expected.netloc) and request_route.request.method == "GET":
+                    allowed = (url.scheme, url.netloc) == (expected.scheme, expected.netloc) and request_route.request.method == "GET"
+                    self.requests.append({'method': request_route.request.method,
+                                          'origin': url.scheme+'://'+url.netloc.rsplit('@', 1)[-1],
+                                          'allowed': allowed})
+                    if allowed:
                         request_route.continue_()
                     else: request_route.abort()
                 context.route("**/*", route)

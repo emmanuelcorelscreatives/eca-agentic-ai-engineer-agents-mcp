@@ -1,6 +1,19 @@
-# Curriculum and evidence
+# Curriculum guide
 
-The source curriculum has 362 lessons in 30 stages and six modules. Suggested lengths are planning estimates; generated native narration determines actual video duration. The mappings below identify the shared project that a lesson develops. They do not claim that an executable exercise or capture for every individual lesson is complete.
+The course has 362 lessons in 30 stages and six modules. Suggested lesson lengths are estimates. The mappings below identify the shared project that a lesson develops; they are not a claim that every optional integration has been run.
+
+## Choose your practical
+
+- [Stages 1–10 workbook](workbooks/stages-01-10.md): foundations, Digital Twin, Sales Team and Deep Research.
+- [Stages 11–20 workbook](workbooks/stages-11-20.md): Market Intelligence, Sandboxed Engineering and Browser Sidekick.
+- [Stages 21–30 workbook](workbooks/stages-21-30.md): framework comparisons, Agent Factory and MCP Trading Floor.
+- [Lesson index](lessons.json): exact lesson IDs, titles, objectives and project directories. Search the workbook for an ID such as `s08-l01`.
+- [Material index](materials.json): supplied files for every lesson, with checksums for reproducibility. Follow its repository-relative paths from the repository root.
+- [Completion rubric](completion-rubric.md) and [practice guide](../practice/README.md): what to submit and how to compare expected and actual results.
+
+From the repository root, `python3 scripts/check_curriculum.py` checks lesson ordering, workbook entries and supplied material paths/checksums. It does not run provider calls or establish integration quality.
+
+## Stage progression
 
 - Stage 1: Welcome to Agentic AI Engineering — 6 lessons; project 1.
 - Stage 2: Development Environment and First Model Calls — 9 lessons; project 1.

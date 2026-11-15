@@ -1,6 +1,6 @@
 """Real loopback Gradio workspace over the complete persisted Sidekick pipeline.
 
-Authoring status: this revised integrated UI awaits central browser/SDK QA.
+Browser interaction and model quality require their own integration checks.
 ``--model provider:model`` explicitly configures native planning; without it the
 visible mode is a deterministic fixture. No silent model-to-fixture fallback.
 Owned screenshots/artifacts are returned inline after exact session+SHA checks,
@@ -128,7 +128,7 @@ if __name__=='__main__':
     if args.model:
         from langchain.chat_models import init_chat_model
         model=init_chat_model(args.model,max_retries=0,timeout=30)
-    with Sandbox() as sandbox:
+    with Sandbox(args.database) as sandbox:
         build_ui(args.database,sandbox,model=model,workspace_root=args.workspace_root,
                  executable_path=args.browser_executable).queue(default_concurrency_limit=1).launch(
             server_name='127.0.0.1',server_port=args.port,share=False,strict_cors=True)

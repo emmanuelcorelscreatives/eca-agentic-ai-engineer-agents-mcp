@@ -2,6 +2,8 @@
 
 Each section retains the PDF objective. Files below are real reusable implementation components; a path mapping is not proof that every acceptance criterion has passed. Named-application and model-dependent gaps remain explicit.
 
+Paths beginning `projects/` or `tests/` are relative to the repository root. Run a cited suite there with `python3 -m unittest discover -s tests -p <suite_filename.py> -v`. The existing suites are starting points for the related boundary, not proof that every acceptance item is implemented or passed: add missing learner tests and record manual observations separately. Scripted model/session fixtures do not satisfy actual provider, browser, Inspector, server or hosted-deployment acceptance; optional integration skips remain skips. Use the [project setup and solution index](README.md#exercises-and-worked-solutions) before starting.
+
 ## s26-l01 — Welcome to Model Context Protocol
 
 **Objective:** Introduce MCP and explain how it standardizes connections between AI applications, tools and data services.
@@ -160,8 +162,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/tests/test_restricted_filesystem.py: Approved read returns exact fixture bytes; relative traversal, absolute outside paths and symlink escape fail without disclosing outside bytes.
-- projects/08-mcp-trading-floor/stage27/01-restricted-filesystem/tests/test_restricted_filesystem.py: Record the real selected server launch command, allowed-root arguments and tool discovery; test platform-specific path behavior in the actual execution environment.
+- tests/test_project8_mcp_protocol.py: Approved read returns exact fixture bytes; relative traversal, absolute outside paths and symlink escape fail without disclosing outside bytes.
+- tests/test_project8_mcp_protocol.py: Record the real selected server launch command, allowed-root arguments and tool discovery; test platform-specific path behavior in the actual execution environment.
 
 ## s27-l02 — Connect to a Web Fetch MCP Server
 
@@ -175,8 +177,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/02-structured-fetch/tests/test_structured_fetch.py: Actual server retrieves the owned fixture page; exact expected excerpt is present and records validate against schema.
-- projects/08-mcp-trading-floor/stage27/02-structured-fetch/tests/test_structured_fetch.py: 404, denied destinations and invalid response shapes return explicit failures rather than invented content; external network policy is enforced by the application or sandbox when the server lacks it.
+- tests/test_project8_retrieval.py: Actual server retrieves the owned fixture page; exact expected excerpt is present and records validate against schema.
+- tests/test_project8_retrieval.py: 404, denied destinations and invalid response shapes return explicit failures rather than invented content; external network policy is enforced by the application or sandbox when the server lacks it.
 
 **Outstanding evidence:**
 - Controlled owned HTTP fetch tested; existing third-party fetch-server integration remains separate.
@@ -193,8 +195,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/03-playwright-session/tests/test_playwright_session.py: Actual browser tool discovery and render/extraction succeeds against the owned local site; raw tool output matches the visible page.
-- projects/08-mcp-trading-floor/stage27/03-playwright-session/tests/test_playwright_session.py: Browser is isolated from personal profiles, remote navigation is restricted, submit actions are unavailable, and all owned processes close at teardown.
+- tests/test_project8_retrieval_semantics.py: Actual browser tool discovery and render/extraction succeeds against the owned local site; raw tool output matches the visible page.
+- tests/test_project8_retrieval_semantics.py: Browser is isolated from personal profiles, remote navigation is restricted, submit actions are unavailable, and all owned processes close at teardown.
 
 **Outstanding evidence:**
 - Playwright MCP named existing-server browser run not yet executed.
@@ -211,8 +213,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/tests/test_agent_tool_dispatch.py: Discovered argument schemas are validated before invoking a real server; invalid arguments make zero tool dispatches.
-- projects/08-mcp-trading-floor/stage27/04-agent-tool-dispatch/tests/test_agent_tool_dispatch.py: Namespaced duplicate tool names cannot collide; agent iteration/tool budgets stop loops, and observed tool results are returned without becoming trusted instructions.
+- tests/test_project8_agent_harness.py: Discovered argument schemas are validated before invoking a real server; invalid arguments make zero tool dispatches.
+- tests/test_project8_agent_harness.py: Namespaced duplicate tool names cannot collide; agent iteration/tool budgets stop loops, and observed tool results are returned without becoming trusted instructions.
 
 **Outstanding evidence:**
 - Real bounded model/agent tool-loop run not performed; no paid provider call authorized in this task.
@@ -229,8 +231,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/05-resource-reader/tests/test_resource_reader.py: List/read resources through the actual MCP client APIs on a capable server, and compare returned bytes with the fixture.
-- projects/08-mcp-trading-floor/stage27/05-resource-reader/tests/test_resource_reader.py: Unknown identifiers, unsupported capabilities and non-text resource payloads are handled explicitly; reading a resource never silently invokes a mutation tool.
+- tests/test_project8_agent_harness.py: List/read resources through the actual MCP client APIs on a capable server, and compare returned bytes with the fixture.
+- tests/test_project8_agent_harness.py: Unknown identifiers, unsupported capabilities and non-text resource payloads are handled explicitly; reading a resource never silently invokes a mutation tool.
 
 ## s27-l06 — Work with MCP Prompts
 
@@ -244,8 +246,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/06-prompt-loader/tests/test_prompt_loader.py: The chosen real server advertises prompts; list/get calls return observed messages and expected supplied arguments.
-- projects/08-mcp-trading-floor/stage27/06-prompt-loader/tests/test_prompt_loader.py: Missing arguments and unknown prompt names produce clear errors; template content cannot override application tool permissions or approval rules.
+- tests/test_project8_agent_harness.py: The chosen real server advertises prompts; list/get calls return observed messages and expected supplied arguments.
+- tests/test_project8_agent_harness.py: Missing arguments and unknown prompt names produce clear errors; template content cannot override application tool permissions or approval rules.
 
 ## s27-l07 — Build a Web-Browsing MCP Agent
 
@@ -259,9 +261,9 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: Two owned fixture pages yield schema-valid records with citations resolved to actual content, not guessed facts.
-- projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: A controlled genuine model integration demonstrates observed server selection; deterministic dispatch tests remain explicitly separate from model behavior.
-- projects/08-mcp-trading-floor/stage27/07-controlled-browser-agent/tests/test_controlled_browser_agent.py: Tool and time budgets are enforced; page prompt injection cannot enable denied tools, submit forms, or expand network destinations.
+- tests/test_project8_retrieval_semantics.py: Two owned fixture pages yield schema-valid records with citations resolved to actual content, not guessed facts.
+- tests/test_project8_retrieval_semantics.py: A controlled genuine model integration demonstrates observed server selection; deterministic dispatch tests remain explicitly separate from model behavior.
+- tests/test_project8_retrieval_semantics.py: Tool and time budgets are enforced; page prompt injection cannot enable denied tools, submit forms, or expand network destinations.
 
 **Outstanding evidence:**
 - Real model-driven browsing run not performed; browser adapter alone is not evidence.
@@ -278,8 +280,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/08-trace-events/tests/test_trace_events.py: Actual MCP tool calls emit a validated start/end trace with correlation IDs, server/tool identifiers, measured latency and terminal status.
-- projects/08-mcp-trading-floor/stage27/08-trace-events/tests/test_trace_events.py: Concurrent requests remain distinguishable; failure events retain error classifications and redacted argument/result summaries without exposing secret fixture values.
+- tests/test_project8_agent_harness.py: Actual MCP tool calls emit a validated start/end trace with correlation IDs, server/tool identifiers, measured latency and terminal status.
+- tests/test_project8_agent_harness.py: Concurrent requests remain distinguishable; failure events retain error classifications and redacted argument/result summaries without exposing secret fixture values.
 
 ## s27-l09 — Handle Tool Failures and Invalid Results
 
@@ -293,9 +295,9 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Stopped server, invalid schema, timeout and malformed payload cases each terminate predictably with trace evidence.
-- projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Invalid arguments are not retried unchanged; retries have deadlines/backoff limits, and timeout on a possible side effect remains uncertain rather than blindly replayed.
-- projects/08-mcp-trading-floor/stage27/09-failure-recovery/tests/test_failure_recovery.py: Exercise uses genuine server failure for at least one case; explicitly labeled test servers cover otherwise hard-to-trigger malformed responses.
+- tests/test_project8_agent_harness.py: Stopped server, invalid schema, timeout and malformed payload cases each terminate predictably with trace evidence.
+- tests/test_project8_agent_harness.py: Invalid arguments are not retried unchanged; retries have deadlines/backoff limits, and timeout on a possible side effect remains uncertain rather than blindly replayed.
+- tests/test_project8_agent_harness.py: Exercise uses genuine server failure for at least one case; explicitly labeled test servers cover otherwise hard-to-trigger malformed responses.
 
 ## s27-l10 — Filter and Organize MCP Tools
 
@@ -309,8 +311,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/10-tool-filtering/tests/test_tool_filtering.py: Each task sees exactly its authorized tools; equivalent calls against a hidden tool are also rejected by the dispatcher.
-- projects/08-mcp-trading-floor/stage27/10-tool-filtering/tests/test_tool_filtering.py: Unknown new tools default to unavailable; duplicate tool names remain server-qualified and logged.
+- tests/test_project8_agent_harness.py: Each task sees exactly its authorized tools; equivalent calls against a hidden tool are also rejected by the dispatcher.
+- tests/test_project8_agent_harness.py: Unknown new tools default to unavailable; duplicate tool names remain server-qualified and logged.
 
 ## s27-l11 — Apply Least-Privilege Tool Access
 
@@ -324,8 +326,8 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/11-least-privilege/tests/test_least_privilege.py: Role/action/path matrix passes allow and deny cases through the real dispatcher and relevant actual server.
-- projects/08-mcp-trading-floor/stage27/11-least-privilege/tests/test_least_privilege.py: Traversal, symlink escape, unauthorized destinations and direct hidden-tool dispatch remain denied; each policy denial is auditable and does not disclose denied data.
+- tests/test_project8_agent_harness.py: Role/action/path matrix passes allow and deny cases through the real dispatcher and relevant actual server.
+- tests/test_project8_agent_harness.py: Traversal, symlink escape, unauthorized destinations and direct hidden-tool dispatch remain denied; each policy denial is auditable and does not disclose denied data.
 
 ## s27-l12 — Secure Secrets and Sensitive Data
 
@@ -339,15 +341,15 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Fake secret canaries appear only in approved runtime input, never prompts, traces, report artifacts, screenshots or checked-in files.
-- projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Redaction handles nested argument/result fields and common error paths; untrusted server content cannot request or retrieve runtime credentials.
-- projects/08-mcp-trading-floor/stage27/12-secret-hygiene/tests/test_secret_hygiene.py: Environment examples contain placeholders only; actual integration credentials, when required, are not stored or captured.
+- tests/test_project8_agent_harness.py: Fake secret canaries appear only in approved runtime input, never prompts, traces, report artifacts, screenshots or checked-in files.
+- tests/test_project8_agent_harness.py: Redaction handles nested argument/result fields and common error paths; untrusted server content cannot request or retrieve runtime credentials.
+- tests/test_project8_agent_harness.py: Environment examples contain placeholders only; actual integration credentials, when required, are not stored or captured.
 
 ## s27-l13 — Add Human Approval to MCP Tools
 
 **Objective:** Require confirmation before high-impact MCP operations are executed.
 
-**Implementation:** `projects/08-mcp-trading-floor/approve_order.py`, `projects/08-mcp-trading-floor/trading_floor.py`
+**Implementation:** `projects/08-mcp-trading-floor/agent_harness.py`, [report-write worked solution](mcp_lab/worked-host-solutions.md#exact-report-write-human-approval--stage-27-lesson-13). This sandbox-write gate is distinct from paper-trade approval.
 
 **Exercise:**
 - Inspect a report-write proposal, deny it once, then explicitly approve the exact sandbox destination and content digest.
@@ -355,9 +357,9 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Denied, missing, expired and mismatched approval cause zero mutation dispatches; matching approval permits exactly the intended sandbox write.
-- projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Changed path, arguments or content digest invalidates prior approval; a model-generated approval string is rejected.
-- projects/08-mcp-trading-floor/stage27/13-approval-gate/tests/test_approval_gate.py: Actual approved write is verified on the filesystem; timeout/unknown mutation outcome is retained and not silently replayed.
+- tests/test_project8_agent_harness.py: Denied, missing, expired and mismatched approval cause zero mutation dispatches; matching approval permits exactly the intended sandbox write.
+- tests/test_project8_agent_harness.py: Changed path, arguments or content digest invalidates prior approval; a model-generated approval string is rejected.
+- tests/test_project8_agent_harness.py: Actual approved write is verified on the filesystem; timeout/unknown mutation outcome is retained and not silently replayed.
 
 ## s28-l01 — When to Build a Custom MCP Server
 
@@ -607,7 +609,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-01/tests/test_lesson_01.py: Missing simulation label and live brokerage capabilities fail validation; scope includes explicit users, reset and approval controls.
+- tests/test_project_8.py: Missing simulation label and live brokerage capabilities fail validation; scope includes explicit users, reset and approval controls.
 
 ## s29-l02 — Define the Capstone Architecture
 
@@ -621,7 +623,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-02/tests/test_lesson_02.py: Every component reference resolves; execution depends on independent manual approval; agents cannot grant themselves execution authority.
+- tests/test_project8_core_semantics.py: Every component reference resolves; execution depends on independent manual approval; agents cannot grant themselves execution authority.
 
 ## s29-l03 — Define the Market Research Agent
 
@@ -635,7 +637,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-03/tests/test_lesson_03.py: Claims reference known sources and timestamps; invented evidence identifiers fail; stale facts stay visibly marked.
+- tests/test_project8_capstone_agents.py: Claims reference known sources and timestamps; invented evidence identifiers fail; stale facts stay visibly marked.
 
 **Outstanding evidence:**
 - Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted.
@@ -652,7 +654,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-04/tests/test_lesson_04.py: Validate symbol, side, quantity, rationale and evidence IDs; reject unknown symbols and proposals without evidence.
+- tests/test_project8_capstone_agents.py: Validate symbol, side, quantity, rationale and evidence IDs; reject unknown symbols and proposals without evidence.
 
 **Outstanding evidence:**
 - Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted.
@@ -669,7 +671,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-05/tests/test_lesson_05.py: Boundary, over-limit, missing-price and insufficient-cash cases reject correctly; model explanations cannot override deterministic rejection.
+- tests/test_project8_core_semantics.py: Boundary, over-limit, missing-price and insufficient-cash cases reject correctly; model explanations cannot override deterministic rejection.
 
 ## s29-l06 — Define the Portfolio and Paper-Execution Agent
 
@@ -683,7 +685,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-06/tests/test_lesson_06.py: Duplicate idempotency keys have one ledger effect; mismatched approvals and stale account revisions cannot change holdings or cash.
+- tests/test_project8_core_semantics.py: Duplicate idempotency keys have one ledger effect; mismatched approvals and stale account revisions cannot change holdings or cash.
 
 ## s29-l07 — Build the Market Data MCP Integration
 
@@ -697,7 +699,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-07/tests/test_lesson_07.py: Actual handshake, list-tools and call-tool succeed; unknown symbol, stale quote and malformed input return controlled errors with provenance.
+- tests/test_project8_trading_mcp.py: Actual handshake, list-tools and call-tool succeed; unknown symbol, stale quote and malformed input return controlled errors with provenance.
 
 ## s29-l08 — Build the Research MCP Integration
 
@@ -711,7 +713,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-08/tests/test_lesson_08.py: Real MCP calls return source IDs and retrieval times; denied sources and oversized queries fail; document instructions cannot change tool permissions.
+- tests/test_project8_trading_mcp.py: Real MCP calls return source IDs and retrieval times; denied sources and oversized queries fail; document instructions cannot change tool permissions.
 
 ## s29-l09 — Build the Memory MCP Integration
 
@@ -725,7 +727,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-09/tests/test_lesson_09.py: Data survives a fresh session; cross-account access fails; resetting one account leaves another untouched; old quotes never become current prices.
+- tests/test_project8_memory_search_v1.py: Data survives a fresh session; cross-account access fails; resetting one account leaves another untouched; old quotes never become current prices.
 
 ## s29-l10 — Build the Portfolio MCP Service
 
@@ -739,7 +741,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-10/tests/test_lesson_10.py: Atomic commit preserves cash and holding invariants; duplicate orders, rounding, overselling and unavailable valuation prices have tested outcomes.
+- tests/test_project8_trading_mcp.py: Atomic commit preserves cash and holding invariants; duplicate orders, rounding, overselling and unavailable valuation prices have tested outcomes.
 
 ## s29-l11 — Use the Researcher-as-a-Tool Pattern
 
@@ -753,7 +755,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-11/tests/test_lesson_11.py: Return the common research schema; recursion and exhausted call budgets fail safely; freshness-bound cache cannot hide changed evidence.
+- tests/test_project8_capstone_agents.py: Return the common research schema; recursion and exhausted call budgets fail safely; freshness-bound cache cannot hide changed evidence.
 
 **Outstanding evidence:**
 - Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted.
@@ -770,7 +772,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-12/tests/test_lesson_12.py: Valid envelopes round-trip; invalid enum, missing ID, changed proposal revision and forged evidence reference stop downstream execution.
+- tests/test_project8_capstone_agents.py: Valid envelopes round-trip; invalid enum, missing ID, changed proposal revision and forged evidence reference stop downstream execution.
 
 ## s29-l13 — Apply Risk and Portfolio Rules
 
@@ -784,7 +786,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-13/tests/test_lesson_13.py: Boundary cases behave as specified; stale state and quotes reject; every rejected transaction leaves the ledger unchanged.
+- tests/test_project_8.py: Boundary cases behave as specified; stale state and quotes reject; every rejected transaction leaves the ledger unchanged.
 
 ## s29-l14 — Execute Controlled Paper Trades
 
@@ -798,7 +800,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-14/tests/test_lesson_14.py: Approval binds account, proposal hash, reviewer action and expiry; replay/mismatch fails; successful execution records one transaction.
+- tests/test_project8_core_semantics.py: Approval binds account, proposal hash, reviewer action and expiry; replay/mismatch fails; successful execution records one transaction.
 
 ## s29-l15 — Orchestrate the Complete Trading Floor
 
@@ -812,7 +814,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-15/tests/test_lesson_15.py: Legal transitions and budgets are enforced; no automatic approval; resume has exactly-once ledger effects; only actual run traces support observed results.
+- tests/test_project8_capstone_agents.py: Legal transitions and budgets are enforced; no automatic approval; resume has exactly-once ledger effects; only actual run traces support observed results.
 
 **Outstanding evidence:**
 - Real role implementation is deterministic reference; genuine model-agent orchestration acceptance remains unexecuted.
@@ -829,7 +831,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 **Worked approach:** Trace the named implementation above, run its relevant tests, change one input at the taught boundary, and preserve the actual observed result. Use the lab READMEs for executable commands and worked boundary expectations. Do not replace a required named framework/product or model observation with the deterministic baseline.
 
 **Acceptance to demonstrate:**
-- projects/08-mcp-trading-floor/stage29/lesson-16/tests/test_lesson_16.py: Actual Gradio browser smoke covers initial, research, rejected, awaiting-approval, executed and error states; changed proposals revoke stale approval; no live brokerage controls or secrets appear.
+- tests/test_project8_application_semantics.py: Actual Gradio browser smoke covers initial, research, rejected, awaiting-approval, executed and error states; changed proposals revoke stale approval; no live brokerage controls or secrets appear.
 
 ## s30-l01 — Add Tracing and Observability to the Trading Floor
 
@@ -913,7 +915,7 @@ Each section retains the PDF objective. Files below are real reusable implementa
 
 **Objective:** Capture reviewer ratings, corrections and comments for later analysis and improvement.
 
-**Implementation:** `projects/08-mcp-trading-floor/evaluation_lab/quality.py`
+**Implementation:** `projects/08-mcp-trading-floor/evaluation_lab/feedback.py`, `projects/08-mcp-trading-floor/api.py`, `projects/08-mcp-trading-floor/frontend/src/main.jsx`, [feedback worked solution](evaluation_lab/WORKED-SOLUTIONS.md#6-human-feedback). The app uses `BoundFeedbackStore`; the older `quality.FeedbackStore` is a separate unit exercise, not the authenticated app route.
 
 **Exercise:**
 - Submit one genuine reviewer correction in the practice app, then inspect its provenance and compare the two evaluator opinions.

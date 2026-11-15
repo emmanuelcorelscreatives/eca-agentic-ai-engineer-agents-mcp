@@ -6,11 +6,13 @@ import os
 import time
 from pathlib import Path
 from .planning import make_plan, queries_for
-from .search import parallel_search
+from .search import FixtureSearch, parallel_search
 from .evidence import EvidenceStore, analyze, validate_findings, quality
 
 async def run(question, backend, workers=3, event_callback=None):
     started = time.monotonic(); plan = make_plan(question)
+    if isinstance(backend, FixtureSearch) and " ".join(plan["question"].split()).casefold() != "community workshop scheduling":
+        raise ValueError('This fixed fixture supports only "Community workshop scheduling"; no research was performed for this question.')
     events = []
     def emit(event):
         events.append(event)

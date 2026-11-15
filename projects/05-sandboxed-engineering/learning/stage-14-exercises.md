@@ -1,6 +1,9 @@
 # Stage 14: exercises and reference solutions
 
-Run the repository tests in learning/README.md. Runtime requirements below remain explicit holds until actually executed.
+Run the repository-root commands in [README.md](README.md#local-verification-map).
+The [offline notebook](WORKED-EXAMPLE.md) supplies runnable file-tool and repair
+activities. Runtime exercises are separate optional work in an authorized lab;
+local tests do not imply that containers or models ran.
 
 ## s14-l01: Introduction to AI Coding Agents
 
@@ -56,7 +59,7 @@ Objective: Allow an agent to inspect and modify files only within an approved pr
 
 Implementation: `sandbox.py:FileTools`.
 
-Exercise: Create src/app.py, read/list it, attempt ../escape, a symlink and a write to tests/.
+Exercise: Run `student_lab.py files` using the root-relative command in the offline notebook. Inspect its scratch setup, src/app.py write/read/list, traversal, absolute path, symlink and tests/ write attempts. Add the notebook's nested-file exercise in your own copy.
 
 Reference solution: Canonical descriptor-relative opens reject traversal and symlinks; tests are readonly; replacing app.py requires its previous SHA256.
 
@@ -68,7 +71,7 @@ Objective: Execute approved commands with validation, logging and restricted wor
 
 Implementation: `sandbox.py:COMMANDS`.
 
-Exercise: Propose tests; rm -rf / and a direct shell command; compare both with command identity tests.
+Exercise: Inspect `test_command_injection` in `tests/test_engineering_learning.py`. Supply dangerous strings only as rejected command-ID data, never as shell commands. Compare the allowed `tests` identity with unknown command identities.
 
 Reference solution: Both proposals are rejected before subprocess creation; COMMANDS supplies immutable argv and no shell interpolation.
 
@@ -82,7 +85,7 @@ Implementation: `sandbox.py:execute`.
 
 Exercise: In the authorized prepared image, execute the application command and save source/image/argv/exit/output identity.
 
-Reference solution: Use a preloaded digest, readonly mounts, no network and owned cleanup. This authoring host had no Docker, so its offline tests are not a substitute.
+Reference solution: Use a preloaded digest, readonly mounts, no network and owned cleanup. Follow [CONTAINER.md](CONTAINER.md) for prerequisites; stop if the prepared image/cache/runtime is missing. Offline tests are not container observations.
 
 Verification: `runtime-not-executed`.
 
@@ -92,11 +95,11 @@ Objective: Manage project dependencies inside the sandbox without modifying the 
 
 Implementation: `sandbox.py:COMMANDS`.
 
-Exercise: Explain what uv-sync may install and why no package-name argument is exposed to agents.
+Exercise: As offline preparation, explain what uv-sync may install and why no package-name argument is exposed to agents. Inspect the supplied `pyproject.toml` and `uv.lock`: these are the CrewAI orchestrator dependencies, not dependencies of the standard-library expense app. Then read the cache/build recipe in [CONTAINER.md](CONTAINER.md). Actual frozen check/sync output is optional runtime work, not a result of the flag test below.
 
 Reference solution: Only frozen reviewed lockfile dependencies from offline cache are allowed; absent lock/cache must fail, not activate network or modify the host.
 
-Verification: `test_uv_offline`.
+Verification: `DockerPolicyTests.test_uv_offline` in `tests/test_engineering_learning.py` checks command flags only. Follow the README discovery command; record frozen installation observations separately only if performed.
 
 ## s14-l09: Add Timeouts and Resource Limits
 
@@ -126,13 +129,13 @@ Verification: `test_missing_runtime_is_not_success`.
 
 Objective: Enable the agent to run test suites and convert failures into actionable feedback.
 
-Implementation: `workflow.py:expense_fixture`.
+Implementation: `workflow.py:expense_fixture` for preparation; `semantic_team.py:validate_receipt` and `container_entrypoint.py:InsideContainerExecutor` for the generated workflow.
 
-Exercise: Run the first-element seeded fixture and compare it with summation against unchanged cases.
+Exercise: Run `student_lab.py repair` using the notebook command and inspect the failed/passing cases. Then trace how integrated source/test hashes, observations and QA review are checked in `SemanticTests.test_all_roles_typed_and_tool_failure_routes_back` in `tests/test_engineering_semantic_team.py`. The executor there is a labelled double, not a generated-Python run. Actual generated-Python testing requires the separate container extension.
 
 Reference solution: 125+275 first yields 125 and fails; summation yields 400 and passes. These actual arithmetic observations do not claim execution of generated Python.
 
-Verification: `test_actual_arithmetic_failure_and_repair`.
+Verification: `WorkflowTests.test_actual_arithmetic_failure_and_repair` in `tests/test_engineering_learning.py` is the arithmetic control; `SemanticTests.test_execution_bound_to_exact_source` in `tests/test_engineering_semantic_team.py` checks integrated receipt binding with a double. Commands are in README's local verification map.
 
 ## s14-l12: Secure the Coding-Agent Environment
 

@@ -1,5 +1,6 @@
 """One application controller for SDK generation, review, approval and owned-sink send."""
 import json
+import uuid
 from pathlib import Path
 from sales import SalesTeam, Prospect
 from evaluations import evaluation_report, mechanical_checks
@@ -14,6 +15,7 @@ class SalesApplication:
         self.sink = sink
         self.export_directory = Path(export_directory) if export_directory else None
         self.runs = {}
+        self.observations = {}
 
     async def create(self, prospect: Prospect, mode='deterministic'):
         result = {'mode': 'deterministic-application-draft', 'status': 'human_approval_required',
@@ -31,7 +33,9 @@ class SalesApplication:
             else:
                 raise ValueError('unknown generation mode')
         if mode in {'sdk-manager', 'sdk-handoff'}:
-            return {'draft_id': None, 'observation': result,
+            observation_id = uuid.uuid4().hex
+            self.observations[observation_id] = result
+            return {'draft_id': None, 'observation_id': observation_id, 'observation': result,
                     'notice': 'Observed agent coordination only; no free text silently promoted to a sendable draft'}
         team = SalesTeam(self.database)
         try:
@@ -60,12 +64,12 @@ class SalesApplication:
                 team.approve(ident, 'Local UI practice human; not production authentication', expected_hash)
             elif action == 'reject':
                 team.reject(ident)
-            elif action == 'submit-owned-sink':
-                if self.sink is None:
+            elif action in {'simulate', 'submit-owned-sink'}:
+                if action == 'submit-owned-sink' and self.sink is None:
                     raise PermissionError('Owned sink not configured')
                 if expected_hash is None or expected_hash != team.preview(ident)['payload_hash']:
                     raise PermissionError('Current displayed exact preview hash required before send')
-                return team.submit_approved(ident, self.sink)
+                return team.deliver(ident) if action == 'simulate' else team.submit_approved(ident, self.sink)
             elif action != 'preview':
                 raise ValueError('unknown action')
             return team.preview(ident)
@@ -76,6 +80,8 @@ class SalesApplication:
         """Operational events and reference evaluation; never private reasoning traces."""
         if self.export_directory is None:
             raise PermissionError('Private export directory not configured')
+        if ident is None:
+            raise ValueError('Select a draft or export a coordination observation instead')
         self.export_directory.mkdir(parents=True, exist_ok=True, mode=0o700)
         team = SalesTeam(self.database)
         try:
@@ -84,6 +90,7 @@ class SalesApplication:
                       'current_draft_mechanical': mechanical_checks(team.draft(ident)['subject'], team.draft(ident)['body'], prospect),
                       'approval_history': [dict(x) for x in team.db.execute('SELECT * FROM approval_events WHERE draft_id=? ORDER BY id', (ident,))],
                       'transport_history': [dict(x) for x in team.db.execute('SELECT * FROM send_attempts WHERE draft_id=?', (ident,))],
+                      'simulated_outbox': [dict(x) for x in team.db.execute('SELECT * FROM outbox WHERE draft_id=?', (ident,))],
                       'scope': 'Local operational evidence and author labels, not hosted traces or model quality scores'}
             path = self.export_directory / f'sales-draft-{int(ident)}-report.json'
             # A UI user must never supply a pathname; only selected numeric ID enters filename.
@@ -93,3 +100,15 @@ class SalesApplication:
             return str(path)
         finally:
             team.db.close()
+
+    def export_observation(self, observation_id):
+        if self.export_directory is None:
+            raise PermissionError('Private export directory not configured')
+        if observation_id not in self.observations:
+            raise ValueError('No selected coordination observation')
+        self.export_directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+        path = self.export_directory / f'sales-observation-{observation_id}.json'
+        path.write_text(json.dumps({'observation': self.observations[observation_id],
+            'scope': 'Actual returned SDK observations, not a sendable draft or hosted trace'}, indent=2), encoding='utf-8')
+        path.chmod(0o600)
+        return str(path)

@@ -7,11 +7,9 @@ Use the dependency manifests in `frameworks/requirements/` and each project’s 
 Project 7’s `projects/07-agent-factory/factory.py` remains the deterministic stdlib foundation. Its current `model_pipeline.py`, `model_schemas.py` and `MODEL-PIPELINE-AUTHORING.md` supply the additional typed generative pipeline: inspect these implementations before extending them. Labelled offline backend tests do not establish actual model-generated output, authenticated Docker acceptance or a launched generated agent. Project 8 now includes `agent_harness.py`, `capstone_agents.py`, `sdk_role_provider.py`, `mcp_lab/`, `retrieval_lab/`, `evaluation_lab/`, a revision/expiry-aware paper ledger, and separate operator/reviewer UI/API paths. Use the current implementations rather than recreating them as if absent. Actual local protocol, service and owned-UI observations remain scoped; real configured-model behavior, external search/semantic embedding, Inspector, Docker and hosted deployment evidence are separate requirements. No exercise authorizes real brokerage execution.
 
 
-## Evidence boundary for the current source
+## Record your own results
 
-Independent central observations on 2026-11-12 exercise native ADK persistence/MCP, A2A exchange, Pydantic role toolsets/MCP dispatch, Microsoft typed components with a scripted client, Agno MCP, Mastra workflows/MCP/LibSQL Memory and an owned Studio page. Project 8 observations exercise actual local MCP transports, service/Qdrant boundaries, application cases and owned React/Gradio interfaces. These are scoped observations, not blanket approval of these 134 lessons. A scripted model client or OfflineBackend is expressly not evidence of real provider reasoning. ADK dashboard startup still includes a first-run modal; Studio startup does not prove complete provider/run-history behavior.
-
-Before narrating a result as observed, obtain the exact current-source evidence for that exercise. Required configured-model decisions and generative factory outputs, authenticated Docker execution, real search/semantic-embedding behavior, Inspector interactions, hosted deployment and final lesson-specific captures remain separate where not actually observed. Keep every original curriculum topic; recording an unresolved prerequisite does not remove it from the course.
+Keep expected outcomes separate from actual observations. Scripted SDK clients and deterministic fixtures test contracts, not real provider reasoning. Configured-model generation, authenticated sandbox execution, search/semantic embeddings, Inspector interactions and hosted deployment each need their own real run when required by the lesson. Record missing prerequisites and failed or skipped steps honestly; no exercise authorizes real brokerage execution.
 
 ## Stage 21: Google ADK and Agent-to-Agent Communication
 
@@ -287,7 +285,7 @@ Before narrating a result as observed, obtain the exact current-source evidence 
 
 - **Task:** Follow examples/s24_mastra/studio-runbook.md to launch the actual Studio app and inspect a real workflow with a failed tool and a separately observed successful attempt.
 - **Deliverable:** studio-observations.md plus Academy-only screenshots.
-- **Accept when:** Actual UI steps identify tool, arguments, error and later result. The observed local agents page with Academy triage and two tools proves startup, not provider interaction or complete run-history persistence.
+- **Accept when:** Actual UI steps identify tool, arguments, error and later result. Seeing the local agents page and declared tools proves startup only; provider interaction and durable run-history behavior require their own actual exercise results.
 
 ### s24-l12 — Compare Python and TypeScript Agent Development
 
@@ -338,7 +336,7 @@ Before narrating a result as observed, obtain the exact current-source evidence 
 ### s25-l07 — Build the Prompt and Instruction Generator
 
 - **Task:** Use the instructions specialist in model_pipeline.py to generate role, permitted tools, policy clauses and escalation instructions from the approved typed specification.
-- **Deliverable:** instruction_agent.py and generated instructions.md.
+- **Deliverable:** instruction_agent.py and generated instructions.json with role, goals, allowed_tools, policies, refusal, escalation and untrusted_data fields.
 - **Accept when:** The actual model output preserves every required policy, does not grant extra tools and contains no embedded credentials.
 
 ### s25-l08 — Build the Test Generation Agent
@@ -375,7 +373,7 @@ Before narrating a result as observed, obtain the exact current-source evidence 
 
 - **Task:** Use docker_validate.py and the model pipeline's trusted orchestrator Docker boundary to execute the exact generated artifact and independently supplied acceptance suite in a separately approved digest-pinned image.
 - **Deliverable:** docker-validation.json with image ID, commands and real exit codes.
-- **Accept when:** The actual container runs non-root under the approved resource/network policy; verify authenticated central receipts, not merely their SHA. Docker execution remains pending where the daemon/image is unavailable; Python isolated mode is not a substitute.
+- **Accept when:** The actual container runs non-root under the approved resource/network policy; verify authenticated executor receipts, not merely their SHA. Docker execution remains pending where the daemon/image is unavailable; Python isolated mode is not a substitute.
 
 ### s25-l14 — Build an Automated Repair Loop
 

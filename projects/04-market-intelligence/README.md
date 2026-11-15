@@ -4,6 +4,18 @@ This runnable offline baseline supports Stage 13. Every company, metric and evid
 locator is a **fictional teaching fixture**. No prices, investment recommendations,
 provider calls or real market-condition claims are made.
 
+## Follow the project through stages 11–13
+
+| Stage | Practical | Start here |
+| --- | --- | --- |
+| 11: CrewAI fundamentals | Alder Retail advocate, skeptic and reviewer debate | [Setup and lesson index](learning/README.md) |
+| 12: Tools, context and structured workflows | Extend the same debate with typed tools, context and optional research/memory | [Stage 12 lessons](learning/README.md#stage-12) |
+| 13: Market intelligence and screening | Cedar, Maple and Pine financial ranking plus company/sector research | Baseline below, then the [14-part advanced handbook](advanced/HANDBOOK.md) |
+
+The debate takes a fact-pack topic, not a company symbol. The stage 13 screener uses
+company profiles instead; see the [application transition](learning/docs/stages11-12-coherence.md).
+Run the commands below from the repository root. The offline baseline needs only Python 3.11+.
+
 ```sh
 python3 projects/04-market-intelligence/market.py --output /tmp/eca-market-report.json
 python3 projects/04-market-intelligence/market.py --min-growth .20
@@ -24,13 +36,13 @@ recomputes all fixture metrics from that ledger.
 
 ## CrewAI extension (optional; not executed by the offline runner)
 
-Implement researcher → market analyst → screener → evidence reviewer tasks with a
-manager supervising corrections. Pass the complete structured profile list as task
-context; store only validated profiles as memory. Wrap `FixtureSource` with a typed
-CrewAI `BaseTool`, keep the deterministic `screen` function authoritative for scoring,
-and require the final task to validate the same report schema. Install a pinned CrewAI
-version in a separate environment and consult its official version-matching docs.
-Network/provider adapters require explicit credentials and approval; this repository
+Inspect the implemented researcher → market analyst → screener → evidence reviewer
+tasks and hierarchical manager in `crewai_adapter.py`. When extending them, pass the
+complete structured profile list as task context, store only validated profiles as
+memory and keep the deterministic `screen` function authoritative for scoring. Typed
+tools and final report validation must preserve the same evidence and scores. Install
+the pinned CrewAI version in a separate environment using the commands below.
+Network/provider adapters require authorized accounts and an explicit budget; this repository
 makes no claim that a live crew has run. A new live adapter must supply provenance,
 observation timestamps, permitted-source policy and error handling before comparison.
 

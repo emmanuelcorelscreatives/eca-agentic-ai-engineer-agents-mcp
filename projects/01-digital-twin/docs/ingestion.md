@@ -8,7 +8,7 @@ fixture. The new generator never selects that original path.
 
 ## Generate and inspect two real PDFs
 
-Run these commands from the repository root in the centrally approved runtime.
+Run these commands from the repository root in the project-specific virtual environment.
 Optional dependencies are `reportlab` for generation and `pypdf` for extraction.
 A real Unicode TrueType font is required; use a locally installed font with a
 suitable licence. The following path is an example, not a bundled font:
@@ -16,25 +16,26 @@ suitable licence. The following path is an example, not a bundled font:
 ```sh
 python projects/01-digital-twin/make_pdf_fixture.py \
   --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf \
-  --output-dir projects/01-digital-twin/fixtures/generated
+  --output-dir /tmp/academy-twin-documents
 python projects/01-digital-twin/pdf_ingest.py \
-  projects/01-digital-twin/fixtures/generated/synthetic-resume.pdf \
+  /tmp/academy-twin-documents/synthetic-resume.pdf \
   --output-dir /tmp/academy-resume-extraction
 python projects/01-digital-twin/pdf_ingest.py \
-  projects/01-digital-twin/fixtures/generated/synthetic-portfolio.pdf \
+  /tmp/academy-twin-documents/synthetic-portfolio.pdf \
   --output-dir /tmp/academy-portfolio-extraction
 python -m unittest discover -s tests -p test_stage05_semantic_repairs_ingest.py -v
 ```
 
-Output directories must not already exist. Choose a new path for each run;
+The checked-in PDFs under `fixtures/generated/` are available for inspection without regeneration. For generation, output directories must not already exist. Replace `/tmp/academy-twin-documents` and the extraction directories with new writable local paths on Windows. Choose a new path for each run;
 never overwrite a previous extraction or a historical fixture to make a check
 pass. Generation embeds the actual font, preserves source line breaks and
 Unicode, rejects missing glyphs and overwide lines, and records complete
 source/PDF/font/generator SHA-256 values in the generated
 `document-provenance.json`. That manifest truthfully says
 `generated_not_independently_verified`: generation alone is not approval.
-The checked-in pending manifest contains null hashes because no generation or
-runtime execution was performed by its author.
+The separate historical `fixtures/document-provenance.json` describes the original
+author-only plan, not the current generated files. The supplied PDFs and their
+actual byte hashes are recorded in `fixtures/generated/document-provenance.json`.
 
 Open both generated PDFs in a real PDF viewer. Check the résumé accent,
 portfolio café example, line order, paragraph breaks, content and page edges.
@@ -85,10 +86,37 @@ page by text extraction alone: inspect it, then use a separately reviewed OCR
 workflow if required. Never treat a mixed document as fully extracted simply
 because some sections were produced.
 
-## Evidence still required
+## Load your reviewed sections
 
-The source author did not execute generation, extraction, tests, a browser or a
-viewer. Central QA must record actual command results, generated manifests,
-both-document extraction and edge-case outcomes. Browser/viewer inspection,
-source approval, downstream lesson/visual approval and any live-model
-observations are separate pending activities.
+Keep extraction outputs private. Copy `sections.json` to a separate private
+`sections-reviewed.json`. Inspect each section against the PDF; change `approved`
+to `true` only for facts you explicitly reviewed and intend to expose. Leave
+unreviewed or private sections false. Do not blanket-approve a document.
+
+From the repository root, use your actual private path:
+
+```sh
+python projects/01-digital-twin/twin.py --profile /private/practice/sections-reviewed.json 'Python experience'
+```
+
+The loader accepts the exported section list or an object containing `sections`.
+It never grants approval. Expect only your approved matching IDs in the answer;
+an all-unapproved or unrelated profile must abstain. This is a lexical retrieval
+exercise, not proof of semantic understanding.
+
+To use the same selection in the UI, set `TWIN_PROFILE` to this absolute path
+in the launching process (POSIX: `export TWIN_PROFILE=/private/practice/sections-reviewed.json`;
+PowerShell: `$env:TWIN_PROFILE = 'C:\private\practice\sections-reviewed.json'`),
+then run `python projects/01-digital-twin/app.py`. Substitute your actual path.
+Baseline and deliberately enabled live mode use the same selected sections.
+Only use synthetic or explicitly authorized shareable content for a live-model
+exercise: local extraction alone sends nothing, but enabling live mode sends
+selected approved evidence to the configured provider. A copied `.env` file is
+not automatically loaded by this project.
+
+## Check your results
+
+Record your own command results, generated manifest, both-document extraction
+and edge-case observations. Inspect rendered pages and approve factual sections
+separately. Tests, document generation and source review do not establish actual
+model quality, browser behaviour or deployment success.

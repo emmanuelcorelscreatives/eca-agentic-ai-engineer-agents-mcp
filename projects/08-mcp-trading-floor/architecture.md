@@ -27,13 +27,13 @@ A new request ID with the same already-consumed approval fails. An idempotency k
 
 ## MCP boundaries
 
-`mcp_server.py` implements eight model-callable tools with official SDK v1 annotations. Research, proposal, memory and portfolio tools are available; approval and execution are absent. A client owns the model invocation, its API key and any sampling policy. A server requesting sampling does not acquire permission to call the model directly. Incoming web pages, documents and MCP results are untrusted data and cannot change this permission boundary.
+`mcp_server.py` implements nine model-callable tools with official SDK v1 annotations. Research, proposal, memory and portfolio tools are available; approval and execution are absent. A client owns the model invocation, its API key and any sampling policy. A server requesting sampling does not acquire permission to call the model directly. Incoming web pages, documents and MCP results are untrusted data and cannot change this permission boundary.
 
 A remote transport needs independent service identity, TLS, per-user scope and an explicit trusted-origin policy. Local stdio inherits its process identity and should expose only a disposable owned workspace. A tool name allowlist alone is insufficient if arguments can escape an allowed filesystem root or fetch an arbitrary private-network URL. Validate the resource target as well as the tool name; do not forward secrets in a tool schema or log.
 
 ## UI and application coherence
 
-Gradio and React display the same synthetic company symbols, evidence and account contracts. Gradio is a read/propose demonstration; it does not share the API's persistent account unless explicitly configured in an extension. React uses FastAPI `/proposals` and `/state` through a localhost Vite proxy. Only the separately reviewed CLI can create an approval. `/execute` remains an authenticated state-changing API endpoint and reuses the same transactional service.
+Gradio and React display the same synthetic company symbols, evidence and persistent paper-account contracts. Configure `ACADEMY_PAPER_DB` consistently for interfaces sharing an account. React uses FastAPI through a localhost Vite proxy. The `/reviews` route requires `ACADEMY_REVIEW_TOKEN`, distinct from the operator's `ACADEMY_LOCAL_TOKEN`; the interfaces expose explicit human approve/reject controls, and the CLI is an alternative reviewer path. `/execute` remains an operator-authenticated state-changing endpoint and reruns the same transactional risk/approval checks. Neither research MCP tools nor model text can approve orders.
 
 No screenshot should imply that a model, real exchange, public deployment or live brokerage was contacted unless an actual authorized run did so and its response is retained. Showing a working fictional paper-trading dashboard is a legitimate course application, provided its synthetic labels remain explicit.
 
@@ -41,4 +41,4 @@ No screenshot should imply that a model, real exchange, public deployment or liv
 
 The default offline test suite proves monetary/risk/persistence/thread boundaries. It does not prove optional framework compatibility. Record interpreter/package versions, installed API signature checks, actual HTTP and MCP sessions, browser observations and raw results separately. Dependency installation, a successful import, callback tests with framework registration stubs, a simulated protocol transcript and a real client-server session are different evidence classes.
 
-For a portfolio submission include: exact source commit; original fixture manifest; actual test and protocol outputs; one approved paper transaction and one rejected transaction; complete digest-linked trace; a recovery/idempotency demonstration; an honest list of unimplemented or untested features. Treat native course narration production separately from application-level model evaluation.
+For a portfolio submission include: exact source commit; original fixture manifest; actual test and protocol outputs; one approved paper transaction and one rejected transaction; complete digest-linked trace; a recovery/idempotency demonstration; an honest list of unimplemented or untested features.

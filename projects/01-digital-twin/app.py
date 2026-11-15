@@ -1,8 +1,7 @@
 """Actual Gradio responses, visible progress and consented contact actions."""
 import asyncio
-import json
 import uuid
-from config import Settings,profile_path
+from config import Settings,load_profile_sections
 from service import TwinService
 from prompts import IDENTITY
 
@@ -10,7 +9,7 @@ from prompts import IDENTITY
 def build_app(settings=None):
     import gradio as gr
     settings=settings or Settings.from_env()
-    sections=json.loads(profile_path().read_text())['sections']
+    sections=load_profile_sections(settings.profile)
     service=TwinService(sections,settings)
     def chat(message,history,session='local-cli'):
         yield 'Retrieving approved professional information…'

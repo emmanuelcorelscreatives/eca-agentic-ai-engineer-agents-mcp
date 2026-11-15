@@ -1,6 +1,6 @@
 """Real structured AutoGen specialists, approval gates and durable call ledger.
 
-No generated code is imported/executed here. External central QA owns Docker.
+No generated code is imported/executed here. An authorized validation owner runs Docker.
 Calling a specialist is opt-in and consumes a once-only call before submission.
 Timeout/exception/crash leaves UNKNOWN and is never silently resubmitted.
 """

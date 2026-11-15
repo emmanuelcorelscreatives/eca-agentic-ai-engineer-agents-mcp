@@ -1,6 +1,6 @@
 # Practical workbook — stages 11–20
 
-Run commands from the repository root. Each section is a learner exercise and acceptance contract, not a claim that the exercise has already been implemented or executed. Deterministic baselines and authored native framework paths are distinct. CrewAI, LangChain, LangGraph, Playwright MCP, Deep Agents and Gradio lessons retain their real framework requirements. Source pointers identify implementations, not observed runs or approval; inspect exact-current independent runtime evidence before describing successful execution. Credentialed provider calls and hosted tracing are optional manual external verification and must retain actual redacted outputs; missing access is recorded as incomplete, never replaced with invented results. New learner extensions belong in a separate workspace and must not overwrite supplied fixtures.
+Run commands from the repository root. Each section is a learner exercise and acceptance contract, not a claim that the exercise has already been implemented or executed. Deterministic baselines and authored native framework paths are distinct. CrewAI, LangChain, LangGraph, Playwright MCP, Deep Agents and Gradio lessons retain their real framework requirements. Source pointers identify implementations, not observed runs or approval; inspect actual results for your checkout before describing successful execution. Credentialed provider calls and hosted tracing are optional manual external verification and must retain actual redacted outputs; missing access is recorded as incomplete, never replaced with invented results. New learner extensions belong in a separate workspace and must not overwrite supplied fixtures.
 
 ## Stage 11
 
@@ -109,72 +109,72 @@ Run commands from the repository root. Each section is a learner exercise and ac
 ## Stage 13
 
 ### s13-l01 — Plan the Market Intelligence Crew
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 1](../../projects/04-market-intelligence/advanced/HANDBOOK.md#1-scope-responsibilities-and-deliverable).
 - Task: Inspect projects/04-market-intelligence/companies.json and define the market crew's research boundary.
 - Deliverable and acceptance: Deliver a scope document listing the fictional symbols, screening criteria, evidence requirements and final report; explicitly distinguish educational fixtures from live investment analysis.
 
 ### s13-l02 — Define Market Research Data Models
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 2](../../projects/04-market-intelligence/advanced/HANDBOOK.md#2-structured-research-models).
 - Task: Model Company, Criteria, evidence and ranked profile fields from market.py.
 - Deliverable and acceptance: Deliver a schema diagram and validation cases for missing margin, nonfinite growth and evidence-free values; preserve the difference between missing and zero.
 
 ### s13-l03 — Build the Company Research Agent
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 3](../../projects/04-market-intelligence/advanced/HANDBOOK.md#3-company-research-agent).
 - Task: Inspect advanced/sources.py FixtureResearchAdapter business/product/competition records and the company-research task.
 - Deliverable and acceptance: Deliver attributed dated fictional source documents for each supported symbol; the numeric-only baseline is not this substantive research adapter.
 
 ### s13-l04 — Build the Market Analysis Agent
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 4](../../projects/04-market-intelligence/advanced/HANDBOOK.md#4-market-analysis-agent).
 - Task: Inspect typed MarketResearch conditions and Signal records and connect them to the market-analysis task.
 - Deliverable and acceptance: Deliver reconciled source dates, units, conditions and uncertainty; these are fictional dated scenarios, not verified present-day market observations.
 
 ### s13-l05 — Build the Screening and Ranking Agent
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 5](../../projects/04-market-intelligence/advanced/HANDBOOK.md#5-screening-and-ranking).
 - Task: Run python3 projects/04-market-intelligence/market.py and inspect deterministic scoring.
 - Deliverable and acceptance: Deliver the three ranked profiles and rule-level score evidence; reproduce Cedar 3, Pine 2 and Maple 1 from supplied fixture data.
 
 ### s13-l06 — Build the Risk and Evidence Reviewer
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 6](../../projects/04-market-intelligence/advanced/HANDBOOK.md#6-risk-and-evidence-reviewer).
 - Task: Add a reviewer that checks each credited metric against its evidence locator.
 - Deliverable and acceptance: Deliver an unsupported-claim list containing the missing Pine margin evidence; the reviewer must not silently invent a margin or treat missing as zero observation.
 
 ### s13-l07 — Connect Market and Company Data Tools
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 7](../../projects/04-market-intelligence/advanced/HANDBOOK.md#7-replaceable-data-adapters).
 - Task: Use ResearchAdapter and Result success/absent/error contracts for company and sector data.
 - Deliverable and acceptance: Deliver typed outputs plus unavailable/malformed-source cases retaining source SHA; absence must never become a fabricated fact.
 
 ### s13-l08 — Add Custom Analysis Tools
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 8](../../projects/04-market-intelligence/advanced/HANDBOOK.md#8-reusable-calculations).
 - Task: Extend one calculation tool with explicit units and bounded numeric inputs.
 - Deliverable and acceptance: Deliver tests for boundary values and malformed inputs; rerun python3 -m unittest discover -s tests -p 'test_projects_4_5.py' without changing fixture facts to satisfy a score.
 
 ### s13-l09 — Apply User-Defined Screening Criteria
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 9](../../projects/04-market-intelligence/advanced/HANDBOOK.md#9-user-defined-criteria).
 - Task: Run market.py with --min-growth .20 and compare criteria effects.
 - Deliverable and acceptance: Deliver before/after criterion tables showing Cedar and Pine tied at 2 with deterministic symbol ordering; document that the threshold changed, not observed data.
 
 ### s13-l10 — Add Crew Memory and Context
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 10](../../projects/04-market-intelligence/advanced/HANDBOOK.md#10-validated-memory-and-context).
 - Task: Persist validated profiles and screening criteria as crew context across tasks.
 - Deliverable and acceptance: Deliver a round-trip saved context and a test rejecting a context from a different criteria version; evidence locators survive serialization.
 
 ### s13-l11 — Use a Hierarchical Crew Process
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 11](../../projects/04-market-intelligence/advanced/HANDBOOK.md#11-hierarchical-manager-and-correction).
 - Task: Implement a real CrewAI hierarchical process with a manager and bounded evidence-correction request.
 - Deliverable and acceptance: Deliver runnable configuration and, when credentials are available, a real delegation trace; the stdlib market runner alone does not demonstrate manager delegation.
 
 ### s13-l12 — Generate Structured Company Profiles
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 12](../../projects/04-market-intelligence/advanced/HANDBOOK.md#12-structured-profiles).
 - Task: Serialize each company into the shared profile schema with evidence, uncertainty and risks.
 - Deliverable and acceptance: Deliver three schema-valid profiles retaining Pine's missing-margin uncertainty and each original symbol; no prose-only replacement of required fields.
 
 ### s13-l13 — Produce the Final Market Intelligence Report
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 13](../../projects/04-market-intelligence/advanced/HANDBOOK.md#13-final-report).
 - Task: Assemble the integrated report through advanced/full_report.py and compare its source-backed coverage with the deterministic baseline.
 - Deliverable and acceptance: Deliver actual report artifacts including business/products/competition, sector signals, rankings and uncertainty; local assembly is not a model crew run.
 
 ### s13-l14 — Evaluate the Quality of the Crew’s Analysis
-- Source: `projects/04-market-intelligence/advanced/; projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: `projects/04-market-intelligence/README.md`.
+- Source: `projects/04-market-intelligence/advanced/` and `projects/04-market-intelligence/crewai_adapter.py`; detailed exercise: [handbook section 14](../../projects/04-market-intelligence/advanced/HANDBOOK.md#14-evaluation).
 - Task: Test ranking stability, evidence removal and criteria changes against the report.
 - Deliverable and acceptance: Deliver passing market tests plus a negative test showing removal of Cedar's margin evidence removes one point; retain unsupported-claim counts rather than hiding them.
 
@@ -217,8 +217,8 @@ Run commands from the repository root. Each section is a learner exercise and ac
 
 ### s14-l08 — Install Project Dependencies Safely
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-14-exercises.md`.
-- Task: Inspect learning/pyproject.toml, actual uv.lock and the offline-cache image preparation workflow.
-- Deliverable and acceptance: Deliver genuine frozen lock/check/sync and in-container runtime receipts when run; host uv setup does not demonstrate container installation.
+- Task: Inspect learning/pyproject.toml, actual uv.lock and the [offline-cache preparation recipe](../../projects/05-sandboxed-engineering/learning/CONTAINER.md). Identify cache, image and mailbox prerequisites before attempting installation.
+- Deliverable and acceptance: Offline preparation produces a prerequisite checklist and explanation of the frozen/offline dependency boundary. Actual lock/check/sync output and in-container results belong to the optional prepared-container extension; host uv setup does not demonstrate container installation.
 
 ### s14-l09 — Add Timeouts and Resource Limits
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-14-exercises.md`.
@@ -232,8 +232,8 @@ Run commands from the repository root. Each section is a learner exercise and ac
 
 ### s14-l11 — Build Automated Testing Tools
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-14-exercises.md`.
-- Task: Trace semantic_team acceptance and QA receipts through container_entrypoint.py.
-- Deliverable and acceptance: Deliver actual test IDs, stdout/stderr, return codes and requirement mapping; wrapper doubles and arithmetic fixtures are not generated-code execution.
+- Task: Run `student_lab.py repair` in the [worked example](../../projects/05-sandboxed-engineering/learning/WORKED-EXAMPLE.md), then trace semantic_team acceptance and QA receipts through container_entrypoint.py.
+- Deliverable and acceptance: Retain the arithmetic fixture's initial failure and repaired result plus the integrated-double contract check and requirement mapping. These are offline preparation, not generated-code execution. Actual generated-code test IDs, stdout/stderr and return codes require the optional container extension.
 
 ### s14-l12 — Secure the Coding-Agent Environment
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-14-exercises.md`.
@@ -274,8 +274,8 @@ Run commands from the repository root. Each section is a learner exercise and ac
 
 ### s15-l07 — Pass Specifications and Context Between Agents
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-15-exercises.md`.
-- Task: Trace semantic_team envelope/consume across role revisions and response hashes.
-- Deliverable and acceptance: Deliver exact content/response lineage for each consumed artifact; the older workflow.Envelope example is distinct from the integrated path.
+- Task: Run `student_lab.py handoffs` in section 3 of the [worked example](../../projects/05-sandboxed-engineering/learning/WORKED-EXAMPLE.md), then trace semantic_team envelope/consume across role revisions and response hashes.
+- Deliverable and acceptance: Deliver the integrated human-reference envelope and changed-content/obsolete-revision rejections. This local reference is not provider execution evidence; the older workflow.Envelope example is distinct from the integrated path.
 
 ### s15-l08 — Build uv-Based Sandbox Tools
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-15-exercises.md`.
@@ -308,6 +308,7 @@ Run commands from the repository root. Each section is a learner exercise and ac
 - Deliverable and acceptance: Deliver a requirement-to-test matrix and explicit unresolved limitations; QA approval depends on actual test output and reviewed source.
 
 ### s15-l14 — Package the Source Code and Documentation
+- Offline activity: Complete the explicit fixture-package inspection in the [worked example](../../projects/05-sandboxed-engineering/learning/WORKED-EXAMPLE.md). Inspect the archive and receipt without executing generated code. Record its fixture status; this completes the offline packaging exercise, not the optional real generated whole-crew delivery below.
 - Source: `projects/05-sandboxed-engineering/learning/delivery_package.py:package_delivery`; successful `container_entrypoint.py` route; `container_launch.py:verified_delivery`. Detailed exercise: `projects/05-sandboxed-engineering/learning/stage-15-exercises.md` section s15-l14; execution boundary: `learning/CONTAINER.md`.
 - Task: After an admitted real whole-crew container run, inspect its exact generated application, setup/usage documentation, dependency declarations and tests through the completion-bound delivery bridge. Verify the returned `delivery.zip` and `delivery-receipt.json`, then perform a fresh documented extraction/setup/test in the approved execution boundary without executing unreviewed generated code on the host.
 - Deliverable and acceptance: Retain the exact final generated files, typed role artifacts and actual response lineage, original completion event, all attempted-test receipts, immutable course and independent QA tests, and the requirement acceptance matrix. Bind the final source and actual passed container receipt to the whole-team result; verify archive/member inventory, exact bytes, CRC and hashes against the delivery receipt and embedded manifest. Preserve failed attempts and review outputs for credentials before sharing. A fixed `team.py` template ZIP or explicit `OFFLINE_FIXTURE_NOT_PRODUCTION` package cannot certify this generated whole-crew delivery; genuine model/container execution, clean extraction/setup/tests and independent acceptance remain required observations rather than claims made by this workbook.
@@ -315,8 +316,8 @@ Run commands from the repository root. Each section is a learner exercise and ac
 
 ### s15-l15 — Complete the Sandboxed Engineering Team
 - Source: `projects/05-sandboxed-engineering/learning/`; detailed exercise: `projects/05-sandboxed-engineering/learning/stage-15-exercises.md`.
-- Task: Demonstrate the whole four-role container/broker workflow and delivery package.
-- Deliverable and acceptance: Deliver genuine response/source/test/package lineage and outstanding limitations; authored code is not evidence of Docker, provider, installation or capture success.
+- Task: Complete the [worked-example checklist](../../projects/05-sandboxed-engineering/learning/WORKED-EXAMPLE.md) and state unrun integration limits. A whole four-role container/broker demonstration and delivery package is a separate opt-in extension requiring the documented prepared environment.
+- Deliverable and acceptance: Offline completion includes actual local results, requirement mapping and explicit unrun limits. Only a real opted-in run can supply provider/source/test/package lineage; fixture tests do not certify Docker, provider, installation or generated whole-crew execution.
 
 ## Stage 16
 
@@ -634,4 +635,3 @@ Run commands from the repository root. Each section is a learner exercise and ac
 - Source: `projects/06-browser-sidekick/pipeline.py; advanced.py; ui_gradio.py`; detailed exercise: `labs/s20/s20-l15.md`.
 - Task: Demonstrate one integrated native task through specialists, Playwright, approval, persistence, artifacts and Gradio.
 - Deliverable and acceptance: Deliver exact source/runtime/request/result lineage and actual final evaluation; preserve failures, gaps and unknown-effect no-replay instead of equating authored integration with observed success.
-

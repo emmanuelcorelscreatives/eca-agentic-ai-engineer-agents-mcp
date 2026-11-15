@@ -5,11 +5,32 @@ It does not replace the four real model-backed roles with offline templates.
 The course expense calculator uses non-negative integer minor units, rejects
 booleans/decimals/negatives, and returns zero for an empty input.
 
+## Student starting point
+
+Use Linux/WSL with Python 3.12 for this laboratory. No API key, Docker, uv or
+third-party installation is needed for the offline activities. Start with
+[WORKED-EXAMPLE.md](WORKED-EXAMPLE.md): it supplies file-tool setup, failed/passing
+arithmetic inputs, integrated handoff checks and the expected outputs. Each
+activity is reproducible from this checkout without a private recording.
+
+```sh
+python3 projects/05-sandboxed-engineering/learning/student_lab.py files
+python3 projects/05-sandboxed-engineering/learning/student_lab.py repair
+python3 projects/05-sandboxed-engineering/learning/student_lab.py handoffs
+```
+
+## Local verification map
+
 Run from the repository root:
 
 ```sh
 python3 -m unittest discover -s tests -p test_engineering_learning.py -v
 python3 -m unittest discover -s tests -p test_projects_4_5.py -v
+python3 -m unittest discover -s tests -p test_student_project_05.py -v
+python3 -m unittest discover -s tests -p test_engineering_semantic_team.py -v
+python3 -m unittest discover -s tests -p test_engineering_crewai_roles.py -v
+python3 -m unittest discover -s tests -p test_engineering_whole_crew.py -v
+python3 -m unittest discover -s tests -p test_engineering_delivery_package.py -v
 ```
 
 The first command actually exercises file boundaries, typed artifact handoffs,
@@ -17,7 +38,17 @@ DAG prerequisites, rejected command proposals and bounded repair of an arithmeti
 fixture. `MockLifecycleTests` injects fake processes: its timeout, invalid UTF-8
 and cleanup results are **wrapper unit tests**, not container observations.
 `expense_fixture` computes real arithmetic but is **not execution of generated
-Python**. Both distinctions must remain visible in lesson narration and traces.
+Python**. Preserve that distinction when interpreting your output.
+
+The student suite checks the helper without launching containers or models.
+The semantic-team suite validates integrated contracts with provider/executor
+doubles. The role suite has two dependency-free checks and three checks using
+the real optional CrewAI SDK with an explicit offline broker; those three skip
+when CrewAI is absent. No provider call is needed, and installing the SDK is not
+required to finish the offline notebook. Whole-crew tests inspect argv, JSON/mailbox
+boundaries and mocked lifecycles; delivery tests package labelled offline results.
+These suites are local checks, not proof of Docker/uv/SDK or real-provider success.
+See [CONTAINER.md](CONTAINER.md) for the separate optional runtime prerequisites.
 
 ## File capabilities
 
@@ -53,9 +84,9 @@ proof that acceptance criteria passed; link actual immutable test evidence too.
 A digest-looking string is not runtime verification. A prepared image still
 needs actual local inspection and a recorded image ID/digest, runtime versions,
 policy, command argv, source/test hashes and observed receipts. No image is
-pulled or Docker daemon modified by these modules. Docker and uv were absent
-from this authoring host PATH; **container, uv and real four-role execution are
-not verified here**. Do not call this stage render-ready on unit tests alone.
+pulled or Docker daemon modified by these modules. **Your container, uv and real
+four-role execution remain unverified until you actually run them**. Unit tests
+alone do not verify an integrated application.
 
 For a separate authorized environment: install Docker from its official engine
 instructions; verify daemon health with `docker version`; build/review an image
@@ -63,14 +94,15 @@ containing Python and uv; record its immutable digest; preload reviewed package
 wheels. Run only `execute(Policy(image_digest), workspace, tests, command_id)`
 under the owned course execution guard. Default offline `uv sync --frozen`
 requires a real previously reviewed `uv.lock` and local package cache. This
-lesson layer supplies no fabricated lockfile. New packages, base images,
+lesson layer includes a real `uv.lock` for its Python-3.12 CrewAI environment;
+it does not make the generated expense app dependent on CrewAI. New packages, base images,
 mounts, network or policy changes require separate operator review.
 
 Official references: https://docs.docker.com/engine/install/ and
 https://docs.docker.com/engine/containers/run/ ; uv setup and frozen environments:
 https://docs.astral.sh/uv/getting-started/installation/ and
 https://docs.astral.sh/uv/concepts/projects/sync/ . These are setup references,
-not evidence of an installation performed by this course authoring run.
+not evidence of an installation in your environment.
 
 ## Role and completion contracts
 
@@ -92,11 +124,10 @@ Passing unit tests alone cannot establish a model's quality or hostile-code
 isolation. The final archive and source should preserve failed attempts and
 explicitly list all unverified items.
 
-## Later local uv setup observation
+## Exercise navigation
 
-A separate, network-disabled trusted-operator probe reused uv 0.13.8 from the
-shared SDK environment and actually created a disposable venv with existing
-CPython 3.12.3 using `uv venv --offline --no-python-downloads --python ...`.
-Creation and owned temporary-directory cleanup succeeded. This is local setup
-evidence only: it does not demonstrate the Docker agent capability, dependency
-locking/sync, generated-code execution or real model-backed engineering.
+[Stage 14](stage-14-exercises.md) teaches controlled tools; [Stage 15](stage-15-exercises.md)
+connects roles, handoffs, QA and delivery. Keep local fixture observations separate
+from a future generated application. The [offline notebook](WORKED-EXAMPLE.md)
+provides accessible exercise inputs and solutions; [CONTAINER.md](CONTAINER.md)
+describes the optional whole-container extension and its remaining setup work.
